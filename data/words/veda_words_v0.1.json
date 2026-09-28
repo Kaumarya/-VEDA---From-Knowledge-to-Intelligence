@@ -1,0 +1,504 @@
+{
+  "project": "VEDA",
+  "component": "Word Foundation",
+  "version": "0.1.0",
+  "language_scope": "English",
+  "description": "Foundational controlled development vocabulary for English words.",
+  "vocabulary_count": 16,
+  "words": [
+    {
+      "word": "apple",
+      "normalized": "apple",
+      "language": "en",
+      "characters": [
+        "a",
+        "p",
+        "p",
+        "l",
+        "e"
+      ],
+      "character_ids": [
+        67,
+        82,
+        82,
+        78,
+        71
+      ],
+      "length": 5,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "banana",
+      "normalized": "banana",
+      "language": "en",
+      "characters": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ],
+      "character_ids": [
+        68,
+        67,
+        80,
+        67,
+        80,
+        67
+      ],
+      "length": 6,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "book",
+      "normalized": "book",
+      "language": "en",
+      "characters": [
+        "b",
+        "o",
+        "o",
+        "k"
+      ],
+      "character_ids": [
+        68,
+        81,
+        81,
+        77
+      ],
+      "length": 4,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "cat",
+      "normalized": "cat",
+      "language": "en",
+      "characters": [
+        "c",
+        "a",
+        "t"
+      ],
+      "character_ids": [
+        69,
+        67,
+        86
+      ],
+      "length": 3,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "computer",
+      "normalized": "computer",
+      "language": "en",
+      "characters": [
+        "c",
+        "o",
+        "m",
+        "p",
+        "u",
+        "t",
+        "e",
+        "r"
+      ],
+      "character_ids": [
+        69,
+        81,
+        79,
+        82,
+        87,
+        86,
+        71,
+        84
+      ],
+      "length": 8,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "language",
+      "normalized": "language",
+      "language": "en",
+      "characters": [
+        "l",
+        "a",
+        "n",
+        "g",
+        "u",
+        "a",
+        "g",
+        "e"
+      ],
+      "character_ids": [
+        78,
+        67,
+        80,
+        73,
+        87,
+        67,
+        73,
+        71
+      ],
+      "length": 8,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "learning",
+      "normalized": "learning",
+      "language": "en",
+      "characters": [
+        "l",
+        "e",
+        "a",
+        "r",
+        "n",
+        "i",
+        "n",
+        "g"
+      ],
+      "character_ids": [
+        78,
+        71,
+        67,
+        84,
+        80,
+        75,
+        80,
+        73
+      ],
+      "length": 8,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "machine",
+      "normalized": "machine",
+      "language": "en",
+      "characters": [
+        "m",
+        "a",
+        "c",
+        "h",
+        "i",
+        "n",
+        "e"
+      ],
+      "character_ids": [
+        79,
+        67,
+        69,
+        74,
+        75,
+        80,
+        71
+      ],
+      "length": 7,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "knowledge",
+      "normalized": "knowledge",
+      "language": "en",
+      "characters": [
+        "k",
+        "n",
+        "o",
+        "w",
+        "l",
+        "e",
+        "d",
+        "g",
+        "e"
+      ],
+      "character_ids": [
+        77,
+        80,
+        81,
+        89,
+        78,
+        71,
+        70,
+        73,
+        71
+      ],
+      "length": 9,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "intelligence",
+      "normalized": "intelligence",
+      "language": "en",
+      "characters": [
+        "i",
+        "n",
+        "t",
+        "e",
+        "l",
+        "l",
+        "i",
+        "g",
+        "e",
+        "n",
+        "c",
+        "e"
+      ],
+      "character_ids": [
+        75,
+        80,
+        86,
+        71,
+        78,
+        78,
+        75,
+        73,
+        71,
+        80,
+        69,
+        71
+      ],
+      "length": 12,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "veda",
+      "normalized": "veda",
+      "language": "en",
+      "characters": [
+        "v",
+        "e",
+        "d",
+        "a"
+      ],
+      "character_ids": [
+        88,
+        71,
+        70,
+        67
+      ],
+      "length": 4,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "A",
+      "normalized": "a",
+      "language": "en",
+      "characters": [
+        "a"
+      ],
+      "character_ids": [
+        67
+      ],
+      "length": 1,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "I",
+      "normalized": "i",
+      "language": "en",
+      "characters": [
+        "i"
+      ],
+      "character_ids": [
+        75
+      ],
+      "length": 1,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "x",
+      "normalized": "x",
+      "language": "en",
+      "characters": [
+        "x"
+      ],
+      "character_ids": [
+        90
+      ],
+      "length": 1,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "hello",
+      "normalized": "hello",
+      "language": "en",
+      "characters": [
+        "h",
+        "e",
+        "l",
+        "l",
+        "o"
+      ],
+      "character_ids": [
+        74,
+        71,
+        78,
+        78,
+        81
+      ],
+      "length": 5,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    },
+    {
+      "word": "world",
+      "normalized": "world",
+      "language": "en",
+      "characters": [
+        "w",
+        "o",
+        "r",
+        "l",
+        "d"
+      ],
+      "character_ids": [
+        89,
+        81,
+        84,
+        78,
+        70
+      ],
+      "length": 5,
+      "lexical": {
+        "part_of_speech": null,
+        "definitions": [],
+        "synonyms": [],
+        "antonyms": []
+      },
+      "forms": [],
+      "sources": [
+        "VEDA foundational vocabulary"
+      ]
+    }
+  ]
+}

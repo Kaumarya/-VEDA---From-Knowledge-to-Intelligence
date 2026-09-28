@@ -1,0 +1,3703 @@
+{
+  "project": "VEDA",
+  "component": "Character Knowledge Base",
+  "version": "0.1.0",
+  "language_scope": "English",
+  "description": "Structured symbolic knowledge layer for English characters.",
+  "character_count": 113,
+  "characters": [
+    {
+      "character": "\t",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0009",
+        "unicode_name": "UNKNOWN",
+        "unicode_category": "Cc",
+        "character_id": 0
+      },
+      "classification": {
+        "type": "whitespace",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "\n",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+000A",
+        "unicode_name": "UNKNOWN",
+        "unicode_category": "Cc",
+        "character_id": 1
+      },
+      "classification": {
+        "type": "whitespace",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": " ",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0020",
+        "unicode_name": "SPACE",
+        "unicode_category": "Zs",
+        "character_id": 2
+      },
+      "classification": {
+        "type": "whitespace",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "!",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0021",
+        "unicode_name": "EXCLAMATION MARK",
+        "unicode_category": "Po",
+        "character_id": 3
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "\"",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0022",
+        "unicode_name": "QUOTATION MARK",
+        "unicode_category": "Po",
+        "character_id": 4
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "#",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0023",
+        "unicode_name": "NUMBER SIGN",
+        "unicode_category": "Po",
+        "character_id": 5
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "$",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0024",
+        "unicode_name": "DOLLAR SIGN",
+        "unicode_category": "Sc",
+        "character_id": 6
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "%",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0025",
+        "unicode_name": "PERCENT SIGN",
+        "unicode_category": "Po",
+        "character_id": 7
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "&",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0026",
+        "unicode_name": "AMPERSAND",
+        "unicode_category": "Po",
+        "character_id": 8
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "'",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0027",
+        "unicode_name": "APOSTROPHE",
+        "unicode_category": "Po",
+        "character_id": 9
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "(",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0028",
+        "unicode_name": "LEFT PARENTHESIS",
+        "unicode_category": "Ps",
+        "character_id": 10
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": ")",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0029",
+        "unicode_name": "RIGHT PARENTHESIS",
+        "unicode_category": "Pe",
+        "character_id": 11
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "*",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+002A",
+        "unicode_name": "ASTERISK",
+        "unicode_category": "Po",
+        "character_id": 12
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "+",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+002B",
+        "unicode_name": "PLUS SIGN",
+        "unicode_category": "Sm",
+        "character_id": 13
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": ",",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+002C",
+        "unicode_name": "COMMA",
+        "unicode_category": "Po",
+        "character_id": 14
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "-",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+002D",
+        "unicode_name": "HYPHEN-MINUS",
+        "unicode_category": "Pd",
+        "character_id": 15
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": ".",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+002E",
+        "unicode_name": "FULL STOP",
+        "unicode_category": "Po",
+        "character_id": 16
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "/",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+002F",
+        "unicode_name": "SOLIDUS",
+        "unicode_category": "Po",
+        "character_id": 17
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "0",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0030",
+        "unicode_name": "DIGIT ZERO",
+        "unicode_category": "Nd",
+        "character_id": 18
+      },
+      "classification": {
+        "type": "digit",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "1",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0031",
+        "unicode_name": "DIGIT ONE",
+        "unicode_category": "Nd",
+        "character_id": 19
+      },
+      "classification": {
+        "type": "digit",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "2",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0032",
+        "unicode_name": "DIGIT TWO",
+        "unicode_category": "Nd",
+        "character_id": 20
+      },
+      "classification": {
+        "type": "digit",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "3",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0033",
+        "unicode_name": "DIGIT THREE",
+        "unicode_category": "Nd",
+        "character_id": 21
+      },
+      "classification": {
+        "type": "digit",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "4",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0034",
+        "unicode_name": "DIGIT FOUR",
+        "unicode_category": "Nd",
+        "character_id": 22
+      },
+      "classification": {
+        "type": "digit",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "5",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0035",
+        "unicode_name": "DIGIT FIVE",
+        "unicode_category": "Nd",
+        "character_id": 23
+      },
+      "classification": {
+        "type": "digit",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "6",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0036",
+        "unicode_name": "DIGIT SIX",
+        "unicode_category": "Nd",
+        "character_id": 24
+      },
+      "classification": {
+        "type": "digit",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "7",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0037",
+        "unicode_name": "DIGIT SEVEN",
+        "unicode_category": "Nd",
+        "character_id": 25
+      },
+      "classification": {
+        "type": "digit",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "8",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0038",
+        "unicode_name": "DIGIT EIGHT",
+        "unicode_category": "Nd",
+        "character_id": 26
+      },
+      "classification": {
+        "type": "digit",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "9",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0039",
+        "unicode_name": "DIGIT NINE",
+        "unicode_category": "Nd",
+        "character_id": 27
+      },
+      "classification": {
+        "type": "digit",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": ":",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+003A",
+        "unicode_name": "COLON",
+        "unicode_category": "Po",
+        "character_id": 28
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": ";",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+003B",
+        "unicode_name": "SEMICOLON",
+        "unicode_category": "Po",
+        "character_id": 29
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "<",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+003C",
+        "unicode_name": "LESS-THAN SIGN",
+        "unicode_category": "Sm",
+        "character_id": 30
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "=",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+003D",
+        "unicode_name": "EQUALS SIGN",
+        "unicode_category": "Sm",
+        "character_id": 31
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": ">",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+003E",
+        "unicode_name": "GREATER-THAN SIGN",
+        "unicode_category": "Sm",
+        "character_id": 32
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "?",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+003F",
+        "unicode_name": "QUESTION MARK",
+        "unicode_category": "Po",
+        "character_id": 33
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "@",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0040",
+        "unicode_name": "COMMERCIAL AT",
+        "unicode_category": "Po",
+        "character_id": 34
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "A",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0041",
+        "unicode_name": "LATIN CAPITAL LETTER A",
+        "unicode_category": "Lu",
+        "character_id": 35
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 1
+      },
+      "relationships": {
+        "lowercase": "a",
+        "uppercase": "A"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "A",
+        "pronunciation": "/eɪ/"
+      },
+      "examples": [
+        "apple",
+        "animal",
+        "artificial"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "B",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0042",
+        "unicode_name": "LATIN CAPITAL LETTER B",
+        "unicode_category": "Lu",
+        "character_id": 36
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 2
+      },
+      "relationships": {
+        "lowercase": "b",
+        "uppercase": "B"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "B",
+        "pronunciation": "/biː/"
+      },
+      "examples": [
+        "book",
+        "binary",
+        "build"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "C",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0043",
+        "unicode_name": "LATIN CAPITAL LETTER C",
+        "unicode_category": "Lu",
+        "character_id": 37
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 3
+      },
+      "relationships": {
+        "lowercase": "c",
+        "uppercase": "C"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "C",
+        "pronunciation": "/siː/"
+      },
+      "examples": [
+        "computer",
+        "character",
+        "code"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "D",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0044",
+        "unicode_name": "LATIN CAPITAL LETTER D",
+        "unicode_category": "Lu",
+        "character_id": 38
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 4
+      },
+      "relationships": {
+        "lowercase": "d",
+        "uppercase": "D"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "D",
+        "pronunciation": "/diː/"
+      },
+      "examples": [
+        "data",
+        "design",
+        "dictionary"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "E",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0045",
+        "unicode_name": "LATIN CAPITAL LETTER E",
+        "unicode_category": "Lu",
+        "character_id": 39
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 5
+      },
+      "relationships": {
+        "lowercase": "e",
+        "uppercase": "E"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "E",
+        "pronunciation": "/iː/"
+      },
+      "examples": [
+        "english",
+        "embedding",
+        "engine"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "F",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0046",
+        "unicode_name": "LATIN CAPITAL LETTER F",
+        "unicode_category": "Lu",
+        "character_id": 40
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 6
+      },
+      "relationships": {
+        "lowercase": "f",
+        "uppercase": "F"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "F",
+        "pronunciation": "/ɛf/"
+      },
+      "examples": [
+        "foundation",
+        "first",
+        "forward"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "G",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0047",
+        "unicode_name": "LATIN CAPITAL LETTER G",
+        "unicode_category": "Lu",
+        "character_id": 41
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 7
+      },
+      "relationships": {
+        "lowercase": "g",
+        "uppercase": "G"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "G",
+        "pronunciation": "/dʒiː/"
+      },
+      "examples": [
+        "gradient",
+        "grammar",
+        "generation"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "H",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0048",
+        "unicode_name": "LATIN CAPITAL LETTER H",
+        "unicode_category": "Lu",
+        "character_id": 42
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 8
+      },
+      "relationships": {
+        "lowercase": "h",
+        "uppercase": "H"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "H",
+        "pronunciation": "/eɪtʃ/"
+      },
+      "examples": [
+        "hello",
+        "history",
+        "hierarchy"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "I",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0049",
+        "unicode_name": "LATIN CAPITAL LETTER I",
+        "unicode_category": "Lu",
+        "character_id": 43
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 9
+      },
+      "relationships": {
+        "lowercase": "i",
+        "uppercase": "I"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "I",
+        "pronunciation": "/aɪ/"
+      },
+      "examples": [
+        "intelligence",
+        "inference",
+        "iteration"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "J",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+004A",
+        "unicode_name": "LATIN CAPITAL LETTER J",
+        "unicode_category": "Lu",
+        "character_id": 44
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 10
+      },
+      "relationships": {
+        "lowercase": "j",
+        "uppercase": "J"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "J",
+        "pronunciation": "/dʒeɪ/"
+      },
+      "examples": [
+        "json",
+        "join",
+        "journey"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "K",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+004B",
+        "unicode_name": "LATIN CAPITAL LETTER K",
+        "unicode_category": "Lu",
+        "character_id": 45
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 11
+      },
+      "relationships": {
+        "lowercase": "k",
+        "uppercase": "K"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "K",
+        "pronunciation": "/keɪ/"
+      },
+      "examples": [
+        "knowledge",
+        "kernel",
+        "key"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "L",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+004C",
+        "unicode_name": "LATIN CAPITAL LETTER L",
+        "unicode_category": "Lu",
+        "character_id": 46
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 12
+      },
+      "relationships": {
+        "lowercase": "l",
+        "uppercase": "L"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "L",
+        "pronunciation": "/ɛl/"
+      },
+      "examples": [
+        "language",
+        "layer",
+        "lexicon"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "M",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+004D",
+        "unicode_name": "LATIN CAPITAL LETTER M",
+        "unicode_category": "Lu",
+        "character_id": 47
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 13
+      },
+      "relationships": {
+        "lowercase": "m",
+        "uppercase": "M"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "M",
+        "pronunciation": "/ɛm/"
+      },
+      "examples": [
+        "model",
+        "matrix",
+        "masking"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "N",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+004E",
+        "unicode_name": "LATIN CAPITAL LETTER N",
+        "unicode_category": "Lu",
+        "character_id": 48
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 14
+      },
+      "relationships": {
+        "lowercase": "n",
+        "uppercase": "N"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "N",
+        "pronunciation": "/ɛn/"
+      },
+      "examples": [
+        "neural",
+        "network",
+        "normalization"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "O",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+004F",
+        "unicode_name": "LATIN CAPITAL LETTER O",
+        "unicode_category": "Lu",
+        "character_id": 49
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 15
+      },
+      "relationships": {
+        "lowercase": "o",
+        "uppercase": "O"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "O",
+        "pronunciation": "/oʊ/"
+      },
+      "examples": [
+        "optimizer",
+        "output",
+        "order"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "P",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0050",
+        "unicode_name": "LATIN CAPITAL LETTER P",
+        "unicode_category": "Lu",
+        "character_id": 50
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 16
+      },
+      "relationships": {
+        "lowercase": "p",
+        "uppercase": "P"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "P",
+        "pronunciation": "/piː/"
+      },
+      "examples": [
+        "principle",
+        "pipeline",
+        "pretraining"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "Q",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0051",
+        "unicode_name": "LATIN CAPITAL LETTER Q",
+        "unicode_category": "Lu",
+        "character_id": 51
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 17
+      },
+      "relationships": {
+        "lowercase": "q",
+        "uppercase": "Q"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "Q",
+        "pronunciation": "/kjuː/"
+      },
+      "examples": [
+        "query",
+        "quality",
+        "question"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "R",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0052",
+        "unicode_name": "LATIN CAPITAL LETTER R",
+        "unicode_category": "Lu",
+        "character_id": 52
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 18
+      },
+      "relationships": {
+        "lowercase": "r",
+        "uppercase": "R"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "R",
+        "pronunciation": "/ɑːr/"
+      },
+      "examples": [
+        "registry",
+        "retrieval",
+        "residual"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "S",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0053",
+        "unicode_name": "LATIN CAPITAL LETTER S",
+        "unicode_category": "Lu",
+        "character_id": 53
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 19
+      },
+      "relationships": {
+        "lowercase": "s",
+        "uppercase": "S"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "S",
+        "pronunciation": "/ɛs/"
+      },
+      "examples": [
+        "sequence",
+        "structure",
+        "symbol"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "T",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0054",
+        "unicode_name": "LATIN CAPITAL LETTER T",
+        "unicode_category": "Lu",
+        "character_id": 54
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 20
+      },
+      "relationships": {
+        "lowercase": "t",
+        "uppercase": "T"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "T",
+        "pronunciation": "/tiː/"
+      },
+      "examples": [
+        "transformer",
+        "tokenizer",
+        "tensor"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "U",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0055",
+        "unicode_name": "LATIN CAPITAL LETTER U",
+        "unicode_category": "Lu",
+        "character_id": 55
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 21
+      },
+      "relationships": {
+        "lowercase": "u",
+        "uppercase": "U"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "U",
+        "pronunciation": "/juː/"
+      },
+      "examples": [
+        "unicode",
+        "unknown",
+        "unit"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "V",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0056",
+        "unicode_name": "LATIN CAPITAL LETTER V",
+        "unicode_category": "Lu",
+        "character_id": 56
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 22
+      },
+      "relationships": {
+        "lowercase": "v",
+        "uppercase": "V"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "V",
+        "pronunciation": "/viː/"
+      },
+      "examples": [
+        "veda",
+        "vocabulary",
+        "vector"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "W",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0057",
+        "unicode_name": "LATIN CAPITAL LETTER W",
+        "unicode_category": "Lu",
+        "character_id": 57
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 23
+      },
+      "relationships": {
+        "lowercase": "w",
+        "uppercase": "W"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "W",
+        "pronunciation": "/ˈdʌbəl.juː/"
+      },
+      "examples": [
+        "weight",
+        "word",
+        "whitespace"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "X",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0058",
+        "unicode_name": "LATIN CAPITAL LETTER X",
+        "unicode_category": "Lu",
+        "character_id": 58
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 24
+      },
+      "relationships": {
+        "lowercase": "x",
+        "uppercase": "X"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "X",
+        "pronunciation": "/ɛks/"
+      },
+      "examples": [
+        "example",
+        "index",
+        "extract"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "Y",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0059",
+        "unicode_name": "LATIN CAPITAL LETTER Y",
+        "unicode_category": "Lu",
+        "character_id": 59
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 25
+      },
+      "relationships": {
+        "lowercase": "y",
+        "uppercase": "Y"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "Y",
+        "pronunciation": "/waɪ/"
+      },
+      "examples": [
+        "yield",
+        "yaml",
+        "year"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "Z",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+005A",
+        "unicode_name": "LATIN CAPITAL LETTER Z",
+        "unicode_category": "Lu",
+        "character_id": 60
+      },
+      "classification": {
+        "type": "letter",
+        "case": "uppercase",
+        "alphabet": "english",
+        "alphabet_position": 26
+      },
+      "relationships": {
+        "lowercase": "z",
+        "uppercase": "Z"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "Z",
+        "pronunciation": "/zɛd/"
+      },
+      "examples": [
+        "zero",
+        "zone",
+        "zip"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "[",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+005B",
+        "unicode_name": "LEFT SQUARE BRACKET",
+        "unicode_category": "Ps",
+        "character_id": 61
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "\\",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+005C",
+        "unicode_name": "REVERSE SOLIDUS",
+        "unicode_category": "Po",
+        "character_id": 62
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "]",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+005D",
+        "unicode_name": "RIGHT SQUARE BRACKET",
+        "unicode_category": "Pe",
+        "character_id": 63
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "^",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+005E",
+        "unicode_name": "CIRCUMFLEX ACCENT",
+        "unicode_category": "Sk",
+        "character_id": 64
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "_",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+005F",
+        "unicode_name": "LOW LINE",
+        "unicode_category": "Pc",
+        "character_id": 65
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "`",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0060",
+        "unicode_name": "GRAVE ACCENT",
+        "unicode_category": "Sk",
+        "character_id": 66
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "a",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0061",
+        "unicode_name": "LATIN SMALL LETTER A",
+        "unicode_category": "Ll",
+        "character_id": 67
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 1
+      },
+      "relationships": {
+        "lowercase": "a",
+        "uppercase": "A"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "A",
+        "pronunciation": "/eɪ/"
+      },
+      "examples": [
+        "apple",
+        "animal",
+        "artificial"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "b",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0062",
+        "unicode_name": "LATIN SMALL LETTER B",
+        "unicode_category": "Ll",
+        "character_id": 68
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 2
+      },
+      "relationships": {
+        "lowercase": "b",
+        "uppercase": "B"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "B",
+        "pronunciation": "/biː/"
+      },
+      "examples": [
+        "book",
+        "binary",
+        "build"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "c",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0063",
+        "unicode_name": "LATIN SMALL LETTER C",
+        "unicode_category": "Ll",
+        "character_id": 69
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 3
+      },
+      "relationships": {
+        "lowercase": "c",
+        "uppercase": "C"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "C",
+        "pronunciation": "/siː/"
+      },
+      "examples": [
+        "computer",
+        "character",
+        "code"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "d",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0064",
+        "unicode_name": "LATIN SMALL LETTER D",
+        "unicode_category": "Ll",
+        "character_id": 70
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 4
+      },
+      "relationships": {
+        "lowercase": "d",
+        "uppercase": "D"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "D",
+        "pronunciation": "/diː/"
+      },
+      "examples": [
+        "data",
+        "design",
+        "dictionary"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "e",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0065",
+        "unicode_name": "LATIN SMALL LETTER E",
+        "unicode_category": "Ll",
+        "character_id": 71
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 5
+      },
+      "relationships": {
+        "lowercase": "e",
+        "uppercase": "E"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "E",
+        "pronunciation": "/iː/"
+      },
+      "examples": [
+        "english",
+        "embedding",
+        "engine"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "f",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0066",
+        "unicode_name": "LATIN SMALL LETTER F",
+        "unicode_category": "Ll",
+        "character_id": 72
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 6
+      },
+      "relationships": {
+        "lowercase": "f",
+        "uppercase": "F"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "F",
+        "pronunciation": "/ɛf/"
+      },
+      "examples": [
+        "foundation",
+        "first",
+        "forward"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "g",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0067",
+        "unicode_name": "LATIN SMALL LETTER G",
+        "unicode_category": "Ll",
+        "character_id": 73
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 7
+      },
+      "relationships": {
+        "lowercase": "g",
+        "uppercase": "G"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "G",
+        "pronunciation": "/dʒiː/"
+      },
+      "examples": [
+        "gradient",
+        "grammar",
+        "generation"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "h",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0068",
+        "unicode_name": "LATIN SMALL LETTER H",
+        "unicode_category": "Ll",
+        "character_id": 74
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 8
+      },
+      "relationships": {
+        "lowercase": "h",
+        "uppercase": "H"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "H",
+        "pronunciation": "/eɪtʃ/"
+      },
+      "examples": [
+        "hello",
+        "history",
+        "hierarchy"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "i",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0069",
+        "unicode_name": "LATIN SMALL LETTER I",
+        "unicode_category": "Ll",
+        "character_id": 75
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 9
+      },
+      "relationships": {
+        "lowercase": "i",
+        "uppercase": "I"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "I",
+        "pronunciation": "/aɪ/"
+      },
+      "examples": [
+        "intelligence",
+        "inference",
+        "iteration"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "j",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+006A",
+        "unicode_name": "LATIN SMALL LETTER J",
+        "unicode_category": "Ll",
+        "character_id": 76
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 10
+      },
+      "relationships": {
+        "lowercase": "j",
+        "uppercase": "J"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "J",
+        "pronunciation": "/dʒeɪ/"
+      },
+      "examples": [
+        "json",
+        "join",
+        "journey"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "k",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+006B",
+        "unicode_name": "LATIN SMALL LETTER K",
+        "unicode_category": "Ll",
+        "character_id": 77
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 11
+      },
+      "relationships": {
+        "lowercase": "k",
+        "uppercase": "K"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "K",
+        "pronunciation": "/keɪ/"
+      },
+      "examples": [
+        "knowledge",
+        "kernel",
+        "key"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "l",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+006C",
+        "unicode_name": "LATIN SMALL LETTER L",
+        "unicode_category": "Ll",
+        "character_id": 78
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 12
+      },
+      "relationships": {
+        "lowercase": "l",
+        "uppercase": "L"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "L",
+        "pronunciation": "/ɛl/"
+      },
+      "examples": [
+        "language",
+        "layer",
+        "lexicon"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "m",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+006D",
+        "unicode_name": "LATIN SMALL LETTER M",
+        "unicode_category": "Ll",
+        "character_id": 79
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 13
+      },
+      "relationships": {
+        "lowercase": "m",
+        "uppercase": "M"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "M",
+        "pronunciation": "/ɛm/"
+      },
+      "examples": [
+        "model",
+        "matrix",
+        "masking"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "n",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+006E",
+        "unicode_name": "LATIN SMALL LETTER N",
+        "unicode_category": "Ll",
+        "character_id": 80
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 14
+      },
+      "relationships": {
+        "lowercase": "n",
+        "uppercase": "N"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "N",
+        "pronunciation": "/ɛn/"
+      },
+      "examples": [
+        "neural",
+        "network",
+        "normalization"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "o",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+006F",
+        "unicode_name": "LATIN SMALL LETTER O",
+        "unicode_category": "Ll",
+        "character_id": 81
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 15
+      },
+      "relationships": {
+        "lowercase": "o",
+        "uppercase": "O"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "O",
+        "pronunciation": "/oʊ/"
+      },
+      "examples": [
+        "optimizer",
+        "output",
+        "order"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "p",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0070",
+        "unicode_name": "LATIN SMALL LETTER P",
+        "unicode_category": "Ll",
+        "character_id": 82
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 16
+      },
+      "relationships": {
+        "lowercase": "p",
+        "uppercase": "P"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "P",
+        "pronunciation": "/piː/"
+      },
+      "examples": [
+        "principle",
+        "pipeline",
+        "pretraining"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "q",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0071",
+        "unicode_name": "LATIN SMALL LETTER Q",
+        "unicode_category": "Ll",
+        "character_id": 83
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 17
+      },
+      "relationships": {
+        "lowercase": "q",
+        "uppercase": "Q"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "Q",
+        "pronunciation": "/kjuː/"
+      },
+      "examples": [
+        "query",
+        "quality",
+        "question"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "r",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0072",
+        "unicode_name": "LATIN SMALL LETTER R",
+        "unicode_category": "Ll",
+        "character_id": 84
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 18
+      },
+      "relationships": {
+        "lowercase": "r",
+        "uppercase": "R"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "R",
+        "pronunciation": "/ɑːr/"
+      },
+      "examples": [
+        "registry",
+        "retrieval",
+        "residual"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "s",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0073",
+        "unicode_name": "LATIN SMALL LETTER S",
+        "unicode_category": "Ll",
+        "character_id": 85
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 19
+      },
+      "relationships": {
+        "lowercase": "s",
+        "uppercase": "S"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "S",
+        "pronunciation": "/ɛs/"
+      },
+      "examples": [
+        "sequence",
+        "structure",
+        "symbol"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "t",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0074",
+        "unicode_name": "LATIN SMALL LETTER T",
+        "unicode_category": "Ll",
+        "character_id": 86
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 20
+      },
+      "relationships": {
+        "lowercase": "t",
+        "uppercase": "T"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "T",
+        "pronunciation": "/tiː/"
+      },
+      "examples": [
+        "transformer",
+        "tokenizer",
+        "tensor"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "u",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0075",
+        "unicode_name": "LATIN SMALL LETTER U",
+        "unicode_category": "Ll",
+        "character_id": 87
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 21
+      },
+      "relationships": {
+        "lowercase": "u",
+        "uppercase": "U"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "U",
+        "pronunciation": "/juː/"
+      },
+      "examples": [
+        "unicode",
+        "unknown",
+        "unit"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "v",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0076",
+        "unicode_name": "LATIN SMALL LETTER V",
+        "unicode_category": "Ll",
+        "character_id": 88
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 22
+      },
+      "relationships": {
+        "lowercase": "v",
+        "uppercase": "V"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "V",
+        "pronunciation": "/viː/"
+      },
+      "examples": [
+        "veda",
+        "vocabulary",
+        "vector"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "w",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0077",
+        "unicode_name": "LATIN SMALL LETTER W",
+        "unicode_category": "Ll",
+        "character_id": 89
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 23
+      },
+      "relationships": {
+        "lowercase": "w",
+        "uppercase": "W"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "W",
+        "pronunciation": "/ˈdʌbəl.juː/"
+      },
+      "examples": [
+        "weight",
+        "word",
+        "whitespace"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "x",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0078",
+        "unicode_name": "LATIN SMALL LETTER X",
+        "unicode_category": "Ll",
+        "character_id": 90
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 24
+      },
+      "relationships": {
+        "lowercase": "x",
+        "uppercase": "X"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "X",
+        "pronunciation": "/ɛks/"
+      },
+      "examples": [
+        "example",
+        "index",
+        "extract"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "y",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+0079",
+        "unicode_name": "LATIN SMALL LETTER Y",
+        "unicode_category": "Ll",
+        "character_id": 91
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 25
+      },
+      "relationships": {
+        "lowercase": "y",
+        "uppercase": "Y"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "Y",
+        "pronunciation": "/waɪ/"
+      },
+      "examples": [
+        "yield",
+        "yaml",
+        "year"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "z",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+007A",
+        "unicode_name": "LATIN SMALL LETTER Z",
+        "unicode_category": "Ll",
+        "character_id": 92
+      },
+      "classification": {
+        "type": "letter",
+        "case": "lowercase",
+        "alphabet": "english",
+        "alphabet_position": 26
+      },
+      "relationships": {
+        "lowercase": "z",
+        "uppercase": "Z"
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "linguistic": {
+        "letter_name": "Z",
+        "pronunciation": "/zɛd/"
+      },
+      "examples": [
+        "zero",
+        "zone",
+        "zip"
+      ],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "{",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+007B",
+        "unicode_name": "LEFT CURLY BRACKET",
+        "unicode_category": "Ps",
+        "character_id": 93
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "|",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+007C",
+        "unicode_name": "VERTICAL LINE",
+        "unicode_category": "Sm",
+        "character_id": 94
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "}",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+007D",
+        "unicode_name": "RIGHT CURLY BRACKET",
+        "unicode_category": "Pe",
+        "character_id": 95
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "~",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+007E",
+        "unicode_name": "TILDE",
+        "unicode_category": "Sm",
+        "character_id": 96
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "‘",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+2018",
+        "unicode_name": "LEFT SINGLE QUOTATION MARK",
+        "unicode_category": "Pi",
+        "character_id": 97
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "’",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+2019",
+        "unicode_name": "RIGHT SINGLE QUOTATION MARK",
+        "unicode_category": "Pf",
+        "character_id": 98
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "“",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+201C",
+        "unicode_name": "LEFT DOUBLE QUOTATION MARK",
+        "unicode_category": "Pi",
+        "character_id": 99
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "”",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+201D",
+        "unicode_name": "RIGHT DOUBLE QUOTATION MARK",
+        "unicode_category": "Pf",
+        "character_id": 100
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "–",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+2013",
+        "unicode_name": "EN DASH",
+        "unicode_category": "Pd",
+        "character_id": 101
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "—",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+2014",
+        "unicode_name": "EM DASH",
+        "unicode_category": "Pd",
+        "character_id": 102
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "…",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+2026",
+        "unicode_name": "HORIZONTAL ELLIPSIS",
+        "unicode_category": "Po",
+        "character_id": 103
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": " ",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+00A0",
+        "unicode_name": "NO-BREAK SPACE",
+        "unicode_category": "Zs",
+        "character_id": 104
+      },
+      "classification": {
+        "type": "whitespace",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "©",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+00A9",
+        "unicode_name": "COPYRIGHT SIGN",
+        "unicode_category": "So",
+        "character_id": 105
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "®",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+00AE",
+        "unicode_name": "REGISTERED SIGN",
+        "unicode_category": "So",
+        "character_id": 106
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "°",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+00B0",
+        "unicode_name": "DEGREE SIGN",
+        "unicode_category": "So",
+        "character_id": 107
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "·",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+00B7",
+        "unicode_name": "MIDDLE DOT",
+        "unicode_category": "Po",
+        "character_id": 108
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "•",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+2022",
+        "unicode_name": "BULLET",
+        "unicode_category": "Po",
+        "character_id": 109
+      },
+      "classification": {
+        "type": "punctuation",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "£",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+00A3",
+        "unicode_name": "POUND SIGN",
+        "unicode_category": "Sc",
+        "character_id": 110
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "€",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+20AC",
+        "unicode_name": "EURO SIGN",
+        "unicode_category": "Sc",
+        "character_id": 111
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    },
+    {
+      "character": "¥",
+      "known": true,
+      "identity": {
+        "unicode_codepoint": "U+00A5",
+        "unicode_name": "YEN SIGN",
+        "unicode_category": "Sc",
+        "character_id": 112
+      },
+      "classification": {
+        "type": "symbol",
+        "case": null,
+        "alphabet": null,
+        "alphabet_position": null
+      },
+      "relationships": {
+        "lowercase": null,
+        "uppercase": null
+      },
+      "language": {
+        "language": "English",
+        "language_code": "en"
+      },
+      "examples": [],
+      "sources": [
+        "VEDA foundational data",
+        "Unicode Standard 13.0.0"
+      ]
+    }
+  ]
+}

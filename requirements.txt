@@ -1,0 +1,7 @@
+# VEDA: From Knowledge to Intelligence
+# Core dependencies for Phase 1 are Python standard library (Python 3.9+) only.
+# As the project scales through later phases, numerical and deep learning
+# dependencies (such as numpy, torch) will be added explicitly.
+
+# Optional development & testing tools:
+# pytest>=7.0.0

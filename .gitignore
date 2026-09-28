@@ -1,0 +1,46 @@
+# Large raw datasets (MUST NOT be committed)
+raw-wiktextract-data.jsonl
+*.jsonl
+data/raw/
+
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Testing & linting caches
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# OS and Editor artifacts
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
