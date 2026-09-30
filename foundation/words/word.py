@@ -102,21 +102,38 @@ class Word:
         """Access lexical definitions, parts of speech, and relationships."""
         return self._lexical
 
+    @property
+    def is_representable(self) -> bool:
+        """Checks if all characters in the normalized word exist in the Character Registry."""
+        return all(self._registry.contains_char(ch) for ch in self._normalized)
+
+    @property
+    def unsupported_characters(self) -> List[str]:
+        """Returns the list of characters in the word that are not in the Character Registry."""
+        return [ch for ch in self._normalized if not self._registry.contains_char(ch)]
+
+    @property
+    def is_ascii(self) -> bool:
+        """Checks if the normalized word is composed entirely of ASCII codepoints."""
+        return self._normalized.isascii()
+
     def is_alphabetic(self) -> bool:
         """Checks if the word consists purely of ASCII alphabetic letters."""
         return len(self._normalized) > 0 and self._normalized.isalpha() and self._normalized.isascii()
 
     def to_schema(self) -> WordSchema:
         """Converts to a WordSchema dataclass."""
+        char_ids = self.character_ids if self.is_representable else []
         return WordSchema(
             word=self._original,
             normalized=self._normalized,
             language=self._language,
             characters=self.characters,
-            character_ids=self.character_ids,
+            character_ids=char_ids,
             length=self.length,
             lexical=self._lexical,
         )
+
 
     def to_dict(self) -> Dict[str, Any]:
         """Serializes the word into the standard VEDA Word schema dictionary."""

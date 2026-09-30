@@ -31,62 +31,47 @@ from foundation.words.analyzer import WordAnalyzer
 
 def inspect_word(analyzer: WordAnalyzer, text: str) -> None:
     """Inspects a word input, printing its normalized form, characters, IDs, and candidate status."""
-    print("-" * 42)
-    print("Input:")
-    print(text)
-    print()
+    print("-" * 64)
+    print(f"{'Input:':<22} {text!r}")
 
     validation = analyzer.validate_candidate(text)
+    norm = analyzer.normalize_word(text)
 
     if validation.is_valid:
         word = analyzer.create_word(text)
         if word.original != word.normalized:
-            print("Original:")
-            print(word.original)
-            print()
-
-        print("Normalized:")
-        print(word.normalized)
-        print()
-
-        print("Characters:")
-        print(" ".join(word.characters))
-        print()
-
-        print("Length:")
-        print(word.length)
-        print()
-
+            print(f"{'Original:':<22} {word.original}")
+        print(f"{'Normalized:':<22} {word.normalized}")
+        print(f"{'Characters:':<22} {' '.join(word.characters)}")
+        print(f"{'Length:':<22} {word.length}")
         char_ids = word.character_ids
-        print("Character IDs:")
-        print(char_ids)
-        print()
-
-        # Demonstrate round-trip reverse conversion
+        print(f"{'Character IDs:':<22} {char_ids}")
         reconstructed = analyzer.decode_word(char_ids)
-        print("Reverse Decoded Word:")
-        print(reconstructed.normalized)
-        print()
-
-        print("Word Candidate:")
-        print("YES")
+        print(f"{'Reverse Decoded:':<22} {reconstructed.normalized}")
+        print(f"{'Word Candidate:':<22} YES (Valid plain English word candidate)")
+        print(f"{'Orthography:':<22} {validation.orthographic_category}")
+        print(f"{'Registry Support:':<22} YES (All characters representable)")
     else:
-        norm = analyzer.normalize_word(text)
         if norm and norm != text:
-            print("Normalized:")
-            print(norm)
-            print()
-
-        print("Word Candidate:")
-        print(f"NO / INVALID PLAIN WORD ({validation.reason})")
-        print(f"Details: {validation.details}")
+            print(f"{'Normalized:':<22} {norm}")
+        print(f"{'Word Candidate:':<22} NO / INVALID PLAIN WORD")
+        print(f"{'Rejection Reason:':<22} {validation.reason}")
+        if validation.details:
+            print(f"{'Details:':<22} {validation.details}")
+        print(f"{'Orthography:':<22} {validation.orthographic_category}")
+        reg_status = (
+            "YES (All characters representable)"
+            if validation.is_representable
+            else f"NO (Unsupported chars: {validation.unsupported_characters})"
+        )
+        print(f"{'Registry Support:':<22} {reg_status}")
 
 
 def run_demo(analyzer: WordAnalyzer) -> None:
     """Runs the primary test cases specified in the Master Prompt."""
-    print("=" * 42)
-    print("        VEDA WORD FOUNDATION v0.1")
-    print("=" * 42)
+    print("=" * 64)
+    print("               VEDA WORD FOUNDATION v0.1")
+    print("=" * 64)
 
     demo_inputs = [
         "apple",
@@ -95,12 +80,14 @@ def run_demo(analyzer: WordAnalyzer) -> None:
         "123",
         "computer",
         "veda",
+        "café",
         "hello😊",
     ]
 
     for item in demo_inputs:
         inspect_word(analyzer, item)
-    print("-" * 42 + "\n")
+    print("-" * 64 + "\n")
+
 
 
 def run_interactive(analyzer: WordAnalyzer) -> None:

@@ -1,0 +1,1462 @@
+{
+  "project": "VEDA",
+  "component": "Lexical Foundation",
+  "version": "0.1.0",
+  "language_scope": "English",
+  "word_count": 6,
+  "pos_distribution": {
+    "noun": 6,
+    "verb": 3,
+    "adj": 2,
+    "adv": 1,
+    "num": 1
+  },
+  "sources": [
+    "Wiktionary (Wiktextract)"
+  ],
+  "stats": {
+    "total_lines_read": 20,
+    "english_records": 13,
+    "non_english_skipped": 7,
+    "valid_candidates": 13,
+    "invalid_candidates_skipped": 0,
+    "unique_words_aggregated": 6,
+    "elapsed_seconds": 0.010195099999999999
+  },
+  "words": [
+    {
+      "word": "dictionary",
+      "normalized": "dictionary",
+      "language": "en",
+      "parts_of_speech": [
+        "noun",
+        "verb"
+      ],
+      "primary_pos": "noun",
+      "definitions": [
+        "A reference work listing words or names from one or more languages, usually ordered alphabetically, explaining each term's meanings or senses, often also containing information on its etymology, pronunciation, usage, semantic relations, translations, as well as other relevant information.",
+        "A synchronic dictionary of a standardised language held to only contain words that are properly part of the language.",
+        "A reference work on a particular subject or activity in which the entries are arranged alphabetically; an alphabetical encyclopedia.",
+        "The collection of words used or understood by a particular individual.",
+        "Someone or something regarded as a repository or compendium of information.",
+        "An associative array; a data structure where each value is referenced by a particular key, analogous to words and definitions in a dictionary (noun sense 1).",
+        "To look up in a dictionary.",
+        "To add to a dictionary.",
+        "To compile a dictionary."
+      ],
+      "definitions_by_pos": {
+        "noun": [
+          "A reference work listing words or names from one or more languages, usually ordered alphabetically, explaining each term's meanings or senses, often also containing information on its etymology, pronunciation, usage, semantic relations, translations, as well as other relevant information.",
+          "A synchronic dictionary of a standardised language held to only contain words that are properly part of the language.",
+          "A reference work on a particular subject or activity in which the entries are arranged alphabetically; an alphabetical encyclopedia.",
+          "The collection of words used or understood by a particular individual.",
+          "Someone or something regarded as a repository or compendium of information.",
+          "An associative array; a data structure where each value is referenced by a particular key, analogous to words and definitions in a dictionary (noun sense 1)."
+        ],
+        "verb": [
+          "To look up in a dictionary.",
+          "To add to a dictionary.",
+          "To compile a dictionary."
+        ]
+      },
+      "senses": [
+        {
+          "pos": "noun",
+          "glosses": [
+            "A reference work listing words or names from one or more languages, usually ordered alphabetically, explaining each term's meanings or senses, often also containing information on its etymology, pronunciation, usage, semantic relations, translations, as well as other relevant information."
+          ],
+          "tags": [],
+          "examples": [
+            "If you want to know the meaning of a word, look it up in the dictionary.",
+            "But what other kind(s) of syntactic information should be included in Lexical Entries? Traditional dictionaries such as Hornby's (1974) Oxford Advanced Learner's Dictionary of Current English include not only categorial information in their entries, but also information about the range of Complements which a given item permits (this information is represented by the use of a number/letter code)."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "A reference work listing words or names from one or more languages, usually ordered alphabetically, explaining each term's meanings or senses, often also containing information on its etymology, pronunciation, usage, semantic relations, translations, as well as other relevant information.",
+            "A synchronic dictionary of a standardised language held to only contain words that are properly part of the language."
+          ],
+          "tags": [],
+          "examples": [
+            "Look it up in the dictionary, and what do you find?",
+            "By 1986 the name Walkman was included as a word in the English dictionary."
+          ],
+          "categories": [
+            "English terms with quotations"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "A reference work listing words or names from one or more languages, usually ordered alphabetically, explaining each term's meanings or senses, often also containing information on its etymology, pronunciation, usage, semantic relations, translations, as well as other relevant information.",
+            "A reference work on a particular subject or activity in which the entries are arranged alphabetically; an alphabetical encyclopedia."
+          ],
+          "tags": [
+            "broadly"
+          ],
+          "examples": [
+            "a law dictionary",
+            "a dictionary of sports"
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "The collection of words used or understood by a particular individual."
+          ],
+          "tags": [
+            "figuratively"
+          ],
+          "examples": [],
+          "categories": []
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "Someone or something regarded as a repository or compendium of information."
+          ],
+          "tags": [
+            "figuratively"
+          ],
+          "examples": [
+            "walking dictionary"
+          ],
+          "categories": [
+            "English terms with collocations"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "An associative array; a data structure where each value is referenced by a particular key, analogous to words and definitions in a dictionary (noun sense 1)."
+          ],
+          "tags": [],
+          "examples": [
+            "User calls RouteCollection.GetVirtualPath, passing in a RequestContext, a dictionary of values, and an optional route name used to select the correct route to generate the URL."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "en:Computing"
+          ]
+        },
+        {
+          "pos": "verb",
+          "glosses": [
+            "To look up in a dictionary."
+          ],
+          "tags": [
+            "transitive"
+          ],
+          "examples": [],
+          "categories": [
+            "English transitive verbs"
+          ]
+        },
+        {
+          "pos": "verb",
+          "glosses": [
+            "To add to a dictionary."
+          ],
+          "tags": [
+            "transitive"
+          ],
+          "examples": [
+            "By a reference to the following dictionaried abbreviations, the simplicity and harmony of each sentence will be manifestly apparent; although it does not embrace everything, and could not, as it would be far too voluminous for general use.",
+            "Should I use a word that a lot of people use but isn't in the dictionary? Uncle Phil would rather get a root canal than say he was scrapbooking, because the word isn't dictionaried."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English transitive verbs"
+          ]
+        },
+        {
+          "pos": "verb",
+          "glosses": [
+            "To compile a dictionary."
+          ],
+          "tags": [
+            "intransitive",
+            "rare"
+          ],
+          "examples": [
+            "They [dictionary-makers] may have had their romance at home—may have been crossed in love, and thence driven to dictionarying; may have been involved in domestic tragedies—who can say?"
+          ],
+          "categories": [
+            "English intransitive verbs",
+            "English terms with quotations",
+            "English terms with rare senses"
+          ]
+        }
+      ],
+      "synonyms": [
+        "lexicon",
+        "vocabulary",
+        "dict",
+        "dict.",
+        "dictionary",
+        "explanatory dictionary",
+        "interpreter"
+      ],
+      "antonyms": [],
+      "pronunciations": [
+        "/ˈdɪk.ʃə.nə.ɹi/",
+        "/ˈdɪk.ʃən.ɹi/",
+        "/ˈdɪkʃ.nə.ɹi/",
+        "/ˈdɪk.ʃəˌnɛ.ɹi/",
+        "/ˈɖɪkʃ(ə)nəri/"
+      ],
+      "forms": [
+        "dictionaries",
+        "dictionnary",
+        "dixnary",
+        "dictionarying",
+        "dictionaried"
+      ],
+      "etymology": "Etymology tree\nProto-Indo-European *deyá¸±-\nProto-Indo-European *-eti\nProto-Indo-European *dÃ©yá¸±eti\nProto-Italic *deikÅ\nLatin dÄ«cÅ\nProto-Indo-European *-tis\nProto-Indo-European *-HÅ\nProto-Indo-European *-tiHÅ\nProto-Italic *-tiÅ\nLatin -tiÅ\nLatin dictiÅ\nProto-Indo-European *-yÃ³sder.\nProto-Italic *-Äzios\nLatin -Äriusnom.\nLatin -Ärium\nâ–²\nLatin dictiÅ\nâ–²\nLatin -Äriusnom.\nLatin -Ärius\nLatin dictiÅnÄrius?\nMedieval Latin dictiÅnÄriumlbor.\nMiddle English dixionare\nEnglish dictionary\nFrom Middle English dixionare, a learned borrowing from Medieval Latin dictiÅnÄrium, from Latin dictiÅnÄrius, from dictiÅ (â€œa speakingâ€), from dictus, perfect past participle of dÄ«cÅ (â€œto speakâ€) + -Ärium (â€œroom, placeâ€). By surface analysis, diction + -ary.",
+      "sources": [
+        "Wiktionary"
+      ]
+    },
+    {
+      "word": "encyclopaedia",
+      "normalized": "encyclopaedia",
+      "language": "en",
+      "parts_of_speech": [
+        "noun"
+      ],
+      "primary_pos": "noun",
+      "definitions": [
+        "Commonwealth standard spelling of encyclopedia."
+      ],
+      "definitions_by_pos": {
+        "noun": [
+          "Commonwealth standard spelling of encyclopedia."
+        ]
+      },
+      "senses": [
+        {
+          "pos": "noun",
+          "glosses": [
+            "Commonwealth standard spelling of encyclopedia."
+          ],
+          "tags": [],
+          "examples": [],
+          "categories": [
+            "Commonwealth English",
+            "English countable nouns",
+            "English entries with etymon",
+            "English entries with incorrect language header",
+            "English lemmas",
+            "English nouns",
+            "English nouns with irregular plurals",
+            "English terms borrowed from New Latin",
+            "English terms derived from Ancient Greek",
+            "English terms derived from New Latin",
+            "English terms derived from Proto-Hellenic",
+            "English terms derived from Proto-Indo-European",
+            "English terms derived from a Pre-Greek substrate",
+            "English terms derived from the Proto-Indo-European root *kÊ·elhâ‚-",
+            "English terms derived from the Proto-Indo-European root *pehâ‚‚w-",
+            "English terms derived from the Proto-Indo-European word *hâ‚Ã©n",
+            "English terms derived from the Proto-Indo-European word *kÊ·Ã©kÊ·los",
+            "Pages using etymon with no ID",
+            "Pages with 3 entries",
+            "Pages with entries",
+            "Pages with etymon",
+            "Rhymes:English/iËdiÉ™",
+            "Rhymes:English/iËdiÉ™/6 syllables",
+            "en:Books"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "pronunciations": [
+        "/ÉªnËŒsaÉª.klÉ™Ëˆpi(Ë).di.É™/",
+        "/ɛn-/"
+      ],
+      "forms": [
+        "encyclopaedias",
+        "encyclopaediae"
+      ],
+      "etymology": "Borrowed from New Latin encyclopaedia; the English word is an etymologically restored spelling variant of earlier encyclopedia, q.v.",
+      "sources": [
+        "Wiktionary"
+      ]
+    },
+    {
+      "word": "encyclopedia",
+      "normalized": "encyclopedia",
+      "language": "en",
+      "parts_of_speech": [
+        "noun"
+      ],
+      "primary_pos": "noun",
+      "definitions": [
+        "A comprehensive reference work (often spanning several printed volumes) with articles (usually arranged in alphabetical order, or sometimes arranged by category) on a range of subjects, sometimes general, sometimes limited to a particular field.",
+        "Similarly comprehensive works in other formats.",
+        "The circle of arts and sciences (see Etymology); a comprehensive summary of knowledge, or of a branch thereof."
+      ],
+      "definitions_by_pos": {
+        "noun": [
+          "A comprehensive reference work (often spanning several printed volumes) with articles (usually arranged in alphabetical order, or sometimes arranged by category) on a range of subjects, sometimes general, sometimes limited to a particular field.",
+          "Similarly comprehensive works in other formats.",
+          "The circle of arts and sciences (see Etymology); a comprehensive summary of knowledge, or of a branch thereof."
+        ]
+      },
+      "senses": [
+        {
+          "pos": "noun",
+          "glosses": [
+            "A comprehensive reference work (often spanning several printed volumes) with articles (usually arranged in alphabetical order, or sometimes arranged by category) on a range of subjects, sometimes general, sometimes limited to a particular field."
+          ],
+          "tags": [],
+          "examples": [
+            "I only use the library for the encyclopedia, as we’ve got most other books here.",
+            "My old encyclopedia has been gathering dust on the shelf for the past decade.",
+            "The Encyclopedia which we are presenting to the public is, as its title declares, the work of a society of men of letters. Were we not of their number, we might venture to affirm that they are all favorably known or worthy of being so.",
+            "The first encyclopædia written in English and with the articles alphabetically arranged was the ‘Lexicon Technicum,’ […] [in 1704], by John Harris, a London clergyman. This was a useful and popular work, though it omitted from its scope theology, biography, antiquity and poetry.",
+            "It would be easier to compile an encyclopedia\nfor you than to write these longhand letters\nwhose ink blackens the night.",
+            "[The Origins] can best be summarized, maybe, as an encyclopedia in the guise of an etymological dictionary, by a writer already centuries removed from some of his material.",
+            "Encyclopedias were the original worldwide web. […] There was a time when you couldn't connect to the rest of the world and encyclopedias gave you that insight and they contained what people knew about everything.",
+            "Pliny the Elder’s Natural History is a go-to source for understanding what ancient Romans believed about the world and the model for every encyclopedia since."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "Similarly comprehensive works in other formats."
+          ],
+          "tags": [],
+          "examples": [
+            "Wikipedia is an online encyclopedia that anyone can edit.",
+            "The ancient Mesopotamians never got to write an encyclopedia on stone.",
+            "To gain market share, Microsoft gave away its CD-ROM encyclopedia with many new computers, a strategy similar to those it has used in other areas.",
+            "The anniversary also coincides with the 25th anniversary of Britannica Online (eb.com), the first encyclopedia on the Internet and one of the first major publications on the World Wide Web.",
+            "The New Georgia Encyclopedia, which describes itself as â€œthe first state encyclopedia designed exclusively for online publication,â€ went live in 2004."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "The circle of arts and sciences (see Etymology); a comprehensive summary of knowledge, or of a branch thereof."
+          ],
+          "tags": [
+            "dated",
+            "specifically"
+          ],
+          "examples": [
+            "His life's work is a four-volume encyclopedia of aviation topics.",
+            "I have no idea how to build this model railroad, so I'm gonna look it up on Trainpedia, the encyclopedia for all things model train.",
+            "Daniel Bukszpan presents for your viewing and reading pleasure, The Encyclopedia of Heavy Metal. […] I see my own life reflected in the pages of the Encyclopedia. We all wanted to be bigger than life, but never as big as our heroes.",
+            "All of the Indo-European languages treated in this encyclopedia are included in the alphabetic list of families and other large groupings in the last section of this article.",
+            "Since the publication of the second edition of the encyclopedia, there have been numerous developments in the obesity and eating disorders field."
+          ],
+          "categories": [
+            "English dated terms",
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "pronunciations": [
+        "/ÉªnËŒsaÉªklÉ™ËˆpiËdi.É™/",
+        "/ɪnˌsaɪkləˈpidi.ə/",
+        "/ənˌsəɪkləˈpidi.ə/"
+      ],
+      "forms": [
+        "encyclopedias",
+        "encyclopediae",
+        "encyclopediÃ¦",
+        "encyclopaedia",
+        "encyclopÃ¦dia"
+      ],
+      "etymology": "Etymology tree\nProto-Indo-European *hâ‚Ã©n\nAncient Greek á¼Î½ (en)\nAncient Greek á¼Î½- (en-)\nProto-Indo-European *kÊ·elhâ‚-redup.\nProto-Indo-European *-os\nProto-Indo-European *kÊ·Ã©kÊ·los\nProto-Hellenic *kÊ·Ã³kÊ·los\nProto-Hellenic *kÃºklos\nAncient Greek ÎºÏÎºÎ»Î¿Ï‚ (kÃºklos)\nProto-Indo-European *-yÃ³sder.\nAncient Greek -á¿Î¿Ï‚ (-Ä­os)\nAncient Greek á¼Î³ÎºÏÎºÎ»á¿Î¿Ï‚ (enkÃºklÄ­os)\nProto-Indo-European *pehâ‚‚w-der.\nProto-Hellenic *pÄÌwits\nAncient Greek Ï€Î±á¿–Ï‚ (paÃ®s)\nPre-Greekder.?\nProto-Hellenic *-eÃºs\nAncient Greek -ÎµÏÏ‚ (-eÃºs)\nAncient Greek -ÎµÏÏ‰ (-eÃºÅ)\nAncient Greek Ï€Î±Î¹Î´ÎµÏÏ‰ (paideÃºÅ)\nProto-Indo-European *-hâ‚‚\nProto-Indo-European *-Ã©hâ‚‚\nProto-Indo-European *-i-ehâ‚‚\nProto-Hellenic *-Ã­Ä\nAncient Greek -Î¯Î± (-Ã­a)\nAncient Greek Ï€Î±Î¹Î´ÎµÎ¯á¾± (paideÃ­Ä)\nAncient Greek á¼Î³ÎºÏÎºÎ»Î¹Î¿Ï‚ Ï€Î±Î¹Î´ÎµÎ¯á¾± (enkÃºklios paideÃ­Ä)bor.\nNew Latin encyclopaedÄ«albor.\nEnglish encyclopedia\nBorrowed from New Latin encyclopÄ“dÄ«a, encyclopaedÄ«a (â€œgeneral educationâ€), a univerbated form of Koine Greek á¼Î³ÎºÏÎºÎ»Î¹Î¿Ï‚ Ï€Î±Î¹Î´ÎµÎ¯á¾± (enkÃºklios paideÃ­Ä, â€œeducation in the circle of arts and sciencesâ€), from Ancient Greek á¼Î³ÎºÏÎºÎ»Î¹Î¿Ï‚ (enkÃºklios, â€œcircularâ€) + Ï€Î±Î¹Î´ÎµÎ¯á¾± (paideÃ­Ä, â€œchildrearing; educationâ€) (q.v.). Nearly all modern English usage of the word was influenced by the scope and format of the French EncyclopÃ©die by Diderot et al. (see quotation).",
+      "sources": [
+        "Wiktionary"
+      ]
+    },
+    {
+      "word": "free",
+      "normalized": "free",
+      "language": "en",
+      "parts_of_speech": [
+        "adj",
+        "adv",
+        "verb",
+        "noun",
+        "num"
+      ],
+      "primary_pos": "adj",
+      "definitions": [
+        "Unconstrained.",
+        "Not imprisoned or enslaved.",
+        "Generous; liberal.",
+        "Clear of offence or crime; guiltless; innocent.",
+        "Without obligations.",
+        "To be enjoyed by anyone freely.",
+        "Upholding individual rights.",
+        "With no or only freedom-preserving limitations on distribution or modification.",
+        "Intended for release, and omitting debugging diagnostics, as opposed to a checked version.",
+        "Obtainable without any payment.",
+        "Complimentary.",
+        "In any of various technical senses generic, universal.",
+        "Left adjoint to a forgetful functor G; such that any map f:X→G(A) induces a universal map ̄f:F(X)→A.",
+        "Belonging to the image of some free functor.",
+        "Having a set of generators which satisfy no non-trivial relations; equivalently, being the group of reduced words on a set of generators.",
+        "Having a linearly independent set of generators (called a basis).",
+        "Unconstrained by quantifiers.",
+        "Unconstrained of identifiers, not bound.",
+        "(of a morpheme) That can be used by itself, unattached to another morpheme.",
+        "Unobstructed, without blockages.",
+        "Unattached or uncombined.",
+        "Not currently in use; not taken; unoccupied.",
+        "Not attached; loose.",
+        "Of a rocket or missile: not under the control of a guidance system after being launched.",
+        "Without; not containing (what is specified); exempt; clear; liberated.",
+        "Ready; eager; acting without spurring or whipping; spirited.",
+        "Invested with a particular freedom or franchise; enjoying certain immunities or privileges; admitted to special rights; followed by of.",
+        "Certain or honourable; the opposite of base.",
+        "Privileged or individual; proprietary.",
+        "Having oversteer.",
+        "Without needing to pay.",
+        "Freely; willingly.",
+        "To make free; set at liberty; release.",
+        "To rid of something that confines or oppresses.",
+        "To relinquish (previously allocated memory) to the system.",
+        "Abbreviation of free kick.",
+        "A free transfer.",
+        "The usual means of restarting play after a foul is committed, where the non-offending team restarts from where the foul was committed.",
+        "Abbreviation of freestyle.",
+        "Pronunciation spelling of three"
+      ],
+      "definitions_by_pos": {
+        "adj": [
+          "Unconstrained.",
+          "Not imprisoned or enslaved.",
+          "Generous; liberal.",
+          "Clear of offence or crime; guiltless; innocent.",
+          "Without obligations.",
+          "To be enjoyed by anyone freely.",
+          "Upholding individual rights.",
+          "With no or only freedom-preserving limitations on distribution or modification.",
+          "Intended for release, and omitting debugging diagnostics, as opposed to a checked version.",
+          "Obtainable without any payment.",
+          "Complimentary.",
+          "In any of various technical senses generic, universal.",
+          "Left adjoint to a forgetful functor G; such that any map f:X→G(A) induces a universal map ̄f:F(X)→A.",
+          "Belonging to the image of some free functor.",
+          "Having a set of generators which satisfy no non-trivial relations; equivalently, being the group of reduced words on a set of generators.",
+          "Having a linearly independent set of generators (called a basis).",
+          "Unconstrained by quantifiers.",
+          "Unconstrained of identifiers, not bound.",
+          "(of a morpheme) That can be used by itself, unattached to another morpheme.",
+          "Unobstructed, without blockages.",
+          "Unattached or uncombined.",
+          "Not currently in use; not taken; unoccupied.",
+          "Not attached; loose.",
+          "Of a rocket or missile: not under the control of a guidance system after being launched.",
+          "Without; not containing (what is specified); exempt; clear; liberated.",
+          "Ready; eager; acting without spurring or whipping; spirited.",
+          "Invested with a particular freedom or franchise; enjoying certain immunities or privileges; admitted to special rights; followed by of.",
+          "Certain or honourable; the opposite of base.",
+          "Privileged or individual; proprietary.",
+          "Having oversteer."
+        ],
+        "adv": [
+          "Without needing to pay.",
+          "Freely; willingly."
+        ],
+        "verb": [
+          "To make free; set at liberty; release.",
+          "To rid of something that confines or oppresses.",
+          "To relinquish (previously allocated memory) to the system."
+        ],
+        "noun": [
+          "Abbreviation of free kick.",
+          "A free transfer.",
+          "The usual means of restarting play after a foul is committed, where the non-offending team restarts from where the foul was committed.",
+          "Abbreviation of freestyle."
+        ],
+        "num": [
+          "Pronunciation spelling of three"
+        ]
+      },
+      "senses": [
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained."
+          ],
+          "tags": [],
+          "examples": [
+            "He was given free rein to do whatever he wanted.",
+            "Quickly, spirit! / Thou shalt ere long be free.",
+            "There was some laughter, and Roddle was left free to expand his ideas on the periodic visits of cowboys to the town. â€œMason Rickets, he had ten big punkins a-sittin' in front of his store, an' them fellers from the Upside-down-F ranch shot 'em up [â€¦].â€",
+            "Policing the relationship between government and business in a free society is difficult. Businesspeople have every right to lobby governments, and civil servants to take jobs in the private sector.",
+            "The country is part of the European Free Trade Association (EFTA), which encourages further economic integration with the E.U. It is a member of the European Economic Area (EEA), which allows for the free movement of goods and services and enables cooperation across multiple industries between Iceland and the E.U."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "Not imprisoned or enslaved."
+          ],
+          "tags": [],
+          "examples": [
+            "Free Blacks",
+            "a free man"
+          ],
+          "categories": [
+            "English terms with collocations",
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "Generous; liberal."
+          ],
+          "tags": [],
+          "examples": [
+            "He's very free with his money."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "Clear of offence or crime; guiltless; innocent."
+          ],
+          "tags": [
+            "obsolete"
+          ],
+          "examples": [
+            "My hands are guilty, but my heart is free."
+          ],
+          "categories": [
+            "English terms with obsolete senses",
+            "English terms with quotations"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "Without obligations."
+          ],
+          "tags": [],
+          "examples": [
+            "free time"
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "To be enjoyed by anyone freely."
+          ],
+          "tags": [],
+          "examples": [
+            "a free school",
+            "Why, sir, I pray, are not the streets as free / For me as for you?",
+            "[Edmund] Burke continued to fight for liberty later on in life. He backed Americans in their campaign for freedom from British taxation. He supported Catholic freedoms and freer trade with Ireland, in spite of his constituents’ ire. He wanted more liberal laws on the punishment of debtors."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "Upholding individual rights."
+          ],
+          "tags": [],
+          "examples": [
+            "the Free World",
+            "This is a free country."
+          ],
+          "categories": [
+            "English terms with collocations",
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "With no or only freedom-preserving limitations on distribution or modification."
+          ],
+          "tags": [],
+          "examples": [
+            "OpenOffice is free software."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples",
+            "en:Software"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "Intended for release, and omitting debugging diagnostics, as opposed to a checked version."
+          ],
+          "tags": [],
+          "examples": [],
+          "categories": [
+            "English terms with quotations",
+            "en:Software"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Obtainable without any payment."
+          ],
+          "tags": [],
+          "examples": [
+            "The government provides free health care.",
+            "It's free real estate.",
+            "Since the launch early last year of […] two Silicon Valley start-ups offering free education through MOOCs, massive open online courses, the ivory towers of academia have been shaken to their foundations. University brands built in some cases over centuries have been forced to contemplate the possibility that information technology will rapidly make their existing business model obsolete."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Obtainable without any payment.",
+            "Complimentary."
+          ],
+          "tags": [
+            "broadly"
+          ],
+          "examples": [
+            "Buy a TV to get a free DVD player!"
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "In any of various technical senses generic, universal.",
+            "Left adjoint to a forgetful functor G; such that any map f:X→G(A) induces a universal map ̄f:F(X)→A."
+          ],
+          "tags": [
+            "abstract"
+          ],
+          "examples": [],
+          "categories": [
+            "en:Algebra",
+            "en:Category theory"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "In any of various technical senses generic, universal.",
+            "Belonging to the image of some free functor."
+          ],
+          "tags": [
+            "abstract"
+          ],
+          "examples": [],
+          "categories": [
+            "en:Algebra",
+            "en:Category theory"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "In any of various technical senses generic, universal.",
+            "Having a set of generators which satisfy no non-trivial relations; equivalently, being the group of reduced words on a set of generators."
+          ],
+          "tags": [
+            "abstract"
+          ],
+          "examples": [
+            "The fundamental group of the figure eight is free of rank 2."
+          ],
+          "categories": [
+            "English terms with usage examples",
+            "en:Algebra",
+            "en:Group theory"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "In any of various technical senses generic, universal.",
+            "Having a linearly independent set of generators (called a basis)."
+          ],
+          "tags": [
+            "abstract"
+          ],
+          "examples": [],
+          "categories": [
+            "en:Algebra"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "Unconstrained by quantifiers."
+          ],
+          "tags": [
+            "abstract"
+          ],
+          "examples": [
+            "z is the free variable in #92;forallx#92;existsy#58;xy#61;z."
+          ],
+          "categories": [
+            "English terms with usage examples",
+            "en:Logic"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "Unconstrained of identifiers, not bound."
+          ],
+          "tags": [
+            "abstract"
+          ],
+          "examples": [],
+          "categories": [
+            "en:Programming"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "(of a morpheme) That can be used by itself, unattached to another morpheme."
+          ],
+          "tags": [
+            "abstract"
+          ],
+          "examples": [],
+          "categories": [
+            "en:Linguistics"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "Unobstructed, without blockages."
+          ],
+          "tags": [
+            "physical"
+          ],
+          "examples": [
+            "the drain was free"
+          ],
+          "categories": [
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "Unattached or uncombined."
+          ],
+          "tags": [
+            "physical"
+          ],
+          "examples": [
+            "a free radical",
+            "The door finally shook free of its hinges."
+          ],
+          "categories": [
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "Not currently in use; not taken; unoccupied."
+          ],
+          "tags": [
+            "physical"
+          ],
+          "examples": [
+            "You can sit on this chair; it's free."
+          ],
+          "categories": [
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "Not attached; loose."
+          ],
+          "tags": [
+            "physical"
+          ],
+          "examples": [
+            "In this group of mushrooms, the gills are free.",
+            "Furthermore, the free anterior margin of the lobule is arched toward the lobe and is often involute[…]"
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples",
+            "en:Botany",
+            "en:Mycology"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Unconstrained.",
+            "Of a rocket or missile: not under the control of a guidance system after being launched."
+          ],
+          "tags": [
+            "physical"
+          ],
+          "examples": [],
+          "categories": [
+            "en:Military"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Without; not containing (what is specified); exempt; clear; liberated."
+          ],
+          "tags": [],
+          "examples": [
+            "We had a wholesome, filling meal, free of meat.  I would like to live free from care in the mountains.",
+            "princes declaring themselves free from the obligations of their treaties",
+            "One morning I had been driven to the precarious refuge afforded by the steps of the inn, after rejecting offers from the Celebrity to join him in a variety of amusements. But even here I was not free from interruption, for he was seated on a horse-block below me, playing with a fox terrier."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Ready; eager; acting without spurring or whipping; spirited."
+          ],
+          "tags": [
+            "dated"
+          ],
+          "examples": [
+            "a free horse"
+          ],
+          "categories": [
+            "English dated terms",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Invested with a particular freedom or franchise; enjoying certain immunities or privileges; admitted to special rights; followed by of."
+          ],
+          "tags": [
+            "dated"
+          ],
+          "examples": [
+            "He therefore makes all birds, of every sect, / Free of his farm."
+          ],
+          "categories": [
+            "English dated terms",
+            "English terms with quotations"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Certain or honourable; the opposite of base."
+          ],
+          "tags": [
+            "UK",
+            "obsolete"
+          ],
+          "examples": [
+            "free service;  free socage"
+          ],
+          "categories": [
+            "British English",
+            "English terms with obsolete senses",
+            "English terms with usage examples",
+            "en:Law"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Privileged or individual; proprietary."
+          ],
+          "tags": [],
+          "examples": [
+            "a free fishery;  a free warren"
+          ],
+          "categories": [
+            "English terms with usage examples",
+            "en:Law"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Having oversteer."
+          ],
+          "tags": [
+            "US",
+            "slang"
+          ],
+          "examples": [],
+          "categories": [
+            "American English",
+            "English slang",
+            "en:Motor racing"
+          ]
+        },
+        {
+          "pos": "adv",
+          "glosses": [
+            "Without needing to pay."
+          ],
+          "tags": [],
+          "examples": [
+            "I got this bike free.",
+            "Above all, the 48-page timetables of the new service, which have been distributed free at every station in the scheme, are a model to the rest of B.R. For the first time on British Railways, so far as we are aware, a substantial timetable has been produced, not only without a single footnote but also devoid of all wearisome asterisks, stars, letter suffixes and other hieroglyphics."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "adv",
+          "glosses": [
+            "Freely; willingly."
+          ],
+          "tags": [
+            "obsolete"
+          ],
+          "examples": [
+            "I as free forgive you / As I would be forgiven."
+          ],
+          "categories": [
+            "English terms with obsolete senses",
+            "English terms with quotations"
+          ]
+        },
+        {
+          "pos": "verb",
+          "glosses": [
+            "To make free; set at liberty; release."
+          ],
+          "tags": [
+            "transitive"
+          ],
+          "examples": [
+            "Pro.[…]Spirit, fine ſpirit, Ile free thee / Within two dayes for this.",
+            "Liberia was founded in 1822 by the American Colonization Society whose goal was to resettle freed slaves in Africa."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English transitive verbs"
+          ]
+        },
+        {
+          "pos": "verb",
+          "glosses": [
+            "To rid of something that confines or oppresses."
+          ],
+          "tags": [
+            "transitive"
+          ],
+          "examples": [
+            "Then I walked about, till I found on the further side, a great river of sweet water, running with a strong current; whereupon I called to mind the boat-raft I had made aforetime and said to myself, \"Needs must I make another; haply I may free me from this strait. If I escape, I have my desire and I vow to Allah Almighty to forswear travel; and if I perish I shall be at peace and shall rest from toil and moil.\""
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English transitive verbs",
+            "Quotation templates to be cleaned"
+          ]
+        },
+        {
+          "pos": "verb",
+          "glosses": [
+            "To relinquish (previously allocated memory) to the system."
+          ],
+          "tags": [
+            "transitive"
+          ],
+          "examples": [
+            "There is no way to access that original area of memory, nor is there any way to free it before the program ends."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English transitive verbs",
+            "Quotation templates to be cleaned",
+            "en:Programming"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "Abbreviation of free kick."
+          ],
+          "tags": [
+            "abbreviation",
+            "alt-of"
+          ],
+          "examples": [
+            "Whether deserved or not, the free gave Cresswell the chance to cover himself in glory with a shot on goal after the siren."
+          ],
+          "categories": [
+            "English abbreviations",
+            "en:Australian rules football",
+            "en:Gaelic football"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "A free transfer."
+          ],
+          "tags": [],
+          "examples": [
+            "Hargreaves, who left Manchester United on a free during the summer, drilled a 22-yard beauty to open the scoring."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "en:Football (soccer)"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "The usual means of restarting play after a foul is committed, where the non-offending team restarts from where the foul was committed."
+          ],
+          "tags": [],
+          "examples": [],
+          "categories": [
+            "en:Hurling"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "Abbreviation of freestyle."
+          ],
+          "tags": [
+            "abbreviation",
+            "alt-of",
+            "informal"
+          ],
+          "examples": [
+            "The team won the 200 meters free relay."
+          ],
+          "categories": [
+            "English abbreviations",
+            "English informal terms",
+            "English terms with usage examples",
+            "en:Swimming"
+          ]
+        },
+        {
+          "pos": "num",
+          "glosses": [
+            "Pronunciation spelling of three"
+          ],
+          "tags": [
+            "alt-of",
+            "colloquial",
+            "pronunciation-spelling"
+          ],
+          "examples": [],
+          "categories": [
+            "English colloquialisms",
+            "English pronunciation spellings"
+          ]
+        }
+      ],
+      "synonyms": [
+        "unconstrained",
+        "unfettered",
+        "unhindered",
+        "quit",
+        "nonauthoritarian",
+        "libre",
+        "free as in speech",
+        "free as in freedom",
+        "free of charge",
+        "gratis",
+        "costless",
+        "feeless",
+        "free as in beer",
+        "unbound",
+        "clear",
+        "unobstructed",
+        "loose",
+        "unfastened",
+        "free",
+        "unsecured",
+        "unstapled",
+        "without",
+        "for free",
+        "for nothing",
+        "befree",
+        "emancipate",
+        "let loose",
+        "liberate",
+        "manumit",
+        "release",
+        "unchain",
+        "unfetter",
+        "unshackle"
+      ],
+      "antonyms": [
+        "constrained",
+        "restricted",
+        "bound",
+        "enslaved",
+        "imprisoned",
+        "unfree",
+        "authoritarian",
+        "proprietary",
+        "nonfree",
+        "see at nonfree",
+        "blocked",
+        "obstructed",
+        "common",
+        "nonproprietary"
+      ],
+      "pronunciations": [
+        "/fÉ¹iË/",
+        "[fɹɪi̯]",
+        "/fɹɪj/",
+        "/fɹi/"
+      ],
+      "forms": [
+        "freer",
+        "more free",
+        "freest",
+        "most free",
+        "frees",
+        "freeing",
+        "freed"
+      ],
+      "etymology": "Etymology tree\nProto-Indo-European *preyH-\nProto-Indo-European *-Ã³s\nProto-Indo-European *priHÃ³s\nProto-Germanic *frijwaz\nProto-West Germanic *friu\nOld English frÄ“o\nMiddle English fre\nEnglish free\nFrom Middle English fre, from Old English frÄ“o, frÄ“oh, frÄ«, friÄ¡, frÄ«oh (â€œfreeâ€), from Proto-West Germanic *frÄ«, from Proto-Germanic *frijaz (â€œbeloved, not in bondageâ€), from Proto-Indo-European *priHÃ³s (â€œpleased, lovedâ€), from *preyH- (â€œto please; to loveâ€). Related to friend.\ncognates, etc\nGermanic cognates include Scots fre (â€œfreeâ€), North Frisian frai, frei, fri, Frii (â€œfreeâ€), Saterland Frisian frÃ¤i (â€œfreeâ€), West Frisian frij (â€œfreeâ€), Dutch vrij (â€œfreeâ€), German frei (â€œfreeâ€), Low German free (â€œfreeâ€), Luxembourgish frÃ¤i (â€œfreeâ€), Vilamovian frÈ§j (â€œfreeâ€), Yiddish ×¤Ö¿×¨×²Ö· (fray, â€œfreeâ€), Danish, Norwegian BokmÃ¥l, Norwegian Nynorsk, and Swedish fri (â€œfreeâ€), Faroese frÃ­ur (â€œfreeâ€), Gothic ð†ð‚ðŒ´ðŒ¹ðƒ (freis, â€œfreeâ€).\nOther cognates include Cornish rydh (â€œfreeâ€), Welsh rhydd (â€œfreeâ€), Latin propriÅ (â€œto appropriateâ€), Czech pÅ™Ã¡t (â€œto wish; to favourâ€), Polish sprzyjaÄ‡ (â€œto favour, fosterâ€), Serbo-Croatian Ð¿Ñ€ÑÑ˜Ð°Ñ‚Ð¸, prÃ¬jati (â€œto please, taste, suit; to be agreeable, relishâ€), Slovak priaÅ¥ (â€œto wishâ€), Avestan ð¬Ÿð¬­ð¬Œð¬Œð¬€ (friia, â€œgood, pleasantâ€), Persian ÙØ±ÛŒ (fari, â€œbeloved, dear; agreeable, pleasingâ€), Sanskrit à¤ªà¥à¤°à¤¿à¤¯ (priya, â€œbelovedâ€).\nGermanic and Celtic are the only Indo-European language branches in which the PIE word with the meaning of \"dear, beloved\" acquired the additional meaning of \"free\" in the sense of \"not in bondage\". This was an extension of the idea of \"characteristic of those who are dear and beloved\", in other words friends and tribe members (in contrast to unfree inhabitants from other tribes and prisoners of war, many of which were among the slaves â€“ compare the Latin use of liberi to mean both \"free persons\" and \"children of a family\").",
+      "sources": [
+        "Wiktionary"
+      ]
+    },
+    {
+      "word": "portmanteau",
+      "normalized": "portmanteau",
+      "language": "en",
+      "parts_of_speech": [
+        "noun",
+        "adj",
+        "verb"
+      ],
+      "primary_pos": "noun",
+      "definitions": [
+        "A large travelling case usually made of leather, and opening into two equal sections.",
+        "A word formed by putting two words together and thereby their meaning.",
+        "A portmanteau film.",
+        "A schoolbag.",
+        "A hook on which to hang clothing.",
+        "Made by combining two (or more) words, stories, etc., in the manner of a linguistic portmanteau.",
+        "To create a portmanteau word."
+      ],
+      "definitions_by_pos": {
+        "noun": [
+          "A large travelling case usually made of leather, and opening into two equal sections.",
+          "A word formed by putting two words together and thereby their meaning.",
+          "A portmanteau film.",
+          "A schoolbag.",
+          "A hook on which to hang clothing."
+        ],
+        "adj": [
+          "Made by combining two (or more) words, stories, etc., in the manner of a linguistic portmanteau."
+        ],
+        "verb": [
+          "To create a portmanteau word."
+        ]
+      },
+      "senses": [
+        {
+          "pos": "noun",
+          "glosses": [
+            "A large travelling case usually made of leather, and opening into two equal sections."
+          ],
+          "tags": [],
+          "examples": [
+            "A Rover tooke him unprepared, / Search't his Port-mantua, bound him faſter, / And ſent him naked to his Maſter: […]",
+            "Rodolphus therefore finding such an earnest Invitation, embrac'd it with thanks, and with his Servant and Portmanteau, went to Don Juan's; where they first found good Stabling for their Horses, and afterwards as good Provision for themselves.",
+            "He brought down with him to our haunted house a little cask of salt beef; for, he is always convinced that all salt beef not of his own pickling, is mere carrion, and invariably, when he goes to London, packs a piece in his portmanteau.",
+            "I believe that people are like portmanteaux—packed with certain things, started going, thrown about, tossed away, dumped down, lost and found, half emptied suddenly, or squeezed fatter than ever, until finally the Ultimate Porter swings them on to the Ultimate Train and away they rattle. . . ."
+          ],
+          "categories": [
+            "English terms with quotations"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "A word formed by putting two words together and thereby their meaning."
+          ],
+          "tags": [],
+          "examples": [
+            "Well, ‘slithy’ means ‘lithe and slimy.’ ‘Lithe’ is the same as ‘active.’ You see it’s like a portmanteau⸺there are two meanings packed up into one word.",
+            "Well then, ‘mimsy’ is ‘flimsy and miserable’ (there’s another portmanteau for you).",
+            "It also reflects the way portmanteau coinages incorporating â€œbro-â€ and â€œman-â€ â€” â€œportmanbros,â€ if you will â€” have increasingly taken on a critical edge, in keeping with shifts in conversations around gender."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "en:Linguistics"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "A portmanteau film."
+          ],
+          "tags": [],
+          "examples": [
+            "We're so bombarded with images, it's a struggle to preserve our imaginations.' In response, he's turned to cinema, commissioning 11 film-makers to contribute to a portmanteau film, entitled '11'09\"01' and composed of short films each running 11 minutes, nine seconds and one frame.",
+            "His long-awaited portmanteau, which premiered in Cannes on Monday, is the most Anderson of all Anderson films. It's Anderson distilled, Anderson squared, Anderson to the nth degree."
+          ],
+          "categories": [
+            "English terms with quotations"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "A schoolbag."
+          ],
+          "tags": [
+            "Australia",
+            "dated"
+          ],
+          "examples": [],
+          "categories": [
+            "Australian English",
+            "English dated terms"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "A hook on which to hang clothing."
+          ],
+          "tags": [
+            "archaic"
+          ],
+          "examples": [
+            "But before I started that long and rather far-fetched and not frightfully original digression, what I meant to say quite simply was that there are no portmanteaux to be examined here because the clientele of this café, ladies and gentlemen, does not sit down."
+          ],
+          "categories": [
+            "English terms with archaic senses",
+            "English terms with quotations"
+          ]
+        },
+        {
+          "pos": "adj",
+          "glosses": [
+            "Made by combining two (or more) words, stories, etc., in the manner of a linguistic portmanteau."
+          ],
+          "tags": [
+            "attributive",
+            "not-comparable"
+          ],
+          "examples": [
+            "The overall narrator of this portmanteau story - for Dickens co-wrote it with five collaborators on his weekly periodical, All the Year Round - expresses deep, rational scepticism about the whole business of haunting."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "en:Linguistics"
+          ]
+        },
+        {
+          "pos": "verb",
+          "glosses": [
+            "To create a portmanteau word."
+          ],
+          "tags": [
+            "transitive"
+          ],
+          "examples": [],
+          "categories": [
+            "English transitive verbs"
+          ]
+        }
+      ],
+      "synonyms": [
+        "portmanteau word",
+        "blend",
+        "blend word",
+        "lexical blend",
+        "amalgamation",
+        "brunch word",
+        "frankenword",
+        "portmantologism",
+        "telescope word",
+        "port",
+        "school port"
+      ],
+      "antonyms": [],
+      "pronunciations": [
+        "/pÉ”ËtËˆmÃ¦n.tÉ™ÊŠ/",
+        "/pɔɹtˈmæn.toʊ/",
+        "/ˌpɔɹt.mænˈtoʊ/"
+      ],
+      "forms": [
+        "portmanteaus",
+        "portmanteaux",
+        "portmanteauing",
+        "portmanteaued",
+        "portmanteau'd"
+      ],
+      "etymology": "Etymology tree\nProto-Indo-European *per-\nProto-Indo-European *-tÃ©hâ‚‚\nProto-Indo-European *prÌ¥tÃ©hâ‚‚\nProto-Italic *portÄ\nProto-Indo-European *-hâ‚‚\nProto-Indo-European *-Ã©hâ‚‚\nProto-Indo-European *-yÃ©ti\nProto-Indo-European *-ehâ‚‚yÃ©ti\nProto-Indo-European *-hâ‚‚tiinflu.\nProto-Italic *-ÄjÅ\nProto-Italic *-ÄÅ\nProto-Italic *portÄÅ\nLatin portÄre\nOld French porter\nMiddle French porte\nLatin mantellum\nMiddle French manteau\nMiddle French portemanteaubor.\nEnglish portmanteau\nFrom Middle French portemanteau (â€œcoat standâ€), from porte (â€œhe carriesâ€, third-person singular present indicative of porter (â€œto carryâ€)) + manteau (â€œcoatâ€), literally â€œ[that which] carries coatâ€.\nThe lexical sense (sense 2) was first used figuratively by Lewis Carroll in Through the Looking-Glass (1871) to describe the words he coined in the poem â€œJabberwockyâ€, based on the concept of two words packed together, similar to a portmanteau (etymology). Sense 3 (â€œportmanteau filmâ€) is derived from this.",
+      "sources": [
+        "Wiktionary"
+      ]
+    },
+    {
+      "word": "thesaurus",
+      "normalized": "thesaurus",
+      "language": "en",
+      "parts_of_speech": [
+        "noun"
+      ],
+      "primary_pos": "noun",
+      "definitions": [
+        "A publication that provides synonyms (and sometimes antonyms and other semantic relations) for the words of a given language.",
+        "A dictionary or encyclopedia.",
+        "A hierarchy of subject headings: canonical titles of themes and topics, the titles serving as search keys."
+      ],
+      "definitions_by_pos": {
+        "noun": [
+          "A publication that provides synonyms (and sometimes antonyms and other semantic relations) for the words of a given language.",
+          "A dictionary or encyclopedia.",
+          "A hierarchy of subject headings: canonical titles of themes and topics, the titles serving as search keys."
+        ]
+      },
+      "senses": [
+        {
+          "pos": "noun",
+          "glosses": [
+            "A publication that provides synonyms (and sometimes antonyms and other semantic relations) for the words of a given language."
+          ],
+          "tags": [],
+          "examples": [
+            "\"Roget\" is the leading brand name for a print English thesaurus that lists words under general concepts rather than just close synonyms.",
+            "As reference books go, the thesaurus has had a somewhat checkered history, in fact, and has probably occasioned as much bad writing as good."
+          ],
+          "categories": [
+            "English terms with quotations",
+            "English terms with usage examples"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "A dictionary or encyclopedia."
+          ],
+          "tags": [
+            "archaic"
+          ],
+          "examples": [],
+          "categories": [
+            "English terms with archaic senses"
+          ]
+        },
+        {
+          "pos": "noun",
+          "glosses": [
+            "A hierarchy of subject headings: canonical titles of themes and topics, the titles serving as search keys."
+          ],
+          "tags": [],
+          "examples": [],
+          "categories": [
+            "en:Information science"
+          ]
+        }
+      ],
+      "synonyms": [
+        "synonymicon",
+        "wordhoard"
+      ],
+      "antonyms": [],
+      "pronunciations": [
+        "/Î¸ÉªËˆsÉ”ËÉ¹É™s/",
+        "/Î¸ÉªËˆsoËÉ¹É™s/"
+      ],
+      "forms": [
+        "thesauri",
+        "thesauruses"
+      ],
+      "etymology": "16th century, borrowed from Latin thÄ“saurus, from Ancient Greek Î¸Î·ÏƒÎ±Ï…ÏÏŒÏ‚ (thÄ“saurÃ³s, â€œstorehouse, treasureâ€); its current English usage/meaning was established soon after the publication of Peter Roget's Thesaurus of English Words and Phrases in 1852. Doublet of treasure.",
+      "sources": [
+        "Wiktionary"
+      ]
+    }
+  ]
+}

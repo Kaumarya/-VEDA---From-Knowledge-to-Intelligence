@@ -3,6 +3,14 @@ raw-wiktextract-data.jsonl
 *.jsonl
 data/raw/
 
+# Large SQLite databases and WAL files
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.tmp.sqlite
+!data/lexicon/veda_lexicon_sample.sqlite
+
+
 # Python cache and bytecode
 __pycache__/
 *.py[cod]

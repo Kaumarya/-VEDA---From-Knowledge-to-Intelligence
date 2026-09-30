@@ -25,7 +25,18 @@ UNDERSTAND → DESIGN → IMPLEMENT → TEST → MEASURE → DOCUMENT → IMPROV
   - [x] Word Foundation v0.1 (`foundation.words.word.Word`, `foundation.words.analyzer.WordAnalyzer`)
   - [x] Controlled Development Vocabulary (`data/words/veda_words_v0.1.json`)
   - [ ] Subword Tokenization / BPE from first principles
-- [ ] **Phase 3 — English Lexical Foundation** (Wiktionary/Wiktextract streaming extraction)
+- [x] **Phase 3 — English Lexical Foundation v0.1 & Hardening**
+  - [x] Streaming Wiktionary Ingestion Pipeline (`foundation.lexicon.extractor.WiktionaryExtractor`)
+  - [x] Lexicon Repository & Querying (`foundation.lexicon.lexicon.Lexicon`)
+  - [x] Production SQLite Storage (`foundation.lexicon.storage.SqliteLexicon`, `data/lexicon/veda_lexicon_v0.1.sqlite`)
+  - [x] Unified VEDA CLI Tooling (`veda.py` / `scripts/lexicon_cli.py`)
+  - [x] Integration with Character & Word layers (`lexicon.to_word()`, `WordLexicalData`)
+  - [x] Serialized Lexicon artifacts (`data/lexicon/veda_lexicon_v0.1.json`, `veda_lexicon_v0.1.sqlite`)
+  - [x] Data Contracts Formalized (`docs/architecture/data_contracts.md`)
+  - [x] Orthography Policy & Unicode Profiling (`docs/architecture/orthography_policy.md`)
+  - [x] Dataset Audit Tooling (`foundation.lexicon.audit.DatasetAuditor`, `scripts/audit_dataset.py`)
+  - [x] Memory Scaling & Storage Decision Matrix (`docs/architecture/storage_and_memory.md`)
+  - [x] Adversarial Audit & Regression Suite (Golden tests, security tests, determinism, idempotency)
 - [ ] **Phase 4 — English Corpus Pipeline**
 - [ ] **Phase 5 — Mathematical and Neural Foundations** (Tensors, linear layers, loss, backprop)
 - [ ] **Phase 6 — Transformer Architecture** (Self-attention, causal masking, MLP, blocks)
@@ -38,24 +49,86 @@ UNDERSTAND → DESIGN → IMPLEMENT → TEST → MEASURE → DOCUMENT → IMPROV
 
 ---
 
-## Current Status: Phase 2 (Word Foundation v0.1)
+## Current Status: Phase 3 (Foundation Hardening & Full-System Audit)
 
 Milestones completed:
-- **Character Registry**: Verified and encapsulated in `foundation.characters.registry.CharacterRegistry`.
-- **Character Tokenizer**: Implemented in `tokenizer.char_tokenizer.CharacterTokenizer`.
+- **Character Registry**: Encapsulated in `foundation.characters.registry.CharacterRegistry`.
+  - Authoritative inventory: **113 registered characters** (95 printable ASCII + 18 essential whitespace & typography) + **4 special tokens** (`<PAD>`, `<UNK>`, `<BOS>`, `<EOS>`) = **117 total tokenizer vocabulary**.
+- **Character Tokenizer**: Implemented in `tokenizer.char_tokenizer.CharacterTokenizer` with lossless roundtrip.
 - **Character Knowledge Base**: Implemented in `foundation.characters.knowledge.CharacterKnowledge` with JSON dataset at `data/characters/veda_character_knowledge_v0.1.json`.
 - **Word Foundation**: Implemented in `foundation.words.word.Word` and `foundation.words.analyzer.WordAnalyzer` with controlled vocabulary at `data/words/veda_words_v0.1.json`.
+- **Lexical Foundation & Production SQLite**:
+  - Full production SQLite database at `data/lexicon/veda_lexicon_v0.1.sqlite` (959,688 unique words, 1,049,403 POS entries, 1,322,676 senses, 2.24 GB).
+  - Out-of-core memory safety with < 3 MB RSS overhead on open and sub-millisecond lookups (~160 μs).
+  - Sample database at `data/lexicon/veda_lexicon_sample.sqlite` (6 words, 155 KB).
+- **Architectural Data Contracts**: Explicit boundaries established between Character, Character Knowledge, Word, Lexical Entry, Corpus Record, Token, Training Example, and Model.
+- **Orthography Policy**: Explicit v0.1 policy separating language classification (`en`), orthographic constraints (`plain_ascii`), and character registry representability.
+- **Audit & Security Tooling**: Streaming dataset profiler, SQL injection defense, boundary invariance, and logical database checksum fingerprinting.
 - **Round-Trip Invariants**:
   - Characters: `decode(encode(text)) == text`
   - Words: `decode_word(encode_word(word)) == normalized_word`
-- **Testing**: 44 unit tests passing across all layers.
+  - Lexicon: `Lexicon.from_dict(lex.to_dict()) == lex`
+  - SQLite: `SqliteLexicon.lookup(w) == In_Memory_Lexicon[w]`
+- **Testing**: 95 unit tests passing across all layers (Pytest 100% green).
 
 ### Running Tests
 
-Execute the full unit test suite with Python's built-in `unittest` runner:
+Execute the full unit test suite:
 
 ```bash
-python -m unittest discover -s tests -p "test_*.py" -v
+pytest -v
+```
+
+### Dataset Audit (Phase 3 Hardening)
+
+Run the empirical quality and Unicode profiler across any Wiktextract sample:
+
+```bash
+# Audit small sample:
+python scripts/audit_dataset.py --file veda_sample.jsonl
+
+# Audit N lines of raw dataset:
+python scripts/audit_dataset.py --file raw-wiktextract-data.jsonl --max-lines 20000
+```
+
+
+### Unified VEDA CLI (Production Lexicon)
+
+Query, verify, benchmark, and inspect the SQLite production lexicon:
+
+```bash
+# View lexicon statistics and quality metrics
+python veda.py lexicon stats
+
+# Build sample database (6 words)
+python veda.py lexicon build-sample
+
+# Lookup word across all POS categories
+python veda.py lexicon lookup free
+
+# Lookup word filtered by specific part of speech
+python veda.py lexicon lookup free --pos verb
+
+# Verify database integrity (PRAGMA integrity_check + foreign keys)
+python veda.py lexicon verify
+
+# Run microsecond latency and RSS benchmark
+python veda.py lexicon benchmark
+```
+
+### Lexicon Streaming Demonstration (In-Memory Reference)
+
+Inspect streaming ingestion, word senses, parts of speech, and IPA pronunciations:
+
+```bash
+# Run demonstration:
+python scripts/lexicon_demo.py
+
+# Inspect specific word:
+python scripts/lexicon_demo.py --word "free"
+
+# Interactive REPL:
+python scripts/lexicon_demo.py --interactive
 ```
 
 ### Word Foundation Inspection

@@ -117,6 +117,44 @@ class TestCharacterRegistry(unittest.TestCase):
         self.assertIsNone(self.registry.get_character("🚀"))
         self.assertIsNone(self.registry.get_special_token("<NON_EXISTENT>"))
 
+    def test_authoritative_count_resolution_113_vs_95(self) -> None:
+        """
+        Formally resolves the 113 vs 95 count discrepancy:
+        - 95 characters: Standard printable ASCII characters (ord 32 to 126).
+        - 18 characters: Essential whitespace (\t, \n, NBSP) and typographic English symbols.
+        - Total CharacterRegistry count: Exactly 113 registered characters.
+        - 4 special tokens: <PAD>, <UNK>, <BOS>, <EOS>.
+        - Total CharacterTokenizer vocabulary: Exactly 117 tokens (113 + 4).
+        """
+        # Exactly 95 printable ASCII characters
+        printable_ascii = [c for c in self.registry.characters if 32 <= ord(c.character) <= 126]
+        self.assertEqual(len(printable_ascii), 95)
+
+        # Exactly 18 typographic & whitespace extensions
+        extended = [c for c in self.registry.characters if not (32 <= ord(c.character) <= 126)]
+        self.assertEqual(len(extended), 18)
+
+        # Total registered characters
+        self.assertEqual(len(self.registry.characters), 113)
+
+        # Category breakdown
+        type_counts = {
+            "letter": len([c for c in self.registry.characters if c.type == "letter"]),
+            "punctuation": len([c for c in self.registry.characters if c.type == "punctuation"]),
+            "symbol": len([c for c in self.registry.characters if c.type == "symbol"]),
+            "number": len([c for c in self.registry.characters if c.type == "number"]),
+            "whitespace": len([c for c in self.registry.characters if c.type == "whitespace"]),
+        }
+        self.assertEqual(type_counts["letter"], 52)
+        self.assertEqual(type_counts["punctuation"], 32)
+        self.assertEqual(type_counts["symbol"], 15)
+        self.assertEqual(type_counts["number"], 10)
+        self.assertEqual(type_counts["whitespace"], 4)
+        self.assertEqual(sum(type_counts.values()), 113)
+
+        # Special tokens
+        self.assertEqual(len(self.registry.special_tokens), 4)
+
 
 if __name__ == "__main__":
     unittest.main()

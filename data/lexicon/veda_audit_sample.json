@@ -1,0 +1,72 @@
+{
+  "input_file": "C:\\Users\\karnik YOGA\\OneDrive\\Desktop\\veda\\veda_sample.jsonl",
+  "file_size_bytes": 551680,
+  "total_lines_read": 20,
+  "english_records": 13,
+  "non_english_records": 7,
+  "malformed_json_records": 0,
+  "missing_fields": {
+    "missing_word": 0,
+    "missing_lang": 0,
+    "missing_pos": 0,
+    "empty_senses": 0
+  },
+  "valid_candidates": 13,
+  "rejected_candidates": 0,
+  "rejection_reasons": {},
+  "unique_normalized_words": 6,
+  "duplicate_records": 7,
+  "pos_distribution": {
+    "noun": 6,
+    "verb": 3,
+    "adj": 2,
+    "adv": 1,
+    "num": 1
+  },
+  "definitions_count": 89,
+  "avg_definitions_per_word": 14.833333333333334,
+  "max_definitions_in_word": 54,
+  "examples_count": 87,
+  "forms_count": 37,
+  "pronunciations_count": 109,
+  "synonyms_count": 97,
+  "antonyms_count": 34,
+  "etymology_count": 11,
+  "unicode_stats": {
+    "ascii_words": 13,
+    "latin_accented_words": 0,
+    "combining_mark_words": 0,
+    "hyphenated_words": 0,
+    "apostrophe_words": 0,
+    "other_punctuation_words": 0,
+    "non_latin_script_words": 0,
+    "symbol_or_emoji_words": 0,
+    "representable_words": 13,
+    "unrepresentable_words": 0
+  },
+  "unsupported_chars_freq": {},
+  "length_stats": {
+    "min_length": 4,
+    "max_length": 13,
+    "avg_length": 8.23076923076923,
+    "buckets": {
+      "<= 3 chars": 0,
+      "4 - 6 chars": 5,
+      "7 - 10 chars": 3,
+      "11 - 15 chars": 5,
+      "> 15 chars": 0
+    }
+  },
+  "performance": {
+    "elapsed_seconds": 0.0156,
+    "lines_per_sec": 1281.6,
+    "records_per_sec": 833.0,
+    "peak_memory_mb": 1.191
+  },
+  "storage_projections": {
+    "json_mb": 0.0022,
+    "jsonl_mb": 0.0019,
+    "sqlite_mb": 0.0026,
+    "avg_entry_bytes": 333.1
+  }
+}
