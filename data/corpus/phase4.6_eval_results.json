@@ -1,0 +1,1244 @@
+{
+  "timestamp_utc": "2026-10-15T09:46:03Z",
+  "phase": "4.6",
+  "objective": "Python 3.14 Standardization & Accuracy Maximization",
+  "governance_status": {
+    "production_corpus_ingestion": "BLOCKED",
+    "fail_closed_gate": "ENFORCED",
+    "external_model_weights_used": false,
+    "hosted_llm_apis_used": false
+  },
+  "environment": {
+    "primary_environment": {
+      "interpreter": "C:\\Users\\karnik YOGA\\OneDrive\\Desktop\\veda\\.venv\\Scripts\\python.exe",
+      "version": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "torch": "2.14.1+cpu",
+      "numpy": "2.5.4",
+      "pytest": "9.1.1",
+      "psutil": "7.2.2",
+      "standardized_target": "Python 3.14.8 AMD64",
+      "status": "ACTIVE_PRIMARY"
+    },
+    "preserved_environment": {
+      "interpreter": "C:\\Users\\karnik YOGA\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "version": "3.9.13 (tags/v3.9.13:6de2ca5)",
+      "status": "PRESERVED_INTACT"
+    }
+  },
+  "gates": {
+    "gate_a_language_quality_filter": {
+      "target": ">= 95.0% accuracy",
+      "v3_test_accuracy": 1.0,
+      "v4_test_accuracy": 1.0,
+      "v4_test_f1": 1.0,
+      "v4_test_95_ci": [
+        0.9924,
+        1.0
+      ],
+      "status": "PASS"
+    },
+    "gate_b_near_duplicate_detection": {
+      "target": ">= 95.0% accuracy, 0 false merges",
+      "v3_test_accuracy": 1.0,
+      "v4_test_accuracy": 1.0,
+      "v4_test_precision": 1.0,
+      "v4_test_false_merges": 0,
+      "v4_test_95_ci": [
+        0.9924,
+        1.0
+      ],
+      "status": "PASS"
+    },
+    "gate_c_critical_safety_regressions": {
+      "target": "0 tolerated failures on safety benchmark",
+      "safety_benchmark_pairs": 17,
+      "safety_benchmark_false_merges": 0,
+      "status": "PASS"
+    },
+    "gate_d_python314_standardization": {
+      "target": "Verified Python 3.14 interpreter, passing test suite, preserved 3.9",
+      "standardized_interpreter": "C:\\Users\\karnik YOGA\\OneDrive\\Desktop\\veda\\.venv\\Scripts\\python.exe",
+      "status": "PASS"
+    }
+  },
+  "language_benchmark_v3": {
+    "dataset_name": "VEDA_Language_Quality_Filter_Benchmark_v3",
+    "version": "3.0.0",
+    "content_sha256": "f036c62f5b62daf1905ec9944062da8d96d26668393c7ff0f6690c3d14e669f5",
+    "splits": {
+      "development_split": {
+        "total_samples": 34,
+        "correct_predictions": 34,
+        "accuracy": 1.0,
+        "accuracy_95_ci": [
+          0.8985,
+          1.0
+        ],
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "confusion_matrix": {
+          "ACCEPT": {
+            "ACCEPT": 20,
+            "REJECT": 0,
+            "QUARANTINE": 0
+          },
+          "REJECT": {
+            "ACCEPT": 0,
+            "REJECT": 9,
+            "QUARANTINE": 0
+          },
+          "QUARANTINE": {
+            "ACCEPT": 0,
+            "REJECT": 0,
+            "QUARANTINE": 5
+          }
+        },
+        "category_breakdown": {
+          "ordinary_english_prose": {
+            "total": 10,
+            "correct": 10,
+            "accuracy": 1.0,
+            "accepted": 10,
+            "rejected": 0,
+            "quarantined": 0
+          },
+          "scientific_mathematical_english": {
+            "total": 5,
+            "correct": 5,
+            "accuracy": 1.0,
+            "accepted": 3,
+            "rejected": 2,
+            "quarantined": 0
+          },
+          "short_signs_captions_headings": {
+            "total": 4,
+            "correct": 4,
+            "accuracy": 1.0,
+            "accepted": 2,
+            "rejected": 0,
+            "quarantined": 2
+          },
+          "code_logs_tables_technical": {
+            "total": 4,
+            "correct": 4,
+            "accuracy": 1.0,
+            "accepted": 1,
+            "rejected": 2,
+            "quarantined": 1
+          },
+          "foreign_latin_script_french_german_spanish": {
+            "total": 5,
+            "correct": 5,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 3,
+            "quarantined": 2
+          },
+          "foreign_names_and_quotes": {
+            "total": 2,
+            "correct": 2,
+            "accuracy": 1.0,
+            "accepted": 2,
+            "rejected": 0,
+            "quarantined": 0
+          },
+          "mixed_language_pedagogy": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "accepted": 1,
+            "rejected": 0,
+            "quarantined": 0
+          },
+          "non_latin_script": {
+            "total": 2,
+            "correct": 2,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 2,
+            "quarantined": 0
+          },
+          "unicode_punctuation_edge_cases": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "accepted": 1,
+            "rejected": 0,
+            "quarantined": 0
+          }
+        },
+        "errors": []
+      },
+      "held_out_test_split": {
+        "total_samples": 33,
+        "correct_predictions": 33,
+        "accuracy": 1.0,
+        "accuracy_95_ci": [
+          0.8957,
+          1.0
+        ],
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "confusion_matrix": {
+          "ACCEPT": {
+            "ACCEPT": 19,
+            "REJECT": 0,
+            "QUARANTINE": 0
+          },
+          "REJECT": {
+            "ACCEPT": 0,
+            "REJECT": 11,
+            "QUARANTINE": 0
+          },
+          "QUARANTINE": {
+            "ACCEPT": 0,
+            "REJECT": 0,
+            "QUARANTINE": 3
+          }
+        },
+        "category_breakdown": {
+          "ordinary_english_prose": {
+            "total": 10,
+            "correct": 10,
+            "accuracy": 1.0,
+            "accepted": 10,
+            "rejected": 0,
+            "quarantined": 0
+          },
+          "scientific_mathematical_english": {
+            "total": 5,
+            "correct": 5,
+            "accuracy": 1.0,
+            "accepted": 3,
+            "rejected": 2,
+            "quarantined": 0
+          },
+          "short_signs_captions_headings": {
+            "total": 3,
+            "correct": 3,
+            "accuracy": 1.0,
+            "accepted": 1,
+            "rejected": 0,
+            "quarantined": 2
+          },
+          "code_logs_tables_technical": {
+            "total": 4,
+            "correct": 4,
+            "accuracy": 1.0,
+            "accepted": 1,
+            "rejected": 3,
+            "quarantined": 0
+          },
+          "foreign_latin_script_french_german_spanish": {
+            "total": 5,
+            "correct": 5,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 4,
+            "quarantined": 1
+          },
+          "foreign_names_and_quotes": {
+            "total": 2,
+            "correct": 2,
+            "accuracy": 1.0,
+            "accepted": 2,
+            "rejected": 0,
+            "quarantined": 0
+          },
+          "mixed_language_pedagogy": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "accepted": 1,
+            "rejected": 0,
+            "quarantined": 0
+          },
+          "non_latin_script": {
+            "total": 2,
+            "correct": 2,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 2,
+            "quarantined": 0
+          },
+          "unicode_punctuation_edge_cases": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "accepted": 1,
+            "rejected": 0,
+            "quarantined": 0
+          }
+        },
+        "errors": []
+      }
+    }
+  },
+  "language_benchmark_v4": {
+    "dataset_name": "VEDA_Language_Quality_Filter_Benchmark_v4",
+    "version": "4.0.0",
+    "content_sha256": "ab0ef7edff418350578e92e7fc8d0fbcf135e06645afdf4e6544018d2f241dc0",
+    "splits": {
+      "development_split": {
+        "total_samples": 500,
+        "correct_predictions": 500,
+        "accuracy": 1.0,
+        "accuracy_95_ci": [
+          0.9924,
+          1.0
+        ],
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "confusion_matrix": {
+          "ACCEPT": {
+            "ACCEPT": 250,
+            "REJECT": 0,
+            "QUARANTINE": 0
+          },
+          "REJECT": {
+            "ACCEPT": 0,
+            "REJECT": 140,
+            "QUARANTINE": 0
+          },
+          "QUARANTINE": {
+            "ACCEPT": 0,
+            "REJECT": 0,
+            "QUARANTINE": 110
+          }
+        },
+        "category_breakdown": {
+          "ordinary_english_prose": {
+            "total": 130,
+            "correct": 130,
+            "accuracy": 1.0,
+            "accepted": 130,
+            "rejected": 0,
+            "quarantined": 0
+          },
+          "expository_academic_prose": {
+            "total": 70,
+            "correct": 70,
+            "accuracy": 1.0,
+            "accepted": 70,
+            "rejected": 0,
+            "quarantined": 0
+          },
+          "scientific_figure_captions": {
+            "total": 50,
+            "correct": 50,
+            "accuracy": 1.0,
+            "accepted": 50,
+            "rejected": 0,
+            "quarantined": 0
+          },
+          "short_headings_and_fragments": {
+            "total": 50,
+            "correct": 50,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 0,
+            "quarantined": 50
+          },
+          "imperative_signage_notices": {
+            "total": 30,
+            "correct": 30,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 0,
+            "quarantined": 30
+          },
+          "code_sql_structured_data": {
+            "total": 30,
+            "correct": 30,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 0,
+            "quarantined": 30
+          },
+          "foreign_latin_script": {
+            "total": 80,
+            "correct": 80,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 80,
+            "quarantined": 0
+          },
+          "malformed_corrupted_unicode": {
+            "total": 60,
+            "correct": 60,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 60,
+            "quarantined": 0
+          }
+        },
+        "errors": []
+      },
+      "held_out_test_split": {
+        "total_samples": 500,
+        "correct_predictions": 500,
+        "accuracy": 1.0,
+        "accuracy_95_ci": [
+          0.9924,
+          1.0
+        ],
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "confusion_matrix": {
+          "ACCEPT": {
+            "ACCEPT": 250,
+            "REJECT": 0,
+            "QUARANTINE": 0
+          },
+          "REJECT": {
+            "ACCEPT": 0,
+            "REJECT": 111,
+            "QUARANTINE": 0
+          },
+          "QUARANTINE": {
+            "ACCEPT": 0,
+            "REJECT": 0,
+            "QUARANTINE": 139
+          }
+        },
+        "category_breakdown": {
+          "ordinary_english_prose": {
+            "total": 130,
+            "correct": 130,
+            "accuracy": 1.0,
+            "accepted": 130,
+            "rejected": 0,
+            "quarantined": 0
+          },
+          "expository_academic_prose": {
+            "total": 70,
+            "correct": 70,
+            "accuracy": 1.0,
+            "accepted": 70,
+            "rejected": 0,
+            "quarantined": 0
+          },
+          "scientific_figure_captions": {
+            "total": 50,
+            "correct": 50,
+            "accuracy": 1.0,
+            "accepted": 50,
+            "rejected": 0,
+            "quarantined": 0
+          },
+          "short_headings_and_fragments": {
+            "total": 50,
+            "correct": 50,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 0,
+            "quarantined": 50
+          },
+          "imperative_signage_notices": {
+            "total": 30,
+            "correct": 30,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 0,
+            "quarantined": 30
+          },
+          "code_sql_structured_data": {
+            "total": 30,
+            "correct": 30,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 0,
+            "quarantined": 30
+          },
+          "foreign_latin_script": {
+            "total": 80,
+            "correct": 80,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 51,
+            "quarantined": 29
+          },
+          "malformed_corrupted_unicode": {
+            "total": 60,
+            "correct": 60,
+            "accuracy": 1.0,
+            "accepted": 0,
+            "rejected": 60,
+            "quarantined": 0
+          }
+        },
+        "errors": []
+      }
+    }
+  },
+  "near_duplicate_benchmark_v3": {
+    "dataset_name": "VEDA_Near_Duplicate_Detection_Benchmark_v3",
+    "version": "3.0.0",
+    "content_sha256": "d93c74e8a520c862d2f8a2c720c03a06e1373cef9586e7127cfe6a4527eeb613",
+    "splits": {
+      "development_split": {
+        "total_pairs": 10,
+        "stage1_lsh": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 5,
+          "fn": 0,
+          "recall": 1.0,
+          "selectivity": 1.0
+        },
+        "stage2_minhash_lexical": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 5,
+          "fn": 0,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "false_merges": 0
+        },
+        "stage3_semantic_guard": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 5,
+          "fn": 0,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "accuracy_95_ci": [
+            0.7225,
+            1.0
+          ],
+          "false_merges_prevented": 0,
+          "false_merges": 0
+        },
+        "category_breakdown": {
+          "exact_duplicates": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 1,
+            "stage3_safe_merges": 1
+          },
+          "formatting_and_whitespace": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 1,
+            "stage3_safe_merges": 1
+          },
+          "minor_word_edits": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 1,
+            "stage3_safe_merges": 1
+          },
+          "reordered_passages": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 1,
+            "stage3_safe_merges": 1
+          },
+          "short_texts": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 1,
+            "stage3_safe_merges": 1
+          },
+          "shared_boilerplate": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 0,
+            "stage3_safe_merges": 0
+          },
+          "multilingual_text": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 0,
+            "stage3_safe_merges": 0
+          },
+          "semantic_inversions": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 0,
+            "stage3_safe_merges": 0
+          },
+          "technical_overlap": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 0,
+            "stage3_safe_merges": 0
+          },
+          "distant_negatives": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 0,
+            "stage3_safe_merges": 0
+          }
+        },
+        "errors": []
+      },
+      "held_out_test_split": {
+        "total_pairs": 11,
+        "stage1_lsh": {
+          "tp": 5,
+          "fp": 1,
+          "tn": 5,
+          "fn": 0,
+          "recall": 1.0,
+          "selectivity": 0.8333
+        },
+        "stage2_minhash_lexical": {
+          "tp": 5,
+          "fp": 1,
+          "tn": 5,
+          "fn": 0,
+          "accuracy": 0.9091,
+          "precision": 0.8333,
+          "recall": 1.0,
+          "f1_score": 0.9091,
+          "false_merges": 1
+        },
+        "stage3_semantic_guard": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 6,
+          "fn": 0,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "accuracy_95_ci": [
+            0.7412,
+            1.0
+          ],
+          "false_merges_prevented": 1,
+          "false_merges": 0
+        },
+        "category_breakdown": {
+          "exact_duplicates": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 1,
+            "stage3_safe_merges": 1
+          },
+          "formatting_and_whitespace": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 1,
+            "stage3_safe_merges": 1
+          },
+          "minor_word_edits": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 1,
+            "stage3_safe_merges": 1
+          },
+          "reordered_passages": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 1,
+            "stage3_safe_merges": 1
+          },
+          "short_texts": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 1,
+            "stage3_safe_merges": 1
+          },
+          "shared_boilerplate": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 0,
+            "stage3_safe_merges": 0
+          },
+          "multilingual_text": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 0,
+            "stage3_safe_merges": 0
+          },
+          "semantic_inversions": {
+            "total": 2,
+            "correct": 2,
+            "accuracy": 1.0,
+            "stage2_candidates": 1,
+            "stage3_safe_merges": 0
+          },
+          "technical_overlap": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 0,
+            "stage3_safe_merges": 0
+          },
+          "distant_negatives": {
+            "total": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "stage2_candidates": 0,
+            "stage3_safe_merges": 0
+          }
+        },
+        "errors": []
+      }
+    }
+  },
+  "near_duplicate_benchmark_v4": {
+    "dataset_name": "VEDA_Near_Duplicate_Detection_Benchmark_v4",
+    "version": "4.0.0",
+    "content_sha256": "a3127dfe5b8dc8b469163966ac62e1fb750e6928708b49ecb92b34f7f966daa5",
+    "splits": {
+      "development_split": {
+        "total_pairs": 500,
+        "stage1_lsh": {
+          "tp": 200,
+          "fp": 270,
+          "tn": 30,
+          "fn": 0,
+          "recall": 1.0,
+          "selectivity": 0.1
+        },
+        "stage2_minhash_lexical": {
+          "tp": 200,
+          "fp": 270,
+          "tn": 30,
+          "fn": 0,
+          "accuracy": 0.46,
+          "precision": 0.4255,
+          "recall": 1.0,
+          "f1_score": 0.597,
+          "false_merges": 270
+        },
+        "stage3_semantic_guard": {
+          "tp": 200,
+          "fp": 0,
+          "tn": 300,
+          "fn": 0,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "accuracy_95_ci": [
+            0.9924,
+            1.0
+          ],
+          "false_merges_prevented": 270,
+          "false_merges": 0
+        },
+        "category_breakdown": {
+          "exact_and_surface_duplicates": {
+            "total": 100,
+            "correct": 100,
+            "accuracy": 1.0,
+            "stage2_candidates": 100,
+            "stage3_safe_merges": 100
+          },
+          "voice_and_order_paraphrases": {
+            "total": 60,
+            "correct": 60,
+            "accuracy": 1.0,
+            "stage2_candidates": 60,
+            "stage3_safe_merges": 60
+          },
+          "unit_conversions": {
+            "total": 40,
+            "correct": 40,
+            "accuracy": 1.0,
+            "stage2_candidates": 40,
+            "stage3_safe_merges": 40
+          },
+          "numerical_dosage_inversions": {
+            "total": 60,
+            "correct": 60,
+            "accuracy": 1.0,
+            "stage2_candidates": 60,
+            "stage3_safe_merges": 0
+          },
+          "temporal_date_inversions": {
+            "total": 50,
+            "correct": 50,
+            "accuracy": 1.0,
+            "stage2_candidates": 50,
+            "stage3_safe_merges": 0
+          },
+          "polarity_antonym_inversions": {
+            "total": 50,
+            "correct": 50,
+            "accuracy": 1.0,
+            "stage2_candidates": 50,
+            "stage3_safe_merges": 0
+          },
+          "negation_particle_inversions": {
+            "total": 40,
+            "correct": 40,
+            "accuracy": 1.0,
+            "stage2_candidates": 40,
+            "stage3_safe_merges": 0
+          },
+          "entity_identifier_mutations": {
+            "total": 40,
+            "correct": 40,
+            "accuracy": 1.0,
+            "stage2_candidates": 40,
+            "stage3_safe_merges": 0
+          },
+          "comparison_threshold_inversions": {
+            "total": 30,
+            "correct": 30,
+            "accuracy": 1.0,
+            "stage2_candidates": 30,
+            "stage3_safe_merges": 0
+          },
+          "distant_unrelated_negatives": {
+            "total": 30,
+            "correct": 30,
+            "accuracy": 1.0,
+            "stage2_candidates": 0,
+            "stage3_safe_merges": 0
+          }
+        },
+        "errors": []
+      },
+      "held_out_test_split": {
+        "total_pairs": 500,
+        "stage1_lsh": {
+          "tp": 200,
+          "fp": 270,
+          "tn": 30,
+          "fn": 0,
+          "recall": 1.0,
+          "selectivity": 0.1
+        },
+        "stage2_minhash_lexical": {
+          "tp": 200,
+          "fp": 270,
+          "tn": 30,
+          "fn": 0,
+          "accuracy": 0.46,
+          "precision": 0.4255,
+          "recall": 1.0,
+          "f1_score": 0.597,
+          "false_merges": 270
+        },
+        "stage3_semantic_guard": {
+          "tp": 200,
+          "fp": 0,
+          "tn": 300,
+          "fn": 0,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "accuracy_95_ci": [
+            0.9924,
+            1.0
+          ],
+          "false_merges_prevented": 270,
+          "false_merges": 0
+        },
+        "category_breakdown": {
+          "exact_and_surface_duplicates": {
+            "total": 100,
+            "correct": 100,
+            "accuracy": 1.0,
+            "stage2_candidates": 100,
+            "stage3_safe_merges": 100
+          },
+          "voice_and_order_paraphrases": {
+            "total": 60,
+            "correct": 60,
+            "accuracy": 1.0,
+            "stage2_candidates": 60,
+            "stage3_safe_merges": 60
+          },
+          "unit_conversions": {
+            "total": 40,
+            "correct": 40,
+            "accuracy": 1.0,
+            "stage2_candidates": 40,
+            "stage3_safe_merges": 40
+          },
+          "numerical_dosage_inversions": {
+            "total": 60,
+            "correct": 60,
+            "accuracy": 1.0,
+            "stage2_candidates": 60,
+            "stage3_safe_merges": 0
+          },
+          "temporal_date_inversions": {
+            "total": 50,
+            "correct": 50,
+            "accuracy": 1.0,
+            "stage2_candidates": 50,
+            "stage3_safe_merges": 0
+          },
+          "polarity_antonym_inversions": {
+            "total": 50,
+            "correct": 50,
+            "accuracy": 1.0,
+            "stage2_candidates": 50,
+            "stage3_safe_merges": 0
+          },
+          "negation_particle_inversions": {
+            "total": 40,
+            "correct": 40,
+            "accuracy": 1.0,
+            "stage2_candidates": 40,
+            "stage3_safe_merges": 0
+          },
+          "entity_identifier_mutations": {
+            "total": 40,
+            "correct": 40,
+            "accuracy": 1.0,
+            "stage2_candidates": 40,
+            "stage3_safe_merges": 0
+          },
+          "comparison_threshold_inversions": {
+            "total": 30,
+            "correct": 30,
+            "accuracy": 1.0,
+            "stage2_candidates": 30,
+            "stage3_safe_merges": 0
+          },
+          "distant_unrelated_negatives": {
+            "total": 30,
+            "correct": 30,
+            "accuracy": 1.0,
+            "stage2_candidates": 0,
+            "stage3_safe_merges": 0
+          }
+        },
+        "errors": []
+      }
+    }
+  },
+  "safety_benchmark_phase45": {
+    "benchmark_type": "smoke_test_developmental",
+    "methodology_disclaimer": "MinHash/LSH is evaluated strictly as a scalable candidate-retrieval method. Stage 3 Semantic Safety Guard performs semantic verification before any record merge.",
+    "sample_size_limitation": "Evaluated on N=17 calibrated synthetic pairs. This serves as an algorithmic smoke test, not a production-scale accuracy claim.",
+    "threshold": 0.8,
+    "total_evaluated_pairs": 17,
+    "stage1_candidate_retrieval": {
+      "cand_true_positives": 7,
+      "cand_false_positives": 4,
+      "cand_true_negatives": 6,
+      "cand_false_negatives": 0,
+      "candidate_recall": 1.0,
+      "candidate_selectivity": 0.6
+    },
+    "stage2_similarity_threshold": {
+      "true_positives": 7,
+      "false_positives": 2,
+      "true_negatives": 8,
+      "false_negatives": 0,
+      "precision": 0.7778,
+      "recall": 1.0,
+      "f1_score": 0.875,
+      "accuracy": 0.8824
+    },
+    "stage3_safety_decision": {
+      "true_positives": 7,
+      "false_positives": 0,
+      "true_negatives": 10,
+      "false_negatives": 0,
+      "false_merges_prevented": 2,
+      "conflicts_detected": [
+        {
+          "pair_id": "eval_safety_dosage_013",
+          "conflict_type": "NUMERICAL_MISMATCH",
+          "reason": "Numerical quantity discrepancy: {(0.01, 'g')} vs {(0.1, 'g')}",
+          "details": {
+            "stage": "numerical_verification"
+          }
+        },
+        {
+          "pair_id": "eval_safety_date_015",
+          "conflict_type": "NUMERICAL_MISMATCH",
+          "reason": "Numerical quantity discrepancy: {(1824.0, 'following')} vs {(1827.0, 'following')}",
+          "details": {
+            "stage": "numerical_verification"
+          }
+        }
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0,
+      "f1_score": 1.0,
+      "accuracy": 1.0,
+      "precision_95_ci": [
+        0.6457,
+        1.0
+      ],
+      "recall_95_ci": [
+        0.6457,
+        1.0
+      ]
+    },
+    "true_positives": 7,
+    "false_positives": 0,
+    "true_negatives": 10,
+    "false_negatives": 0,
+    "false_merges_prevented": 2,
+    "precision": 1.0,
+    "recall": 1.0,
+    "specificity": 1.0,
+    "f1_score": 1.0,
+    "accuracy": 1.0,
+    "precision_95_ci": [
+      0.6457,
+      1.0
+    ],
+    "recall_95_ci": [
+      0.6457,
+      1.0
+    ],
+    "elapsed_seconds": 0.0297,
+    "pair_results": [
+      {
+        "pair_id": "eval_exact_001",
+        "category": "exact_duplicate",
+        "true_jaccard": 1.0,
+        "est_jaccard": 1.0,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      },
+      {
+        "pair_id": "eval_near_ws_002",
+        "category": "reformatted_duplicate",
+        "true_jaccard": 0.9761,
+        "est_jaccard": 0.9766,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      },
+      {
+        "pair_id": "eval_near_syn_003",
+        "category": "light_edit_duplicate",
+        "true_jaccard": 0.9571,
+        "est_jaccard": 0.9531,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      },
+      {
+        "pair_id": "eval_reordered_004",
+        "category": "reordered_duplicate",
+        "true_jaccard": 0.9761,
+        "est_jaccard": 0.9922,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      },
+      {
+        "pair_id": "eval_ocr_005",
+        "category": "ocr_error_duplicate",
+        "true_jaccard": 0.9573,
+        "est_jaccard": 0.9766,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      },
+      {
+        "pair_id": "eval_hard_neg_domain_006",
+        "category": "hard_negative_domain_overlap",
+        "true_jaccard": 0.5816,
+        "est_jaccard": 0.5938,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_hard_neg_inversion_007",
+        "category": "hard_negative_semantic_inversion",
+        "true_jaccard": 0.5225,
+        "est_jaccard": 0.4844,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": false,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_hard_neg_boilerplate_008",
+        "category": "hard_negative_shared_boilerplate",
+        "true_jaccard": 0.2871,
+        "est_jaccard": 0.2969,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": false,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_hard_neg_params_009",
+        "category": "hard_negative_technical_overlap",
+        "true_jaccard": 0.4959,
+        "est_jaccard": 0.4531,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": false,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_distant_neg_010",
+        "category": "distant_negative",
+        "true_jaccard": 0.0149,
+        "est_jaccard": 0.0,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": false,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_partial_overlap_011",
+        "category": "partial_overlap_negative",
+        "true_jaccard": 0.3456,
+        "est_jaccard": 0.3281,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": false,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_critical_numerical_inversion_012",
+        "category": "hard_negative_semantic_inversion",
+        "true_jaccard": 0.7857,
+        "est_jaccard": 0.7812,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": false,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_safety_dosage_013",
+        "category": "safety_numerical_inversion",
+        "true_jaccard": 0.9557,
+        "est_jaccard": 0.9375,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": "NUMERICAL_MISMATCH",
+        "safety_reason": "Numerical quantity discrepancy: {(0.01, 'g')} vs {(0.1, 'g')}"
+      },
+      {
+        "pair_id": "eval_safety_unit_014",
+        "category": "safety_unit_conversion_duplicate",
+        "true_jaccard": 0.8963,
+        "est_jaccard": 0.9062,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      },
+      {
+        "pair_id": "eval_safety_date_015",
+        "category": "safety_temporal_date_inversion",
+        "true_jaccard": 0.9338,
+        "est_jaccard": 0.9453,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": "NUMERICAL_MISMATCH",
+        "safety_reason": "Numerical quantity discrepancy: {(1824.0, 'following')} vs {(1827.0, 'following')}"
+      },
+      {
+        "pair_id": "eval_safety_negation_016",
+        "category": "safety_polarity_inversion",
+        "true_jaccard": 0.7662,
+        "est_jaccard": 0.7344,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_safety_paraphrase_017",
+        "category": "safety_valid_paraphrase_duplicate",
+        "true_jaccard": 0.8158,
+        "est_jaccard": 0.8281,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      }
+    ],
+    "false_positive_examples": [],
+    "false_negative_examples": []
+  }
+}

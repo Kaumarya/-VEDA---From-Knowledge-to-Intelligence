@@ -1,0 +1,127 @@
+{
+  "evaluation_name": "VEDA_Phase_4.4.1_Independent_Verification",
+  "timestamp_epoch": 1792052987.3493001,
+  "audit_phase44_v2": {
+    "language_v2": {
+      "total_samples": 1000,
+      "dev_samples": 500,
+      "test_samples": 500,
+      "dev_unique_base_templates": 116,
+      "test_unique_base_templates": 116,
+      "cross_split_overlapping_templates": 111,
+      "leakage_ratio": 0.9569,
+      "verdict": "INVALID_DUE_TO_TEMPLATE_LOOPING_AND_LEAKAGE"
+    },
+    "near_dedup_v2": {
+      "total_pairs": 1000,
+      "dev_pairs": 500,
+      "test_pairs": 500,
+      "dev_unique_base_templates": 265,
+      "test_unique_base_templates": 265,
+      "cross_split_overlapping_templates": 250,
+      "leakage_ratio": 0.9434,
+      "verdict": "INVALID_DUE_TO_TEMPLATE_LOOPING_AND_LEAKAGE"
+    }
+  },
+  "denominator_verification": {
+    "total_test_samples": 500,
+    "ground_truth_counts": {
+      "ACCEPT": 304,
+      "REJECT": 148,
+      "QUARANTINE": 48
+    },
+    "reported_inconsistency": {
+      "reported_denominator_text": "0 / 203 non-accept",
+      "reported_ci": [
+        0.0,
+        0.0183
+      ],
+      "actual_total_non_accept (REJECT + QUARANTINE)": 196,
+      "actual_definitive_negatives (REJECT only)": 148,
+      "mathematical_discrepancy": -7,
+      "root_cause": "Clerical/calculation carryover: 203 was derived from an earlier draft distribution (500 - 297 = 203). When rebalanced to 304/148/48, the denominator was not recomputed, yielding 148 + 48 = 196 actual non-accepts. Furthermore, if calculated against definitive REJECT (148), the Wilson upper bound is 2.53% (exceeding the 2.0% ceiling)."
+    },
+    "recomputed_intervals": {
+      "wilson_ci_all_non_accept_N196": [
+        0.0,
+        0.0192
+      ],
+      "wilson_ci_reject_only_N148": [
+        0.0,
+        0.0253
+      ]
+    }
+  },
+  "authentic_benchmark_v3_results": {
+    "language_filter_v3": {
+      "total_test_samples": 33,
+      "correct_samples": 31,
+      "accuracy": 0.9394,
+      "accuracy_ci": [
+        0.8039,
+        0.9832
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "false_acceptance_rate": 0.0,
+      "false_rejection_rate": 0.0,
+      "confusion_matrix": {
+        "tp": 18,
+        "fp": 0,
+        "tn": 11,
+        "fn": 0,
+        "tq": 2
+      },
+      "gate_status": "FAILED"
+    },
+    "near_dedup_v3": {
+      "total_test_pairs": 11,
+      "correct_pairs": 10,
+      "accuracy": 0.9091,
+      "accuracy_ci": [
+        0.6226,
+        0.9838
+      ],
+      "precision": 0.8333,
+      "recall": 1.0,
+      "f1_score": 0.9091,
+      "false_merges_fp": 1,
+      "missed_duplicates_fn": 0,
+      "confusion_matrix": {
+        "tp": 5,
+        "fp": 1,
+        "tn": 5,
+        "fn": 0
+      },
+      "critical_failure_mode": "Single-token dosage change ('10mg' vs '100mg') has Jaccard 0.9219 >= 0.80, causing false merge. MinHash lexical shingling alone CANNOT discriminate fine-grained semantic/numerical inversions.",
+      "gate_status": "FAILED"
+    }
+  },
+  "gates_summary": {
+    "gate_a_language_filter": {
+      "status": "FAILED",
+      "accuracy": 0.9394,
+      "f1_score": 1.0
+    },
+    "gate_b_near_duplicate": {
+      "status": "FAILED",
+      "accuracy": 0.9091,
+      "f1_score": 0.9091,
+      "unresolved_defect": "Lexical MinHash cannot detect single-token semantic/numerical inversions without a semantic guard stage."
+    },
+    "gate_c_data_integrity": {
+      "status": "VERIFIED",
+      "pass_rate": 1.0
+    },
+    "gate_d_tokenizer": {
+      "status": "VERIFIED",
+      "pass_rate": 1.0
+    },
+    "gate_e_neural_foundation": {
+      "status": "VERIFIED",
+      "pass_rate": 1.0
+    }
+  },
+  "production_corpus_ingestion": "STRICTLY_BLOCKED (Fail-Closed Governance Preserved)"
+}

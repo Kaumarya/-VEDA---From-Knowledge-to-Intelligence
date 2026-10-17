@@ -1,0 +1,91 @@
+{
+  "corpus_name": "veda_synthetic_stress",
+  "corpus_version": "0.1.0",
+  "schema_version": "0.1.0",
+  "created_at": "2026-10-02T16:15:54.486591+00:00",
+  "pipeline_version": "0.1.0",
+  "split_seed": "VEDA_CORPUS_SEED_v0.1",
+  "policies": {
+    "deduplication_version": "0.1.0",
+    "filtering_version": "0.1.0",
+    "normalization_version": "0.1.0",
+    "segmentation_version": "0.1.0",
+    "split_version": "0.1.0"
+  },
+  "sources": [
+    {
+      "source_id": "stress_permitted_src",
+      "version": "1.0",
+      "license": "CC0-1.0",
+      "licensing_status": "VERIFIED PERMITTED",
+      "source_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+      "document_count": 95892
+    },
+    {
+      "source_id": "stress_excluded_src",
+      "version": "1.0",
+      "license": "Proprietary",
+      "licensing_status": "EXCLUDED",
+      "source_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+      "document_count": 4108
+    }
+  ],
+  "statistics": {
+    "total_documents": 100000,
+    "retained_documents": 52281,
+    "rejected_documents": 47719,
+    "total_records_processed": 158307,
+    "retained_records": 52287,
+    "rejected_records": 24224,
+    "duplicate_records": 81796,
+    "rejection_breakdown": {
+      "TOO_SHORT_CHARS": 9,
+      "NON_ENGLISH_SCRIPT": 2,
+      "DUPLICATE": 81796,
+      "TOO_SHORT_WORDS": 1,
+      "REPEATED_WORDS": 3002,
+      "LOW_ALPHA_RATIO": 3139,
+      "BOILERPLATE_CONTENT": 12034,
+      "TOO_LONG_CHARS": 1919,
+      "EMPTY_TEXT": 4,
+      "GOVERNANCE_BLOCKED": 4108,
+      "REPEATED_CHARS": 6
+    },
+    "duplicate_breakdown": {
+      "exact_duplicates": 52280,
+      "normalized_duplicates": 0,
+      "document_duplicates": 29516
+    },
+    "split_counts": {
+      "train": 47248,
+      "validation": 2512,
+      "test": 2527
+    },
+    "character_counts": {
+      "total_raw_characters": 5299702,
+      "total_normalized_characters": 5115103,
+      "train_characters": 4621054,
+      "validation_characters": 245786,
+      "test_characters": 248263
+    },
+    "approx_word_counts": {
+      "total_words": 741823,
+      "train_words": 670175,
+      "validation_words": 35627,
+      "test_words": 36021
+    }
+  },
+  "artifacts": {
+    "train_file": "train.jsonl",
+    "train_sha256": "9fa9aff81bb9be3ef9867a5df770f3ce1a2fab08f21a8cada604d2ab50ca04ad",
+    "validation_file": "validation.jsonl",
+    "validation_sha256": "ca2c505f2cad9f35875f122eaca59b94ef323a2fe322650a846cb2e2a76bd4fe",
+    "test_file": "test.jsonl",
+    "test_sha256": "9d5c36b9e37a307ab4e9cf5c687e8d1bcd54b3764d6b17e4d91524e555e62d41",
+    "rejections_file": "rejections.jsonl",
+    "rejections_sha256": "e2f58e08d63f6eff844a6ed0ad7527db4645e779f3a23b7f2e2a08dd35005cd3",
+    "content_fingerprint": "b7c7fba3e9dd2cb2fae811de93c8489a0ae0ab1726a20500707cf43ab889c825",
+    "manifest_fingerprint": "22780f2879ec514015bc5d198144a4f7c6d2da9538d9d2e1f7fe851a9e78ddf1",
+    "logical_fingerprint": "b7c7fba3e9dd2cb2fae811de93c8489a0ae0ab1726a20500707cf43ab889c825"
+  }
+}

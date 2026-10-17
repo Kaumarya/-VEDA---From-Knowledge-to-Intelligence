@@ -1,0 +1,17 @@
+{
+  "foundation/corpus/language_audit.py": "6926c6bb18a343e3f7b93dee16434466a7aa4740953e4c7b3bf00702f7512524",
+  "foundation/corpus/filtering.py": "a84d68b299cd793aef577a52de63230ff807fd909f25cca3b64b9327a6991aec",
+  "foundation/corpus/near_deduplication.py": "9fffa9183d8f80f14ff338aa807dc7bf10288a829df0d5f1b0346e005a4db0b5",
+  "foundation/corpus/pipeline.py": "02d9bbfe0c71e2d7830f31dc8b91f13a7388a259cbbbec96ce0b60ff6be66dbe",
+  "foundation/corpus/schemas.py": "f5ebbc69955558270f14174aedf5540c87d68e6dd1d7d59d8c78769b8bf1b1f4",
+  "data/corpus/eval_language_dataset_v7.json": "99291f7c75370abe37b7d3e2e8c0d2d7977c38c18c458cadf958f3a79ecb1a4d",
+  "data/corpus/eval_near_dedup_dataset_v7.json": "f44be30ccbd82af6e6ed93fdb175bdc3708c0204c26d0db69f4a6eb7f1ce1370",
+  "data/corpus/phase4.9_eval_results.json": "9aa8a1fab9208b41dd1fbf56cd2a969f77e39dbf8a97a2cce16e7dd66bfd742d",
+  "scripts/evaluate_phase49_certification.py": "386d7dd80f3ebb904ef2b3eeb9ca65993127bd27492e7db9f00f1e678a08febb",
+  "tests/test_language_filter_hardening.py": "2e8cadb2139a9ffdca97fb9dbe1e322ac60ca317ed772054d677b42a71397bae",
+  "tests/test_near_deduplication_safety.py": "53917fcd6121955ca1150513f18b9b0f73394ca623c011b7778a0f9dcfd58a70",
+  "tests/test_corpus_production_gate_fail_closed.py": "3db43c71a425db0746f45739b80b8f0dbed7e5f9905fc583887ea7c17b43056f",
+  "docs/veda_phase4.9_certification_readiness_report.md": "303f196e739ca7a425f7a8ed9c1faf96af813a2983fb053ffc94f6d38017fef7",
+  "docs/veda_phase4.10_verification_report.md": "811eccfa9f3dd664133a84b025ba7039f0053cab7456811a45bfd9ed8bf47f53",
+  "docs/veda_phase4.11_verification_report.md": "969aee7e63c8f5cefee9e663cbdf6f92e3bebea3b81e20d4a1d1bb5ef23577c7"
+}

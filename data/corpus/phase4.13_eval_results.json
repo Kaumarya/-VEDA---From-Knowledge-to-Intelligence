@@ -1,0 +1,3919 @@
+{
+  "meta": {
+    "phase": "4.13",
+    "eval_name": "remediated_corpus_quality_regression_v8",
+    "timestamp_utc": "2026-10-17T16:46:02.522835+00:00",
+    "git": {
+      "commit": "14c29b420e421bf4ebffa441778d47db49ac74bd",
+      "branch": "main"
+    },
+    "python_runtime": {
+      "version": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+      "executable": "C:\\Users\\karnik YOGA\\OneDrive\\Desktop\\veda\\.venv\\Scripts\\python.exe",
+      "platform": "Windows-11-10.0.26300-SP0"
+    },
+    "source_code_hashes": {
+      "foundation/corpus/language_audit.py": "d66ca93abbe6d0762d66387084564caa1e5919084a8075cd5cbeb82217763d77",
+      "foundation/corpus/filtering.py": "186be7320cdfcd602447bb40584705499daf87a9340799db1e9128b9389f90bf",
+      "foundation/corpus/near_deduplication.py": "694744c3b93e12c2af68ecde42feea234f76531dc8e4bbd93416f30b4d2ad537",
+      "tests/test_near_deduplication_safety.py": "cd8f1210d13c5a27aa8c5a7b522b875ad70c9098d9461c0fdf63003ac01515e8",
+      "tests/test_language_filter_hardening.py": "a2407ebabe1e8c1cbbf2e3e18ed94a385ecc18f5479e7f383eb17084bcd0f7ce",
+      "tests/test_corpus_production_gate_fail_closed.py": "3db43c71a425db0746f45739b80b8f0dbed7e5f9905fc583887ea7c17b43056f"
+    },
+    "governance_status": "RECLASSIFIED_DEVELOPMENT_REGRESSION \u2014 INDEPENDENCE UNVERIFIED"
+  },
+  "benchmarks": {
+    "v8_provisional": {
+      "dataset_hashes": {
+        "language_v8": "020c81dc26ce49fde0f29c873e74cc5fe6f12a7dfcce34908341084e4b3108e8",
+        "near_dedup_v8": "96fee87e5c4a2890bfab20398da96a8f7d2f63d0cedc707e6efe5521d323a467"
+      },
+      "task_a_language": {
+        "development": {
+          "total_samples": 60,
+          "correct_predictions": 60,
+          "incorrect_predictions": 0,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9398,
+            1.0
+          ],
+          "macro_f1": 1.0,
+          "per_class": {
+            "ACCEPT": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "QUARANTINE": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "REJECT": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          },
+          "rates": {
+            "english_false_rejection_rate": 0.0,
+            "non_english_false_acceptance_rate": 0.0,
+            "quarantine_rate": 0.3333
+          },
+          "confusion_matrix": {
+            "ACCEPT": {
+              "ACCEPT": 30,
+              "QUARANTINE": 0,
+              "REJECT": 0
+            },
+            "QUARANTINE": {
+              "ACCEPT": 0,
+              "QUARANTINE": 20,
+              "REJECT": 0
+            },
+            "REJECT": {
+              "ACCEPT": 0,
+              "QUARANTINE": 0,
+              "REJECT": 10
+            }
+          },
+          "category_stats": {
+            "ordinary_english_prose": {
+              "total": 10,
+              "correct": 10,
+              "accepted": 10,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "expository_academic_prose": {
+              "total": 8,
+              "correct": 8,
+              "accepted": 8,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "scientific_figure_captions": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 5,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "foreign_names_and_quotes": {
+              "total": 4,
+              "correct": 4,
+              "accepted": 4,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "english_imperatives_instructions": {
+              "total": 3,
+              "correct": 3,
+              "accepted": 3,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "code_sql_structured_data": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "imperative_signage_notices": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "short_headings_and_fragments": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "germanic_latin_prose": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "romance_latin_prose": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 5,
+              "quarantined": 0
+            },
+            "non_latin_script": {
+              "total": 2,
+              "correct": 2,
+              "accepted": 0,
+              "rejected": 2,
+              "quarantined": 0
+            },
+            "malformed_noise": {
+              "total": 3,
+              "correct": 3,
+              "accepted": 0,
+              "rejected": 3,
+              "quarantined": 0
+            }
+          },
+          "false_accepts_count": 0,
+          "false_rejects_count": 0,
+          "unnecessary_quarantines_count": 0,
+          "errors": [],
+          "predictions": [
+            {
+              "sample_id": "v8_lang_dev_001",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_002",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_003",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_004",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_005",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_006",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_007",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_008",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_009",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_010",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_011",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_012",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_013",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_014",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_015",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_016",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_017",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_018",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_019",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v8_lang_dev_020",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v8_lang_dev_021",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v8_lang_dev_022",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v8_lang_dev_023",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v8_lang_dev_024",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_025",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_026",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_027",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_028",
+              "category": "english_imperatives_instructions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_029",
+              "category": "english_imperatives_instructions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_030",
+              "category": "english_imperatives_instructions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_dev_031",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v8_lang_dev_032",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v8_lang_dev_033",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v8_lang_dev_034",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v8_lang_dev_035",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v8_lang_dev_036",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v8_lang_dev_037",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v8_lang_dev_038",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v8_lang_dev_039",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v8_lang_dev_040",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v8_lang_dev_041",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY"
+            },
+            {
+              "sample_id": "v8_lang_dev_042",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY"
+            },
+            {
+              "sample_id": "v8_lang_dev_043",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY"
+            },
+            {
+              "sample_id": "v8_lang_dev_044",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY"
+            },
+            {
+              "sample_id": "v8_lang_dev_045",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY"
+            },
+            {
+              "sample_id": "v8_lang_dev_046",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v8_lang_dev_047",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v8_lang_dev_048",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v8_lang_dev_049",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v8_lang_dev_050",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v8_lang_dev_051",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v8_lang_dev_052",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v8_lang_dev_053",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v8_lang_dev_054",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v8_lang_dev_055",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v8_lang_dev_056",
+              "category": "non_latin_script",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NON_ENGLISH_SCRIPT"
+            },
+            {
+              "sample_id": "v8_lang_dev_057",
+              "category": "non_latin_script",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "TOO_SHORT_WORDS"
+            },
+            {
+              "sample_id": "v8_lang_dev_058",
+              "category": "malformed_noise",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "LOW_ALPHA_RATIO"
+            },
+            {
+              "sample_id": "v8_lang_dev_059",
+              "category": "malformed_noise",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v8_lang_dev_060",
+              "category": "malformed_noise",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            }
+          ]
+        },
+        "test": {
+          "total_samples": 60,
+          "correct_predictions": 59,
+          "incorrect_predictions": 1,
+          "accuracy": 0.9833,
+          "accuracy_95_ci": [
+            0.9114,
+            0.9971
+          ],
+          "macro_f1": 0.9743,
+          "per_class": {
+            "ACCEPT": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "QUARANTINE": {
+              "precision": 0.9524,
+              "recall": 1.0,
+              "f1": 0.9756
+            },
+            "REJECT": {
+              "precision": 1.0,
+              "recall": 0.9,
+              "f1": 0.9474
+            }
+          },
+          "rates": {
+            "english_false_rejection_rate": 0.0,
+            "non_english_false_acceptance_rate": 0.0,
+            "quarantine_rate": 0.35
+          },
+          "confusion_matrix": {
+            "ACCEPT": {
+              "ACCEPT": 30,
+              "QUARANTINE": 0,
+              "REJECT": 0
+            },
+            "QUARANTINE": {
+              "ACCEPT": 0,
+              "QUARANTINE": 20,
+              "REJECT": 0
+            },
+            "REJECT": {
+              "ACCEPT": 0,
+              "QUARANTINE": 1,
+              "REJECT": 9
+            }
+          },
+          "category_stats": {
+            "ordinary_english_prose": {
+              "total": 10,
+              "correct": 10,
+              "accepted": 10,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "expository_academic_prose": {
+              "total": 8,
+              "correct": 8,
+              "accepted": 8,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "scientific_figure_captions": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 5,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "foreign_names_and_quotes": {
+              "total": 4,
+              "correct": 4,
+              "accepted": 4,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "english_imperatives_instructions": {
+              "total": 3,
+              "correct": 3,
+              "accepted": 3,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "code_sql_structured_data": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "imperative_signage_notices": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "short_headings_and_fragments": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "germanic_latin_prose": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "romance_latin_prose": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 5,
+              "quarantined": 0
+            },
+            "non_latin_script": {
+              "total": 2,
+              "correct": 2,
+              "accepted": 0,
+              "rejected": 2,
+              "quarantined": 0
+            },
+            "malformed_noise": {
+              "total": 3,
+              "correct": 2,
+              "accepted": 0,
+              "rejected": 2,
+              "quarantined": 1
+            }
+          },
+          "false_accepts_count": 0,
+          "false_rejects_count": 0,
+          "unnecessary_quarantines_count": 0,
+          "errors": [
+            {
+              "sample_id": "v8_lang_test_060",
+              "category": "malformed_noise",
+              "domain": "random_consonant_strings",
+              "expected": "REJECT",
+              "predicted": "QUARANTINE",
+              "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY",
+              "text_snippet": "asdfghjk qwertyui zxcvbnm poiuytre lkjhgfds mnbvcxz qazwsx edcrfv tgbyhn ujmikol"
+            }
+          ],
+          "predictions": [
+            {
+              "sample_id": "v8_lang_test_001",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_002",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_003",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_004",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_005",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_006",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_007",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_008",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_009",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_010",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_011",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_012",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_013",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_014",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_015",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_016",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_017",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_018",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_019",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v8_lang_test_020",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v8_lang_test_021",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v8_lang_test_022",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v8_lang_test_023",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v8_lang_test_024",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_025",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_026",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_027",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_028",
+              "category": "english_imperatives_instructions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_029",
+              "category": "english_imperatives_instructions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_030",
+              "category": "english_imperatives_instructions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v8_lang_test_031",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v8_lang_test_032",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v8_lang_test_033",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v8_lang_test_034",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v8_lang_test_035",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v8_lang_test_036",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v8_lang_test_037",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v8_lang_test_038",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v8_lang_test_039",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v8_lang_test_040",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v8_lang_test_041",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v8_lang_test_042",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY"
+            },
+            {
+              "sample_id": "v8_lang_test_043",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY"
+            },
+            {
+              "sample_id": "v8_lang_test_044",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v8_lang_test_045",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v8_lang_test_046",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v8_lang_test_047",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v8_lang_test_048",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v8_lang_test_049",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v8_lang_test_050",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v8_lang_test_051",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v8_lang_test_052",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v8_lang_test_053",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v8_lang_test_054",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v8_lang_test_055",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v8_lang_test_056",
+              "category": "non_latin_script",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NON_ENGLISH_SCRIPT"
+            },
+            {
+              "sample_id": "v8_lang_test_057",
+              "category": "non_latin_script",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "TOO_SHORT_WORDS"
+            },
+            {
+              "sample_id": "v8_lang_test_058",
+              "category": "malformed_noise",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "LOW_ALPHA_RATIO"
+            },
+            {
+              "sample_id": "v8_lang_test_059",
+              "category": "malformed_noise",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v8_lang_test_060",
+              "category": "malformed_noise",
+              "expected": "REJECT",
+              "predicted": "QUARANTINE",
+              "is_correct": false,
+              "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY"
+            }
+          ]
+        }
+      },
+      "task_b_near_dedup": {
+        "development": {
+          "total_pairs": 20,
+          "correct_predictions": 20,
+          "incorrect_predictions": 0,
+          "stage2_candidate_screening": {
+            "tp": 8,
+            "fp": 11,
+            "tn": 1,
+            "fn": 0,
+            "precision": 0.4211,
+            "recall": 1.0
+          },
+          "stage3_final_decision": {
+            "tp": 8,
+            "fp": 0,
+            "tn": 12,
+            "fn": 0,
+            "accuracy": 1.0,
+            "accuracy_95_ci": [
+              0.8389,
+              1.0
+            ],
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positive_rate": 0.0,
+            "false_negative_rate": 0.0,
+            "false_merges_prevented": 11,
+            "safety_critical_false_merges": 0
+          },
+          "category_stats": {
+            "exact_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "reformatted_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "paraphrase_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "reordered_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "unit_conversion_duplicate": {
+              "total": 4,
+              "correct": 4,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "distant_negative": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "safety_polarity_inversion": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 2,
+              "s3_false_merges": 0,
+              "prevented": 2
+            },
+            "safety_dosage_inversion": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 2,
+              "s3_false_merges": 0,
+              "prevented": 2
+            },
+            "safety_unit_mismatch": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 2,
+              "s3_false_merges": 0,
+              "prevented": 2
+            },
+            "safety_date_mismatch": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 2,
+              "s3_false_merges": 0,
+              "prevented": 2
+            },
+            "safety_negation_inversion": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 2,
+              "s3_false_merges": 0,
+              "prevented": 2
+            },
+            "safety_identifier_conflict": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 1,
+              "s3_false_merges": 0,
+              "prevented": 1
+            }
+          },
+          "errors": [],
+          "predictions": [
+            {
+              "pair_id": "v8_dedup_dev_001",
+              "category": "exact_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 1.0,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_dev_002",
+              "category": "reformatted_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 1.0,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_dev_003",
+              "category": "paraphrase_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8824,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_dev_004",
+              "category": "reordered_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 1.0,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_dev_005",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8984,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_dev_006",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.7812,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_dev_007",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8438,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_dev_008",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8281,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_dev_009",
+              "category": "distant_negative",
+              "expected": false,
+              "s2_candidate": false,
+              "candidate_similarity": 0.0,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "Below candidate similarity threshold"
+            },
+            {
+              "pair_id": "v8_dedup_dev_010",
+              "category": "safety_polarity_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.875,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "POLARITY_INVERSION",
+              "reason": "Contradictory polarity detected: '['expand']' vs '['reduce']'"
+            },
+            {
+              "pair_id": "v8_dedup_dev_011",
+              "category": "safety_polarity_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.875,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "POLARITY_INVERSION",
+              "reason": "Contradictory polarity detected: '['approve']' vs '['reject']'"
+            },
+            {
+              "pair_id": "v8_dedup_dev_012",
+              "category": "safety_dosage_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.875,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NUMERICAL_MISMATCH",
+              "reason": "Numerical quantity discrepancy: {(0.005, 'g')} vs {(0.05, 'g')}"
+            },
+            {
+              "pair_id": "v8_dedup_dev_013",
+              "category": "safety_dosage_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8828,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NUMERICAL_MISMATCH",
+              "reason": "Numerical quantity discrepancy: {(0.025, 'v')} vs {(0.25, 'v')}"
+            },
+            {
+              "pair_id": "v8_dedup_dev_014",
+              "category": "safety_unit_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9453,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "UNIT_MISMATCH",
+              "reason": "Incompatible physical units for identical quantity: {(12.0, 'bar')} vs {(12.0, 'm')}"
+            },
+            {
+              "pair_id": "v8_dedup_dev_015",
+              "category": "safety_unit_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8984,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "UNIT_MISMATCH",
+              "reason": "Incompatible physical units for identical quantity: {(40.0, 'a')} vs {(40.0, 'v')}"
+            },
+            {
+              "pair_id": "v8_dedup_dev_016",
+              "category": "safety_date_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9531,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NUMERICAL_MISMATCH",
+              "reason": "Numerical quantity discrepancy: {(1957.0, 'count')} vs {(1963.0, 'count')}"
+            },
+            {
+              "pair_id": "v8_dedup_dev_017",
+              "category": "safety_date_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8947,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "DATE_MISMATCH",
+              "reason": "Conflicting calendar month references: {'may'} vs {'november'}"
+            },
+            {
+              "pair_id": "v8_dedup_dev_018",
+              "category": "safety_negation_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9412,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NEGATION_INVERSION",
+              "reason": "Asymmetric negation particle detected: 'set()' vs '{'not'}'"
+            },
+            {
+              "pair_id": "v8_dedup_dev_019",
+              "category": "safety_negation_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8667,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NEGATION_INVERSION",
+              "reason": "Asymmetric negation particle detected: '{'never'}' vs 'set()'"
+            },
+            {
+              "pair_id": "v8_dedup_dev_020",
+              "category": "safety_identifier_conflict",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9531,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "IDENTIFIER_MISMATCH",
+              "reason": "Conflicting entity identifier codes: {'Rover-X204'} vs {'Rover-Y204'}"
+            }
+          ]
+        },
+        "test": {
+          "total_pairs": 20,
+          "correct_predictions": 20,
+          "incorrect_predictions": 0,
+          "stage2_candidate_screening": {
+            "tp": 8,
+            "fp": 10,
+            "tn": 2,
+            "fn": 0,
+            "precision": 0.4444,
+            "recall": 1.0
+          },
+          "stage3_final_decision": {
+            "tp": 8,
+            "fp": 0,
+            "tn": 12,
+            "fn": 0,
+            "accuracy": 1.0,
+            "accuracy_95_ci": [
+              0.8389,
+              1.0
+            ],
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positive_rate": 0.0,
+            "false_negative_rate": 0.0,
+            "false_merges_prevented": 10,
+            "safety_critical_false_merges": 0
+          },
+          "category_stats": {
+            "exact_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "reformatted_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "paraphrase_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "reordered_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "unit_conversion_duplicate": {
+              "total": 4,
+              "correct": 4,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "distant_negative": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "safety_polarity_inversion": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 1,
+              "s3_false_merges": 0,
+              "prevented": 1
+            },
+            "safety_dosage_inversion": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 2,
+              "s3_false_merges": 0,
+              "prevented": 2
+            },
+            "safety_unit_mismatch": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 2,
+              "s3_false_merges": 0,
+              "prevented": 2
+            },
+            "safety_date_mismatch": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 2,
+              "s3_false_merges": 0,
+              "prevented": 2
+            },
+            "safety_negation_inversion": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 2,
+              "s3_false_merges": 0,
+              "prevented": 2
+            },
+            "safety_identifier_conflict": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 1,
+              "s3_false_merges": 0,
+              "prevented": 1
+            }
+          },
+          "errors": [],
+          "predictions": [
+            {
+              "pair_id": "v8_dedup_test_001",
+              "category": "exact_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 1.0,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_test_002",
+              "category": "reformatted_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 1.0,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_test_003",
+              "category": "paraphrase_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8667,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_test_004",
+              "category": "reordered_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 1.0,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_test_005",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8906,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_test_006",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8984,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_test_007",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8672,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_test_008",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.875,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v8_dedup_test_009",
+              "category": "distant_negative",
+              "expected": false,
+              "s2_candidate": false,
+              "candidate_similarity": 0.0333,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "Below candidate similarity threshold"
+            },
+            {
+              "pair_id": "v8_dedup_test_010",
+              "category": "safety_polarity_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8828,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "POLARITY_INVERSION",
+              "reason": "Contradictory polarity detected: '['expand']' vs '['reduce']'"
+            },
+            {
+              "pair_id": "v8_dedup_test_011",
+              "category": "safety_polarity_inversion",
+              "expected": false,
+              "s2_candidate": false,
+              "candidate_similarity": 0.6471,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "Below candidate similarity threshold"
+            },
+            {
+              "pair_id": "v8_dedup_test_012",
+              "category": "safety_dosage_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9375,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NUMERICAL_MISMATCH",
+              "reason": "Numerical quantity discrepancy: {(0.004, 'g')} vs {(0.04, 'g')}"
+            },
+            {
+              "pair_id": "v8_dedup_test_013",
+              "category": "safety_dosage_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8672,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NUMERICAL_MISMATCH",
+              "reason": "Numerical quantity discrepancy: {(0.015, 'count')} vs {(0.15, 'count')}"
+            },
+            {
+              "pair_id": "v8_dedup_test_014",
+              "category": "safety_unit_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9453,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "UNIT_MISMATCH",
+              "reason": "Incompatible physical units for identical quantity: {(20.0, 'bar')} vs {(20.0, 'm')}"
+            },
+            {
+              "pair_id": "v8_dedup_test_015",
+              "category": "safety_unit_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9297,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "UNIT_MISMATCH",
+              "reason": "Incompatible physical units for identical quantity: {(60.0, 'a')} vs {(60.0, 'v')}"
+            },
+            {
+              "pair_id": "v8_dedup_test_016",
+              "category": "safety_date_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9766,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NUMERICAL_MISMATCH",
+              "reason": "Numerical quantity discrepancy: {(1869.0, 'count')} vs {(1875.0, 'count')}"
+            },
+            {
+              "pair_id": "v8_dedup_test_017",
+              "category": "safety_date_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.875,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "DATE_MISMATCH",
+              "reason": "Conflicting calendar month references: {'february'} vs {'september'}"
+            },
+            {
+              "pair_id": "v8_dedup_test_018",
+              "category": "safety_negation_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9333,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NEGATION_INVERSION",
+              "reason": "Asymmetric negation particle detected: 'set()' vs '{'no'}'"
+            },
+            {
+              "pair_id": "v8_dedup_test_019",
+              "category": "safety_negation_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8828,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NEGATION_INVERSION",
+              "reason": "Asymmetric negation particle detected: '{'never'}' vs 'set()'"
+            },
+            {
+              "pair_id": "v8_dedup_test_020",
+              "category": "safety_identifier_conflict",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9141,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "IDENTIFIER_MISMATCH",
+              "reason": "Conflicting entity identifier codes: {'Turbine-X501'} vs {'Turbine-Y501'}"
+            }
+          ]
+        }
+      }
+    },
+    "regression_benchmarks": {
+      "v7": {
+        "language_hash": "99291f7c75370abe37b7d3e2e8c0d2d7977c38c18c458cadf958f3a79ecb1a4d",
+        "task_a_test": {
+          "total_samples": 60,
+          "correct_predictions": 60,
+          "incorrect_predictions": 0,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9398,
+            1.0
+          ],
+          "macro_f1": 1.0,
+          "per_class": {
+            "ACCEPT": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "QUARANTINE": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "REJECT": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          },
+          "rates": {
+            "english_false_rejection_rate": 0.0,
+            "non_english_false_acceptance_rate": 0.0,
+            "quarantine_rate": 0.3333
+          },
+          "confusion_matrix": {
+            "ACCEPT": {
+              "ACCEPT": 30,
+              "QUARANTINE": 0,
+              "REJECT": 0
+            },
+            "QUARANTINE": {
+              "ACCEPT": 0,
+              "QUARANTINE": 20,
+              "REJECT": 0
+            },
+            "REJECT": {
+              "ACCEPT": 0,
+              "QUARANTINE": 0,
+              "REJECT": 10
+            }
+          },
+          "category_stats": {
+            "ordinary_english_prose": {
+              "total": 10,
+              "correct": 10,
+              "accepted": 10,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "expository_academic_prose": {
+              "total": 10,
+              "correct": 10,
+              "accepted": 10,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "scientific_figure_captions": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 5,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "foreign_names_and_quotes": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 5,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "code_sql_structured_data": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "imperative_signage_notices": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "short_headings_and_fragments": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "germanic_latin_prose": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "romance_latin_prose": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 5,
+              "quarantined": 0
+            },
+            "non_latin_script": {
+              "total": 2,
+              "correct": 2,
+              "accepted": 0,
+              "rejected": 2,
+              "quarantined": 0
+            },
+            "malformed_noise": {
+              "total": 3,
+              "correct": 3,
+              "accepted": 0,
+              "rejected": 3,
+              "quarantined": 0
+            }
+          },
+          "false_accepts_count": 0,
+          "false_rejects_count": 0,
+          "unnecessary_quarantines_count": 0,
+          "errors": [],
+          "predictions": [
+            {
+              "sample_id": "v7_lang_test_001",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_002",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_003",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_004",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_005",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_006",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_007",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_008",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_009",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_010",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_011",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_012",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_013",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_014",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_015",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_016",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_017",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_018",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_019",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_020",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_021",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v7_lang_test_022",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v7_lang_test_023",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v7_lang_test_024",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v7_lang_test_025",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v7_lang_test_026",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_027",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_028",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_029",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_030",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v7_lang_test_031",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v7_lang_test_032",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v7_lang_test_033",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v7_lang_test_034",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v7_lang_test_035",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v7_lang_test_036",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v7_lang_test_037",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v7_lang_test_038",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v7_lang_test_039",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v7_lang_test_040",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v7_lang_test_041",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v7_lang_test_042",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY"
+            },
+            {
+              "sample_id": "v7_lang_test_043",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v7_lang_test_044",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v7_lang_test_045",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v7_lang_test_046",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v7_lang_test_047",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v7_lang_test_048",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v7_lang_test_049",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v7_lang_test_050",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v7_lang_test_051",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v7_lang_test_052",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v7_lang_test_053",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v7_lang_test_054",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v7_lang_test_055",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v7_lang_test_056",
+              "category": "non_latin_script",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NON_ENGLISH_SCRIPT"
+            },
+            {
+              "sample_id": "v7_lang_test_057",
+              "category": "non_latin_script",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "TOO_SHORT_WORDS"
+            },
+            {
+              "sample_id": "v7_lang_test_058",
+              "category": "malformed_noise",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "TOO_SHORT_WORDS"
+            },
+            {
+              "sample_id": "v7_lang_test_059",
+              "category": "malformed_noise",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "LOW_ALPHA_RATIO"
+            },
+            {
+              "sample_id": "v7_lang_test_060",
+              "category": "malformed_noise",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "LOW_ALPHA_RATIO"
+            }
+          ]
+        },
+        "near_dedup_hash": "f44be30ccbd82af6e6ed93fdb175bdc3708c0204c26d0db69f4a6eb7f1ce1370",
+        "task_b_test": {
+          "total_pairs": 20,
+          "correct_predictions": 20,
+          "incorrect_predictions": 0,
+          "stage2_candidate_screening": {
+            "tp": 8,
+            "fp": 11,
+            "tn": 1,
+            "fn": 0,
+            "precision": 0.4211,
+            "recall": 1.0
+          },
+          "stage3_final_decision": {
+            "tp": 8,
+            "fp": 0,
+            "tn": 12,
+            "fn": 0,
+            "accuracy": 1.0,
+            "accuracy_95_ci": [
+              0.8389,
+              1.0
+            ],
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positive_rate": 0.0,
+            "false_negative_rate": 0.0,
+            "false_merges_prevented": 11,
+            "safety_critical_false_merges": 0
+          },
+          "category_stats": {
+            "exact_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "reformatted_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "paraphrase_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "reordered_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "unit_conversion_duplicate": {
+              "total": 4,
+              "correct": 4,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "distant_negative": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "hard_negative_semantic_divergence": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 1,
+              "s3_false_merges": 0,
+              "prevented": 1
+            },
+            "safety_dosage_inversion": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 1,
+              "s3_false_merges": 0,
+              "prevented": 1
+            },
+            "safety_unit_mismatch": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 2,
+              "s3_false_merges": 0,
+              "prevented": 2
+            },
+            "safety_date_mismatch": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 2,
+              "s3_false_merges": 0,
+              "prevented": 2
+            },
+            "safety_polarity_inversion": {
+              "total": 3,
+              "correct": 3,
+              "s2_false_merges": 3,
+              "s3_false_merges": 0,
+              "prevented": 3
+            },
+            "safety_negation_inversion": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 1,
+              "s3_false_merges": 0,
+              "prevented": 1
+            },
+            "safety_identifier_conflict": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 1,
+              "s3_false_merges": 0,
+              "prevented": 1
+            }
+          },
+          "errors": [],
+          "predictions": [
+            {
+              "pair_id": "v7_dedup_test_001",
+              "category": "exact_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 1.0,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v7_dedup_test_002",
+              "category": "reformatted_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 1.0,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v7_dedup_test_003",
+              "category": "paraphrase_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8889,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v7_dedup_test_004",
+              "category": "reordered_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 1.0,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v7_dedup_test_005",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8984,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v7_dedup_test_006",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.7812,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v7_dedup_test_007",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8203,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v7_dedup_test_008",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8281,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v7_dedup_test_009",
+              "category": "distant_negative",
+              "expected": false,
+              "s2_candidate": false,
+              "candidate_similarity": 0.0078,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "Below candidate similarity threshold"
+            },
+            {
+              "pair_id": "v7_dedup_test_010",
+              "category": "hard_negative_semantic_divergence",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8824,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "POLARITY_INVERSION",
+              "reason": "Contradictory polarity detected: '['approve']' vs '['reject']'"
+            },
+            {
+              "pair_id": "v7_dedup_test_011",
+              "category": "safety_dosage_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8984,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NUMERICAL_MISMATCH",
+              "reason": "Numerical quantity discrepancy: {(0.0025, 'g')} vs {(0.025, 'g')}"
+            },
+            {
+              "pair_id": "v7_dedup_test_012",
+              "category": "safety_unit_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "UNIT_MISMATCH",
+              "reason": "Incompatible physical units for identical quantity: {(10.0, 'bar')} vs {(10.0, 'm')}"
+            },
+            {
+              "pair_id": "v7_dedup_test_013",
+              "category": "safety_unit_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.875,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "UNIT_MISMATCH",
+              "reason": "Incompatible physical units for identical quantity: {(50.0, 'a')} vs {(50.0, 'v')}"
+            },
+            {
+              "pair_id": "v7_dedup_test_014",
+              "category": "safety_date_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NUMERICAL_MISMATCH",
+              "reason": "Numerical quantity discrepancy: {(1965.0, 'count')} vs {(1971.0, 'count')}"
+            },
+            {
+              "pair_id": "v7_dedup_test_015",
+              "category": "safety_date_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.875,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "DATE_MISMATCH",
+              "reason": "Conflicting calendar month references: {'february'} vs {'september'}"
+            },
+            {
+              "pair_id": "v7_dedup_test_016",
+              "category": "safety_polarity_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8516,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "POLARITY_INVERSION",
+              "reason": "Contradictory polarity detected: '['safe', 'nontoxic']' vs '['fatal', 'toxic']'"
+            },
+            {
+              "pair_id": "v7_dedup_test_017",
+              "category": "safety_polarity_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8824,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "POLARITY_INVERSION",
+              "reason": "Contradictory polarity detected: '['permitted']' vs '['prohibited']'"
+            },
+            {
+              "pair_id": "v7_dedup_test_018",
+              "category": "safety_polarity_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.875,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "POLARITY_INVERSION",
+              "reason": "Contradictory polarity detected: '['greater']' vs '['less']'"
+            },
+            {
+              "pair_id": "v7_dedup_test_019",
+              "category": "safety_negation_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8906,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NEGATION_INVERSION",
+              "reason": "Asymmetric negation particle detected: 'set()' vs '{'never'}'"
+            },
+            {
+              "pair_id": "v7_dedup_test_020",
+              "category": "safety_identifier_conflict",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9609,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "IDENTIFIER_MISMATCH",
+              "reason": "Conflicting entity identifier codes: {'Turbine-A405'} vs {'Turbine-B405'}"
+            }
+          ]
+        }
+      },
+      "v6": {
+        "language_hash": "8b29614da8c41b06aab714398086bf66fb3330da9217a7548a0a650fc9a5e9c2",
+        "task_a_test": {
+          "total_samples": 60,
+          "correct_predictions": 59,
+          "incorrect_predictions": 1,
+          "accuracy": 0.9833,
+          "accuracy_95_ci": [
+            0.9114,
+            0.9971
+          ],
+          "macro_f1": 0.9743,
+          "per_class": {
+            "ACCEPT": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "QUARANTINE": {
+              "precision": 0.9524,
+              "recall": 1.0,
+              "f1": 0.9756
+            },
+            "REJECT": {
+              "precision": 1.0,
+              "recall": 0.9,
+              "f1": 0.9474
+            }
+          },
+          "rates": {
+            "english_false_rejection_rate": 0.0,
+            "non_english_false_acceptance_rate": 0.0,
+            "quarantine_rate": 0.35
+          },
+          "confusion_matrix": {
+            "ACCEPT": {
+              "ACCEPT": 30,
+              "QUARANTINE": 0,
+              "REJECT": 0
+            },
+            "QUARANTINE": {
+              "ACCEPT": 0,
+              "QUARANTINE": 20,
+              "REJECT": 0
+            },
+            "REJECT": {
+              "ACCEPT": 0,
+              "QUARANTINE": 1,
+              "REJECT": 9
+            }
+          },
+          "category_stats": {
+            "ordinary_english_prose": {
+              "total": 10,
+              "correct": 10,
+              "accepted": 10,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "expository_academic_prose": {
+              "total": 10,
+              "correct": 10,
+              "accepted": 10,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "scientific_figure_captions": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 5,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "foreign_names_and_quotes": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 5,
+              "rejected": 0,
+              "quarantined": 0
+            },
+            "code_sql_structured_data": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "imperative_signage_notices": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "short_headings_and_fragments": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "germanic_latin_prose": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 0,
+              "quarantined": 5
+            },
+            "romance_latin_prose": {
+              "total": 5,
+              "correct": 5,
+              "accepted": 0,
+              "rejected": 5,
+              "quarantined": 0
+            },
+            "malformed_noise": {
+              "total": 3,
+              "correct": 2,
+              "accepted": 0,
+              "rejected": 2,
+              "quarantined": 1
+            },
+            "non_latin_script": {
+              "total": 2,
+              "correct": 2,
+              "accepted": 0,
+              "rejected": 2,
+              "quarantined": 0
+            }
+          },
+          "false_accepts_count": 0,
+          "false_rejects_count": 0,
+          "unnecessary_quarantines_count": 0,
+          "errors": [
+            {
+              "sample_id": "v6_lang_test_056",
+              "category": "malformed_noise",
+              "domain": "keyboard_mashing",
+              "expected": "REJECT",
+              "predicted": "QUARANTINE",
+              "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY",
+              "text_snippet": "plmqaz okwsxd ijnefc uhbvgy tgfcde rfvbgt edcxsw qazwsx edcrfv."
+            }
+          ],
+          "predictions": [
+            {
+              "sample_id": "v6_lang_test_001",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_002",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_003",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_004",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_005",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_006",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_007",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_008",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_009",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_010",
+              "category": "ordinary_english_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_011",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_012",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_013",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_014",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_015",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_016",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_017",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_018",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_019",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_020",
+              "category": "expository_academic_prose",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_021",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v6_lang_test_022",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v6_lang_test_023",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v6_lang_test_024",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v6_lang_test_025",
+              "category": "scientific_figure_captions",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ACADEMIC_CAPTION"
+            },
+            {
+              "sample_id": "v6_lang_test_026",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_027",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_028",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_029",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_030",
+              "category": "foreign_names_and_quotes",
+              "expected": "ACCEPT",
+              "predicted": "ACCEPT",
+              "is_correct": true,
+              "reason": "FLUENT_ENGLISH_PROSE"
+            },
+            {
+              "sample_id": "v6_lang_test_031",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v6_lang_test_032",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v6_lang_test_033",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v6_lang_test_034",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v6_lang_test_035",
+              "category": "code_sql_structured_data",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "CODE_SQL_QUERY_DATA"
+            },
+            {
+              "sample_id": "v6_lang_test_036",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v6_lang_test_037",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v6_lang_test_038",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v6_lang_test_039",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v6_lang_test_040",
+              "category": "imperative_signage_notices",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v6_lang_test_041",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v6_lang_test_042",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v6_lang_test_043",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v6_lang_test_044",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v6_lang_test_045",
+              "category": "short_headings_and_fragments",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE"
+            },
+            {
+              "sample_id": "v6_lang_test_046",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v6_lang_test_047",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v6_lang_test_048",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v6_lang_test_049",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v6_lang_test_050",
+              "category": "germanic_latin_prose",
+              "expected": "QUARANTINE",
+              "predicted": "QUARANTINE",
+              "is_correct": true,
+              "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK"
+            },
+            {
+              "sample_id": "v6_lang_test_051",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v6_lang_test_052",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v6_lang_test_053",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v6_lang_test_054",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v6_lang_test_055",
+              "category": "romance_latin_prose",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NO_ENGLISH_STOPWORDS"
+            },
+            {
+              "sample_id": "v6_lang_test_056",
+              "category": "malformed_noise",
+              "expected": "REJECT",
+              "predicted": "QUARANTINE",
+              "is_correct": false,
+              "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY"
+            },
+            {
+              "sample_id": "v6_lang_test_057",
+              "category": "malformed_noise",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "LOW_ALPHA_RATIO"
+            },
+            {
+              "sample_id": "v6_lang_test_058",
+              "category": "non_latin_script",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NON_ENGLISH_SCRIPT"
+            },
+            {
+              "sample_id": "v6_lang_test_059",
+              "category": "non_latin_script",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "NON_ENGLISH_SCRIPT"
+            },
+            {
+              "sample_id": "v6_lang_test_060",
+              "category": "malformed_noise",
+              "expected": "REJECT",
+              "predicted": "REJECT",
+              "is_correct": true,
+              "reason": "LOW_ALPHA_RATIO"
+            }
+          ]
+        },
+        "near_dedup_hash": "12b68aad93d2a29d62ade04ab2bac2a4e3ba8518c69fab22ccc378a842d938b4",
+        "task_b_test": {
+          "total_pairs": 20,
+          "correct_predictions": 20,
+          "incorrect_predictions": 0,
+          "stage2_candidate_screening": {
+            "tp": 8,
+            "fp": 11,
+            "tn": 1,
+            "fn": 0,
+            "precision": 0.4211,
+            "recall": 1.0
+          },
+          "stage3_final_decision": {
+            "tp": 8,
+            "fp": 0,
+            "tn": 12,
+            "fn": 0,
+            "accuracy": 1.0,
+            "accuracy_95_ci": [
+              0.8389,
+              1.0
+            ],
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positive_rate": 0.0,
+            "false_negative_rate": 0.0,
+            "false_merges_prevented": 11,
+            "safety_critical_false_merges": 0
+          },
+          "category_stats": {
+            "exact_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "reformatted_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "paraphrase_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "reordered_duplicate": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "unit_conversion_duplicate": {
+              "total": 4,
+              "correct": 4,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "distant_negative": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 0,
+              "s3_false_merges": 0,
+              "prevented": 0
+            },
+            "safety_dosage_inversion": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 1,
+              "s3_false_merges": 0,
+              "prevented": 1
+            },
+            "safety_unit_mismatch": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 2,
+              "s3_false_merges": 0,
+              "prevented": 2
+            },
+            "safety_date_mismatch": {
+              "total": 2,
+              "correct": 2,
+              "s2_false_merges": 2,
+              "s3_false_merges": 0,
+              "prevented": 2
+            },
+            "safety_polarity_inversion": {
+              "total": 3,
+              "correct": 3,
+              "s2_false_merges": 3,
+              "s3_false_merges": 0,
+              "prevented": 3
+            },
+            "safety_negation_inversion": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 1,
+              "s3_false_merges": 0,
+              "prevented": 1
+            },
+            "safety_identifier_conflict": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 1,
+              "s3_false_merges": 0,
+              "prevented": 1
+            },
+            "hard_negative_semantic_divergence": {
+              "total": 1,
+              "correct": 1,
+              "s2_false_merges": 1,
+              "s3_false_merges": 0,
+              "prevented": 1
+            }
+          },
+          "errors": [],
+          "predictions": [
+            {
+              "pair_id": "v6_dedup_test_001",
+              "category": "exact_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 1.0,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v6_dedup_test_002",
+              "category": "reformatted_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 1.0,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v6_dedup_test_003",
+              "category": "paraphrase_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8947,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v6_dedup_test_004",
+              "category": "reordered_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 1.0,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v6_dedup_test_005",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9219,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v6_dedup_test_006",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8125,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v6_dedup_test_007",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8906,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v6_dedup_test_008",
+              "category": "unit_conversion_duplicate",
+              "expected": true,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8281,
+              "s3_final_merge": true,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "MERGE_PERMITTED"
+            },
+            {
+              "pair_id": "v6_dedup_test_009",
+              "category": "distant_negative",
+              "expected": false,
+              "s2_candidate": false,
+              "candidate_similarity": 0.0312,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": null,
+              "reason": "Below candidate similarity threshold"
+            },
+            {
+              "pair_id": "v6_dedup_test_010",
+              "category": "safety_dosage_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8984,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NUMERICAL_MISMATCH",
+              "reason": "Numerical quantity discrepancy: {(0.015, 'g')} vs {(0.15, 'g')}"
+            },
+            {
+              "pair_id": "v6_dedup_test_011",
+              "category": "safety_unit_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8667,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "UNIT_MISMATCH",
+              "reason": "Incompatible physical units for identical quantity: {(30.0, 'count')} vs {(30.0, 'g')}"
+            },
+            {
+              "pair_id": "v6_dedup_test_012",
+              "category": "safety_unit_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8984,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "UNIT_MISMATCH",
+              "reason": "Incompatible physical units for identical quantity: {(25.0, 'm')} vs {(25.0, 's')}"
+            },
+            {
+              "pair_id": "v6_dedup_test_013",
+              "category": "safety_date_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9844,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NUMERICAL_MISMATCH",
+              "reason": "Numerical quantity discrepancy: {(1783.0, 'count')} vs {(1789.0, 'count')}"
+            },
+            {
+              "pair_id": "v6_dedup_test_014",
+              "category": "safety_date_mismatch",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8824,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "DATE_MISMATCH",
+              "reason": "Conflicting calendar month references: {'march'} vs {'october'}"
+            },
+            {
+              "pair_id": "v6_dedup_test_015",
+              "category": "safety_polarity_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8359,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "POLARITY_INVERSION",
+              "reason": "Contradictory polarity detected: '['safe', 'nontoxic']' vs '['harmful', 'toxic']'"
+            },
+            {
+              "pair_id": "v6_dedup_test_016",
+              "category": "safety_polarity_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.875,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "POLARITY_INVERSION",
+              "reason": "Contradictory polarity detected: '['greater']' vs '['less']'"
+            },
+            {
+              "pair_id": "v6_dedup_test_017",
+              "category": "safety_polarity_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.8984,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "POLARITY_INVERSION",
+              "reason": "Contradictory polarity detected: '['permitted']' vs '['prohibited']'"
+            },
+            {
+              "pair_id": "v6_dedup_test_018",
+              "category": "safety_negation_inversion",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9333,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NEGATION_INVERSION",
+              "reason": "Asymmetric negation particle detected: 'set()' vs '{'never'}'"
+            },
+            {
+              "pair_id": "v6_dedup_test_019",
+              "category": "safety_identifier_conflict",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.9531,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "NUMERICAL_MISMATCH",
+              "reason": "Numerical quantity discrepancy: {(301.0, 'count')} vs {(302.0, 'count')}"
+            },
+            {
+              "pair_id": "v6_dedup_test_020",
+              "category": "hard_negative_semantic_divergence",
+              "expected": false,
+              "s2_candidate": true,
+              "candidate_similarity": 0.875,
+              "s3_final_merge": false,
+              "is_correct": true,
+              "conflict_type": "POLARITY_INVERSION",
+              "reason": "Contradictory polarity detected: '['increased']' vs '['decreased']'"
+            }
+          ]
+        }
+      },
+      "v3": {
+        "language_hash": "246b44999add21bc17e114868bce5d675e3ec743b1ddcc71165d6616e7f6393c",
+        "near_dedup_hash": "5ba9f0e1b6f5fa697a1cbd96de9f7a14f5eab3c5cc0aada6a897476b2c067433"
+      }
+    }
+  }
+}

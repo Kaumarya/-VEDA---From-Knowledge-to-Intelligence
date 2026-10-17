@@ -1,0 +1,22 @@
+Creative Commons Attribution 2.5 Generic License
+
+THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER THAN AS AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+
+1. Definitions
+a. "Collective Work" means a work, such as a periodical issue, anthology or encyclopedia, in which the Work in its entirety in unmodified form, along with a number of other contributions, constituting separate and independent works in themselves, are assembled into a collective whole.
+b. "Derivative Work" means a work based upon the Work or upon the Work and other pre-existing works.
+c. "Licensor" means the individual or entity that offers the Work under the terms of this License.
+d. "Original Author" means the individual or entity who created the Work.
+e. "Work" means the copyrightable work of authorship offered under the terms of this License.
+f. "You" means an individual or entity exercising rights under this License.
+
+2. Fair Use Rights. Nothing in this license is intended to reduce, limit, or restrict any rights arising from fair use, first sale or other limitations on the exclusive rights of the copyright owner under copyright law or other applicable laws.
+
+3. License Grant. Subject to the terms and conditions of this License, Licensor hereby grants You a worldwide, royalty-free, non-exclusive, perpetual (for the duration of the applicable copyright) license to exercise the rights in the Work as stated below:
+a. to reproduce the Work, to incorporate the Work into one or more Collective Works, and to reproduce the Work as incorporated in the Collective Works;
+b. to create and reproduce Derivative Works;
+c. to distribute copies or phonorecords of, display publicly, perform publicly, and perform publicly by means of a digital audio transmission the Work including as incorporated in Collective Works.
+
+4. Restrictions. The license granted in Section 3 above is expressly made subject to and limited by the following restrictions:
+a. You may distribute, publicly display, publicly perform, or publicly digitally perform the Work only under the terms of this License.
+b. If you distribute, publicly display, publicly perform, or publicly digitally perform the Work or any Derivative Works or Collective Works, You must keep intact all copyright notices for the Work and give the Original Author credit reasonable to the medium or means You are utilizing.

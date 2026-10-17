@@ -1,0 +1,298 @@
+{
+  "metadata": {
+    "dataset_name": "eval_near_dedup_dataset_v6",
+    "version": "6.0",
+    "phase": "4.8",
+    "target": "100% Accuracy Recovery & Final Certification",
+    "annotation_rules": {
+      "True": "Exact duplicates, formatting/whitespace variants, reordered clauses, active/passive voice paraphrases, and equivalent SI/binary unit conversions.",
+      "False": "Disjoint texts, numerical discrepancies (including 10x dosage inversions), physical unit mismatches, date/month mismatches, identifier conflicts, polarity inversions, and negation flips."
+    },
+    "total_dev_pairs": 20,
+    "total_test_pairs": 20
+  },
+  "development_split": [
+    {
+      "pair_id": "v6_dedup_dev_001",
+      "category": "exact_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The archaeological excavation at the prehistoric cave site uncovered polished bone needles and flint blades.",
+      "text_b": "The archaeological excavation at the prehistoric cave site uncovered polished bone needles and flint blades."
+    },
+    {
+      "pair_id": "v6_dedup_dev_002",
+      "category": "reformatted_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The hydroelectric dam regulates river water flow and generates 450 megawatts of renewable electricity.",
+      "text_b": "The hydroelectric dam  regulates  river water flow\nand generates 450 megawatts of renewable electricity."
+    },
+    {
+      "pair_id": "v6_dedup_dev_003",
+      "category": "paraphrase_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The laboratory technician carefully titrated 25 ml of standard sodium hydroxide into the acidic solution.",
+      "text_b": "Into the acidic solution, 25 ml of standard sodium hydroxide was carefully titrated by the laboratory technician."
+    },
+    {
+      "pair_id": "v6_dedup_dev_004",
+      "category": "reordered_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "Solar panels generate direct current power. An inverter converts the direct current into alternating current.",
+      "text_b": "An inverter converts the direct current into alternating current. Solar panels generate direct current power."
+    },
+    {
+      "pair_id": "v6_dedup_dev_005",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The laboratory centrifuge accelerated the test tubes to an angular velocity equivalent to 1000 meters per second.",
+      "text_b": "The laboratory centrifuge accelerated the test tubes to an angular velocity equivalent to 1 kilometer per second."
+    },
+    {
+      "pair_id": "v6_dedup_dev_006",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The firmware flash image allocated exactly 2048 kilobytes of non-volatile storage for diagnostic crash dumps.",
+      "text_b": "The firmware flash image allocated exactly 2 megabytes of non-volatile storage for diagnostic crash dumps."
+    },
+    {
+      "pair_id": "v6_dedup_dev_007",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The patient received 500 milligrams of active therapeutic peptide solution through an intravenous catheter.",
+      "text_b": "The patient received 0.5 grams of active therapeutic peptide solution through an intravenous catheter."
+    },
+    {
+      "pair_id": "v6_dedup_dev_008",
+      "category": "exact_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "Glacial ice cores preserve air bubbles that record ancient atmospheric greenhouse gas concentrations over hundreds of millennia.",
+      "text_b": "Glacial ice cores preserve air bubbles that record ancient atmospheric greenhouse gas concentrations over hundreds of millennia."
+    },
+    {
+      "pair_id": "v6_dedup_dev_009",
+      "category": "distant_negative",
+      "is_true_duplicate": false,
+      "text_a": "The symphony orchestra performed Beethoven's Ninth Symphony in the historic concert hall before a capacity audience.",
+      "text_b": "Photosynthetic cyanobacteria in aquatic environments produce molecular oxygen while consuming dissolved carbon dioxide."
+    },
+    {
+      "pair_id": "v6_dedup_dev_010",
+      "category": "safety_dosage_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The clinical protocol specifies administering 20 milligrams of beta-blocker twice daily to regulate cardiac arrhythmias.",
+      "text_b": "The clinical protocol specifies administering 200 milligrams of beta-blocker twice daily to regulate cardiac arrhythmias."
+    },
+    {
+      "pair_id": "v6_dedup_dev_011",
+      "category": "safety_unit_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The technician confirmed that the cooling tank received exactly 50 liters of chilled purified coolant.",
+      "text_b": "The technician confirmed that the cooling tank received exactly 50 grams of chilled purified coolant."
+    },
+    {
+      "pair_id": "v6_dedup_dev_012",
+      "category": "safety_unit_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The acoustic sensor recorded an echo delay of exactly 15 seconds across the underwater canyon.",
+      "text_b": "The acoustic sensor recorded an echo delay of exactly 15 meters across the underwater canyon."
+    },
+    {
+      "pair_id": "v6_dedup_dev_013",
+      "category": "safety_date_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The historic armistice agreement was signed in the railway carriage on November 11, 1918.",
+      "text_b": "The historic armistice agreement was signed in the railway carriage on November 11, 1923."
+    },
+    {
+      "pair_id": "v6_dedup_dev_014",
+      "category": "safety_date_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The expedition departed from the port of Southampton in April 1912 on its inaugural transatlantic voyage.",
+      "text_b": "The expedition departed from the port of Southampton in August 1912 on its inaugural transatlantic voyage."
+    },
+    {
+      "pair_id": "v6_dedup_dev_015",
+      "category": "safety_polarity_inversion",
+      "is_true_duplicate": false,
+      "text_a": "Independent toxicological assays confirmed that the plasticizer additive was safe and nontoxic under elevated food contact temperatures.",
+      "text_b": "Independent toxicological assays confirmed that the plasticizer additive was toxic and dangerous under elevated food contact temperatures."
+    },
+    {
+      "pair_id": "v6_dedup_dev_016",
+      "category": "safety_polarity_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The final turbine energy conversion efficiency was measured as greater than 85% under continuous operating conditions.",
+      "text_b": "The final turbine energy conversion efficiency was measured as less than 85% under continuous operating conditions."
+    },
+    {
+      "pair_id": "v6_dedup_dev_017",
+      "category": "safety_polarity_inversion",
+      "is_true_duplicate": false,
+      "text_a": "Access to the high-security cryptographic vault is permitted for personnel holding clearance level five.",
+      "text_b": "Access to the high-security cryptographic vault is prohibited for personnel holding clearance level five."
+    },
+    {
+      "pair_id": "v6_dedup_dev_018",
+      "category": "safety_negation_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The secondary emergency backup generator operated as intended during the unexpected municipal blackout.",
+      "text_b": "The secondary emergency backup generator never operated as intended during the unexpected municipal blackout."
+    },
+    {
+      "pair_id": "v6_dedup_dev_019",
+      "category": "safety_identifier_conflict",
+      "is_true_duplicate": false,
+      "text_a": "The replacement aircraft turbofan engine was certified under serial code ENG-8421 following flight tests.",
+      "text_b": "The replacement aircraft turbofan engine was certified under serial code ENG-8422 following flight tests."
+    },
+    {
+      "pair_id": "v6_dedup_dev_020",
+      "category": "hard_negative_semantic_divergence",
+      "is_true_duplicate": false,
+      "text_a": "The research committee voted to approve the proposed quantum computing hardware budget for the upcoming fiscal quarter.",
+      "text_b": "The research committee voted to reject the proposed quantum computing hardware budget for the upcoming fiscal quarter."
+    }
+  ],
+  "test_split": [
+    {
+      "pair_id": "v6_dedup_test_001",
+      "category": "exact_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "Marine biologists tagged twenty juvenile green sea turtles to monitor their pelagic migratory corridors across the Pacific Ocean.",
+      "text_b": "Marine biologists tagged twenty juvenile green sea turtles to monitor their pelagic migratory corridors across the Pacific Ocean."
+    },
+    {
+      "pair_id": "v6_dedup_test_002",
+      "category": "reformatted_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The superconducting quantum interference device measures extremely faint magnetic field fluctuations in biological tissues.",
+      "text_b": "The superconducting quantum interference device measures extremely faint magnetic field fluctuations in biological tissues.  "
+    },
+    {
+      "pair_id": "v6_dedup_test_003",
+      "category": "paraphrase_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The attending surgeon advised the clinical team that 150 mg of cefazolin should be administered prior to the incision.",
+      "text_b": "Prior to the incision, the clinical team was advised by the attending surgeon that 150 mg of cefazolin should be administered."
+    },
+    {
+      "pair_id": "v6_dedup_test_004",
+      "category": "reordered_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The optical telescope captured deep space infrared imagery. Astronomical researchers analyzed the stellar spectra.",
+      "text_b": "Astronomical researchers analyzed the stellar spectra. The optical telescope captured deep space infrared imagery."
+    },
+    {
+      "pair_id": "v6_dedup_test_005",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The long-distance fiber optic link spanned a total continuous length of 5000 meters through the subterranean conduit.",
+      "text_b": "The long-distance fiber optic link spanned a total continuous length of 5 kilometers through the subterranean conduit."
+    },
+    {
+      "pair_id": "v6_dedup_test_006",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The high-speed network interface buffer reserved 1048576 bytes of system memory for incoming telemetry packet queues.",
+      "text_b": "The high-speed network interface buffer reserved 1 mib of system memory for incoming telemetry packet queues."
+    },
+    {
+      "pair_id": "v6_dedup_test_007",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The pharmaceutical compounding pharmacist weighed 2000 milligrams of ascorbic acid powder for the clinical formulation.",
+      "text_b": "The pharmaceutical compounding pharmacist weighed 2 grams of ascorbic acid powder for the clinical formulation."
+    },
+    {
+      "pair_id": "v6_dedup_test_008",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The environmental monitoring station recorded a continuous rainfall duration of 120 minutes during the thunderstorm.",
+      "text_b": "The environmental monitoring station recorded a continuous rainfall duration of 2 hours during the thunderstorm."
+    },
+    {
+      "pair_id": "v6_dedup_test_009",
+      "category": "distant_negative",
+      "is_true_duplicate": false,
+      "text_a": "Baroque architecture is characterized by dynamic spatial curves, dramatic lighting effects, and opulent trompe l'oeil frescoes.",
+      "text_b": "Binary star systems undergo orbital decay through the emission of gravitational waves predicted by general relativity."
+    },
+    {
+      "pair_id": "v6_dedup_test_010",
+      "category": "safety_dosage_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The critical patient care protocol dictates administering 15 milligrams of morphine sulfate intravenously every four hours.",
+      "text_b": "The critical patient care protocol dictates administering 150 milligrams of morphine sulfate intravenously every four hours."
+    },
+    {
+      "pair_id": "v6_dedup_test_011",
+      "category": "safety_unit_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The chemical reactor vessel was pressurized with 30 bars of compressed inert nitrogen gas.",
+      "text_b": "The chemical reactor vessel was pressurized with 30 grams of compressed inert nitrogen gas."
+    },
+    {
+      "pair_id": "v6_dedup_test_012",
+      "category": "safety_unit_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The industrial hydraulic cylinder exerted a linear travel distance of exactly 25 meters along the guide rail.",
+      "text_b": "The industrial hydraulic cylinder exerted a linear travel distance of exactly 25 seconds along the guide rail."
+    },
+    {
+      "pair_id": "v6_dedup_test_013",
+      "category": "safety_date_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The definitive peace treaty was ratified by plenipotentiary delegates in Paris on September 3, 1783.",
+      "text_b": "The definitive peace treaty was ratified by plenipotentiary delegates in Paris on September 3, 1789."
+    },
+    {
+      "pair_id": "v6_dedup_test_014",
+      "category": "safety_date_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The space exploration orbiter achieved lunar orbit insertion on March 14, 2021 after a four-day transit.",
+      "text_b": "The space exploration orbiter achieved lunar orbit insertion on October 14, 2021 after a four-day transit."
+    },
+    {
+      "pair_id": "v6_dedup_test_015",
+      "category": "safety_polarity_inversion",
+      "is_true_duplicate": false,
+      "text_a": "Preclinical laboratory toxicology assays demonstrated that the experimental reagent was nontoxic and safe for cellular cultures.",
+      "text_b": "Preclinical laboratory toxicology assays demonstrated that the experimental reagent was toxic and harmful for cellular cultures."
+    },
+    {
+      "pair_id": "v6_dedup_test_016",
+      "category": "safety_polarity_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The catalytic refinery cracking yield was measured as greater than 70% under standardized operating parameters.",
+      "text_b": "The catalytic refinery cracking yield was measured as less than 70% under standardized operating parameters."
+    },
+    {
+      "pair_id": "v6_dedup_test_017",
+      "category": "safety_polarity_inversion",
+      "is_true_duplicate": false,
+      "text_a": "Commercial import of the restricted organic agricultural pesticide is permitted under current environmental ministry regulations.",
+      "text_b": "Commercial import of the restricted organic agricultural pesticide is prohibited under current environmental ministry regulations."
+    },
+    {
+      "pair_id": "v6_dedup_test_018",
+      "category": "safety_negation_inversion",
+      "is_true_duplicate": false,
+      "text_a": "Safety inspectors verified that the primary emergency containment valve closed automatically during the pressure spike.",
+      "text_b": "Safety inspectors verified that the primary emergency containment valve never closed automatically during the pressure spike."
+    },
+    {
+      "pair_id": "v6_dedup_test_019",
+      "category": "safety_identifier_conflict",
+      "is_true_duplicate": false,
+      "text_a": "The avionics flight computer logged a minor sensor recalibration warning for navigation module NAV-301.",
+      "text_b": "The avionics flight computer logged a minor sensor recalibration warning for navigation module NAV-302."
+    },
+    {
+      "pair_id": "v6_dedup_test_020",
+      "category": "hard_negative_semantic_divergence",
+      "is_true_duplicate": false,
+      "text_a": "The clinical trial results showed that patient recovery times increased significantly following the new rehabilitation regimen.",
+      "text_b": "The clinical trial results showed that patient recovery times decreased significantly following the new rehabilitation regimen."
+    }
+  ]
+}

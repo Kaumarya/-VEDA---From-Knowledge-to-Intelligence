@@ -1,0 +1,164 @@
+{
+  "benchmark_type": "smoke_test_developmental",
+  "methodology_disclaimer": "MinHash/LSH is evaluated strictly as a scalable candidate-retrieval method. It must NOT be treated as a semantic-equivalence determination or copyright arbiter.",
+  "sample_size_limitation": "Evaluated on N=12 calibrated synthetic pairs. This serves as an algorithmic smoke test, not a production-scale accuracy claim.",
+  "threshold": 0.8,
+  "total_evaluated_pairs": 12,
+  "stage1_candidate_retrieval": {
+    "cand_true_positives": 5,
+    "cand_false_positives": 1,
+    "cand_true_negatives": 6,
+    "cand_false_negatives": 0,
+    "candidate_recall": 1.0,
+    "candidate_selectivity": 0.8571
+  },
+  "stage2_final_decision": {
+    "true_positives": 5,
+    "false_positives": 0,
+    "true_negatives": 7,
+    "false_negatives": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "specificity": 1.0,
+    "f1_score": 1.0,
+    "accuracy": 1.0,
+    "precision_95_ci": [
+      0.5655,
+      1.0
+    ],
+    "recall_95_ci": [
+      0.5655,
+      1.0
+    ]
+  },
+  "true_positives": 5,
+  "false_positives": 0,
+  "true_negatives": 7,
+  "false_negatives": 0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "specificity": 1.0,
+  "f1_score": 1.0,
+  "accuracy": 1.0,
+  "precision_95_ci": [
+    0.5655,
+    1.0
+  ],
+  "recall_95_ci": [
+    0.5655,
+    1.0
+  ],
+  "elapsed_seconds": 0.0315,
+  "pair_results": [
+    {
+      "pair_id": "eval_exact_001",
+      "category": "exact_duplicate",
+      "true_jaccard": 1.0,
+      "est_jaccard": 1.0,
+      "is_true_duplicate": true,
+      "is_retrieved_candidate": true,
+      "predicted_duplicate": true
+    },
+    {
+      "pair_id": "eval_near_ws_002",
+      "category": "reformatted_duplicate",
+      "true_jaccard": 0.9761,
+      "est_jaccard": 0.9766,
+      "is_true_duplicate": true,
+      "is_retrieved_candidate": true,
+      "predicted_duplicate": true
+    },
+    {
+      "pair_id": "eval_near_syn_003",
+      "category": "light_edit_duplicate",
+      "true_jaccard": 0.9571,
+      "est_jaccard": 0.9531,
+      "is_true_duplicate": true,
+      "is_retrieved_candidate": true,
+      "predicted_duplicate": true
+    },
+    {
+      "pair_id": "eval_reordered_004",
+      "category": "reordered_duplicate",
+      "true_jaccard": 0.9761,
+      "est_jaccard": 0.9922,
+      "is_true_duplicate": true,
+      "is_retrieved_candidate": true,
+      "predicted_duplicate": true
+    },
+    {
+      "pair_id": "eval_ocr_005",
+      "category": "ocr_error_duplicate",
+      "true_jaccard": 0.9573,
+      "est_jaccard": 0.9766,
+      "is_true_duplicate": true,
+      "is_retrieved_candidate": true,
+      "predicted_duplicate": true
+    },
+    {
+      "pair_id": "eval_hard_neg_domain_006",
+      "category": "hard_negative_domain_overlap",
+      "true_jaccard": 0.5816,
+      "est_jaccard": 0.5938,
+      "is_true_duplicate": false,
+      "is_retrieved_candidate": true,
+      "predicted_duplicate": false
+    },
+    {
+      "pair_id": "eval_hard_neg_inversion_007",
+      "category": "hard_negative_semantic_inversion",
+      "true_jaccard": 0.5225,
+      "est_jaccard": 0.4844,
+      "is_true_duplicate": false,
+      "is_retrieved_candidate": false,
+      "predicted_duplicate": false
+    },
+    {
+      "pair_id": "eval_hard_neg_boilerplate_008",
+      "category": "hard_negative_shared_boilerplate",
+      "true_jaccard": 0.2871,
+      "est_jaccard": 0.2969,
+      "is_true_duplicate": false,
+      "is_retrieved_candidate": false,
+      "predicted_duplicate": false
+    },
+    {
+      "pair_id": "eval_hard_neg_params_009",
+      "category": "hard_negative_technical_overlap",
+      "true_jaccard": 0.4959,
+      "est_jaccard": 0.4531,
+      "is_true_duplicate": false,
+      "is_retrieved_candidate": false,
+      "predicted_duplicate": false
+    },
+    {
+      "pair_id": "eval_distant_neg_010",
+      "category": "distant_negative",
+      "true_jaccard": 0.0149,
+      "est_jaccard": 0.0,
+      "is_true_duplicate": false,
+      "is_retrieved_candidate": false,
+      "predicted_duplicate": false
+    },
+    {
+      "pair_id": "eval_partial_overlap_011",
+      "category": "partial_overlap_negative",
+      "true_jaccard": 0.3456,
+      "est_jaccard": 0.3281,
+      "is_true_duplicate": false,
+      "is_retrieved_candidate": false,
+      "predicted_duplicate": false
+    },
+    {
+      "pair_id": "eval_critical_numerical_inversion_012",
+      "category": "hard_negative_semantic_inversion",
+      "true_jaccard": 0.7857,
+      "est_jaccard": 0.7812,
+      "is_true_duplicate": false,
+      "is_retrieved_candidate": false,
+      "predicted_duplicate": false
+    }
+  ],
+  "false_positive_examples": [],
+  "false_negative_examples": []
+}

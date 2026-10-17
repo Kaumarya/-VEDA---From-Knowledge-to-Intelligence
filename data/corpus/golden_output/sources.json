@@ -1,0 +1,30 @@
+[
+  {
+    "source_id": "golden_permitted_source",
+    "name": "VEDA Golden Test Permitted Archive",
+    "version": "1.0",
+    "url_or_path": "https://veda-corpus.local/golden_permitted.tar.gz",
+    "acquisition_date": "2026-10-02",
+    "source_hash": "a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f90",
+    "license": "CC0-1.0",
+    "licensing_status": "VERIFIED PERMITTED",
+    "language": "en",
+    "source_type": "essay",
+    "attribution": "Public Domain Golden Fixture",
+    "description": "Standard permitted public domain educational corpus"
+  },
+  {
+    "source_id": "golden_excluded_source",
+    "name": "VEDA Golden Test Excluded Source",
+    "version": "1.0",
+    "url_or_path": "https://veda-corpus.local/golden_restricted.tar.gz",
+    "acquisition_date": "2026-10-02",
+    "source_hash": "f9e8d7c6b5a403129847563210abcdefa1b2c3d4e5f60718293a4b5c6d7e8f90",
+    "license": "Proprietary",
+    "licensing_status": "EXCLUDED",
+    "language": "en",
+    "source_type": "book",
+    "attribution": "Restricted commercial work",
+    "description": "Unpermitted proprietary material"
+  }
+]

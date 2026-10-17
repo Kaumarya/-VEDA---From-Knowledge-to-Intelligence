@@ -1,0 +1,13 @@
+UBUNTU DIALOGUE CORPUS — EXCLUSION & FORENSIC RIGHTS MEMORANDUM
+Document ID: VEDA-EVIDENCE-UBUNTU-EXCLUSION-v0.1
+Date: 2026-10-15
+
+1. Provenance:
+The Ubuntu Dialogue Corpus consists of scraped multi-turn chat logs from the Freenode #ubuntu IRC channel between 2004 and 2014.
+
+2. Legal & Privacy Obstacles:
+(a) Copyright Status: Chat logs represent conversational messages by tens of thousands of individual user contributors. IRC participants never signed a copyright assignment, contributor license agreement (CLA), or public domain dedication. The dataset curator does not own the copyright in the messages.
+(b) Privacy & PII Risks: Unfiltered logs contain personal usernames, real names, email addresses, IP addresses, system configuration secrets, and conversational personal data scraped without consent (violating GDPR Article 6 principles and privacy expectations).
+(c) Distribution Rights: Redistribution of scraped private/semi-public logs without individual consent is legally high-risk.
+
+3. Final Governance State: EXCLUDED (Permanently barred from VEDA training corpus).

@@ -1,0 +1,43 @@
+{
+  "audit_timestamp": "2026-10-17T21:55:00Z",
+  "benchmark_versions_checked": [
+    "v3",
+    "v4",
+    "v5",
+    "v6",
+    "v7"
+  ],
+  "task_a_language": {
+    "v8_sample_counts": {
+      "dev": 60,
+      "test": 60,
+      "total": 120
+    },
+    "exact_matches_prior": [],
+    "normalized_matches_prior": [],
+    "high_jaccard_overlaps_prior": [],
+    "cross_split_dev_test_matches": [],
+    "test_file_literal_overlaps": []
+  },
+  "task_b_near_dedup": {
+    "v8_pair_counts": {
+      "dev": 20,
+      "test": 20,
+      "total": 40
+    },
+    "exact_pair_matches_prior": [],
+    "reversed_pair_matches_prior": [],
+    "normalized_pair_matches_prior": [],
+    "cross_split_dev_test_matches": []
+  },
+  "summary": {
+    "task_a_exact_matches": 0,
+    "task_a_normalized_matches": 0,
+    "task_a_high_jaccard_matches": 0,
+    "task_a_cross_split_matches": 0,
+    "task_a_test_file_overlaps": 0,
+    "task_b_exact_matches": 0,
+    "task_b_normalized_matches": 0,
+    "task_b_cross_split_matches": 0
+  }
+}

@@ -1,7 +1,15 @@
 # VEDA: From Knowledge to Intelligence
-# Core dependencies for Phase 1 are Python standard library (Python 3.9+) only.
-# As the project scales through later phases, numerical and deep learning
-# dependencies (such as numpy, torch) will be added explicitly.
+# Core and development dependencies for VEDA corpus, testing, and from-scratch model foundation.
+# Standardized Python Version: Python 3.14 (Verified on Python 3.14.8 AMD64)
+# For exact reproducible virtual environment lockfile, see requirements-lock-py314.txt
 
-# Optional development & testing tools:
-# pytest>=7.0.0
+# Core numerical & machine learning foundations (for from-scratch neural architecture)
+numpy>=2.5.0
+torch>=2.14.0
+
+# Memory, system measurement & storage tracking
+psutil>=7.0.0
+
+# Testing & verification framework
+pytest>=9.0.0
+

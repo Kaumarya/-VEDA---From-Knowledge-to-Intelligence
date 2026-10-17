@@ -52,3 +52,18 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Model checkpoints & temporary artifacts
+*.pt
+*.bin
+*.safetensors
+artifacts/
+scratch/
+
+# Local environment & secret files
+.env
+.env.*
+*.key
+*.pem
+*.cert
+

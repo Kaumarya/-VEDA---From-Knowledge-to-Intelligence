@@ -774,13 +774,13 @@ class SqliteLexiconBuilder:
             ),
         )
 
-        conn.commit()
-        conn.close()
+        try:
+            conn.commit()
+        finally:
+            conn.close()
 
         # Atomic final rename if building into temp database
         if rebuild and working_db != target_db:
-            if target_db.is_file():
-                target_db.unlink()
-            working_db.rename(target_db)
+            os.replace(working_db, target_db)
 
         return SqliteLexicon(target_db, read_only=True, registry=self.analyzer.registry)

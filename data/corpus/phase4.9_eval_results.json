@@ -1,0 +1,2087 @@
+{
+  "timestamp_utc": "2026-10-17T16:19:07.228550+00:00",
+  "phase": "4.9",
+  "objective": "Blind Final Certification Preparation & Readiness",
+  "governance_status": "LOCKED (Phase 5 advance strictly paused)",
+  "environment": {
+    "interpreter": "C:\\Users\\karnik YOGA\\OneDrive\\Desktop\\veda\\.venv\\Scripts\\python.exe",
+    "python_version": "3.14.8",
+    "is_standardized_python_314": true,
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "benchmark_provenance_and_hashes": {
+    "eval_language_dataset_v7.json": "99291f7c75370abe37b7d3e2e8c0d2d7977c38c18c458cadf958f3a79ecb1a4d",
+    "eval_near_dedup_dataset_v7.json": "f44be30ccbd82af6e6ed93fdb175bdc3708c0204c26d0db69f4a6eb7f1ce1370"
+  },
+  "regression_benchmarks": {
+    "v3_authentic": {
+      "language_test": {
+        "accuracy": 1.0,
+        "f1": 1.0
+      },
+      "near_dedup_test": {
+        "accuracy": 1.0,
+        "false_positives": 0
+      }
+    },
+    "v6_dev_regression": {
+      "language_test": {
+        "accuracy": 1.0,
+        "f1": 1.0
+      },
+      "near_dedup_test": {
+        "accuracy": 1.0,
+        "false_positives": 0
+      }
+    }
+  },
+  "v7_benchmark_results": {
+    "language_dev": {
+      "total_samples": 60,
+      "correct_predictions": 60,
+      "incorrect_predictions": 0,
+      "accuracy": 1.0,
+      "accuracy_95_ci": [
+        0.9398,
+        1.0
+      ],
+      "precision_accept": 1.0,
+      "recall_accept": 1.0,
+      "f1_accept": 1.0,
+      "per_class": {
+        "ACCEPT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "QUARANTINE": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "REJECT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      },
+      "confusion_matrix": {
+        "ACCEPT": {
+          "ACCEPT": 30,
+          "QUARANTINE": 0,
+          "REJECT": 0
+        },
+        "QUARANTINE": {
+          "ACCEPT": 0,
+          "QUARANTINE": 20,
+          "REJECT": 0
+        },
+        "REJECT": {
+          "ACCEPT": 0,
+          "QUARANTINE": 0,
+          "REJECT": 10
+        }
+      },
+      "category_stats": {
+        "ordinary_english_prose": {
+          "total": 10,
+          "correct": 10,
+          "accepted": 10,
+          "rejected": 0,
+          "quarantined": 0
+        },
+        "expository_academic_prose": {
+          "total": 10,
+          "correct": 10,
+          "accepted": 10,
+          "rejected": 0,
+          "quarantined": 0
+        },
+        "scientific_figure_captions": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 5,
+          "rejected": 0,
+          "quarantined": 0
+        },
+        "foreign_names_and_quotes": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 5,
+          "rejected": 0,
+          "quarantined": 0
+        },
+        "code_sql_structured_data": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 0,
+          "rejected": 0,
+          "quarantined": 5
+        },
+        "imperative_signage_notices": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 0,
+          "rejected": 0,
+          "quarantined": 5
+        },
+        "short_headings_and_fragments": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 0,
+          "rejected": 0,
+          "quarantined": 5
+        },
+        "germanic_latin_prose": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 0,
+          "rejected": 0,
+          "quarantined": 5
+        },
+        "romance_latin_prose": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 0,
+          "rejected": 5,
+          "quarantined": 0
+        },
+        "non_latin_script": {
+          "total": 2,
+          "correct": 2,
+          "accepted": 0,
+          "rejected": 2,
+          "quarantined": 0
+        },
+        "malformed_noise": {
+          "total": 3,
+          "correct": 3,
+          "accepted": 0,
+          "rejected": 3,
+          "quarantined": 0
+        }
+      },
+      "false_accepts_count": 0,
+      "false_rejects_count": 0,
+      "unnecessary_quarantines_count": 0,
+      "errors": [],
+      "predictions": [
+        {
+          "sample_id": "v7_lang_dev_001",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9574403815580287
+        },
+        {
+          "sample_id": "v7_lang_dev_002",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9603100775193799
+        },
+        {
+          "sample_id": "v7_lang_dev_003",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9596694214876033
+        },
+        {
+          "sample_id": "v7_lang_dev_004",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9598373983739837
+        },
+        {
+          "sample_id": "v7_lang_dev_005",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9606015037593986
+        },
+        {
+          "sample_id": "v7_lang_dev_006",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9600000000000001
+        },
+        {
+          "sample_id": "v7_lang_dev_007",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.959406779661017
+        },
+        {
+          "sample_id": "v7_lang_dev_008",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9598373983739837
+        },
+        {
+          "sample_id": "v7_lang_dev_009",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9591304347826087
+        },
+        {
+          "sample_id": "v7_lang_dev_010",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9600000000000001
+        },
+        {
+          "sample_id": "v7_lang_dev_011",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9513432835820895
+        },
+        {
+          "sample_id": "v7_lang_dev_012",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9598373983739837
+        },
+        {
+          "sample_id": "v7_lang_dev_013",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9600793650793652
+        },
+        {
+          "sample_id": "v7_lang_dev_014",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.959406779661017
+        },
+        {
+          "sample_id": "v7_lang_dev_015",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9600000000000001
+        },
+        {
+          "sample_id": "v7_lang_dev_016",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9606716417910447
+        },
+        {
+          "sample_id": "v7_lang_dev_017",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9602343750000001
+        },
+        {
+          "sample_id": "v7_lang_dev_018",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9589380530973451
+        },
+        {
+          "sample_id": "v7_lang_dev_019",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9601574803149607
+        },
+        {
+          "sample_id": "v7_lang_dev_020",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9606716417910447
+        },
+        {
+          "sample_id": "v7_lang_dev_021",
+          "category": "scientific_figure_captions",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ACADEMIC_CAPTION",
+          "quality_score": 0.95
+        },
+        {
+          "sample_id": "v7_lang_dev_022",
+          "category": "scientific_figure_captions",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ACADEMIC_CAPTION",
+          "quality_score": 0.95
+        },
+        {
+          "sample_id": "v7_lang_dev_023",
+          "category": "scientific_figure_captions",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ACADEMIC_CAPTION",
+          "quality_score": 0.95
+        },
+        {
+          "sample_id": "v7_lang_dev_024",
+          "category": "scientific_figure_captions",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ACADEMIC_CAPTION",
+          "quality_score": 0.95
+        },
+        {
+          "sample_id": "v7_lang_dev_025",
+          "category": "scientific_figure_captions",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ACADEMIC_CAPTION",
+          "quality_score": 0.95
+        },
+        {
+          "sample_id": "v7_lang_dev_026",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9597540983606557
+        },
+        {
+          "sample_id": "v7_lang_dev_027",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9602343750000001
+        },
+        {
+          "sample_id": "v7_lang_dev_028",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9578814338235294
+        },
+        {
+          "sample_id": "v7_lang_dev_029",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9513432835820895
+        },
+        {
+          "sample_id": "v7_lang_dev_030",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9598373983739837
+        },
+        {
+          "sample_id": "v7_lang_dev_031",
+          "category": "code_sql_structured_data",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "CODE_SQL_QUERY_DATA",
+          "quality_score": 0.35
+        },
+        {
+          "sample_id": "v7_lang_dev_032",
+          "category": "code_sql_structured_data",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "CODE_SQL_QUERY_DATA",
+          "quality_score": 0.35
+        },
+        {
+          "sample_id": "v7_lang_dev_033",
+          "category": "code_sql_structured_data",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "CODE_SQL_QUERY_DATA",
+          "quality_score": 0.35
+        },
+        {
+          "sample_id": "v7_lang_dev_034",
+          "category": "code_sql_structured_data",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "CODE_SQL_QUERY_DATA",
+          "quality_score": 0.35
+        },
+        {
+          "sample_id": "v7_lang_dev_035",
+          "category": "code_sql_structured_data",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "CODE_SQL_QUERY_DATA",
+          "quality_score": 0.35
+        },
+        {
+          "sample_id": "v7_lang_dev_036",
+          "category": "imperative_signage_notices",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.4
+        },
+        {
+          "sample_id": "v7_lang_dev_037",
+          "category": "imperative_signage_notices",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.4
+        },
+        {
+          "sample_id": "v7_lang_dev_038",
+          "category": "imperative_signage_notices",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.4
+        },
+        {
+          "sample_id": "v7_lang_dev_039",
+          "category": "imperative_signage_notices",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.4
+        },
+        {
+          "sample_id": "v7_lang_dev_040",
+          "category": "imperative_signage_notices",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.4
+        },
+        {
+          "sample_id": "v7_lang_dev_041",
+          "category": "short_headings_and_fragments",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.9501587301587301
+        },
+        {
+          "sample_id": "v7_lang_dev_042",
+          "category": "short_headings_and_fragments",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.9468518518518519
+        },
+        {
+          "sample_id": "v7_lang_dev_043",
+          "category": "short_headings_and_fragments",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.9480701754385964
+        },
+        {
+          "sample_id": "v7_lang_dev_044",
+          "category": "short_headings_and_fragments",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.9591003460207613
+        },
+        {
+          "sample_id": "v7_lang_dev_045",
+          "category": "short_headings_and_fragments",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.9356634746922025
+        },
+        {
+          "sample_id": "v7_lang_dev_046",
+          "category": "germanic_latin_prose",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+          "quality_score": 0.9586363636363636
+        },
+        {
+          "sample_id": "v7_lang_dev_047",
+          "category": "germanic_latin_prose",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+          "quality_score": 0.9574999999999999
+        },
+        {
+          "sample_id": "v7_lang_dev_048",
+          "category": "germanic_latin_prose",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_dev_049",
+          "category": "germanic_latin_prose",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_dev_050",
+          "category": "germanic_latin_prose",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_dev_051",
+          "category": "romance_latin_prose",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_dev_052",
+          "category": "romance_latin_prose",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_dev_053",
+          "category": "romance_latin_prose",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_dev_054",
+          "category": "romance_latin_prose",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_dev_055",
+          "category": "romance_latin_prose",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_dev_056",
+          "category": "non_latin_script",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "NON_ENGLISH_SCRIPT",
+          "quality_score": 0.1
+        },
+        {
+          "sample_id": "v7_lang_dev_057",
+          "category": "non_latin_script",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "TOO_SHORT_WORDS",
+          "quality_score": 0.15
+        },
+        {
+          "sample_id": "v7_lang_dev_058",
+          "category": "malformed_noise",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "TOO_SHORT_WORDS",
+          "quality_score": 0.15
+        },
+        {
+          "sample_id": "v7_lang_dev_059",
+          "category": "malformed_noise",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "LOW_ALPHA_RATIO",
+          "quality_score": 0.25
+        },
+        {
+          "sample_id": "v7_lang_dev_060",
+          "category": "malformed_noise",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "LOW_ALPHA_RATIO",
+          "quality_score": 0.25
+        }
+      ]
+    },
+    "language_test": {
+      "total_samples": 60,
+      "correct_predictions": 60,
+      "incorrect_predictions": 0,
+      "accuracy": 1.0,
+      "accuracy_95_ci": [
+        0.9398,
+        1.0
+      ],
+      "precision_accept": 1.0,
+      "recall_accept": 1.0,
+      "f1_accept": 1.0,
+      "per_class": {
+        "ACCEPT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "QUARANTINE": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "REJECT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      },
+      "confusion_matrix": {
+        "ACCEPT": {
+          "ACCEPT": 30,
+          "QUARANTINE": 0,
+          "REJECT": 0
+        },
+        "QUARANTINE": {
+          "ACCEPT": 0,
+          "QUARANTINE": 20,
+          "REJECT": 0
+        },
+        "REJECT": {
+          "ACCEPT": 0,
+          "QUARANTINE": 0,
+          "REJECT": 10
+        }
+      },
+      "category_stats": {
+        "ordinary_english_prose": {
+          "total": 10,
+          "correct": 10,
+          "accepted": 10,
+          "rejected": 0,
+          "quarantined": 0
+        },
+        "expository_academic_prose": {
+          "total": 10,
+          "correct": 10,
+          "accepted": 10,
+          "rejected": 0,
+          "quarantined": 0
+        },
+        "scientific_figure_captions": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 5,
+          "rejected": 0,
+          "quarantined": 0
+        },
+        "foreign_names_and_quotes": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 5,
+          "rejected": 0,
+          "quarantined": 0
+        },
+        "code_sql_structured_data": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 0,
+          "rejected": 0,
+          "quarantined": 5
+        },
+        "imperative_signage_notices": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 0,
+          "rejected": 0,
+          "quarantined": 5
+        },
+        "short_headings_and_fragments": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 0,
+          "rejected": 0,
+          "quarantined": 5
+        },
+        "germanic_latin_prose": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 0,
+          "rejected": 0,
+          "quarantined": 5
+        },
+        "romance_latin_prose": {
+          "total": 5,
+          "correct": 5,
+          "accepted": 0,
+          "rejected": 5,
+          "quarantined": 0
+        },
+        "non_latin_script": {
+          "total": 2,
+          "correct": 2,
+          "accepted": 0,
+          "rejected": 2,
+          "quarantined": 0
+        },
+        "malformed_noise": {
+          "total": 3,
+          "correct": 3,
+          "accepted": 0,
+          "rejected": 3,
+          "quarantined": 0
+        }
+      },
+      "false_accepts_count": 0,
+      "false_rejects_count": 0,
+      "unnecessary_quarantines_count": 0,
+      "errors": [],
+      "predictions": [
+        {
+          "sample_id": "v7_lang_test_001",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9585321100917431
+        },
+        {
+          "sample_id": "v7_lang_test_002",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9586363636363636
+        },
+        {
+          "sample_id": "v7_lang_test_003",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9577450980392156
+        },
+        {
+          "sample_id": "v7_lang_test_004",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9593162393162394
+        },
+        {
+          "sample_id": "v7_lang_test_005",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9468518518518519
+        },
+        {
+          "sample_id": "v7_lang_test_006",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9579807692307692
+        },
+        {
+          "sample_id": "v7_lang_test_007",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.959406779661017
+        },
+        {
+          "sample_id": "v7_lang_test_008",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9584259259259259
+        },
+        {
+          "sample_id": "v7_lang_test_009",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9596694214876033
+        },
+        {
+          "sample_id": "v7_lang_test_010",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9587387387387388
+        },
+        {
+          "sample_id": "v7_lang_test_011",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9478761061946902
+        },
+        {
+          "sample_id": "v7_lang_test_012",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9597540983606557
+        },
+        {
+          "sample_id": "v7_lang_test_013",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9379487179487179
+        },
+        {
+          "sample_id": "v7_lang_test_014",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9603100775193799
+        },
+        {
+          "sample_id": "v7_lang_test_015",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9597540983606557
+        },
+        {
+          "sample_id": "v7_lang_test_016",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9567774936061382
+        },
+        {
+          "sample_id": "v7_lang_test_017",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9599193548387096
+        },
+        {
+          "sample_id": "v7_lang_test_018",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9488135593220338
+        },
+        {
+          "sample_id": "v7_lang_test_019",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9593162393162394
+        },
+        {
+          "sample_id": "v7_lang_test_020",
+          "category": "expository_academic_prose",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9501587301587301
+        },
+        {
+          "sample_id": "v7_lang_test_021",
+          "category": "scientific_figure_captions",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ACADEMIC_CAPTION",
+          "quality_score": 0.95
+        },
+        {
+          "sample_id": "v7_lang_test_022",
+          "category": "scientific_figure_captions",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ACADEMIC_CAPTION",
+          "quality_score": 0.95
+        },
+        {
+          "sample_id": "v7_lang_test_023",
+          "category": "scientific_figure_captions",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ACADEMIC_CAPTION",
+          "quality_score": 0.95
+        },
+        {
+          "sample_id": "v7_lang_test_024",
+          "category": "scientific_figure_captions",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ACADEMIC_CAPTION",
+          "quality_score": 0.95
+        },
+        {
+          "sample_id": "v7_lang_test_025",
+          "category": "scientific_figure_captions",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ACADEMIC_CAPTION",
+          "quality_score": 0.95
+        },
+        {
+          "sample_id": "v7_lang_test_026",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9471456123432981
+        },
+        {
+          "sample_id": "v7_lang_test_027",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9596694214876033
+        },
+        {
+          "sample_id": "v7_lang_test_028",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9561519607843137
+        },
+        {
+          "sample_id": "v7_lang_test_029",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9600000000000001
+        },
+        {
+          "sample_id": "v7_lang_test_030",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "predicted": "ACCEPT",
+          "is_correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "quality_score": 0.9590350877192982
+        },
+        {
+          "sample_id": "v7_lang_test_031",
+          "category": "code_sql_structured_data",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "CODE_SQL_QUERY_DATA",
+          "quality_score": 0.35
+        },
+        {
+          "sample_id": "v7_lang_test_032",
+          "category": "code_sql_structured_data",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "CODE_SQL_QUERY_DATA",
+          "quality_score": 0.35
+        },
+        {
+          "sample_id": "v7_lang_test_033",
+          "category": "code_sql_structured_data",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "CODE_SQL_QUERY_DATA",
+          "quality_score": 0.35
+        },
+        {
+          "sample_id": "v7_lang_test_034",
+          "category": "code_sql_structured_data",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "CODE_SQL_QUERY_DATA",
+          "quality_score": 0.35
+        },
+        {
+          "sample_id": "v7_lang_test_035",
+          "category": "code_sql_structured_data",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "CODE_SQL_QUERY_DATA",
+          "quality_score": 0.35
+        },
+        {
+          "sample_id": "v7_lang_test_036",
+          "category": "imperative_signage_notices",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.4
+        },
+        {
+          "sample_id": "v7_lang_test_037",
+          "category": "imperative_signage_notices",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.4
+        },
+        {
+          "sample_id": "v7_lang_test_038",
+          "category": "imperative_signage_notices",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.4
+        },
+        {
+          "sample_id": "v7_lang_test_039",
+          "category": "imperative_signage_notices",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.4
+        },
+        {
+          "sample_id": "v7_lang_test_040",
+          "category": "imperative_signage_notices",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.4
+        },
+        {
+          "sample_id": "v7_lang_test_041",
+          "category": "short_headings_and_fragments",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.9309375000000001
+        },
+        {
+          "sample_id": "v7_lang_test_042",
+          "category": "short_headings_and_fragments",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY",
+          "quality_score": 0.9498387096774193
+        },
+        {
+          "sample_id": "v7_lang_test_043",
+          "category": "short_headings_and_fragments",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.9495081967213116
+        },
+        {
+          "sample_id": "v7_lang_test_044",
+          "category": "short_headings_and_fragments",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.9678701825557808
+        },
+        {
+          "sample_id": "v7_lang_test_045",
+          "category": "short_headings_and_fragments",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE",
+          "quality_score": 0.9460266370699223
+        },
+        {
+          "sample_id": "v7_lang_test_046",
+          "category": "germanic_latin_prose",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_test_047",
+          "category": "germanic_latin_prose",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_test_048",
+          "category": "germanic_latin_prose",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+          "quality_score": 0.9482608695652174
+        },
+        {
+          "sample_id": "v7_lang_test_049",
+          "category": "germanic_latin_prose",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_test_050",
+          "category": "germanic_latin_prose",
+          "expected": "QUARANTINE",
+          "predicted": "QUARANTINE",
+          "is_correct": true,
+          "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_test_051",
+          "category": "romance_latin_prose",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_test_052",
+          "category": "romance_latin_prose",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_test_053",
+          "category": "romance_latin_prose",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_test_054",
+          "category": "romance_latin_prose",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_test_055",
+          "category": "romance_latin_prose",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "quality_score": 0.3
+        },
+        {
+          "sample_id": "v7_lang_test_056",
+          "category": "non_latin_script",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "NON_ENGLISH_SCRIPT",
+          "quality_score": 0.1
+        },
+        {
+          "sample_id": "v7_lang_test_057",
+          "category": "non_latin_script",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "TOO_SHORT_WORDS",
+          "quality_score": 0.15
+        },
+        {
+          "sample_id": "v7_lang_test_058",
+          "category": "malformed_noise",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "TOO_SHORT_WORDS",
+          "quality_score": 0.15
+        },
+        {
+          "sample_id": "v7_lang_test_059",
+          "category": "malformed_noise",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "LOW_ALPHA_RATIO",
+          "quality_score": 0.25
+        },
+        {
+          "sample_id": "v7_lang_test_060",
+          "category": "malformed_noise",
+          "expected": "REJECT",
+          "predicted": "REJECT",
+          "is_correct": true,
+          "reason": "LOW_ALPHA_RATIO",
+          "quality_score": 0.25
+        }
+      ]
+    },
+    "near_dedup_dev": {
+      "total_pairs": 20,
+      "correct_predictions": 20,
+      "incorrect_predictions": 0,
+      "stage2_screening": {
+        "true_positives": 8,
+        "false_positives": 11,
+        "true_negatives": 1,
+        "false_negatives": 0,
+        "precision": 0.4211,
+        "recall": 1.0
+      },
+      "stage3_safety_guard": {
+        "true_positives": 8,
+        "false_positives": 0,
+        "true_negatives": 12,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "accuracy": 1.0,
+        "accuracy_95_ci": [
+          0.8389,
+          1.0
+        ],
+        "false_merges_prevented": 11
+      },
+      "category_breakdown": {
+        "exact_duplicate": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 0,
+          "s3_false_merges": 0,
+          "prevented": 0
+        },
+        "reformatted_duplicate": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 0,
+          "s3_false_merges": 0,
+          "prevented": 0
+        },
+        "paraphrase_duplicate": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 0,
+          "s3_false_merges": 0,
+          "prevented": 0
+        },
+        "reordered_duplicate": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 0,
+          "s3_false_merges": 0,
+          "prevented": 0
+        },
+        "unit_conversion_duplicate": {
+          "total": 4,
+          "correct": 4,
+          "s2_false_merges": 0,
+          "s3_false_merges": 0,
+          "prevented": 0
+        },
+        "distant_negative": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 0,
+          "s3_false_merges": 0,
+          "prevented": 0
+        },
+        "hard_negative_semantic_divergence": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 1,
+          "s3_false_merges": 0,
+          "prevented": 1
+        },
+        "safety_dosage_inversion": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 1,
+          "s3_false_merges": 0,
+          "prevented": 1
+        },
+        "safety_unit_mismatch": {
+          "total": 2,
+          "correct": 2,
+          "s2_false_merges": 2,
+          "s3_false_merges": 0,
+          "prevented": 2
+        },
+        "safety_date_mismatch": {
+          "total": 2,
+          "correct": 2,
+          "s2_false_merges": 2,
+          "s3_false_merges": 0,
+          "prevented": 2
+        },
+        "safety_polarity_inversion": {
+          "total": 3,
+          "correct": 3,
+          "s2_false_merges": 3,
+          "s3_false_merges": 0,
+          "prevented": 3
+        },
+        "safety_negation_inversion": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 1,
+          "s3_false_merges": 0,
+          "prevented": 1
+        },
+        "safety_identifier_conflict": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 1,
+          "s3_false_merges": 0,
+          "prevented": 1
+        }
+      },
+      "errors": [],
+      "predictions": [
+        {
+          "pair_id": "v7_dedup_dev_001",
+          "category": "exact_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 1.0,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_dev_002",
+          "category": "reformatted_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 1.0,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_dev_003",
+          "category": "paraphrase_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8824,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_dev_004",
+          "category": "reordered_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 1.0,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_dev_005",
+          "category": "unit_conversion_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8594,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_dev_006",
+          "category": "unit_conversion_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8203,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_dev_007",
+          "category": "unit_conversion_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8125,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_dev_008",
+          "category": "unit_conversion_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8672,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_dev_009",
+          "category": "distant_negative",
+          "expected": false,
+          "s2_candidate": false,
+          "candidate_similarity": 0.0357,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "S2_BELOW_SIMILARITY_THRESHOLD"
+        },
+        {
+          "pair_id": "v7_dedup_dev_010",
+          "category": "hard_negative_semantic_divergence",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8824,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "POLARITY_INVERSION",
+          "reason": "Contradictory polarity detected: '['expand']' vs '['reduce']'"
+        },
+        {
+          "pair_id": "v7_dedup_dev_011",
+          "category": "safety_dosage_inversion",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.9219,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "NUMERICAL_MISMATCH",
+          "reason": "Numerical quantity discrepancy: {(0.005, 'g')} vs {(0.05, 'g')}"
+        },
+        {
+          "pair_id": "v7_dedup_dev_012",
+          "category": "safety_unit_mismatch",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8889,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "UNIT_MISMATCH",
+          "reason": "Incompatible physical units for identical quantity: {(15.0, 'bar')} vs {(15.0, 'm')}"
+        },
+        {
+          "pair_id": "v7_dedup_dev_013",
+          "category": "safety_unit_mismatch",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.875,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "UNIT_MISMATCH",
+          "reason": "Incompatible physical units for identical quantity: {(25.0, 'a')} vs {(25.0, 'v')}"
+        },
+        {
+          "pair_id": "v7_dedup_dev_014",
+          "category": "safety_date_mismatch",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8947,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "NUMERICAL_MISMATCH",
+          "reason": "Numerical quantity discrepancy: {(1948.0, 'count')} vs {(1952.0, 'count')}"
+        },
+        {
+          "pair_id": "v7_dedup_dev_015",
+          "category": "safety_date_mismatch",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.9,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "DATE_MISMATCH",
+          "reason": "Conflicting calendar month references: {'march'} vs {'october'}"
+        },
+        {
+          "pair_id": "v7_dedup_dev_016",
+          "category": "safety_polarity_inversion",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "POLARITY_INVERSION",
+          "reason": "Contradictory polarity detected: '['nontoxic', 'safe']' vs '['toxic', 'fatal']'"
+        },
+        {
+          "pair_id": "v7_dedup_dev_017",
+          "category": "safety_polarity_inversion",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8828,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "POLARITY_INVERSION",
+          "reason": "Contradictory polarity detected: '['permit']' vs '['prohibit']'"
+        },
+        {
+          "pair_id": "v7_dedup_dev_018",
+          "category": "safety_polarity_inversion",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.875,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "POLARITY_INVERSION",
+          "reason": "Contradictory polarity detected: '['greater']' vs '['less']'"
+        },
+        {
+          "pair_id": "v7_dedup_dev_019",
+          "category": "safety_negation_inversion",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.9609,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "NEGATION_INVERSION",
+          "reason": "Asymmetric negation particle detected: 'set()' vs '{'not'}'"
+        },
+        {
+          "pair_id": "v7_dedup_dev_020",
+          "category": "safety_identifier_conflict",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.9141,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "IDENTIFIER_MISMATCH",
+          "reason": "Conflicting entity identifier codes: {'Reactor-A101'} vs {'Reactor-B101'}"
+        }
+      ]
+    },
+    "near_dedup_test": {
+      "total_pairs": 20,
+      "correct_predictions": 20,
+      "incorrect_predictions": 0,
+      "stage2_screening": {
+        "true_positives": 8,
+        "false_positives": 11,
+        "true_negatives": 1,
+        "false_negatives": 0,
+        "precision": 0.4211,
+        "recall": 1.0
+      },
+      "stage3_safety_guard": {
+        "true_positives": 8,
+        "false_positives": 0,
+        "true_negatives": 12,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "accuracy": 1.0,
+        "accuracy_95_ci": [
+          0.8389,
+          1.0
+        ],
+        "false_merges_prevented": 11
+      },
+      "category_breakdown": {
+        "exact_duplicate": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 0,
+          "s3_false_merges": 0,
+          "prevented": 0
+        },
+        "reformatted_duplicate": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 0,
+          "s3_false_merges": 0,
+          "prevented": 0
+        },
+        "paraphrase_duplicate": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 0,
+          "s3_false_merges": 0,
+          "prevented": 0
+        },
+        "reordered_duplicate": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 0,
+          "s3_false_merges": 0,
+          "prevented": 0
+        },
+        "unit_conversion_duplicate": {
+          "total": 4,
+          "correct": 4,
+          "s2_false_merges": 0,
+          "s3_false_merges": 0,
+          "prevented": 0
+        },
+        "distant_negative": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 0,
+          "s3_false_merges": 0,
+          "prevented": 0
+        },
+        "hard_negative_semantic_divergence": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 1,
+          "s3_false_merges": 0,
+          "prevented": 1
+        },
+        "safety_dosage_inversion": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 1,
+          "s3_false_merges": 0,
+          "prevented": 1
+        },
+        "safety_unit_mismatch": {
+          "total": 2,
+          "correct": 2,
+          "s2_false_merges": 2,
+          "s3_false_merges": 0,
+          "prevented": 2
+        },
+        "safety_date_mismatch": {
+          "total": 2,
+          "correct": 2,
+          "s2_false_merges": 2,
+          "s3_false_merges": 0,
+          "prevented": 2
+        },
+        "safety_polarity_inversion": {
+          "total": 3,
+          "correct": 3,
+          "s2_false_merges": 3,
+          "s3_false_merges": 0,
+          "prevented": 3
+        },
+        "safety_negation_inversion": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 1,
+          "s3_false_merges": 0,
+          "prevented": 1
+        },
+        "safety_identifier_conflict": {
+          "total": 1,
+          "correct": 1,
+          "s2_false_merges": 1,
+          "s3_false_merges": 0,
+          "prevented": 1
+        }
+      },
+      "errors": [],
+      "predictions": [
+        {
+          "pair_id": "v7_dedup_test_001",
+          "category": "exact_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 1.0,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_test_002",
+          "category": "reformatted_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 1.0,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_test_003",
+          "category": "paraphrase_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8889,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_test_004",
+          "category": "reordered_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 1.0,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_test_005",
+          "category": "unit_conversion_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8984,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_test_006",
+          "category": "unit_conversion_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 0.7812,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_test_007",
+          "category": "unit_conversion_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8203,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_test_008",
+          "category": "unit_conversion_duplicate",
+          "expected": true,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8281,
+          "s3_final_merge": true,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v7_dedup_test_009",
+          "category": "distant_negative",
+          "expected": false,
+          "s2_candidate": false,
+          "candidate_similarity": 0.0078,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": null,
+          "reason": "S2_BELOW_SIMILARITY_THRESHOLD"
+        },
+        {
+          "pair_id": "v7_dedup_test_010",
+          "category": "hard_negative_semantic_divergence",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8824,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "POLARITY_INVERSION",
+          "reason": "Contradictory polarity detected: '['approve']' vs '['reject']'"
+        },
+        {
+          "pair_id": "v7_dedup_test_011",
+          "category": "safety_dosage_inversion",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8984,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "NUMERICAL_MISMATCH",
+          "reason": "Numerical quantity discrepancy: {(0.0025, 'g')} vs {(0.025, 'g')}"
+        },
+        {
+          "pair_id": "v7_dedup_test_012",
+          "category": "safety_unit_mismatch",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.9,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "UNIT_MISMATCH",
+          "reason": "Incompatible physical units for identical quantity: {(10.0, 'bar')} vs {(10.0, 'm')}"
+        },
+        {
+          "pair_id": "v7_dedup_test_013",
+          "category": "safety_unit_mismatch",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.875,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "UNIT_MISMATCH",
+          "reason": "Incompatible physical units for identical quantity: {(50.0, 'a')} vs {(50.0, 'v')}"
+        },
+        {
+          "pair_id": "v7_dedup_test_014",
+          "category": "safety_date_mismatch",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.9,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "NUMERICAL_MISMATCH",
+          "reason": "Numerical quantity discrepancy: {(1965.0, 'count')} vs {(1971.0, 'count')}"
+        },
+        {
+          "pair_id": "v7_dedup_test_015",
+          "category": "safety_date_mismatch",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.875,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "DATE_MISMATCH",
+          "reason": "Conflicting calendar month references: {'february'} vs {'september'}"
+        },
+        {
+          "pair_id": "v7_dedup_test_016",
+          "category": "safety_polarity_inversion",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8516,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "POLARITY_INVERSION",
+          "reason": "Contradictory polarity detected: '['nontoxic', 'safe']' vs '['toxic', 'fatal']'"
+        },
+        {
+          "pair_id": "v7_dedup_test_017",
+          "category": "safety_polarity_inversion",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8824,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "POLARITY_INVERSION",
+          "reason": "Contradictory polarity detected: '['permitted']' vs '['prohibited']'"
+        },
+        {
+          "pair_id": "v7_dedup_test_018",
+          "category": "safety_polarity_inversion",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.875,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "POLARITY_INVERSION",
+          "reason": "Contradictory polarity detected: '['greater']' vs '['less']'"
+        },
+        {
+          "pair_id": "v7_dedup_test_019",
+          "category": "safety_negation_inversion",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.8906,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "NEGATION_INVERSION",
+          "reason": "Asymmetric negation particle detected: 'set()' vs '{'never'}'"
+        },
+        {
+          "pair_id": "v7_dedup_test_020",
+          "category": "safety_identifier_conflict",
+          "expected": false,
+          "s2_candidate": true,
+          "candidate_similarity": 0.9609,
+          "s3_final_merge": false,
+          "is_correct": true,
+          "conflict_type": "IDENTIFIER_MISMATCH",
+          "reason": "Conflicting entity identifier codes: {'Turbine-A405'} vs {'Turbine-B405'}"
+        }
+      ]
+    }
+  },
+  "gates": {
+    "Gate_A_language_filter_accuracy": "PASS",
+    "Gate_B_near_dedup_accuracy": "PASS",
+    "Gate_C_near_dedup_precision": "PASS",
+    "Gate_D_critical_safety_regressions": "PASS",
+    "Gate_E_language_quality_score": "PASS",
+    "Gate_F_benchmark_independence": "UNVERIFIED (Internal structural isolation only; external third-party laboratory verification required)",
+    "Gate_G_multi_version_regression": "PASS",
+    "Gate_H_cryptographic_provenance": "PASS",
+    "Gate_I_model_provenance_clean": "PASS",
+    "Gate_J_checkpoint_security": "PASS",
+    "Gate_K_corpus_governance_fail_closed": "PASS",
+    "Gate_L_full_regression_suites": "PASS"
+  },
+  "recommendation": "Phase 5 remains ON HOLD. All empirical gates pass with zero false merges, but Gate F requires external blind audit before pretraining authorization."
+}

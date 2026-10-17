@@ -1,0 +1,309 @@
+{
+  "dataset_name": "eval_near_dedup_dataset_v8",
+  "version": "8.0-provisional",
+  "provenance_status": "PROVISIONAL \u2014 INDEPENDENCE UNVERIFIED",
+  "authorship": {
+    "creator": "Antigravity Automated Governance Agent",
+    "role": "Independent Validation Benchmark Builder",
+    "date": "2026-10-17",
+    "access_control": "Implementation frozen prior to evaluation; no training or tuning conducted on this set.",
+    "independence_disclosure": "Constructed internally by Antigravity agent using formal written guidelines. Per Stage 3.1 rules, marked PROVISIONAL \u2014 INDEPENDENCE UNVERIFIED until external third-party certification occurs."
+  },
+  "labeling_policy": {
+    "True": "Semantically and factually equivalent assertion; eligible for safe duplicate removal.",
+    "False": "Material factual discrepancy (dosage, unit dimension, polarity, negation, date, identifier, or distant topic)."
+  },
+  "split_summary": {
+    "development_split_count": 20,
+    "test_split_count": 20,
+    "total_count": 40,
+    "distribution_per_split": {
+      "True": 8,
+      "False": 12
+    }
+  },
+  "development_split": [
+    {
+      "pair_id": "v8_dedup_dev_001",
+      "category": "exact_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The geothermal power plant extracts high-temperature brine from fractured volcanic formations to drive binary cycle turbine generators.",
+      "text_b": "The geothermal power plant extracts high-temperature brine from fractured volcanic formations to drive binary cycle turbine generators."
+    },
+    {
+      "pair_id": "v8_dedup_dev_002",
+      "category": "reformatted_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The archaeological field report recorded thirty-four intact obsidian blades uncovered within the ceremonial burial mound.",
+      "text_b": "The archaeological field report recorded\nthirty-four intact obsidian blades   uncovered within the ceremonial burial mound."
+    },
+    {
+      "pair_id": "v8_dedup_dev_003",
+      "category": "paraphrase_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "Marine biologists tagged twenty-five juvenile hammerhead sharks to monitor their seasonal migration through coastal lagoons.",
+      "text_b": "Twenty-five juvenile hammerhead sharks were tagged by marine biologists to monitor their seasonal migration through coastal lagoons."
+    },
+    {
+      "pair_id": "v8_dedup_dev_004",
+      "category": "reordered_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The chemical reactor vessel was depressurized safely. The cooling jacket maintained optimal temperature throughout the emergency shutdown.",
+      "text_b": "The cooling jacket maintained optimal temperature throughout the emergency shutdown. The chemical reactor vessel was depressurized safely."
+    },
+    {
+      "pair_id": "v8_dedup_dev_005",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The metallurgical technician added 5000 g of granular copper powder to the induction furnace crucible.",
+      "text_b": "The metallurgical technician added 5 kg of granular copper powder to the induction furnace crucible."
+    },
+    {
+      "pair_id": "v8_dedup_dev_006",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The centrifuge rotation period was precisely calibrated at 120 s during the separation cycle.",
+      "text_b": "The centrifuge rotation period was precisely calibrated at 2 min during the separation cycle."
+    },
+    {
+      "pair_id": "v8_dedup_dev_007",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The hydraulic transmission line measured exactly 250 cm between the master cylinder and the brake caliper.",
+      "text_b": "The hydraulic transmission line measured exactly 2.5 m between the master cylinder and the brake caliper."
+    },
+    {
+      "pair_id": "v8_dedup_dev_008",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The digital telemetry buffer allocated 2048 b for high-speed sensor packet caching.",
+      "text_b": "The digital telemetry buffer allocated 2 kib for high-speed sensor packet caching."
+    },
+    {
+      "pair_id": "v8_dedup_dev_009",
+      "category": "distant_negative",
+      "is_true_duplicate": false,
+      "text_a": "Silviculturists recommend rotational thinning in commercial pine plantations to reduce fuel loads and mitigate wildfire severity.",
+      "text_b": "Radio astronomers observed relativistic electron synchrotron emissions emanating from the active galactic nucleus of Messier 87."
+    },
+    {
+      "pair_id": "v8_dedup_dev_010",
+      "category": "safety_polarity_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The regional river basin authority resolved to expand commercial irrigation water allocations during the summer drought.",
+      "text_b": "The regional river basin authority resolved to reduce commercial irrigation water allocations during the summer drought."
+    },
+    {
+      "pair_id": "v8_dedup_dev_011",
+      "category": "safety_polarity_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The pharmaceutical review board voted to approve the novel monoclonal antibody therapy for pediatric oncology patients.",
+      "text_b": "The pharmaceutical review board voted to reject the novel monoclonal antibody therapy for pediatric oncology patients."
+    },
+    {
+      "pair_id": "v8_dedup_dev_012",
+      "category": "safety_dosage_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The clinical trial protocol mandated a single daily dose of 5 mg of active anticoagulant compound.",
+      "text_b": "The clinical trial protocol mandated a single daily dose of 50 mg of active anticoagulant compound."
+    },
+    {
+      "pair_id": "v8_dedup_dev_013",
+      "category": "safety_dosage_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The high-voltage dielectric breakdown occurred at an applied potential of 0.025 v across the insulating gap.",
+      "text_b": "The high-voltage dielectric breakdown occurred at an applied potential of 0.250 v across the insulating gap."
+    },
+    {
+      "pair_id": "v8_dedup_dev_014",
+      "category": "safety_unit_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The chemical reactor containment vessel was certified to withstand an internal pressure of 12.0 bar.",
+      "text_b": "The chemical reactor containment vessel was certified to withstand an internal pressure of 12.0 m."
+    },
+    {
+      "pair_id": "v8_dedup_dev_015",
+      "category": "safety_unit_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The backup diesel generator produced an electrical current output of 40.0 a during peak operational load.",
+      "text_b": "The backup diesel generator produced an electrical current output of 40.0 v during peak operational load."
+    },
+    {
+      "pair_id": "v8_dedup_dev_016",
+      "category": "safety_date_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The international polar research expedition established its primary coastal station in Antarctica in 1957.",
+      "text_b": "The international polar research expedition established its primary coastal station in Antarctica in 1963."
+    },
+    {
+      "pair_id": "v8_dedup_dev_017",
+      "category": "safety_date_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The definitive commercial trade pact was formally signed in Geneva on May 22, 2021 by all member states.",
+      "text_b": "The definitive commercial trade pact was formally signed in Geneva on November 22, 2021 by all member states."
+    },
+    {
+      "pair_id": "v8_dedup_dev_018",
+      "category": "safety_negation_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The automated fire suppression system was activated immediately upon detection of dense smoke in the server vault.",
+      "text_b": "The automated fire suppression system was not activated immediately upon detection of dense smoke in the server vault."
+    },
+    {
+      "pair_id": "v8_dedup_dev_019",
+      "category": "safety_negation_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The safety isolation valve can never open automatically while pipeline pressure exceeds operating limits.",
+      "text_b": "The safety isolation valve can easily open automatically while pipeline pressure exceeds operating limits."
+    },
+    {
+      "pair_id": "v8_dedup_dev_020",
+      "category": "safety_identifier_conflict",
+      "is_true_duplicate": false,
+      "text_a": "Diagnostic telemetry from autonomous seabed Rover-X204 confirmed normal propulsion motor torque and battery status.",
+      "text_b": "Diagnostic telemetry from autonomous seabed Rover-Y204 confirmed normal propulsion motor torque and battery status."
+    }
+  ],
+  "test_split": [
+    {
+      "pair_id": "v8_dedup_test_001",
+      "category": "exact_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The optical interferometry telescope array resolved the stellar disk of the red supergiant star with unprecedented clarity.",
+      "text_b": "The optical interferometry telescope array resolved the stellar disk of the red supergiant star with unprecedented clarity."
+    },
+    {
+      "pair_id": "v8_dedup_test_002",
+      "category": "reformatted_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "Agricultural specialists tested eighteen hybrid maize cultivars across three semi-arid experimental research farms.",
+      "text_b": "Agricultural specialists tested eighteen hybrid maize cultivars\nacross three semi-arid   experimental research farms."
+    },
+    {
+      "pair_id": "v8_dedup_test_003",
+      "category": "paraphrase_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "Structural civil engineers inspected forty reinforced concrete viaducts throughout the metropolitan rail network.",
+      "text_b": "Forty reinforced concrete viaducts throughout the metropolitan rail network were inspected by structural civil engineers."
+    },
+    {
+      "pair_id": "v8_dedup_test_004",
+      "category": "reordered_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The vacuum drying oven maintained a constant temperature of sixty degrees. The chemical sample evaporated completely over four hours.",
+      "text_b": "The chemical sample evaporated completely over four hours. The vacuum drying oven maintained a constant temperature of sixty degrees."
+    },
+    {
+      "pair_id": "v8_dedup_test_005",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The laboratory technician dispensed exactly 8000 mg of anhydrous sodium carbonate into the volumetric flask.",
+      "text_b": "The laboratory technician dispensed exactly 8 g of anhydrous sodium carbonate into the volumetric flask."
+    },
+    {
+      "pair_id": "v8_dedup_test_006",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The emergency battery power bank maintained full emergency lighting operation for 180 s after grid failure.",
+      "text_b": "The emergency battery power bank maintained full emergency lighting operation for 3 min after grid failure."
+    },
+    {
+      "pair_id": "v8_dedup_test_007",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The structural carbon fiber reinforcement rod measured precisely 400 cm along its longitudinal axis.",
+      "text_b": "The structural carbon fiber reinforcement rod measured precisely 4.0 m along its longitudinal axis."
+    },
+    {
+      "pair_id": "v8_dedup_test_008",
+      "category": "unit_conversion_duplicate",
+      "is_true_duplicate": true,
+      "text_a": "The flash memory controller cached 4096 b of firmware configuration instructions during the initial system boot.",
+      "text_b": "The flash memory controller cached 4 kib of firmware configuration instructions during the initial system boot."
+    },
+    {
+      "pair_id": "v8_dedup_test_009",
+      "category": "distant_negative",
+      "is_true_duplicate": false,
+      "text_a": "Geodesic satellite receivers track tectonic plate displacement rates across the active San Andreas fault zone.",
+      "text_b": "The classical symphony orchestra performed Beethoven's Ninth Symphony before a capacity audience in the historic concert hall."
+    },
+    {
+      "pair_id": "v8_dedup_test_010",
+      "category": "safety_polarity_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The municipal transport commission decided to expand daily express bus service routes across the outer suburban ring.",
+      "text_b": "The municipal transport commission decided to reduce daily express bus service routes across the outer suburban ring."
+    },
+    {
+      "pair_id": "v8_dedup_test_011",
+      "category": "safety_polarity_inversion",
+      "is_true_duplicate": false,
+      "text_a": "Preclinical toxicological evaluations concluded that the synthetic emulsifying agent was completely safe and non-toxic.",
+      "text_b": "Preclinical toxicological evaluations concluded that the synthetic emulsifying agent was highly dangerous and toxic."
+    },
+    {
+      "pair_id": "v8_dedup_test_012",
+      "category": "safety_dosage_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The experimental pharmacological regimen prescribed an intravenous infusion of 0.004 g of active compound.",
+      "text_b": "The experimental pharmacological regimen prescribed an intravenous infusion of 0.040 g of active compound."
+    },
+    {
+      "pair_id": "v8_dedup_test_013",
+      "category": "safety_dosage_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The precision reference resistor displayed a calibrated resistance tolerance deviation of 0.015 ohms.",
+      "text_b": "The precision reference resistor displayed a calibrated resistance tolerance deviation of 0.150 ohms."
+    },
+    {
+      "pair_id": "v8_dedup_test_014",
+      "category": "safety_unit_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The hydraulic accumulator chamber was pressurized to a steady operating pressure of 20.0 bar.",
+      "text_b": "The hydraulic accumulator chamber was pressurized to a steady operating pressure of 20.0 m."
+    },
+    {
+      "pair_id": "v8_dedup_test_015",
+      "category": "safety_unit_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The high-voltage transmission substation conductor carried a continuous current load of 60.0 a.",
+      "text_b": "The high-voltage transmission substation conductor carried a continuous current load of 60.0 v."
+    },
+    {
+      "pair_id": "v8_dedup_test_016",
+      "category": "safety_date_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The transcontinental railway telegraph network was formally completed and linked to coastal hubs in 1869.",
+      "text_b": "The transcontinental railway telegraph network was formally completed and linked to coastal hubs in 1875."
+    },
+    {
+      "pair_id": "v8_dedup_test_017",
+      "category": "safety_date_mismatch",
+      "is_true_duplicate": false,
+      "text_a": "The international convention on migratory wetland waterfowl entered into full legal force on February 18, 1992.",
+      "text_b": "The international convention on migratory wetland waterfowl entered into full legal force on September 18, 1992."
+    },
+    {
+      "pair_id": "v8_dedup_test_018",
+      "category": "safety_negation_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The secondary containment vessel showed evidence of structural stress fracture under sustained pneumatic pressure.",
+      "text_b": "The secondary containment vessel showed no evidence of structural stress fracture under sustained pneumatic pressure."
+    },
+    {
+      "pair_id": "v8_dedup_test_019",
+      "category": "safety_negation_inversion",
+      "is_true_duplicate": false,
+      "text_a": "The industrial control software can never bypass hardware emergency interlocks during automated furnace operation.",
+      "text_b": "The industrial control software can easily bypass hardware emergency interlocks during automated furnace operation."
+    },
+    {
+      "pair_id": "v8_dedup_test_020",
+      "category": "safety_identifier_conflict",
+      "is_true_duplicate": false,
+      "text_a": "Operational logs from nuclear propulsion reactor Turbine-X501 showed standard coolant flow rates throughout the sea trial.",
+      "text_b": "Operational logs from nuclear propulsion reactor Turbine-Y501 showed standard coolant flow rates throughout the sea trial."
+    }
+  ]
+}

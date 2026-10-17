@@ -24,6 +24,13 @@ if hasattr(sys.stdout, "reconfigure"):
     except Exception:
         pass
 
+# Python 3.14 Standardization Guidance Notice
+if sys.version_info < (3, 14):
+    sys.stderr.write(
+        f"VEDA Notice: Project is standardized on Python 3.14+. Active interpreter: Python {sys.version.split()[0]}. "
+        f"Please execute commands using the dedicated .venv environment (.\\.venv\\Scripts\\python.exe).\n"
+    )
+
 
 def main() -> None:
     if len(sys.argv) < 2:
@@ -31,12 +38,10 @@ def main() -> None:
         print("\nUsage:")
         print("    python veda.py lexicon <command> [options]")
         print("\nCommands:")
-        print("    lexicon build-sample   Build sample SQLite lexicon database")
-        print("    lexicon build          Ingest full Wiktextract dataset into SQLite")
-        print("    lexicon lookup <word>  Look up a word in the database")
-        print("    lexicon stats          Display database metadata and ingestion stats")
-        print("    lexicon verify         Run SQLite PRAGMA integrity verification")
-        print("    lexicon benchmark      Run query latency and memory benchmarks")
+        print("    lexicon <command>      Interact with the SQLite production lexicon")
+        print("    corpus <command>       Interact with the training corpus pipeline")
+        print("\nLexicon subcommands: build-sample, build, lookup, stats, verify, benchmark")
+        print("Corpus subcommands: sources, pilot, build-golden, inspect-manifest, verify")
         sys.exit(0)
 
     subcommand = sys.argv[1]
@@ -46,8 +51,13 @@ def main() -> None:
         from scripts.lexicon_cli import main as lexicon_main
         sys.argv = [sys.argv[0]] + sys.argv[2:]
         lexicon_main()
+    elif subcommand == "corpus":
+        # Forward arguments to corpus_cli.py
+        from scripts.corpus_cli import main as corpus_main
+        sys.argv = [sys.argv[0]] + sys.argv[2:]
+        corpus_main()
     else:
-        print(f"Unknown command: {subcommand}. Try: 'python veda.py lexicon --help'", file=sys.stderr)
+        print(f"Unknown command: {subcommand}. Try: 'python veda.py --help'", file=sys.stderr)
         sys.exit(1)
 
 

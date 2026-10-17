@@ -37,8 +37,34 @@ UNDERSTAND → DESIGN → IMPLEMENT → TEST → MEASURE → DOCUMENT → IMPROV
   - [x] Dataset Audit Tooling (`foundation.lexicon.audit.DatasetAuditor`, `scripts/audit_dataset.py`)
   - [x] Memory Scaling & Storage Decision Matrix (`docs/architecture/storage_and_memory.md`)
   - [x] Adversarial Audit & Regression Suite (Golden tests, security tests, determinism, idempotency)
-- [ ] **Phase 4 — English Corpus Pipeline**
-- [ ] **Phase 5 — Mathematical and Neural Foundations** (Tensors, linear layers, loss, backprop)
+- [x] **Phase 4 — English Corpus Architecture & Data Contract**
+  - [x] Corpus Objective & Linguistic Scope (`docs/training_corpus.md`)
+  - [x] Corpus Data Contract & 6-Layer Hierarchy (`docs/corpus_data_contract.md`)
+  - [x] Text Normalization Policy & RAW/Normalized Invariants (`docs/corpus_normalization_policy.md`)
+  - [x] Quality Filtering, Metrics & English Language Policy (`docs/corpus_quality_policy.md`)
+  - [x] Segmentation, Deduplication & Leakage-Free Splitting (`docs/corpus_split_policy.md`)
+  - [x] Storage Evaluation & Streaming JSONL Architecture (`docs/corpus_storage.md`)
+  - [x] Versioning Equation, Machine Manifest & Governance (`docs/corpus_versioning.md`)
+  - [x] Corpus Pipeline, Golden Fixture & CLI Tooling (`foundation.corpus`, `scripts/corpus_cli.py`)
+  - [x] Deterministic Splitting, Idempotency & Failure Recovery Verification
+  - [x] **Phase 4.1**: Adversarial Pipeline Hardening, Unicode Decoupling, Dual Fingerprinting (`docs/veda_phase4.1_audit_report.md`)
+  - [x] **Phase 4.2**: Training Source Selection, Machine-Readable Registry, Target Composition, Resource Budget, Production Gate & Controlled Pilot (`docs/veda_phase4.2_audit_report.md`)
+  - [x] **Phase 4.2.1**: Adversarial Source Governance, Provenance & Ingestion-Gate Hardening (`docs/veda_phase4.2.1_audit_report.md`)
+  - [x] **Phase 4.2.2**: Accuracy Audit, Evidence Repair & Regression Certification (`docs/veda_phase4.2.2_accuracy_audit_report.md`)
+  - [x] **Phase 4.2.3**: Pending-Evidence Verification & Accuracy Validation (`docs/veda_phase4.2.3_verification_report.md`)
+  - [x] **Phase 4.3**: Modern Python, Library Efficiency & Measured Accuracy (`docs/veda_phase4.3_environment_verification.md`, `docs/veda_phase4.3_performance_baseline.md`, `docs/veda_phase4.3_accuracy_experiments.md`)
+  - [x] **Phase 4.4**: 95% Quality Gates & Comprehensive Code Audit (`docs/veda_quality_gates.md`, `docs/veda_phase4.4_code_audit.md`, `docs/veda_phase4.4_accuracy_evaluation.md`, `docs/veda_phase4.4_performance_regression.md`)
+  - [x] **Phase 4.4.1**: Independent Verification & Benchmark Validation (`docs/veda_phase4.4.1_independent_verification.md`, `docs/veda_phase4.4.1_benchmark_integrity.md`, `data/corpus/phase4.4.1_verification_results.json`)
+  - [x] **Phase 4.5**: Accuracy Recovery, Defect Sweep & Reliability Hardening (`docs/veda_phase4.5_accuracy_recovery.md`, `docs/veda_phase4.5_language_filter_evaluation.md`, `docs/veda_phase4.5_neardup_pipeline.md`)
+  - [x] **Phase 4.6**: Python 3.14 Standardization & Accuracy Maximization (`docs/veda_phase4.6_python314_migration.md`, `docs/veda_phase4.6_accuracy_report.md`, `docs/veda_phase4.6_defect_inventory.md`, `docs/veda_phase4.6_test_results.md`, `data/corpus/phase4.6_eval_results.json`)
+  - [x] **Phase 4.7**: Master Audit, Benchmark Integrity & Zero-Leakage Pre-Certification (`docs/veda_phase4.7_master_audit_report.md`, `docs/veda_phase4.7_accuracy_and_evaluation_report.md`)
+  - [x] **Phase 4.8**: Defect Remediation & Master Certification (`docs/veda_phase4.8_master_certification_report.md`, `docs/veda_phase4.8_defect_and_remediation_log.md`)
+  - [x] **Phase 4.9**: Certification Protocol & Governance Protocol (`docs/veda_phase4.9_certification_protocol.md`, `docs/veda_phase4.9_certification_readiness_report.md`)
+  - [x] **Phase 4.10**: Audit Fixes & Verification (`docs/veda_phase4.10_verification_report.md`)
+  - [x] **Phase 4.11**: Near-Deduplication Polarity Fix & Regression Verification (`docs/veda_phase4.11_verification_report.md`)
+  - [x] **Phase 4.12**: Independent Validation, Governance & Provisional Benchmark v8.0 (`docs/veda_phase4.12_verification_report.md`)
+  - [x] **Phase 4.13**: Remediate Language-Filter & Negation-Safety Defects (`docs/veda_phase4.13_verification_report.md`)
+- [ ] **Phase 5 — Mathematical and Neural Foundations** (STRICTLY BLOCKED pending independent certification and explicit authorization)
 - [ ] **Phase 6 — Transformer Architecture** (Self-attention, causal masking, MLP, blocks)
 - [ ] **Phase 7 — VEDA Pretraining**
 - [ ] **Phase 8 — Evaluation & Benchmarking**
@@ -49,34 +75,59 @@ UNDERSTAND → DESIGN → IMPLEMENT → TEST → MEASURE → DOCUMENT → IMPROV
 
 ---
 
-## Current Status: Phase 3 (Foundation Hardening & Full-System Audit)
+## Current Status: Phase 4.13 Remediated & Verified (Phase 5 BLOCKED)
 
-Milestones completed:
-- **Character Registry**: Encapsulated in `foundation.characters.registry.CharacterRegistry`.
-  - Authoritative inventory: **113 registered characters** (95 printable ASCII + 18 essential whitespace & typography) + **4 special tokens** (`<PAD>`, `<UNK>`, `<BOS>`, `<EOS>`) = **117 total tokenizer vocabulary**.
-- **Character Tokenizer**: Implemented in `tokenizer.char_tokenizer.CharacterTokenizer` with lossless roundtrip.
-- **Character Knowledge Base**: Implemented in `foundation.characters.knowledge.CharacterKnowledge` with JSON dataset at `data/characters/veda_character_knowledge_v0.1.json`.
-- **Word Foundation**: Implemented in `foundation.words.word.Word` and `foundation.words.analyzer.WordAnalyzer` with controlled vocabulary at `data/words/veda_words_v0.1.json`.
-- **Lexical Foundation & Production SQLite**:
-  - Full production SQLite database at `data/lexicon/veda_lexicon_v0.1.sqlite` (959,688 unique words, 1,049,403 POS entries, 1,322,676 senses, 2.24 GB).
-  - Out-of-core memory safety with < 3 MB RSS overhead on open and sub-millisecond lookups (~160 μs).
-  - Sample database at `data/lexicon/veda_lexicon_sample.sqlite` (6 words, 155 KB).
-- **Architectural Data Contracts**: Explicit boundaries established between Character, Character Knowledge, Word, Lexical Entry, Corpus Record, Token, Training Example, and Model.
-- **Orthography Policy**: Explicit v0.1 policy separating language classification (`en`), orthographic constraints (`plain_ascii`), and character registry representability.
-- **Audit & Security Tooling**: Streaming dataset profiler, SQL injection defense, boundary invariance, and logical database checksum fingerprinting.
-- **Round-Trip Invariants**:
-  - Characters: `decode(encode(text)) == text`
-  - Words: `decode_word(encode_word(word)) == normalized_word`
-  - Lexicon: `Lexicon.from_dict(lex.to_dict()) == lex`
-  - SQLite: `SqliteLexicon.lookup(w) == In_Memory_Lexicon[w]`
-- **Testing**: 95 unit tests passing across all layers (Pytest 100% green).
+Milestones achieved:
+- **Phase 4.13 Defect Remediation**:
+  - **Language Filter Fix**: Dense technical English sentences with low stopword count (e.g. offshore-wind transmission cables) are preserved through an audited candidate path without diluting rejection of Romance cognates (`REJECT`) or Germanic cognates (`QUARANTINE`). Added function words (`how`, `where`, `why`, `toward`, `towards`, `throughout`, `whether`) to `_COMMON_ENGLISH_STOPWORDS`.
+  - **Negation Safety Guard Fix**: Added `"no"`, `"none"`, `"nor"`, `"hardly"` to `neg_particles`. Integrated contraction normalization (`isn't`, `wasn't`, etc. -> `is not`, `was not`) and abbreviation guarding (`No. \d+` -> `number \d+`). Verified symmetric polarity conflict prevention across forward and reversed argument pairs.
+- **Dual-Runtime Test Coverage (100% Parity across 300 Tests)**:
+  - Python 3.14.8 (`.venv`): **300 passed / 0 failed in 4.95s**
+  - Python 3.9.13 (Global): **300 passed / 0 failed in 4.70s**
+- **Corpus Production Gate Verification**:
+  - All 7 fail-closed gate tests passed on both runtimes (`tests/test_corpus_production_gate_fail_closed.py`). Production ingestion remains fail-closed.
+- **Benchmark Governance & Independence Status**:
+  - The v8.0 benchmark is formally **reclassified as development/regression data** because its examples were examined during Phase 4.12.
+  - Independent benchmark certification is **PENDING** (governance status: **INDEPENDENCE UNVERIFIED**). No cosmetic 100% certification claim is made.
+- **Pending Deliverables & Active Blockers**:
+  - **SQLite-backed input integration testing**: **PENDING**.
+  - **Independent benchmark certification**: **PENDING** (requires third-party authored sealed dataset).
+  - **Production corpus source permissions & governance**: **PENDING** where unresolved.
+  - **Phase 5 Model Pretraining**: **STRICTLY BLOCKED** until required quality gates pass independent certification and explicit authorization is given. Production ingestion remains fail-closed.
 
-### Running Tests
+### Running Tests (Python 3.14)
 
-Execute the full unit test suite:
+Execute the full unit and regression test suite using the standardized Python 3.14 virtual environment:
 
 ```bash
-pytest -v
+.\.venv\Scripts\python.exe -m pytest
+```
+
+Execute the Phase 4.6 Standardization & Accuracy Maximization Evaluator:
+
+```bash
+.\.venv\Scripts\python.exe scripts/evaluate_phase46_standardization.py
+```
+
+### Training Corpus CLI Tooling
+
+Audit source governance, run ingestion pilots, build golden fixtures, and inspect manifests:
+
+```bash
+# List and audit registered candidate sources across governance states
+.\.venv\Scripts\python.exe veda.py corpus sources
+
+# Run the Phase 4.2 controlled ingestion pilot
+.\.venv\Scripts\python.exe veda.py corpus pilot
+
+# Build golden corpus fixture (14 documents, edge cases, splitting)
+.\.venv\Scripts\python.exe veda.py corpus build-golden --output data/corpus/golden_output
+
+# Verify cryptographic file integrity and checksums against manifest
+.\.venv\Scripts\python.exe veda.py corpus verify data/corpus/golden_output
+
+# Inspect detailed machine manifest, statistics, and logical fingerprint
+.\.venv\Scripts\python.exe veda.py corpus inspect-manifest data/corpus/golden_output/manifest.json
 ```
 
 ### Dataset Audit (Phase 3 Hardening)

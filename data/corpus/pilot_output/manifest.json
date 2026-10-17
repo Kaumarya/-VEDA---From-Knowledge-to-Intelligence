@@ -1,0 +1,94 @@
+{
+  "corpus_name": "veda_pilot_v0.1",
+  "corpus_version": "0.1.0",
+  "schema_version": "0.1.0",
+  "created_at": "2026-10-15T06:21:35.080572+00:00",
+  "pipeline_version": "0.1.0",
+  "split_seed": "veda_pilot_seed_v0.1",
+  "policies": {
+    "deduplication_version": "0.1.0",
+    "filtering_version": "0.1.0",
+    "grouping_algorithm": "deterministic_group_hash_v1",
+    "grouping_version": "0.1.0",
+    "normalization_version": "0.1.0",
+    "segmentation_version": "0.1.0",
+    "split_version": "0.1.0"
+  },
+  "sources": [
+    {
+      "source_id": "standard_ebooks_pilot",
+      "version": "2026.1",
+      "license": "Public Domain in US / CC0 1.0 Universal",
+      "licensing_status": "VERIFIED PERMITTED",
+      "source_hash": "42e3fbb30aa1871137e24a195cf79d95da036a5a35283b8b766db47977388247",
+      "document_count": 5
+    },
+    {
+      "source_id": "python_docs_pilot",
+      "version": "3.12.7",
+      "license": "Python Software Foundation License Version 2",
+      "licensing_status": "VERIFIED PERMITTED",
+      "source_hash": "7b5a758482deb5457ed580f9a18f48b233d637a6dd3327e890120dfeedc753e0",
+      "document_count": 3
+    },
+    {
+      "source_id": "unapproved_gated_source",
+      "version": "1.0",
+      "license": "All Rights Reserved",
+      "licensing_status": "REQUIRES REVIEW",
+      "source_hash": "f9e8d7c6b5a403129847563210abcdefa1b2c3d4e5f60718293a4b5c6d7e8f90",
+      "document_count": 1
+    }
+  ],
+  "statistics": {
+    "total_documents": 9,
+    "retained_documents": 5,
+    "rejected_documents": 4,
+    "total_records_processed": 15,
+    "retained_records": 10,
+    "rejected_records": 3,
+    "duplicate_records": 2,
+    "rejection_breakdown": {
+      "DUPLICATE": 2,
+      "GOVERNANCE_BLOCKED": 1,
+      "TOO_SHORT_CHARS": 1,
+      "NO_ENGLISH_STOPWORDS": 1
+    },
+    "duplicate_breakdown": {
+      "exact_duplicates": 0,
+      "normalized_duplicates": 1,
+      "document_duplicates": 1
+    },
+    "split_counts": {
+      "train": 8,
+      "validation": 0,
+      "test": 2
+    },
+    "character_counts": {
+      "total_raw_characters": 2701,
+      "total_normalized_characters": 2701,
+      "train_characters": 2136,
+      "validation_characters": 0,
+      "test_characters": 565
+    },
+    "approx_word_counts": {
+      "total_words": 437,
+      "train_words": 339,
+      "validation_words": 0,
+      "test_words": 98
+    }
+  },
+  "artifacts": {
+    "train_file": "train.jsonl",
+    "train_sha256": "f681a49c223d5342bca831a19f98f3bf043deb52ccb38fe5466914c134b720ee",
+    "validation_file": "validation.jsonl",
+    "validation_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "test_file": "test.jsonl",
+    "test_sha256": "f961daffa56acd5b85e7cbac5e29e81d3ca41696220db3179a957a4b50871520",
+    "rejections_file": "rejections.jsonl",
+    "rejections_sha256": "a25e4ad5ddf95b339aa2b8e892272c5e734cbd95b8875ef0863f3a5d8d584581",
+    "content_fingerprint": "eab5d3870d09131ed0769c94047bd8bdaedf84e0c3268f551dafaa627bc86028",
+    "manifest_fingerprint": "f607062e552bc96e6ed5e841c116eaddc62a014ff3a972f907273622c10be65e",
+    "logical_fingerprint": "eab5d3870d09131ed0769c94047bd8bdaedf84e0c3268f551dafaa627bc86028"
+  }
+}

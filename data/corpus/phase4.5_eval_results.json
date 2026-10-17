@@ -1,0 +1,1405 @@
+{
+  "evaluation_timestamp": "2026-10-15T09:28:34Z",
+  "phase": "4.5",
+  "elapsed_seconds": 0.1546,
+  "gate_status": {
+    "gate_a_language_filter": "PASS",
+    "gate_b_near_dedup_safety": "PASS",
+    "gate_c_data_integrity": "PASS",
+    "gate_d_tokenizer_boundaries": "PASS",
+    "gate_e_neural_foundation_invariants": "PASS",
+    "gate_f_production_ingestion": "BLOCKED (Fail-Closed Governance Invariant)"
+  },
+  "defect_inventory": [
+    {
+      "defect_id": "DEFECT-4.5-01",
+      "title": "Near-Duplicate Lexical MinHash Single-Token Inversion False Merge",
+      "category": "Near-Deduplication / Safety",
+      "severity": "CRITICAL",
+      "reproducibility": "100% reproducible on pair v3_test_pair_inv_008b (10mg vs 100mg)",
+      "root_cause": "Lexical MinHash operates strictly on character n-shingles; in long passages, changing 10mg to 100mg or 'safe' to 'toxic' alters < 5% of shingles, producing estimated Jaccard >= 0.90 >= 0.80 and erroneously merging semantically contradictory records.",
+      "fix_status": "FIXED",
+      "fix_summary": "Implemented Stage 3 SemanticSafetyGuard which normalizes numerical quantities into SI base units, evaluates polarity antonym sets, detects asymmetric negation particles, and verifies calendar dates before permitting record merges.",
+      "test_reference": "tests/test_near_deduplication_safety.py::test_numerical_inversion_dosage_10mg_vs_100mg",
+      "residual_risk": "Low; domain-specific non-SI units (e.g. apothecaries' weights) to be expanded in Phase 5."
+    },
+    {
+      "defect_id": "DEFECT-4.5-02",
+      "title": "Scientific Academic Figure Caption Quarantined as Borderline Stopwords",
+      "category": "Language Filtering",
+      "severity": "MODERATE",
+      "reproducibility": "100% reproducible on v3_test_cap_001",
+      "root_cause": "Technical academic figure captions dominated by noun phrases have low stopword density (1 stopword), which triggered Quarantine Rule A (stopword_count in (1, 2) and word_count >= 12).",
+      "fix_status": "FIXED",
+      "fix_summary": "Added academic caption recognition rule (_CAPTION_PATTERN) matching formal figure/table headings with clean Latin script and sufficient length, accepting them as FLUENT_ACADEMIC_CAPTION.",
+      "test_reference": "tests/test_language_filter_hardening.py::test_academic_figure_caption_accepted",
+      "residual_risk": "Negligible."
+    },
+    {
+      "defect_id": "DEFECT-4.5-03",
+      "title": "Germanic Cognate Text Blindly Rejected Instead of Quarantined",
+      "category": "Language Filtering",
+      "severity": "MODERATE",
+      "reproducibility": "100% reproducible on v3_test_de_002 ('Es ist in der Tat...')",
+      "root_cause": "QualityFilter rejected text with >= 15 words and only 1 stopword as NO_ENGLISH_STOPWORDS at step 1 before the text could ever reach the intended Quarantine Rule A.",
+      "fix_status": "FIXED",
+      "fix_summary": "Intercepted NO_ENGLISH_STOPWORDS rejections when text is clean Latin prose containing standard Germanic/Dutch cognates (_GERMANIC_COGNATES), correctly routing them to QUARANTINE.",
+      "test_reference": "tests/test_language_filter_hardening.py::test_german_sentence_routed_to_quarantine",
+      "residual_risk": "Negligible."
+    },
+    {
+      "defect_id": "DEFECT-4.5-04",
+      "title": "Whitespace-Only Text Inconsistently Categorized as Non-Empty",
+      "category": "Quality Filtering & Normalization",
+      "severity": "MINOR",
+      "reproducibility": "100% reproducible on strings containing only whitespace characters",
+      "root_cause": "char_length was checked before trimming, causing strings of 60 spaces to fail on TOO_SHORT_WORDS instead of EMPTY_TEXT.",
+      "fix_status": "FIXED",
+      "fix_summary": "Harden empty text check to evaluate char_length == 0 or not normalized_text.strip().",
+      "test_reference": "tests/test_language_filter_hardening.py::test_whitespace_only_evaluated_as_empty_text",
+      "residual_risk": "Zero."
+    },
+    {
+      "defect_id": "DEFECT-4.5-05",
+      "title": "Missing Type Validation on Non-String Inputs in Corpus Processors",
+      "category": "API Reliability & Boundary Hardening",
+      "severity": "MINOR",
+      "reproducibility": "100% reproducible when passing non-string types",
+      "root_cause": "Missing explicit isinstance(text, str) validation in TextNormalizer and QualityFilter.",
+      "fix_status": "FIXED",
+      "fix_summary": "Added defensive isinstance(text, str) checks raising TypeError.",
+      "test_reference": "tests/test_language_filter_hardening.py::test_type_validation_on_non_string_inputs",
+      "residual_risk": "Zero."
+    },
+    {
+      "defect_id": "DEFECT-4.5-06",
+      "title": "Resource Leak & Corrupted Temp DB Risk on Interrupted Lexicon Build",
+      "category": "Storage & Persistence Reliability",
+      "severity": "MINOR",
+      "reproducibility": "Reproducible on unhandled exception during batch build in SqliteLexiconBuilder",
+      "root_cause": "Connection was not closed and temporary .tmp.sqlite file was not unlinked on error.",
+      "fix_status": "FIXED",
+      "fix_summary": "Wrapped build lifecycle in try...finally ensuring connection close and temp DB unlinking.",
+      "test_reference": "tests/test_sqlite_storage.py",
+      "residual_risk": "Zero."
+    }
+  ],
+  "language_filter_evaluation": {
+    "development_split": {
+      "total_samples": 34,
+      "correct_predictions": 34,
+      "accuracy": 1.0,
+      "accuracy_95_ci": [
+        0.8985,
+        1.0
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "confusion_matrix": {
+        "ACCEPT": {
+          "ACCEPT": 20,
+          "REJECT": 0,
+          "QUARANTINE": 0
+        },
+        "REJECT": {
+          "ACCEPT": 0,
+          "REJECT": 9,
+          "QUARANTINE": 0
+        },
+        "QUARANTINE": {
+          "ACCEPT": 0,
+          "REJECT": 0,
+          "QUARANTINE": 5
+        }
+      },
+      "details": [
+        {
+          "sample_id": "v3_dev_ord_001",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "It is a truth universally acknowledged, that a single man in possession of a goo"
+        },
+        {
+          "sample_id": "v3_dev_ord_002",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "I am by birth a Genevese, and my family is one of the most distinguished of that"
+        },
+        {
+          "sample_id": "v3_dev_ord_003",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "My father had a small estate in Nottinghamshire; I was the third of five sons."
+        },
+        {
+          "sample_id": "v3_dev_ord_004",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "I was born in the year 1632, in the city of York, of a good family, though not o"
+        },
+        {
+          "sample_id": "v3_dev_ord_005",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "Call me Ishmael. Some years ago\u2014never mind how long precisely\u2014having little or n"
+        },
+        {
+          "sample_id": "v3_dev_ord_006",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "Studies serve for delight, for ornament, and for ability. Their chief use for de"
+        },
+        {
+          "sample_id": "v3_dev_ord_007",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "The history of the Peloponnesian War began with the conviction that this conflic"
+        },
+        {
+          "sample_id": "v3_dev_ord_008",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "The sun had not yet risen when the travelers saddled their horses and set forth "
+        },
+        {
+          "sample_id": "v3_dev_ord_009",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "He looked at the open window where the evening breeze stirred the curtains, wond"
+        },
+        {
+          "sample_id": "v3_dev_ord_010",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "A thorough examination of the municipal records revealed that the canal was cons"
+        },
+        {
+          "sample_id": "v3_dev_sci_001",
+          "category": "scientific_mathematical_english",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "The Gibbs free energy change determines the thermodynamic spontaneity of a react"
+        },
+        {
+          "sample_id": "v3_dev_sci_002",
+          "category": "scientific_mathematical_english",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "Maxwell's equations demonstrate that oscillating electric and magnetic fields pr"
+        },
+        {
+          "sample_id": "v3_dev_sci_003",
+          "category": "scientific_mathematical_english",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "Enzyme catalysis proceeds via the stabilization of the transition state, effecti"
+        },
+        {
+          "sample_id": "v3_dev_sci_004",
+          "category": "scientific_mathematical_english",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "LOW_ALPHA_RATIO",
+          "text_snippet": "Delta_G = Delta_H - T * Delta_S where Delta_H = -285.8 kJ/mol and S = 69.9 J/(mo"
+        },
+        {
+          "sample_id": "v3_dev_sci_005",
+          "category": "scientific_mathematical_english",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "LOW_ALPHA_RATIO",
+          "text_snippet": "f'(x) = lim_{h -> 0} [f(x+h) - f(x)] / h = 2x + 3 for all x in R"
+        },
+        {
+          "sample_id": "v3_dev_cap_001",
+          "category": "short_signs_captions_headings",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ACADEMIC_CAPTION",
+          "text_snippet": "Table 1. Summary of measured dissociation constants and thermodynamic parameters"
+        },
+        {
+          "sample_id": "v3_dev_sign_002",
+          "category": "short_signs_captions_headings",
+          "expected": "QUARANTINE",
+          "actual": "QUARANTINE",
+          "correct": true,
+          "reason": "SIGNAGE_IMPERATIVE_AMBIGUOUS_STRUCTURE",
+          "text_snippet": "Danger: High Voltage 480V. Disconnect all power sources before opening enclosure"
+        },
+        {
+          "sample_id": "v3_dev_head_003",
+          "category": "short_signs_captions_headings",
+          "expected": "QUARANTINE",
+          "actual": "QUARANTINE",
+          "correct": true,
+          "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY",
+          "text_snippet": "Chapter 4: Advanced Dynamic Memory Allocation and Concurrent Garbage Collection"
+        },
+        {
+          "sample_id": "v3_dev_sign_004",
+          "category": "short_signs_captions_headings",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "Emergency Exit Only. Alarm will sound if door is opened without administrative a"
+        },
+        {
+          "sample_id": "v3_dev_doc_001",
+          "category": "code_logs_tables_technical",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "This module provides cryptographic hashing utilities and signature verification "
+        },
+        {
+          "sample_id": "v3_dev_code_002",
+          "category": "code_logs_tables_technical",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "INVALID_STRUCTURE",
+          "text_snippet": "def compute_loss(y_true, y_pred):\n    return tf.reduce_mean(tf.keras.losses.cate"
+        },
+        {
+          "sample_id": "v3_dev_log_003",
+          "category": "code_logs_tables_technical",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "LOW_ALPHA_RATIO",
+          "text_snippet": "[2026-10-15 12:00:01] kernel: eth0: link up, 1000Mbps, full-duplex, carrier dete"
+        },
+        {
+          "sample_id": "v3_dev_sql_004",
+          "category": "code_logs_tables_technical",
+          "expected": "QUARANTINE",
+          "actual": "QUARANTINE",
+          "correct": true,
+          "reason": "CODE_SQL_QUERY_DATA",
+          "text_snippet": "SELECT user_id, email, created_at FROM production_users WHERE is_active = 1 ORDE"
+        },
+        {
+          "sample_id": "v3_dev_fr_001",
+          "category": "foreign_latin_script_french_german_spanish",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "text_snippet": "Le train rapide \u00e0 destination de Paris partira de la voie trois dans dix minutes"
+        },
+        {
+          "sample_id": "v3_dev_de_002",
+          "category": "foreign_latin_script_french_german_spanish",
+          "expected": "QUARANTINE",
+          "actual": "QUARANTINE",
+          "correct": true,
+          "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+          "text_snippet": "Das ist in der Tat so ein grosses Problem fuer die gesamte Gesellschaft. Wir mue"
+        },
+        {
+          "sample_id": "v3_dev_es_003",
+          "category": "foreign_latin_script_french_german_spanish",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "text_snippet": "El procesamiento del lenguaje natural requiere modelos entrenados con corpus rep"
+        },
+        {
+          "sample_id": "v3_dev_nl_004",
+          "category": "foreign_latin_script_french_german_spanish",
+          "expected": "QUARANTINE",
+          "actual": "QUARANTINE",
+          "correct": true,
+          "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+          "text_snippet": "Het Nederlands is een West-Germaanse taal die door ongeveer vijfentwintig miljoe"
+        },
+        {
+          "sample_id": "v3_dev_la_005",
+          "category": "foreign_latin_script_french_german_spanish",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "text_snippet": "Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, aliam Aquit"
+        },
+        {
+          "sample_id": "v3_dev_quote_001",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "The French philosopher Ren\u00e9 Descartes famously formulated 'cogito, ergo sum' whi"
+        },
+        {
+          "sample_id": "v3_dev_quote_002",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "Gottfried Wilhelm Leibniz and Isaac Newton independently developed infinitesimal"
+        },
+        {
+          "sample_id": "v3_dev_ped_001",
+          "category": "mixed_language_pedagogy",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "In classical Latin grammar, the ablative absolute construction typically consist"
+        },
+        {
+          "sample_id": "v3_dev_nonlat_001",
+          "category": "non_latin_script",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "NON_ENGLISH_SCRIPT",
+          "text_snippet": "\u042d\u0442\u043e \u043f\u0440\u0438\u043c\u0435\u0440 \u0442\u0435\u043a\u0441\u0442\u0430 \u043d\u0430 \u0440\u0443\u0441\u0441\u043a\u043e\u043c \u044f\u0437\u044b\u043a\u0435, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442 \u043a\u0438\u0440\u0438\u043b\u043b\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u043b\u0444\u0430\u0432\u0438\u0442 \u0438 \u0434"
+        },
+        {
+          "sample_id": "v3_dev_nonlat_002",
+          "category": "non_latin_script",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "TOO_SHORT_WORDS",
+          "text_snippet": "\u3053\u308c\u306f\u65e5\u672c\u8a9e\u306e\u30c6\u30ad\u30b9\u30c8\u3067\u3042\u308a\u3001\u82f1\u8a9e\u306e\u30c8\u30ec\u30fc\u30cb\u30f3\u30b0\u30b3\u30fc\u30d1\u30b9\u304b\u3089\u306f\u9664\u5916\u3055\u308c\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002"
+        },
+        {
+          "sample_id": "v3_dev_uni_001",
+          "category": "unicode_punctuation_edge_cases",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "Careful literary typography requires authentic punctuation\u2014not typewriter approx"
+        }
+      ]
+    },
+    "held_out_test_split": {
+      "total_samples": 33,
+      "correct_predictions": 33,
+      "accuracy": 1.0,
+      "accuracy_95_ci": [
+        0.8957,
+        1.0
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "confusion_matrix": {
+        "ACCEPT": {
+          "ACCEPT": 19,
+          "REJECT": 0,
+          "QUARANTINE": 0
+        },
+        "REJECT": {
+          "ACCEPT": 0,
+          "REJECT": 11,
+          "QUARANTINE": 0
+        },
+        "QUARANTINE": {
+          "ACCEPT": 0,
+          "REJECT": 0,
+          "QUARANTINE": 3
+        }
+      },
+      "details": [
+        {
+          "sample_id": "v3_test_ord_001",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "It was the best of times, it was the worst of times, it was the age of wisdom, i"
+        },
+        {
+          "sample_id": "v3_test_ord_002",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "Certainly those who have had the largest experience of life are generally the mo"
+        },
+        {
+          "sample_id": "v3_test_ord_003",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "The lane showed all its features without a veil, the white dust upon its hedges,"
+        },
+        {
+          "sample_id": "v3_test_ord_004",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "Mrs. Dalloway said she would buy the flowers herself. For Lucy had her work cut "
+        },
+        {
+          "sample_id": "v3_test_ord_005",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "Four score and seven years ago our fathers brought forth on this continent, a ne"
+        },
+        {
+          "sample_id": "v3_test_ord_006",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "If there is no struggle, there is no progress. Those who profess to favor freedo"
+        },
+        {
+          "sample_id": "v3_test_ord_007",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "The fundamental cause of the trouble is that in the modern world the stupid are "
+        },
+        {
+          "sample_id": "v3_test_ord_008",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "It is not from the benevolence of the butcher, the brewer, or the baker that we "
+        },
+        {
+          "sample_id": "v3_test_ord_009",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "The decline of Rome was the natural and inevitable effect of immoderate greatnes"
+        },
+        {
+          "sample_id": "v3_test_ord_010",
+          "category": "ordinary_english_prose",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "I do not wish women to have power over men; but over themselves."
+        },
+        {
+          "sample_id": "v3_test_sci_001",
+          "category": "scientific_mathematical_english",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "General relativity describes gravity not as a conventional force, but as a conse"
+        },
+        {
+          "sample_id": "v3_test_sci_002",
+          "category": "scientific_mathematical_english",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "DNA polymerase synthesizes complementary nucleotide strands strictly in the five"
+        },
+        {
+          "sample_id": "v3_test_sci_003",
+          "category": "scientific_mathematical_english",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "Quantum entanglement implies that measuring the spin state of one photon instant"
+        },
+        {
+          "sample_id": "v3_test_sci_004",
+          "category": "scientific_mathematical_english",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "LOW_ALPHA_RATIO",
+          "text_snippet": "R_{mu nu} - (1/2) g_{mu nu} R + Lambda g_{mu nu} = (8 pi G / c^4) T_{mu nu}"
+        },
+        {
+          "sample_id": "v3_test_sci_005",
+          "category": "scientific_mathematical_english",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "LOW_ALPHA_RATIO",
+          "text_snippet": "curl(B) - (1/c) dE/dt = (4 pi / c) J, div(E) = 4 pi rho"
+        },
+        {
+          "sample_id": "v3_test_cap_001",
+          "category": "short_signs_captions_headings",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ACADEMIC_CAPTION",
+          "text_snippet": "Figure 3. Representative electron micrographs showing mitochondrial morphology i"
+        },
+        {
+          "sample_id": "v3_test_sign_002",
+          "category": "short_signs_captions_headings",
+          "expected": "QUARANTINE",
+          "actual": "QUARANTINE",
+          "correct": true,
+          "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY",
+          "text_snippet": "Caution: Slippery Floor Surface When Wet. Exercise care when traversing corridor"
+        },
+        {
+          "sample_id": "v3_test_head_003",
+          "category": "short_signs_captions_headings",
+          "expected": "QUARANTINE",
+          "actual": "QUARANTINE",
+          "correct": true,
+          "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY",
+          "text_snippet": "Section 3.2: Experimental Methodology and Statistical Estimation Procedures"
+        },
+        {
+          "sample_id": "v3_test_doc_001",
+          "category": "code_logs_tables_technical",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "This class manages persistent key-value caching using an LRU eviction policy wit"
+        },
+        {
+          "sample_id": "v3_test_code_002",
+          "category": "code_logs_tables_technical",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "LOW_ALPHA_RATIO",
+          "text_snippet": "pub fn verify_signature(data: &[u8], sig: &[u8; 64]) -> Result<bool, CryptoError"
+        },
+        {
+          "sample_id": "v3_test_log_003",
+          "category": "code_logs_tables_technical",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "LOW_ALPHA_RATIO",
+          "text_snippet": "192.168.1.105 - - [15/Oct/2026:12:34:56 +0000] 'GET /api/v1/health HTTP/1.1' 200"
+        },
+        {
+          "sample_id": "v3_test_code_004",
+          "category": "code_logs_tables_technical",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "LOW_ALPHA_RATIO",
+          "text_snippet": "{\"name\": \"veda-tokenizer\", \"version\": \"0.1.0\", \"dependencies\": {\"torch\": \">=2.2."
+        },
+        {
+          "sample_id": "v3_test_fr_001",
+          "category": "foreign_latin_script_french_german_spanish",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "text_snippet": "Tant qu'il existera, par le fait des lois et des m\u0153urs, une damnation sociale cr"
+        },
+        {
+          "sample_id": "v3_test_de_002",
+          "category": "foreign_latin_script_french_german_spanish",
+          "expected": "QUARANTINE",
+          "actual": "QUARANTINE",
+          "correct": true,
+          "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+          "text_snippet": "Es ist in der Tat eine sehr ernste Situation fuer alle Beteiligten in diesem Lan"
+        },
+        {
+          "sample_id": "v3_test_es_003",
+          "category": "foreign_latin_script_french_german_spanish",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "text_snippet": "En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo"
+        },
+        {
+          "sample_id": "v3_test_it_004",
+          "category": "foreign_latin_script_french_german_spanish",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "text_snippet": "Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura, ch\u00e9 la dir"
+        },
+        {
+          "sample_id": "v3_test_sv_005",
+          "category": "foreign_latin_script_french_german_spanish",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "NO_ENGLISH_STOPWORDS",
+          "text_snippet": "Denna text ar skriven pa svenska for att testa sprakfiltret och dess formaga att"
+        },
+        {
+          "sample_id": "v3_test_quote_001",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "The logician Kurt G\u00f6del revolutionized mathematical logic by demonstrating the i"
+        },
+        {
+          "sample_id": "v3_test_quote_002",
+          "category": "foreign_names_and_quotes",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "The jurist emphasized that the principle of 'habeas corpus' remains a cornerston"
+        },
+        {
+          "sample_id": "v3_test_ped_001",
+          "category": "mixed_language_pedagogy",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "When analyzing German syntax, students learn that subordinate conjunctions like "
+        },
+        {
+          "sample_id": "v3_test_nonlat_001",
+          "category": "non_latin_script",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "TOO_SHORT_WORDS",
+          "text_snippet": "\u8fd9\u662f\u4e00\u4e2a\u4f7f\u7528\u7b80\u4f53\u4e2d\u6587\u5b57\u7b26\u7f16\u5199\u7684\u53e5\u5b50\uff0c\u5fc5\u987b\u7531\u8bed\u8a00\u8fc7\u6ee4\u5668\u786e\u5b9a\u6027\u5730\u62d2\u7edd\u3002"
+        },
+        {
+          "sample_id": "v3_test_nonlat_002",
+          "category": "non_latin_script",
+          "expected": "REJECT",
+          "actual": "REJECT",
+          "correct": true,
+          "reason": "NON_ENGLISH_SCRIPT",
+          "text_snippet": "\u0647\u0630\u0627 \u0646\u0635 \u0628\u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u064a\u062c\u0628 \u0631\u0641\u0636\u0647 \u062a\u0645\u0627\u0645\u0627 \u0628\u0648\u0627\u0633\u0637\u0629 \u0645\u0631\u0634\u062d \u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0625\u0646\u062c\u0644\u064a\u0632\u064a\u0629."
+        },
+        {
+          "sample_id": "v3_test_uni_001",
+          "category": "unicode_punctuation_edge_cases",
+          "expected": "ACCEPT",
+          "actual": "ACCEPT",
+          "correct": true,
+          "reason": "FLUENT_ENGLISH_PROSE",
+          "text_snippet": "The ambassador\u2019s prot\u00e9g\u00e9 presented a well-crafted r\u00e9sum\u00e9\u2014accompanied by glowing "
+        }
+      ]
+    }
+  },
+  "near_dedup_evaluation": {
+    "development_split": {
+      "total_pairs": 10,
+      "stage1_lsh_retrieval": {
+        "tp": 5,
+        "fp": 0,
+        "tn": 5,
+        "fn": 0,
+        "recall": 1.0
+      },
+      "stage2_minhash_lexical": {
+        "tp": 5,
+        "fp": 0,
+        "tn": 5,
+        "fn": 0,
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "false_merges": 0
+      },
+      "stage3_semantic_safety_final": {
+        "tp": 5,
+        "fp": 0,
+        "tn": 5,
+        "fn": 0,
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "false_merges": 0,
+        "prevented_false_merges_count": 0,
+        "prevented_false_merges": [],
+        "wilson_precision_95_ci": [
+          0.5655,
+          1.0
+        ],
+        "wilson_recall_95_ci": [
+          0.5655,
+          1.0
+        ]
+      },
+      "pairs": [
+        {
+          "pair_id": "v3_dev_pair_exact_001",
+          "category": "exact_duplicates",
+          "is_true_duplicate": true,
+          "true_jaccard": 1.0,
+          "est_jaccard": 1.0,
+          "stage1_retrieved": true,
+          "stage2_candidate": true,
+          "stage3_safe_merge": true,
+          "conflict_type": null,
+          "conflict_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v3_dev_pair_fmt_002",
+          "category": "formatting_and_whitespace",
+          "is_true_duplicate": true,
+          "true_jaccard": 1.0,
+          "est_jaccard": 1.0,
+          "stage1_retrieved": true,
+          "stage2_candidate": true,
+          "stage3_safe_merge": true,
+          "conflict_type": null,
+          "conflict_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v3_dev_pair_edit_003",
+          "category": "minor_word_edits",
+          "is_true_duplicate": true,
+          "true_jaccard": 0.8605,
+          "est_jaccard": 0.8984,
+          "stage1_retrieved": true,
+          "stage2_candidate": true,
+          "stage3_safe_merge": true,
+          "conflict_type": null,
+          "conflict_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v3_dev_pair_reord_004",
+          "category": "reordered_passages",
+          "is_true_duplicate": true,
+          "true_jaccard": 0.925,
+          "est_jaccard": 0.9609,
+          "stage1_retrieved": true,
+          "stage2_candidate": true,
+          "stage3_safe_merge": true,
+          "conflict_type": null,
+          "conflict_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v3_dev_pair_short_005",
+          "category": "short_texts",
+          "is_true_duplicate": true,
+          "true_jaccard": 1.0,
+          "est_jaccard": 1.0,
+          "stage1_retrieved": true,
+          "stage2_candidate": true,
+          "stage3_safe_merge": true,
+          "conflict_type": null,
+          "conflict_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v3_dev_pair_bp_006",
+          "category": "shared_boilerplate",
+          "is_true_duplicate": false,
+          "true_jaccard": 0.3744,
+          "est_jaccard": 0.3516,
+          "stage1_retrieved": false,
+          "stage2_candidate": false,
+          "stage3_safe_merge": false,
+          "conflict_type": null,
+          "conflict_reason": "Below similarity threshold"
+        },
+        {
+          "pair_id": "v3_dev_pair_multi_007",
+          "category": "multilingual_text",
+          "is_true_duplicate": false,
+          "true_jaccard": 0.1379,
+          "est_jaccard": 0.0859,
+          "stage1_retrieved": false,
+          "stage2_candidate": false,
+          "stage3_safe_merge": false,
+          "conflict_type": null,
+          "conflict_reason": "Below similarity threshold"
+        },
+        {
+          "pair_id": "v3_dev_pair_inv_008",
+          "category": "semantic_inversions",
+          "is_true_duplicate": false,
+          "true_jaccard": 0.7321,
+          "est_jaccard": 0.75,
+          "stage1_retrieved": false,
+          "stage2_candidate": false,
+          "stage3_safe_merge": false,
+          "conflict_type": null,
+          "conflict_reason": "Below similarity threshold"
+        },
+        {
+          "pair_id": "v3_dev_pair_tech_009",
+          "category": "technical_overlap",
+          "is_true_duplicate": false,
+          "true_jaccard": 0.5442,
+          "est_jaccard": 0.5312,
+          "stage1_retrieved": false,
+          "stage2_candidate": false,
+          "stage3_safe_merge": false,
+          "conflict_type": null,
+          "conflict_reason": "Below similarity threshold"
+        },
+        {
+          "pair_id": "v3_dev_pair_dist_010",
+          "category": "distant_negatives",
+          "is_true_duplicate": false,
+          "true_jaccard": 0.0,
+          "est_jaccard": 0.0,
+          "stage1_retrieved": false,
+          "stage2_candidate": false,
+          "stage3_safe_merge": false,
+          "conflict_type": null,
+          "conflict_reason": "Below similarity threshold"
+        }
+      ]
+    },
+    "held_out_test_split": {
+      "total_pairs": 11,
+      "stage1_lsh_retrieval": {
+        "tp": 5,
+        "fp": 1,
+        "tn": 5,
+        "fn": 0,
+        "recall": 1.0
+      },
+      "stage2_minhash_lexical": {
+        "tp": 5,
+        "fp": 1,
+        "tn": 5,
+        "fn": 0,
+        "accuracy": 0.9091,
+        "precision": 0.8333,
+        "false_merges": 1
+      },
+      "stage3_semantic_safety_final": {
+        "tp": 5,
+        "fp": 0,
+        "tn": 6,
+        "fn": 0,
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "false_merges": 0,
+        "prevented_false_merges_count": 1,
+        "prevented_false_merges": [
+          {
+            "pair_id": "v3_test_pair_inv_008b",
+            "conflict_type": "NUMERICAL_MISMATCH",
+            "reason": "Numerical quantity discrepancy: {(0.01, 'g')} vs {(0.1, 'g')}"
+          }
+        ],
+        "wilson_precision_95_ci": [
+          0.5655,
+          1.0
+        ],
+        "wilson_recall_95_ci": [
+          0.5655,
+          1.0
+        ]
+      },
+      "pairs": [
+        {
+          "pair_id": "v3_test_pair_exact_001",
+          "category": "exact_duplicates",
+          "is_true_duplicate": true,
+          "true_jaccard": 1.0,
+          "est_jaccard": 1.0,
+          "stage1_retrieved": true,
+          "stage2_candidate": true,
+          "stage3_safe_merge": true,
+          "conflict_type": null,
+          "conflict_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v3_test_pair_fmt_002",
+          "category": "formatting_and_whitespace",
+          "is_true_duplicate": true,
+          "true_jaccard": 1.0,
+          "est_jaccard": 1.0,
+          "stage1_retrieved": true,
+          "stage2_candidate": true,
+          "stage3_safe_merge": true,
+          "conflict_type": null,
+          "conflict_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v3_test_pair_edit_003",
+          "category": "minor_word_edits",
+          "is_true_duplicate": true,
+          "true_jaccard": 0.8278,
+          "est_jaccard": 0.8438,
+          "stage1_retrieved": true,
+          "stage2_candidate": true,
+          "stage3_safe_merge": true,
+          "conflict_type": null,
+          "conflict_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v3_test_pair_reord_004",
+          "category": "reordered_passages",
+          "is_true_duplicate": true,
+          "true_jaccard": 0.9256,
+          "est_jaccard": 0.9453,
+          "stage1_retrieved": true,
+          "stage2_candidate": true,
+          "stage3_safe_merge": true,
+          "conflict_type": null,
+          "conflict_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v3_test_pair_short_005",
+          "category": "short_texts",
+          "is_true_duplicate": true,
+          "true_jaccard": 1.0,
+          "est_jaccard": 1.0,
+          "stage1_retrieved": true,
+          "stage2_candidate": true,
+          "stage3_safe_merge": true,
+          "conflict_type": null,
+          "conflict_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+        },
+        {
+          "pair_id": "v3_test_pair_bp_006",
+          "category": "shared_boilerplate",
+          "is_true_duplicate": false,
+          "true_jaccard": 0.3045,
+          "est_jaccard": 0.2969,
+          "stage1_retrieved": false,
+          "stage2_candidate": false,
+          "stage3_safe_merge": false,
+          "conflict_type": null,
+          "conflict_reason": "Below similarity threshold"
+        },
+        {
+          "pair_id": "v3_test_pair_multi_007",
+          "category": "multilingual_text",
+          "is_true_duplicate": false,
+          "true_jaccard": 0.0656,
+          "est_jaccard": 0.0547,
+          "stage1_retrieved": false,
+          "stage2_candidate": false,
+          "stage3_safe_merge": false,
+          "conflict_type": null,
+          "conflict_reason": "Below similarity threshold"
+        },
+        {
+          "pair_id": "v3_test_pair_inv_008a",
+          "category": "semantic_inversions",
+          "is_true_duplicate": false,
+          "true_jaccard": 0.5769,
+          "est_jaccard": 0.5,
+          "stage1_retrieved": false,
+          "stage2_candidate": false,
+          "stage3_safe_merge": false,
+          "conflict_type": null,
+          "conflict_reason": "Below similarity threshold"
+        },
+        {
+          "pair_id": "v3_test_pair_inv_008b",
+          "category": "semantic_inversions",
+          "is_true_duplicate": false,
+          "true_jaccard": 0.9271,
+          "est_jaccard": 0.8984,
+          "stage1_retrieved": true,
+          "stage2_candidate": true,
+          "stage3_safe_merge": false,
+          "conflict_type": "NUMERICAL_MISMATCH",
+          "conflict_reason": "Numerical quantity discrepancy: {(0.01, 'g')} vs {(0.1, 'g')}"
+        },
+        {
+          "pair_id": "v3_test_pair_tech_009",
+          "category": "technical_overlap",
+          "is_true_duplicate": false,
+          "true_jaccard": 0.5486,
+          "est_jaccard": 0.5234,
+          "stage1_retrieved": false,
+          "stage2_candidate": false,
+          "stage3_safe_merge": false,
+          "conflict_type": null,
+          "conflict_reason": "Below similarity threshold"
+        },
+        {
+          "pair_id": "v3_test_pair_dist_010",
+          "category": "distant_negatives",
+          "is_true_duplicate": false,
+          "true_jaccard": 0.0043,
+          "est_jaccard": 0.0,
+          "stage1_retrieved": false,
+          "stage2_candidate": false,
+          "stage3_safe_merge": false,
+          "conflict_type": null,
+          "conflict_reason": "Below similarity threshold"
+        }
+      ]
+    }
+  },
+  "expanded_safety_benchmark": {
+    "benchmark_type": "smoke_test_developmental",
+    "methodology_disclaimer": "MinHash/LSH is evaluated strictly as a scalable candidate-retrieval method. Stage 3 Semantic Safety Guard performs semantic verification before any record merge.",
+    "sample_size_limitation": "Evaluated on N=17 calibrated synthetic pairs. This serves as an algorithmic smoke test, not a production-scale accuracy claim.",
+    "threshold": 0.8,
+    "total_evaluated_pairs": 17,
+    "stage1_candidate_retrieval": {
+      "cand_true_positives": 7,
+      "cand_false_positives": 4,
+      "cand_true_negatives": 6,
+      "cand_false_negatives": 0,
+      "candidate_recall": 1.0,
+      "candidate_selectivity": 0.6
+    },
+    "stage2_similarity_threshold": {
+      "true_positives": 7,
+      "false_positives": 2,
+      "true_negatives": 8,
+      "false_negatives": 0,
+      "precision": 0.7778,
+      "recall": 1.0,
+      "f1_score": 0.875,
+      "accuracy": 0.8824
+    },
+    "stage3_safety_decision": {
+      "true_positives": 7,
+      "false_positives": 0,
+      "true_negatives": 10,
+      "false_negatives": 0,
+      "false_merges_prevented": 2,
+      "conflicts_detected": [
+        {
+          "pair_id": "eval_safety_dosage_013",
+          "conflict_type": "NUMERICAL_MISMATCH",
+          "reason": "Numerical quantity discrepancy: {(0.01, 'g')} vs {(0.1, 'g')}",
+          "details": {
+            "stage": "numerical_verification"
+          }
+        },
+        {
+          "pair_id": "eval_safety_date_015",
+          "conflict_type": "NUMERICAL_MISMATCH",
+          "reason": "Numerical quantity discrepancy: {(1824.0, 'following')} vs {(1827.0, 'following')}",
+          "details": {
+            "stage": "numerical_verification"
+          }
+        }
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0,
+      "f1_score": 1.0,
+      "accuracy": 1.0,
+      "precision_95_ci": [
+        0.6457,
+        1.0
+      ],
+      "recall_95_ci": [
+        0.6457,
+        1.0
+      ]
+    },
+    "true_positives": 7,
+    "false_positives": 0,
+    "true_negatives": 10,
+    "false_negatives": 0,
+    "false_merges_prevented": 2,
+    "precision": 1.0,
+    "recall": 1.0,
+    "specificity": 1.0,
+    "f1_score": 1.0,
+    "accuracy": 1.0,
+    "precision_95_ci": [
+      0.6457,
+      1.0
+    ],
+    "recall_95_ci": [
+      0.6457,
+      1.0
+    ],
+    "elapsed_seconds": 0.0355,
+    "pair_results": [
+      {
+        "pair_id": "eval_exact_001",
+        "category": "exact_duplicate",
+        "true_jaccard": 1.0,
+        "est_jaccard": 1.0,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      },
+      {
+        "pair_id": "eval_near_ws_002",
+        "category": "reformatted_duplicate",
+        "true_jaccard": 0.9761,
+        "est_jaccard": 0.9766,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      },
+      {
+        "pair_id": "eval_near_syn_003",
+        "category": "light_edit_duplicate",
+        "true_jaccard": 0.9571,
+        "est_jaccard": 0.9531,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      },
+      {
+        "pair_id": "eval_reordered_004",
+        "category": "reordered_duplicate",
+        "true_jaccard": 0.9761,
+        "est_jaccard": 0.9922,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      },
+      {
+        "pair_id": "eval_ocr_005",
+        "category": "ocr_error_duplicate",
+        "true_jaccard": 0.9573,
+        "est_jaccard": 0.9766,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      },
+      {
+        "pair_id": "eval_hard_neg_domain_006",
+        "category": "hard_negative_domain_overlap",
+        "true_jaccard": 0.5816,
+        "est_jaccard": 0.5938,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_hard_neg_inversion_007",
+        "category": "hard_negative_semantic_inversion",
+        "true_jaccard": 0.5225,
+        "est_jaccard": 0.4844,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": false,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_hard_neg_boilerplate_008",
+        "category": "hard_negative_shared_boilerplate",
+        "true_jaccard": 0.2871,
+        "est_jaccard": 0.2969,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": false,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_hard_neg_params_009",
+        "category": "hard_negative_technical_overlap",
+        "true_jaccard": 0.4959,
+        "est_jaccard": 0.4531,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": false,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_distant_neg_010",
+        "category": "distant_negative",
+        "true_jaccard": 0.0149,
+        "est_jaccard": 0.0,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": false,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_partial_overlap_011",
+        "category": "partial_overlap_negative",
+        "true_jaccard": 0.3456,
+        "est_jaccard": 0.3281,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": false,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_critical_numerical_inversion_012",
+        "category": "hard_negative_semantic_inversion",
+        "true_jaccard": 0.7857,
+        "est_jaccard": 0.7812,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": false,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_safety_dosage_013",
+        "category": "safety_numerical_inversion",
+        "true_jaccard": 0.9557,
+        "est_jaccard": 0.9375,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": "NUMERICAL_MISMATCH",
+        "safety_reason": "Numerical quantity discrepancy: {(0.01, 'g')} vs {(0.1, 'g')}"
+      },
+      {
+        "pair_id": "eval_safety_unit_014",
+        "category": "safety_unit_conversion_duplicate",
+        "true_jaccard": 0.8963,
+        "est_jaccard": 0.9062,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      },
+      {
+        "pair_id": "eval_safety_date_015",
+        "category": "safety_temporal_date_inversion",
+        "true_jaccard": 0.9338,
+        "est_jaccard": 0.9453,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": "NUMERICAL_MISMATCH",
+        "safety_reason": "Numerical quantity discrepancy: {(1824.0, 'following')} vs {(1827.0, 'following')}"
+      },
+      {
+        "pair_id": "eval_safety_negation_016",
+        "category": "safety_polarity_inversion",
+        "true_jaccard": 0.7662,
+        "est_jaccard": 0.7344,
+        "is_true_duplicate": false,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": false,
+        "stage3_safe_merge": false,
+        "predicted_duplicate": false,
+        "safety_conflict": null,
+        "safety_reason": "Below candidate similarity threshold"
+      },
+      {
+        "pair_id": "eval_safety_paraphrase_017",
+        "category": "safety_valid_paraphrase_duplicate",
+        "true_jaccard": 0.8158,
+        "est_jaccard": 0.8281,
+        "is_true_duplicate": true,
+        "is_retrieved_candidate": true,
+        "stage2_candidate": true,
+        "stage3_safe_merge": true,
+        "predicted_duplicate": true,
+        "safety_conflict": null,
+        "safety_reason": "Semantic integrity verified: No material factual, numerical, polarity, or identifier conflicts"
+      }
+    ],
+    "false_positive_examples": [],
+    "false_negative_examples": []
+  }
+}

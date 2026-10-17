@@ -1,0 +1,397 @@
+{
+  "evaluation_name": "VEDA_Phase_4.4_Quality_Gates_Certification",
+  "timestamp_epoch": 1792051954.4657521,
+  "overall_status": "VERIFIED",
+  "production_corpus_ingestion_status": "STRICTLY_BLOCKED (Awaiting legal & source governance)",
+  "hardware_environment": {
+    "python_executable": "C:\\Users\\karnik YOGA\\OneDrive\\Desktop\\veda\\.venv\\Scripts\\python.exe",
+    "python_version": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+    "system_ram_gb": 15.75,
+    "process_rss_mb": 302.81,
+    "device": "cpu",
+    "cuda_available": false
+  },
+  "datasets_provenance": {
+    "language_dataset_path": "C:\\Users\\karnik YOGA\\OneDrive\\Desktop\\veda\\data\\corpus\\eval_language_dataset_v2.json",
+    "language_dataset_sha256": "abce8efedb94930b4ae89050659c44b291ec859ed30a4916eec4a812bd59b15d",
+    "language_dev_count": "500",
+    "language_test_count": "500",
+    "near_dedup_dataset_path": "C:\\Users\\karnik YOGA\\OneDrive\\Desktop\\veda\\data\\corpus\\eval_near_dedup_dataset_v2.json",
+    "near_dedup_dataset_sha256": "b691920c7ed572439486dc357ab41e860bb3ea46ee2d52f7891619b1950b70a5",
+    "near_dedup_dev_count": "500",
+    "near_dedup_test_count": "500"
+  },
+  "gates": {
+    "gate_a_language_filter": {
+      "gate_name": "GATE_A_LANGUAGE_QUALITY_FILTER",
+      "status": "VERIFIED",
+      "standard_threshold": 0.95,
+      "total_evaluated_samples": 500,
+      "total_correct": 500,
+      "accuracy": 1.0,
+      "accuracy_95_ci": [
+        0.9924,
+        1.0
+      ],
+      "precision": 1.0,
+      "precision_95_ci": [
+        0.9875,
+        1.0
+      ],
+      "recall": 1.0,
+      "recall_95_ci": [
+        0.9875,
+        1.0
+      ],
+      "f1_score": 1.0,
+      "false_acceptance_rate": 0.0,
+      "false_rejection_rate": 0.0,
+      "quarantine_rate": 0.096,
+      "confusion_matrix": {
+        "true_positives": 304,
+        "false_positives": 0,
+        "true_negatives": 148,
+        "false_negatives": 0,
+        "quarantined": 48
+      },
+      "category_results": {
+        "ordinary_english_prose": {
+          "sample_count": 56,
+          "correct_count": 56,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9358,
+            1.0
+          ],
+          "accepted": 56,
+          "rejected": 0,
+          "quarantined": 0,
+          "status": "VERIFIED"
+        },
+        "scientific_mathematical_english": {
+          "sample_count": 56,
+          "correct_count": 56,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9358,
+            1.0
+          ],
+          "accepted": 45,
+          "rejected": 11,
+          "quarantined": 0,
+          "status": "VERIFIED"
+        },
+        "short_signs_captions_headings": {
+          "sample_count": 56,
+          "correct_count": 56,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9358,
+            1.0
+          ],
+          "accepted": 19,
+          "rejected": 0,
+          "quarantined": 37,
+          "status": "VERIFIED"
+        },
+        "code_logs_tables_technical": {
+          "sample_count": 56,
+          "correct_count": 56,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9358,
+            1.0
+          ],
+          "accepted": 19,
+          "rejected": 37,
+          "quarantined": 0,
+          "status": "VERIFIED"
+        },
+        "foreign_latin_script_french_german_spanish": {
+          "sample_count": 56,
+          "correct_count": 56,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9358,
+            1.0
+          ],
+          "accepted": 0,
+          "rejected": 45,
+          "quarantined": 11,
+          "status": "VERIFIED"
+        },
+        "foreign_names_and_quotes": {
+          "sample_count": 55,
+          "correct_count": 55,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9347,
+            1.0
+          ],
+          "accepted": 55,
+          "rejected": 0,
+          "quarantined": 0,
+          "status": "VERIFIED"
+        },
+        "mixed_language_pedagogy": {
+          "sample_count": 55,
+          "correct_count": 55,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9347,
+            1.0
+          ],
+          "accepted": 55,
+          "rejected": 0,
+          "quarantined": 0,
+          "status": "VERIFIED"
+        },
+        "non_latin_script": {
+          "sample_count": 55,
+          "correct_count": 55,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9347,
+            1.0
+          ],
+          "accepted": 0,
+          "rejected": 55,
+          "quarantined": 0,
+          "status": "VERIFIED"
+        },
+        "unicode_punctuation_edge_cases": {
+          "sample_count": 55,
+          "correct_count": 55,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9347,
+            1.0
+          ],
+          "accepted": 55,
+          "rejected": 0,
+          "quarantined": 0,
+          "status": "VERIFIED"
+        }
+      }
+    },
+    "gate_b_near_deduplication": {
+      "gate_name": "GATE_B_NEAR_DUPLICATE_LSH",
+      "status": "VERIFIED",
+      "standard_threshold": 0.95,
+      "total_evaluated_pairs": 500,
+      "stage1_candidate_retrieval": {
+        "candidate_recall": 1.0,
+        "candidate_selectivity": 1.0,
+        "cand_tp": 250,
+        "cand_fp": 0,
+        "cand_tn": 250,
+        "cand_fn": 0
+      },
+      "stage2_final_decision": {
+        "accuracy": 1.0,
+        "accuracy_95_ci": [
+          0.9924,
+          1.0
+        ],
+        "precision": 1.0,
+        "precision_95_ci": [
+          0.9849,
+          1.0
+        ],
+        "recall": 1.0,
+        "recall_95_ci": [
+          0.9849,
+          1.0
+        ],
+        "f1_score": 1.0,
+        "false_merges_fp": 0,
+        "missed_duplicates_fn": 0,
+        "true_positives_tp": 250,
+        "true_negatives_tn": 250
+      },
+      "category_results": {
+        "exact_duplicates": {
+          "total_pairs": 50,
+          "correct_pairs": 50,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9286,
+            1.0
+          ],
+          "tp": 50,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "status": "VERIFIED"
+        },
+        "formatting_and_whitespace": {
+          "total_pairs": 50,
+          "correct_pairs": 50,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9286,
+            1.0
+          ],
+          "tp": 50,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "status": "VERIFIED"
+        },
+        "minor_word_edits": {
+          "total_pairs": 50,
+          "correct_pairs": 50,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9286,
+            1.0
+          ],
+          "tp": 50,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "status": "VERIFIED"
+        },
+        "reordered_passages": {
+          "total_pairs": 50,
+          "correct_pairs": 50,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9286,
+            1.0
+          ],
+          "tp": 50,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "status": "VERIFIED"
+        },
+        "short_texts": {
+          "total_pairs": 50,
+          "correct_pairs": 50,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9286,
+            1.0
+          ],
+          "tp": 50,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "status": "VERIFIED"
+        },
+        "shared_boilerplate": {
+          "total_pairs": 50,
+          "correct_pairs": 50,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9286,
+            1.0
+          ],
+          "tp": 0,
+          "fp": 0,
+          "tn": 50,
+          "fn": 0,
+          "status": "VERIFIED"
+        },
+        "multilingual_text": {
+          "total_pairs": 50,
+          "correct_pairs": 50,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9286,
+            1.0
+          ],
+          "tp": 0,
+          "fp": 0,
+          "tn": 50,
+          "fn": 0,
+          "status": "VERIFIED"
+        },
+        "semantic_inversions": {
+          "total_pairs": 50,
+          "correct_pairs": 50,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9286,
+            1.0
+          ],
+          "tp": 0,
+          "fp": 0,
+          "tn": 50,
+          "fn": 0,
+          "status": "VERIFIED"
+        },
+        "technical_overlap": {
+          "total_pairs": 50,
+          "correct_pairs": 50,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9286,
+            1.0
+          ],
+          "tp": 0,
+          "fp": 0,
+          "tn": 50,
+          "fn": 0,
+          "status": "VERIFIED"
+        },
+        "distant_negatives": {
+          "total_pairs": 50,
+          "correct_pairs": 50,
+          "accuracy": 1.0,
+          "accuracy_95_ci": [
+            0.9286,
+            1.0
+          ],
+          "tp": 0,
+          "fp": 0,
+          "tn": 50,
+          "fn": 0,
+          "status": "VERIFIED"
+        }
+      }
+    },
+    "gate_c_data_integrity": {
+      "gate_name": "GATE_C_DATA_INTEGRITY",
+      "status": "VERIFIED",
+      "standard_threshold": 1.0,
+      "pass_rate": 1.0,
+      "details": {
+        "sqlite_integrity": true,
+        "foreign_keys_valid": true,
+        "words_row_count": 6,
+        "word_pos_count": 13,
+        "senses_count": 62,
+        "distinct_normalized_words": 6
+      }
+    },
+    "gate_d_tokenizer": {
+      "gate_name": "GATE_D_TOKENIZER_ROUND_TRIP",
+      "status": "VERIFIED",
+      "standard_threshold": 1.0,
+      "pass_rate": 1.0,
+      "details": {
+        "vocab_size": 117,
+        "empty_string_pass": true,
+        "full_registry_roundtrip_pass": true,
+        "unregistered_unk_mapping_pass": true,
+        "special_tokens_contract_pass": true
+      }
+    },
+    "gate_e_neural_foundation": {
+      "gate_name": "GATE_E_NEURAL_FOUNDATION",
+      "status": "VERIFIED",
+      "standard_threshold": 1.0,
+      "pass_rate": 1.0,
+      "details": {
+        "causal_masking_ok": true,
+        "gradients_finite": true,
+        "parameters_changed": true,
+        "checkpoint_reload_exact_match": true,
+        "safe_deserialization_weights_only": true,
+        "train_test_leakage_free": true
+      }
+    }
+  }
+}

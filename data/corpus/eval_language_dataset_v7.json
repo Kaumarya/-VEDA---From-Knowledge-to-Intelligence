@@ -1,0 +1,859 @@
+{
+  "metadata": {
+    "dataset_name": "eval_language_dataset_v7",
+    "version": "7.0",
+    "phase": "4.9",
+    "target": "Blind Final Certification Preparation",
+    "annotation_rules": {
+      "ACCEPT": "Fluent, coherent English prose (general or academic), English scientific captions, and English prose quoting foreign phrases.",
+      "QUARANTINE": "Coherent non-prose structured data (SQL, code), imperative safety signage, short fragments (<8 words), and Germanic Latin text.",
+      "REJECT": "Romance Latin prose without English stopwords, non-Latin scripts, and corrupt/malformed alphabetic noise."
+    },
+    "total_dev_samples": 60,
+    "total_test_samples": 60
+  },
+  "development_split": [
+    {
+      "sample_id": "v7_lang_dev_001",
+      "category": "ordinary_english_prose",
+      "text": "The timber bridge across the canyon was fortified with heavy iron trusses to support commercial freight wagons.",
+      "expected_outcome": "ACCEPT",
+      "domain": "civil_engineering_history"
+    },
+    {
+      "sample_id": "v7_lang_dev_002",
+      "category": "ordinary_english_prose",
+      "text": "Modern meteorological stations deploy automated radiosonde balloons to gather atmospheric temperature profiles at high altitudes.",
+      "expected_outcome": "ACCEPT",
+      "domain": "meteorology"
+    },
+    {
+      "sample_id": "v7_lang_dev_003",
+      "category": "ordinary_english_prose",
+      "text": "The village blacksmith tempered the carbon steel chisels in brine to achieve optimal cutting hardness and edge retention.",
+      "expected_outcome": "ACCEPT",
+      "domain": "traditional_metallurgy"
+    },
+    {
+      "sample_id": "v7_lang_dev_004",
+      "category": "ordinary_english_prose",
+      "text": "Subterranean limestone caverns formed over thousands of years as carbonic acid slowly dissolved the calcium carbonate rock.",
+      "expected_outcome": "ACCEPT",
+      "domain": "speleology"
+    },
+    {
+      "sample_id": "v7_lang_dev_005",
+      "category": "ordinary_english_prose",
+      "text": "Harbor authorities introduced strict container inspection standards to prevent invasive aquatic organisms from entering coastal bays.",
+      "expected_outcome": "ACCEPT",
+      "domain": "maritime_ecology"
+    },
+    {
+      "sample_id": "v7_lang_dev_006",
+      "category": "ordinary_english_prose",
+      "text": "The historic cathedral clock tower incorporates an intricate pendulum escapement mechanism crafted by apprentice watchmakers.",
+      "expected_outcome": "ACCEPT",
+      "domain": "horology"
+    },
+    {
+      "sample_id": "v7_lang_dev_007",
+      "category": "ordinary_english_prose",
+      "text": "Alpine glaciers deposited unsorted glacial till along the valley floor during successive Pleistocene glacial advances.",
+      "expected_outcome": "ACCEPT",
+      "domain": "geomorphology"
+    },
+    {
+      "sample_id": "v7_lang_dev_008",
+      "category": "ordinary_english_prose",
+      "text": "The city health department opened public vaccination clinics across five municipal boroughs during the autumn flu outbreak.",
+      "expected_outcome": "ACCEPT",
+      "domain": "public_health"
+    },
+    {
+      "sample_id": "v7_lang_dev_009",
+      "category": "ordinary_english_prose",
+      "text": "Artisanal glassblowers reheat molten silicate glass inside annealing lehrs to release mechanical internal stresses.",
+      "expected_outcome": "ACCEPT",
+      "domain": "glass_manufacturing"
+    },
+    {
+      "sample_id": "v7_lang_dev_010",
+      "category": "ordinary_english_prose",
+      "text": "Ornithologists banded juvenile peregrine falcons to track their predatory dispersal patterns throughout eastern river gorges.",
+      "expected_outcome": "ACCEPT",
+      "domain": "wildlife_biology"
+    },
+    {
+      "sample_id": "v7_lang_dev_011",
+      "category": "expository_academic_prose",
+      "text": "Quantum entanglement demonstrates non-local quantum state correlations that cannot be explained by classical hidden variable theories.",
+      "expected_outcome": "ACCEPT",
+      "domain": "quantum_mechanics"
+    },
+    {
+      "sample_id": "v7_lang_dev_012",
+      "category": "expository_academic_prose",
+      "text": "Administrative law governs the procedural rulemaking and adjudicative authority exercised by regulatory executive agencies.",
+      "expected_outcome": "ACCEPT",
+      "domain": "administrative_law"
+    },
+    {
+      "sample_id": "v7_lang_dev_013",
+      "category": "expository_academic_prose",
+      "text": "Mantle convection plumes generate intraplate volcanic hotspot tracks that remain stationary relative to moving oceanic plates.",
+      "expected_outcome": "ACCEPT",
+      "domain": "geodynamics"
+    },
+    {
+      "sample_id": "v7_lang_dev_014",
+      "category": "expository_academic_prose",
+      "text": "Syntactic parsing algorithms construct hierarchical phrase structure trees from sequential natural language sentences.",
+      "expected_outcome": "ACCEPT",
+      "domain": "computational_linguistics"
+    },
+    {
+      "sample_id": "v7_lang_dev_015",
+      "category": "expository_academic_prose",
+      "text": "Allosteric enzyme regulation modifies substrate affinity through conformational changes induced by effector molecule binding.",
+      "expected_outcome": "ACCEPT",
+      "domain": "biochemistry"
+    },
+    {
+      "sample_id": "v7_lang_dev_016",
+      "category": "expository_academic_prose",
+      "text": "Thermodynamic free energy determines the spontaneous equilibrium direction of reversible chemical reactions under isobaric conditions.",
+      "expected_outcome": "ACCEPT",
+      "domain": "chemical_thermodynamics"
+    },
+    {
+      "sample_id": "v7_lang_dev_017",
+      "category": "expository_academic_prose",
+      "text": "Phenomenological sociology investigates how social actors construct intersubjective shared meaning during everyday interactions.",
+      "expected_outcome": "ACCEPT",
+      "domain": "sociological_theory"
+    },
+    {
+      "sample_id": "v7_lang_dev_018",
+      "category": "expository_academic_prose",
+      "text": "Radiocarbon dating measures the isotopic ratio of carbon fourteen to carbon twelve in deceased organic specimens.",
+      "expected_outcome": "ACCEPT",
+      "domain": "geochronology"
+    },
+    {
+      "sample_id": "v7_lang_dev_019",
+      "category": "expository_academic_prose",
+      "text": "Fourier transform infrared spectroscopy characterizes vibrational molecular absorption bands in synthetic polymeric thin films.",
+      "expected_outcome": "ACCEPT",
+      "domain": "spectrochemical_analysis"
+    },
+    {
+      "sample_id": "v7_lang_dev_020",
+      "category": "expository_academic_prose",
+      "text": "Histone acetylation modulates chromatin accessibility and regulates transcriptional activation of repressed eukaryotic gene promoters.",
+      "expected_outcome": "ACCEPT",
+      "domain": "epigenetics"
+    },
+    {
+      "sample_id": "v7_lang_dev_021",
+      "category": "scientific_figure_captions",
+      "text": "Figure 1: Atomic force microscope topography of epitaxial graphene grown on silicon carbide substrates.",
+      "expected_outcome": "ACCEPT",
+      "domain": "nanotechnology"
+    },
+    {
+      "sample_id": "v7_lang_dev_022",
+      "category": "scientific_figure_captions",
+      "text": "Figure 2. Measured ultraviolet photoluminescence excitation spectra of colloidal zinc oxide nanocrystals at cryogenic temperatures.",
+      "expected_outcome": "ACCEPT",
+      "domain": "condensed_matter"
+    },
+    {
+      "sample_id": "v7_lang_dev_023",
+      "category": "scientific_figure_captions",
+      "text": "Table 1: Calculated lattice parameters and mechanical fracture toughness for sintered silicon nitride ceramics.",
+      "expected_outcome": "ACCEPT",
+      "domain": "materials_science"
+    },
+    {
+      "sample_id": "v7_lang_dev_024",
+      "category": "scientific_figure_captions",
+      "text": "Chart 3: Diurnal variation of photosynthetic carbon assimilation measured across three deciduous tree species.",
+      "expected_outcome": "ACCEPT",
+      "domain": "plant_physiology"
+    },
+    {
+      "sample_id": "v7_lang_dev_025",
+      "category": "scientific_figure_captions",
+      "text": "Diagram 2. Cross-sectional schematic diagram of the high-vacuum cryogenic magnetron sputtering deposition chamber.",
+      "expected_outcome": "ACCEPT",
+      "domain": "thin_film_physics"
+    },
+    {
+      "sample_id": "v7_lang_dev_026",
+      "category": "foreign_names_and_quotes",
+      "text": "The international legal commission concluded that the principle of pacta sunt servanda governs binding treaty obligations.",
+      "expected_outcome": "ACCEPT",
+      "domain": "international_law"
+    },
+    {
+      "sample_id": "v7_lang_dev_027",
+      "category": "foreign_names_and_quotes",
+      "text": "German philosopher Arthur Schopenhauer analyzed the concept of Wille und Vorstellung in his foundational metaphysical treatises.",
+      "expected_outcome": "ACCEPT",
+      "domain": "metaphysics"
+    },
+    {
+      "sample_id": "v7_lang_dev_028",
+      "category": "foreign_names_and_quotes",
+      "text": "The art historian emphasized that the painter adopted the dramatic chiaroscuro style popularized during the Italian Renaissance.",
+      "expected_outcome": "ACCEPT",
+      "domain": "art_history"
+    },
+    {
+      "sample_id": "v7_lang_dev_029",
+      "category": "foreign_names_and_quotes",
+      "text": "Economists debate whether the principle of laissez-faire market competition provides sufficient stabilization during financial crises.",
+      "expected_outcome": "ACCEPT",
+      "domain": "macroeconomics"
+    },
+    {
+      "sample_id": "v7_lang_dev_030",
+      "category": "foreign_names_and_quotes",
+      "text": "The constitutional judge delivered a writ of habeas corpus commanding the state custodian to present the detained prisoner.",
+      "expected_outcome": "ACCEPT",
+      "domain": "constitutional_law"
+    },
+    {
+      "sample_id": "v7_lang_dev_031",
+      "category": "code_sql_structured_data",
+      "text": "SELECT transaction_id, merchant_name, settlement_amount FROM daily_clearing_records WHERE settlement_amount > 1000.00;",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v7_lang_dev_032",
+      "category": "code_sql_structured_data",
+      "text": "INSERT INTO flight_reservations (booking_reference, passenger_name, flight_number) VALUES ('ABC123', 'John Doe', 'FL402');",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v7_lang_dev_033",
+      "category": "code_sql_structured_data",
+      "text": "CREATE TABLE weather_stations (station_id INTEGER PRIMARY KEY, elevation_meters REAL, wind_speed_knots REAL);",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v7_lang_dev_034",
+      "category": "code_sql_structured_data",
+      "text": "UPDATE patient_records SET discharge_status = 'COMPLETED', room_number = NULL WHERE patient_id = 90210;",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v7_lang_dev_035",
+      "category": "code_sql_structured_data",
+      "text": "DROP TABLE obsolete_inventory_snapshots;",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v7_lang_dev_036",
+      "category": "imperative_signage_notices",
+      "text": "DANGER: High pressure steam line. Keep clear of relief valve exhaust port at all times.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "industrial_signage"
+    },
+    {
+      "sample_id": "v7_lang_dev_037",
+      "category": "imperative_signage_notices",
+      "text": "CAUTION: Strong magnetic field hazard. Cardiac pacemakers and metallic implants prohibited beyond this point.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "medical_safety"
+    },
+    {
+      "sample_id": "v7_lang_dev_038",
+      "category": "imperative_signage_notices",
+      "text": "WARNING: Corrosive acid storage area. Chemical splash goggles and rubber apron mandatory.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "chemical_safety"
+    },
+    {
+      "sample_id": "v7_lang_dev_039",
+      "category": "imperative_signage_notices",
+      "text": "NOTICE: Server room access restricted to authorized IT operations personnel only.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "facility_compliance"
+    },
+    {
+      "sample_id": "v7_lang_dev_040",
+      "category": "imperative_signage_notices",
+      "text": "ALERT: Severe weather shelter location. Remain inside interior hallway until the storm passes.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "emergency_signage"
+    },
+    {
+      "sample_id": "v7_lang_dev_041",
+      "category": "short_headings_and_fragments",
+      "text": "Section 4.2 Analytical Spectrophotometry Calibration Procedures",
+      "expected_outcome": "QUARANTINE",
+      "domain": "technical_heading"
+    },
+    {
+      "sample_id": "v7_lang_dev_042",
+      "category": "short_headings_and_fragments",
+      "text": "Chapter VIII: Advanced Structural Optimization Methods",
+      "expected_outcome": "QUARANTINE",
+      "domain": "textbook_heading"
+    },
+    {
+      "sample_id": "v7_lang_dev_043",
+      "category": "short_headings_and_fragments",
+      "text": "Appendix D: Supplementary Chemical Reagent Specifications",
+      "expected_outcome": "QUARANTINE",
+      "domain": "monograph_heading"
+    },
+    {
+      "sample_id": "v7_lang_dev_044",
+      "category": "short_headings_and_fragments",
+      "text": "Quarterly Financial Performance Summary Report 2024",
+      "expected_outcome": "QUARANTINE",
+      "domain": "corporate_heading"
+    },
+    {
+      "sample_id": "v7_lang_dev_045",
+      "category": "short_headings_and_fragments",
+      "text": "Module 3: Linear Matrix Algebra Foundations",
+      "expected_outcome": "QUARANTINE",
+      "domain": "syllabus_heading"
+    },
+    {
+      "sample_id": "v7_lang_dev_046",
+      "category": "germanic_latin_prose",
+      "text": "Die Entwicklung der modernen Halbleiterphysik fuehrte zu bahnbrechenden Entdeckungen in der Festkoerperchemie.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "german_solid_state"
+    },
+    {
+      "sample_id": "v7_lang_dev_047",
+      "category": "germanic_latin_prose",
+      "text": "Het waterbeheer in Nederland vereist voortdurende inspectie van dijken en gemalen langs de rivieren.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "dutch_water_management"
+    },
+    {
+      "sample_id": "v7_lang_dev_048",
+      "category": "germanic_latin_prose",
+      "text": "Abbildung 8: Mikroskopische Aufnahme der Kristallstruktur bei Raumtemperatur und Normaldruck.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "german_scientific_caption"
+    },
+    {
+      "sample_id": "v7_lang_dev_049",
+      "category": "germanic_latin_prose",
+      "text": "De haven van Rotterdam verwerkt jaarlijks miljoenen containers uit alle delen van de wereld door geautomatiseerde kranen.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "dutch_logistics"
+    },
+    {
+      "sample_id": "v7_lang_dev_050",
+      "category": "germanic_latin_prose",
+      "text": "Eine genaue Bestimmung der Reaktionsgeschwindigkeit ist fuer industrielle Synthesen von zentraler Bedeutung.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "german_chemical_engineering"
+    },
+    {
+      "sample_id": "v7_lang_dev_051",
+      "category": "romance_latin_prose",
+      "text": "La synthese des polymeres conducteurs necessite un controle rigoureux de la temperature dans le reacteur.",
+      "expected_outcome": "REJECT",
+      "domain": "french_polymer_chemistry"
+    },
+    {
+      "sample_id": "v7_lang_dev_052",
+      "category": "romance_latin_prose",
+      "text": "El analisis mineralogico confirma la presencia de silicatos complejos en las rocas volcanicas de la cordillera.",
+      "expected_outcome": "REJECT",
+      "domain": "spanish_mineralogy"
+    },
+    {
+      "sample_id": "v7_lang_dev_053",
+      "category": "romance_latin_prose",
+      "text": "I risultati dello studio clinico indicano un miglioramento significativo della pressione arteriosa nei pazienti trattati.",
+      "expected_outcome": "REJECT",
+      "domain": "italian_clinical_medicine"
+    },
+    {
+      "sample_id": "v7_lang_dev_054",
+      "category": "romance_latin_prose",
+      "text": "Le ministre de la culture a inaugure la nouvelle exposition consacree aux chefs-d'œuvre du patrimoine architectural.",
+      "expected_outcome": "REJECT",
+      "domain": "french_cultural_news"
+    },
+    {
+      "sample_id": "v7_lang_dev_055",
+      "category": "romance_latin_prose",
+      "text": "La produccion vinicola de la comarca se beneficia de un clima mediterraneo con escasas precipitaciones otoñales.",
+      "expected_outcome": "REJECT",
+      "domain": "spanish_viticulture"
+    },
+    {
+      "sample_id": "v7_lang_dev_056",
+      "category": "non_latin_script",
+      "text": "Аэродинамические испытания модели сверхзвукового самолета проводились в трансзвуковой аэродинамической трубе института.",
+      "expected_outcome": "REJECT",
+      "domain": "russian_aerospace"
+    },
+    {
+      "sample_id": "v7_lang_dev_057",
+      "category": "non_latin_script",
+      "text": "量子计算利用量子力学的叠加态和纠缠特性来执行高度复杂的并行算法计算任务。",
+      "expected_outcome": "REJECT",
+      "domain": "chinese_quantum_computing"
+    },
+    {
+      "sample_id": "v7_lang_dev_058",
+      "category": "malformed_noise",
+      "text": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+      "expected_outcome": "REJECT",
+      "domain": "repetition_noise"
+    },
+    {
+      "sample_id": "v7_lang_dev_059",
+      "category": "malformed_noise",
+      "text": "%$#@! &*^~ {}[]| \\\\// ?>< :; `~ +_=-",
+      "expected_outcome": "REJECT",
+      "domain": "symbol_noise"
+    },
+    {
+      "sample_id": "v7_lang_dev_060",
+      "category": "malformed_noise",
+      "text": "a b c d e f g h i j k l m n o p q r s t u v w x y z",
+      "expected_outcome": "REJECT",
+      "domain": "isolated_character_noise"
+    }
+  ],
+  "test_split": [
+    {
+      "sample_id": "v7_lang_test_001",
+      "category": "ordinary_english_prose",
+      "text": "The coastal fishing fleet sheltered inside the protected harbor until the Atlantic gale warnings had expired.",
+      "expected_outcome": "ACCEPT",
+      "domain": "maritime_life"
+    },
+    {
+      "sample_id": "v7_lang_test_002",
+      "category": "ordinary_english_prose",
+      "text": "Municipal engineers surveyed the river embankment to identify erosion damage caused by recent seasonal floods.",
+      "expected_outcome": "ACCEPT",
+      "domain": "hydraulic_engineering"
+    },
+    {
+      "sample_id": "v7_lang_test_003",
+      "category": "ordinary_english_prose",
+      "text": "The local agricultural fair awarded blue ribbons for heirloom apple varieties and prize dairy heifers.",
+      "expected_outcome": "ACCEPT",
+      "domain": "agricultural_life"
+    },
+    {
+      "sample_id": "v7_lang_test_004",
+      "category": "ordinary_english_prose",
+      "text": "Early telegraph operators transmitted urgent telegrams across vast distances using standardized Morse code sequences.",
+      "expected_outcome": "ACCEPT",
+      "domain": "telecommunications_history"
+    },
+    {
+      "sample_id": "v7_lang_test_005",
+      "category": "ordinary_english_prose",
+      "text": "The botanical conservatory shelters tropical carnivorous plants inside climate-controlled glass greenhouses.",
+      "expected_outcome": "ACCEPT",
+      "domain": "horticulture"
+    },
+    {
+      "sample_id": "v7_lang_test_006",
+      "category": "ordinary_english_prose",
+      "text": "Master carpenters assemble timber roof trusses using mortise and tenon joinery reinforced with oak pegs.",
+      "expected_outcome": "ACCEPT",
+      "domain": "timber_framing"
+    },
+    {
+      "sample_id": "v7_lang_test_007",
+      "category": "ordinary_english_prose",
+      "text": "Marine biologists tagged juvenile humpback whales to monitor their annual migration route along the continental shelf.",
+      "expected_outcome": "ACCEPT",
+      "domain": "cetology"
+    },
+    {
+      "sample_id": "v7_lang_test_008",
+      "category": "ordinary_english_prose",
+      "text": "The industrial weaving mill converted raw combed wool fibers into durable tweed fabrics for overseas export.",
+      "expected_outcome": "ACCEPT",
+      "domain": "textile_manufacturing"
+    },
+    {
+      "sample_id": "v7_lang_test_009",
+      "category": "ordinary_english_prose",
+      "text": "Geologists discovered fossilized trilobite carapaces embedded within ancient marine shale layers in the limestone quarry.",
+      "expected_outcome": "ACCEPT",
+      "domain": "paleontology"
+    },
+    {
+      "sample_id": "v7_lang_test_010",
+      "category": "ordinary_english_prose",
+      "text": "The volunteer mountain rescue team evacuated injured hikers during a sudden alpine blizzard on Mount Jefferson.",
+      "expected_outcome": "ACCEPT",
+      "domain": "wilderness_safety"
+    },
+    {
+      "sample_id": "v7_lang_test_011",
+      "category": "expository_academic_prose",
+      "text": "The Navier-Stokes equations model the conservation of momentum in incompressible Newtonian fluid dynamic systems.",
+      "expected_outcome": "ACCEPT",
+      "domain": "fluid_dynamics"
+    },
+    {
+      "sample_id": "v7_lang_test_012",
+      "category": "expository_academic_prose",
+      "text": "Epistemological coherentism maintains that belief justification depends upon mutually supportive inferential web networks.",
+      "expected_outcome": "ACCEPT",
+      "domain": "epistemology"
+    },
+    {
+      "sample_id": "v7_lang_test_013",
+      "category": "expository_academic_prose",
+      "text": "Seismological tomography maps three-dimensional shear wave velocity anomalies within Earth's lower convective mantle.",
+      "expected_outcome": "ACCEPT",
+      "domain": "solid_earth_geophysics"
+    },
+    {
+      "sample_id": "v7_lang_test_014",
+      "category": "expository_academic_prose",
+      "text": "Morphological derivation forms new lexical vocabulary items through affixation that frequently alters the grammatical word class.",
+      "expected_outcome": "ACCEPT",
+      "domain": "linguistic_morphology"
+    },
+    {
+      "sample_id": "v7_lang_test_015",
+      "category": "expository_academic_prose",
+      "text": "Oxidative phosphorylation synthesizes adenosine triphosphate across the inner mitochondrial membrane via proton gradients.",
+      "expected_outcome": "ACCEPT",
+      "domain": "bioenergetics"
+    },
+    {
+      "sample_id": "v7_lang_test_016",
+      "category": "expository_academic_prose",
+      "text": "The Meissner effect describes the complete expulsion of magnetic flux fields from the interior of a superconductor.",
+      "expected_outcome": "ACCEPT",
+      "domain": "superconductivity"
+    },
+    {
+      "sample_id": "v7_lang_test_017",
+      "category": "expository_academic_prose",
+      "text": "Game theoretic equilibria characterize optimal strategic choices where no individual player gains by unilaterally deviating.",
+      "expected_outcome": "ACCEPT",
+      "domain": "game_theory"
+    },
+    {
+      "sample_id": "v7_lang_test_018",
+      "category": "expository_academic_prose",
+      "text": "Synchrotron radiation sources produce intense collimated monochromatic X-ray beams for macromolecular crystallography.",
+      "expected_outcome": "ACCEPT",
+      "domain": "accelerator_physics"
+    },
+    {
+      "sample_id": "v7_lang_test_019",
+      "category": "expository_academic_prose",
+      "text": "Markov decision processes provide a mathematical framework for modeling sequential decision making under uncertainty.",
+      "expected_outcome": "ACCEPT",
+      "domain": "reinforcement_learning"
+    },
+    {
+      "sample_id": "v7_lang_test_020",
+      "category": "expository_academic_prose",
+      "text": "Cellular apoptosis initiates a controlled proteolytic caspase cascade resulting in systematic non-inflammatory cell clearance.",
+      "expected_outcome": "ACCEPT",
+      "domain": "cellular_biology"
+    },
+    {
+      "sample_id": "v7_lang_test_021",
+      "category": "scientific_figure_captions",
+      "text": "Figure 3: Transmission electron micrograph of multi-walled carbon nanotubes synthesized via chemical vapor deposition.",
+      "expected_outcome": "ACCEPT",
+      "domain": "carbon_nanomaterials"
+    },
+    {
+      "sample_id": "v7_lang_test_022",
+      "category": "scientific_figure_captions",
+      "text": "Figure 4. Normalized optical transmittance spectra of antireflective silicon oxide coatings deposited on sapphire substrates.",
+      "expected_outcome": "ACCEPT",
+      "domain": "optics"
+    },
+    {
+      "sample_id": "v7_lang_test_023",
+      "category": "scientific_figure_captions",
+      "text": "Table 2: Measured electrochemical oxidation potentials and charge transfer resistances for nickel hydroxide electrocatalysts.",
+      "expected_outcome": "ACCEPT",
+      "domain": "electrochemistry"
+    },
+    {
+      "sample_id": "v7_lang_test_024",
+      "category": "scientific_figure_captions",
+      "text": "Chart 5: Temporal distribution of planetary nebulae discovered by wide-field astronomical sky surveys.",
+      "expected_outcome": "ACCEPT",
+      "domain": "astrophysics"
+    },
+    {
+      "sample_id": "v7_lang_test_025",
+      "category": "scientific_figure_captions",
+      "text": "Diagram 4. Functional architecture diagram of the redundant triple-modular flight control computer subsystem.",
+      "expected_outcome": "ACCEPT",
+      "domain": "avionics_engineering"
+    },
+    {
+      "sample_id": "v7_lang_test_026",
+      "category": "foreign_names_and_quotes",
+      "text": "Legal scholars argue that the principle of res judicata bars re-litigation of claims conclusively decided on their merits.",
+      "expected_outcome": "ACCEPT",
+      "domain": "civil_procedure"
+    },
+    {
+      "sample_id": "v7_lang_test_027",
+      "category": "foreign_names_and_quotes",
+      "text": "Philosopher Baruch Spinoza formulated an influential monistic substance metaphysics in his posthumously published Ethics.",
+      "expected_outcome": "ACCEPT",
+      "domain": "rationalist_philosophy"
+    },
+    {
+      "sample_id": "v7_lang_test_028",
+      "category": "foreign_names_and_quotes",
+      "text": "The literary biographer noted that the poet felt an intense sense of Sehnsucht while traveling through the Rhine valley.",
+      "expected_outcome": "ACCEPT",
+      "domain": "literary_biography"
+    },
+    {
+      "sample_id": "v7_lang_test_029",
+      "category": "foreign_names_and_quotes",
+      "text": "Financial market regulators investigate whether corporate managers breached their fiduciary bona fide disclosure obligations.",
+      "expected_outcome": "ACCEPT",
+      "domain": "corporate_governance"
+    },
+    {
+      "sample_id": "v7_lang_test_030",
+      "category": "foreign_names_and_quotes",
+      "text": "The historian examined how the Roman Senate invoked the senatus consultum ultimum during severe civil emergencies.",
+      "expected_outcome": "ACCEPT",
+      "domain": "ancient_history"
+    },
+    {
+      "sample_id": "v7_lang_test_031",
+      "category": "code_sql_structured_data",
+      "text": "SELECT employee_id, department_name, base_salary FROM active_payroll WHERE base_salary >= 75000.00 ORDER BY employee_id;",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v7_lang_test_032",
+      "category": "code_sql_structured_data",
+      "text": "INSERT INTO system_security_audit (log_id, user_identity, client_ip_address) VALUES (2048, 'security_admin', '10.0.0.1');",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v7_lang_test_033",
+      "category": "code_sql_structured_data",
+      "text": "CREATE TABLE network_interfaces (interface_id INTEGER PRIMARY KEY, mac_address VARCHAR(17), mtu_bytes INTEGER);",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v7_lang_test_034",
+      "category": "code_sql_structured_data",
+      "text": "UPDATE subscription_accounts SET renewal_status = 'CANCELLED' WHERE billing_cycle_end < CURRENT_DATE;",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v7_lang_test_035",
+      "category": "code_sql_structured_data",
+      "text": "DELETE FROM cached_session_states WHERE session_expiry_timestamp < UNIX_TIMESTAMP();",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v7_lang_test_036",
+      "category": "imperative_signage_notices",
+      "text": "DANGER: Flammable solvent storage bunker. No smoking, open flames, or ungrounded electrical tools permitted.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "hazardous_materials"
+    },
+    {
+      "sample_id": "v7_lang_test_037",
+      "category": "imperative_signage_notices",
+      "text": "CAUTION: Ionizing radiation source. Film radiation dosimeter badges required for entry beyond shielding doors.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "nuclear_safety"
+    },
+    {
+      "sample_id": "v7_lang_test_038",
+      "category": "imperative_signage_notices",
+      "text": "WARNING: Automatic robotic machinery starts without warning. Stay outside yellow safety floor perimeter.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "robotics_safety"
+    },
+    {
+      "sample_id": "v7_lang_test_039",
+      "category": "imperative_signage_notices",
+      "text": "NOTICE: Cleanroom garment gowning protocol strictly enforced before passing through air shower chamber.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "semiconductor_facility"
+    },
+    {
+      "sample_id": "v7_lang_test_040",
+      "category": "imperative_signage_notices",
+      "text": "ALERT: High pressure hydraulic testing in progress. Eye protection and protective shields mandatory.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "testing_laboratory"
+    },
+    {
+      "sample_id": "v7_lang_test_041",
+      "category": "short_headings_and_fragments",
+      "text": "Section 9.4 High-Performance Supercomputing Cluster Architecture",
+      "expected_outcome": "QUARANTINE",
+      "domain": "computer_systems"
+    },
+    {
+      "sample_id": "v7_lang_test_042",
+      "category": "short_headings_and_fragments",
+      "text": "Chapter XII: Geotechnical Soil Mechanics and Foundation Design",
+      "expected_outcome": "QUARANTINE",
+      "domain": "geotechnical_engineering"
+    },
+    {
+      "sample_id": "v7_lang_test_043",
+      "category": "short_headings_and_fragments",
+      "text": "Appendix G: Experimental Thermodynamic Dissociation Constants",
+      "expected_outcome": "QUARANTINE",
+      "domain": "physical_chemistry"
+    },
+    {
+      "sample_id": "v7_lang_test_044",
+      "category": "short_headings_and_fragments",
+      "text": "Annual Environmental Sustainability Impact Assessment 2025",
+      "expected_outcome": "QUARANTINE",
+      "domain": "environmental_reporting"
+    },
+    {
+      "sample_id": "v7_lang_test_045",
+      "category": "short_headings_and_fragments",
+      "text": "Module 5: Stochastic Probability and Random Processes",
+      "expected_outcome": "QUARANTINE",
+      "domain": "mathematics_curriculum"
+    },
+    {
+      "sample_id": "v7_lang_test_046",
+      "category": "germanic_latin_prose",
+      "text": "Die experimentelle Bestimmung der spezifischen Waermekapazitaet erfolgte mit einem praezisen adiabatischen Kalorimeter.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "german_calorimetry"
+    },
+    {
+      "sample_id": "v7_lang_test_047",
+      "category": "germanic_latin_prose",
+      "text": "De moderne windturbines in de Noordzee leveren duurzame elektrische stroom aan duizenden huishoudens in West-Europa.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "dutch_renewable_energy"
+    },
+    {
+      "sample_id": "v7_lang_test_048",
+      "category": "germanic_latin_prose",
+      "text": "Abbildung 9: Gemessene Viskositaet der Polymerloesung in Abhaengigkeit von der Scherrate bei konstanter Temperatur.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "german_rheology_caption"
+    },
+    {
+      "sample_id": "v7_lang_test_049",
+      "category": "germanic_latin_prose",
+      "text": "Wetenschappelijk onderzoek naar mariene ecosystemen toont de kwetsbaarheid van koraalriffen voor oceanische verzuring aan.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "dutch_marine_ecology"
+    },
+    {
+      "sample_id": "v7_lang_test_050",
+      "category": "germanic_latin_prose",
+      "text": "Das thermodynamische Gleichgewicht eines Mehrstoffsystems haengt stark von Druck und Konzentration der Komponenten ab.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "german_phase_equilibrium"
+    },
+    {
+      "sample_id": "v7_lang_test_051",
+      "category": "romance_latin_prose",
+      "text": "La spectroscopie de resonance magnetique nucleaire permet d'elucider la structure tridimensionnelle des biomolecules.",
+      "expected_outcome": "REJECT",
+      "domain": "french_nmr_spectroscopy"
+    },
+    {
+      "sample_id": "v7_lang_test_052",
+      "category": "romance_latin_prose",
+      "text": "El tratamiento termico del acero inoxidable mejora notablemente su resistencia a la corrosion intergranular bajo tension.",
+      "expected_outcome": "REJECT",
+      "domain": "spanish_materials_engineering"
+    },
+    {
+      "sample_id": "v7_lang_test_053",
+      "category": "romance_latin_prose",
+      "text": "La diagnosi precoce delle patologie cardiovascolari riduce significativamente il rischio di complicazioni a lungo termine.",
+      "expected_outcome": "REJECT",
+      "domain": "italian_cardiology"
+    },
+    {
+      "sample_id": "v7_lang_test_054",
+      "category": "romance_latin_prose",
+      "text": "Le conseil municipal a approuve le plan d'urbanisme visant a developper les transports en commun et les pistes cyclables.",
+      "expected_outcome": "REJECT",
+      "domain": "french_urbanism"
+    },
+    {
+      "sample_id": "v7_lang_test_055",
+      "category": "romance_latin_prose",
+      "text": "Las investigaciones oceanograficas demuestran la importancia de las corrientes marinas en la regulacion termica global.",
+      "expected_outcome": "REJECT",
+      "domain": "spanish_oceanography"
+    },
+    {
+      "sample_id": "v7_lang_test_056",
+      "category": "non_latin_script",
+      "text": "Криогенные насосы обеспечивают сверхвысокий вакуум в камерах термоядерных исследовательских установок токамак.",
+      "expected_outcome": "REJECT",
+      "domain": "russian_plasma_physics"
+    },
+    {
+      "sample_id": "v7_lang_test_057",
+      "category": "non_latin_script",
+      "text": "人工智能神经网络模型需要大规模高质量训练数据来实现精确的自然语言理解能力。",
+      "expected_outcome": "REJECT",
+      "domain": "chinese_machine_learning"
+    },
+    {
+      "sample_id": "v7_lang_test_058",
+      "category": "malformed_noise",
+      "text": "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+      "expected_outcome": "REJECT",
+      "domain": "repetition_noise"
+    },
+    {
+      "sample_id": "v7_lang_test_059",
+      "category": "malformed_noise",
+      "text": "[{()}] ~!@#$% ^&*()_+ |:<>? `~ -=\\;',./",
+      "expected_outcome": "REJECT",
+      "domain": "symbol_noise"
+    },
+    {
+      "sample_id": "v7_lang_test_060",
+      "category": "malformed_noise",
+      "text": "q w e r t y u i o p a s d f g h j k l z x c v b n m",
+      "expected_outcome": "REJECT",
+      "domain": "isolated_character_noise"
+    }
+  ]
+}

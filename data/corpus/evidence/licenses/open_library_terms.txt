@@ -1,0 +1,16 @@
+INTERNET ARCHIVE / OPEN LIBRARY DATASET TERMS REVIEW MEMORANDUM
+Document ID: VEDA-EVIDENCE-OPENLIB-v0.1
+Date: 2026-10-15
+
+1. Scope:
+Open Library provides bulk metadata dumps and digitized book text extracts. While the metadata catalog is released under CC0 1.0 Universal, the digitized book texts consist of mixed-rights materials, including:
+(a) Pre-1929 US Public Domain works.
+(b) Works published between 1929 and 1977 with potential copyright renewal defects.
+(c) Twentieth-century in-copyright works scanned under Controlled Digital Lending (CDL) theories (subject to Hachette v. Internet Archive litigation).
+
+2. Rights Determination for VEDA:
+- Raw metadata ingestion is permitted under CC0.
+- Bulk text ingestion from Open Library book scans is strictly BLOCKED until a work-level automated filter can guarantee that ONLY pre-1929 US public domain works are included.
+- Unfiltered ingestion presents substantial copyright infringement liability.
+
+3. Applicable Status: REQUIRES REVIEW (Ingestion blocked pending work-level domain filter).

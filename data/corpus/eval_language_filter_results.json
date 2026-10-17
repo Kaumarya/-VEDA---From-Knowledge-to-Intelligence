@@ -1,0 +1,307 @@
+{
+  "benchmark_version": "v1.0",
+  "total_evaluated_samples": 21,
+  "total_correct": 21,
+  "benchmark_accuracy": 1.0,
+  "total_accepted": 9,
+  "total_rejected": 9,
+  "total_quarantined": 3,
+  "results_by_category": {
+    "ordinary_english_prose": {
+      "total": 2,
+      "accepted": 2,
+      "rejected": 0,
+      "quarantined": 0,
+      "correct": 2
+    },
+    "scientific_mathematical_english": {
+      "total": 2,
+      "accepted": 1,
+      "rejected": 1,
+      "quarantined": 0,
+      "correct": 2
+    },
+    "short_signs_captions_headings": {
+      "total": 3,
+      "accepted": 1,
+      "rejected": 0,
+      "quarantined": 2,
+      "correct": 3
+    },
+    "code_logs_tables_technical": {
+      "total": 3,
+      "accepted": 1,
+      "rejected": 2,
+      "quarantined": 0,
+      "correct": 3
+    },
+    "foreign_latin_script_french_german_spanish": {
+      "total": 5,
+      "accepted": 0,
+      "rejected": 4,
+      "quarantined": 1,
+      "correct": 5
+    },
+    "foreign_names_and_quotes": {
+      "total": 2,
+      "accepted": 2,
+      "rejected": 0,
+      "quarantined": 0,
+      "correct": 2
+    },
+    "mixed_language_pedagogy": {
+      "total": 1,
+      "accepted": 1,
+      "rejected": 0,
+      "quarantined": 0,
+      "correct": 1
+    },
+    "non_latin_script": {
+      "total": 2,
+      "accepted": 0,
+      "rejected": 2,
+      "quarantined": 0,
+      "correct": 2
+    },
+    "unicode_punctuation_edge_cases": {
+      "total": 1,
+      "accepted": 1,
+      "rejected": 0,
+      "quarantined": 0,
+      "correct": 1
+    }
+  },
+  "sample_records": [
+    {
+      "sample_id": "v1_lang_ord_001",
+      "category": "ordinary_english_prose",
+      "source_origin": "Project Gutenberg (Pride and Prejudice, Jane Austen)",
+      "expected_outcome": "ACCEPT",
+      "actual_outcome": "ACCEPT",
+      "is_correct": true,
+      "reason": "FLUENT_ENGLISH_PROSE",
+      "quality_score": 0.9295555992742695,
+      "description": "Classic 19th-century English literary narrative opening"
+    },
+    {
+      "sample_id": "v1_lang_ord_002",
+      "category": "ordinary_english_prose",
+      "source_origin": "Standard Ebooks (Frankenstein, Mary Shelley)",
+      "expected_outcome": "ACCEPT",
+      "actual_outcome": "ACCEPT",
+      "is_correct": true,
+      "reason": "FLUENT_ENGLISH_PROSE",
+      "quality_score": 0.9170588235294118,
+      "description": "Expository first-person English narrative prose"
+    },
+    {
+      "sample_id": "v1_lang_sci_003",
+      "category": "scientific_mathematical_english",
+      "source_origin": "OpenStax Chemistry (Rice University)",
+      "expected_outcome": "ACCEPT",
+      "actual_outcome": "ACCEPT",
+      "is_correct": true,
+      "reason": "FLUENT_ENGLISH_PROSE",
+      "quality_score": 0.9613194444444445,
+      "description": "Dense scientific chemical decomposition prose with technical vocabulary"
+    },
+    {
+      "sample_id": "v1_lang_formula_004",
+      "category": "scientific_mathematical_english",
+      "source_origin": "OpenStax Chemistry Problem Set",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "is_correct": true,
+      "reason": "LOW_ALPHA_RATIO",
+      "quality_score": 0.25,
+      "description": "Formula notation and mathematical buffer equation"
+    },
+    {
+      "sample_id": "v1_lang_caption_005",
+      "category": "short_signs_captions_headings",
+      "source_origin": "PLOS Open Access Research Paper",
+      "expected_outcome": "ACCEPT",
+      "actual_outcome": "ACCEPT",
+      "is_correct": true,
+      "reason": "FLUENT_ENGLISH_PROSE",
+      "quality_score": 0.9518840579710145,
+      "description": "Formal academic table caption"
+    },
+    {
+      "sample_id": "v1_lang_sign_006",
+      "category": "short_signs_captions_headings",
+      "source_origin": "OSHA Industrial Warning Signs",
+      "expected_outcome": "QUARANTINE",
+      "actual_outcome": "QUARANTINE",
+      "is_correct": true,
+      "reason": "SHORT_SNIPPET_AMBIGUOUS_STRUCTURE",
+      "quality_score": 0.8880072028811524,
+      "description": "Concise industrial safety sign"
+    },
+    {
+      "sample_id": "v1_lang_heading_007",
+      "category": "short_signs_captions_headings",
+      "source_origin": "Python Documentation Standard Library Guide",
+      "expected_outcome": "QUARANTINE",
+      "actual_outcome": "QUARANTINE",
+      "is_correct": true,
+      "reason": "SHORT_HEADING_LOW_STOPWORD_DENSITY",
+      "quality_score": 0.9441978609625669,
+      "description": "Formal textbook chapter heading"
+    },
+    {
+      "sample_id": "v1_lang_code_008",
+      "category": "code_logs_tables_technical",
+      "source_origin": "TensorFlow Documentation Code Snippet",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "is_correct": true,
+      "reason": "NO_ENGLISH_STOPWORDS",
+      "quality_score": 0.3,
+      "description": "Raw Python source code block"
+    },
+    {
+      "sample_id": "v1_lang_doc_009",
+      "category": "code_logs_tables_technical",
+      "source_origin": "Python Documentation Library Reference",
+      "expected_outcome": "ACCEPT",
+      "actual_outcome": "ACCEPT",
+      "is_correct": true,
+      "reason": "FLUENT_ENGLISH_PROSE",
+      "quality_score": 0.9437762237762238,
+      "description": "Technical expository software documentation docstring"
+    },
+    {
+      "sample_id": "v1_lang_log_010",
+      "category": "code_logs_tables_technical",
+      "source_origin": "Linux Kernel dmesg log",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "is_correct": true,
+      "reason": "LOW_ALPHA_RATIO",
+      "quality_score": 0.25,
+      "description": "Linux kernel syslog timestamped output"
+    },
+    {
+      "sample_id": "v1_lang_french_011",
+      "category": "foreign_latin_script_french_german_spanish",
+      "source_origin": "SNCF Public Transit Notices",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "is_correct": true,
+      "reason": "NO_ENGLISH_STOPWORDS",
+      "quality_score": 0.3,
+      "description": "Standard French railway announcement in Latin script"
+    },
+    {
+      "sample_id": "v1_lang_french_a_012",
+      "category": "foreign_latin_script_french_german_spanish",
+      "source_origin": "French Philosophy Archive",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "is_correct": true,
+      "reason": "NO_ENGLISH_STOPWORDS",
+      "quality_score": 0.3,
+      "description": "French text containing French preposition/verb 'a'"
+    },
+    {
+      "sample_id": "v1_lang_german_013",
+      "category": "foreign_latin_script_french_german_spanish",
+      "source_origin": "German Newspaper Editorial (FAZ)",
+      "expected_outcome": "QUARANTINE",
+      "actual_outcome": "QUARANTINE",
+      "is_correct": true,
+      "reason": "BORDERLINE_STOPWORDS_COGNATE_RISK",
+      "quality_score": 0.9400100553041729,
+      "description": "German text containing cognates 'in' and 'so'"
+    },
+    {
+      "sample_id": "v1_lang_spanish_014",
+      "category": "foreign_latin_script_french_german_spanish",
+      "source_origin": "Spanish NLP Research Bulletin",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "is_correct": true,
+      "reason": "NO_ENGLISH_STOPWORDS",
+      "quality_score": 0.3,
+      "description": "Spanish academic prose in Latin script"
+    },
+    {
+      "sample_id": "v1_lang_italian_015",
+      "category": "foreign_latin_script_french_german_spanish",
+      "source_origin": "Italian Literary Encyclopedia",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "is_correct": true,
+      "reason": "NO_ENGLISH_STOPWORDS",
+      "quality_score": 0.3,
+      "description": "Italian literary history prose"
+    },
+    {
+      "sample_id": "v1_lang_quote_016",
+      "category": "foreign_names_and_quotes",
+      "source_origin": "Philosophy Textbook (OpenStax)",
+      "expected_outcome": "ACCEPT",
+      "actual_outcome": "ACCEPT",
+      "is_correct": true,
+      "reason": "FLUENT_ENGLISH_PROSE",
+      "quality_score": 0.926580259222333,
+      "description": "English academic sentence quoting Latin philosophical maxim"
+    },
+    {
+      "sample_id": "v1_lang_names_017",
+      "category": "foreign_names_and_quotes",
+      "source_origin": "Academic Conference Program",
+      "expected_outcome": "ACCEPT",
+      "actual_outcome": "ACCEPT",
+      "is_correct": true,
+      "reason": "FLUENT_ENGLISH_PROSE",
+      "quality_score": 0.9597540983606557,
+      "description": "English sentence containing foreign proper names with diacritics"
+    },
+    {
+      "sample_id": "v1_lang_pedagogy_018",
+      "category": "mixed_language_pedagogy",
+      "source_origin": "Latin Grammar for Classical Studies (Gutenberg)",
+      "expected_outcome": "ACCEPT",
+      "actual_outcome": "ACCEPT",
+      "is_correct": true,
+      "reason": "FLUENT_ENGLISH_PROSE",
+      "quality_score": 0.8980620155038759,
+      "description": "Linguistic educational text in English explaining Latin grammatical syntax"
+    },
+    {
+      "sample_id": "v1_lang_cyrillic_019",
+      "category": "non_latin_script",
+      "source_origin": "Russian Wikipedia Dump",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "is_correct": true,
+      "reason": "NON_ENGLISH_SCRIPT",
+      "quality_score": 0.1,
+      "description": "Cyrillic Russian text"
+    },
+    {
+      "sample_id": "v1_lang_japanese_020",
+      "category": "non_latin_script",
+      "source_origin": "Japanese Wikipedia Dump",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "is_correct": true,
+      "reason": "TOO_SHORT_WORDS",
+      "quality_score": 0.15,
+      "description": "Japanese text using Kanji and Hiragana"
+    },
+    {
+      "sample_id": "v1_lang_unicode_021",
+      "category": "unicode_punctuation_edge_cases",
+      "source_origin": "VEDA Orthography Reference Guide",
+      "expected_outcome": "ACCEPT",
+      "actual_outcome": "ACCEPT",
+      "is_correct": true,
+      "reason": "FLUENT_ENGLISH_PROSE",
+      "quality_score": 0.9432142857142857,
+      "description": "English prose containing typographic em-dash and NFC loanwords with diacritics"
+    }
+  ]
+}

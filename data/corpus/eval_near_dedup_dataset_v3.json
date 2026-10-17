@@ -1,0 +1,226 @@
+{
+  "dataset_name": "VEDA_Near_Duplicate_Detection_Benchmark_v3",
+  "version": "3.0.0",
+  "description": "Authentic, non-synthetic, pairwise evaluation with realistic semantic inversions",
+  "development_split": {
+    "count": 10,
+    "pairs": [
+      {
+        "pair_id": "v3_dev_pair_exact_001",
+        "doc_a_id": "dev_austen_orig",
+        "doc_b_id": "dev_austen_dup",
+        "text_a": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
+        "text_b": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
+        "is_true_duplicate": true,
+        "category": "exact_duplicates",
+        "description": "Exact byte-for-byte replica of Pride and Prejudice"
+      },
+      {
+        "pair_id": "v3_dev_pair_fmt_002",
+        "doc_a_id": "dev_shelley_orig",
+        "doc_b_id": "dev_shelley_fmt",
+        "text_a": "I am by birth a Genevese, and my family is one of the most distinguished of that republic.",
+        "text_b": "  I AM BY BIRTH A GENEVESE,   and my family is one of the most distinguished of that republic.  \n",
+        "is_true_duplicate": true,
+        "category": "formatting_and_whitespace",
+        "description": "Upper case casing and whitespace variations"
+      },
+      {
+        "pair_id": "v3_dev_pair_edit_003",
+        "doc_a_id": "dev_swift_orig",
+        "doc_b_id": "dev_swift_edit",
+        "text_a": "My father had a small estate in Nottinghamshire; I was the third of five sons. He sent me to Emanuel College in Cambridge.",
+        "text_b": "My father possessed a small estate in Nottinghamshire; I was the third of five sons. He sent me to Emanuel College in Cambridge.",
+        "is_true_duplicate": true,
+        "category": "minor_word_edits",
+        "description": "Single synonym swap ('had' -> 'possessed')"
+      },
+      {
+        "pair_id": "v3_dev_pair_reord_004",
+        "doc_a_id": "dev_bacon_reord1",
+        "doc_b_id": "dev_bacon_reord2",
+        "text_a": "Studies serve for delight, for ornament, and for ability. Crafty men condemn studies, simple men admire them, and wise men use them.",
+        "text_b": "Crafty men condemn studies, simple men admire them, and wise men use them. Studies serve for delight, for ornament, and for ability.",
+        "is_true_duplicate": true,
+        "category": "reordered_passages",
+        "description": "Sentence order permutation of Bacon essay"
+      },
+      {
+        "pair_id": "v3_dev_pair_short_005",
+        "doc_a_id": "dev_short_a",
+        "doc_b_id": "dev_short_b",
+        "text_a": "Please silence all cellular phones during the performance.",
+        "text_b": "Please silence all cellular phones during the performance.",
+        "is_true_duplicate": true,
+        "category": "short_texts",
+        "description": "Short imperative sentence pair"
+      },
+      {
+        "pair_id": "v3_dev_pair_bp_006",
+        "doc_a_id": "dev_bp_solar",
+        "doc_b_id": "dev_bp_geology",
+        "text_a": "Solar radiation induces photovoltaic current in silicon junctions. All rights reserved. Reproduction prohibited under international copyright law.",
+        "text_b": "Glacial movements carve U-shaped valleys across alpine topography. All rights reserved. Reproduction prohibited under international copyright law.",
+        "is_true_duplicate": false,
+        "category": "shared_boilerplate",
+        "description": "Different scientific topics sharing copyright footer"
+      },
+      {
+        "pair_id": "v3_dev_pair_multi_007",
+        "doc_a_id": "dev_en_lab",
+        "doc_b_id": "dev_fr_lab",
+        "text_a": "Scientific investigation requires repeatable laboratory experiments under standardized conditions.",
+        "text_b": "L'enquête scientifique exige des expériences de laboratoire reproductibles dans des conditions standardisées.",
+        "is_true_duplicate": false,
+        "category": "multilingual_text",
+        "description": "Parallel sentence in English and French"
+      },
+      {
+        "pair_id": "v3_dev_pair_inv_008",
+        "doc_a_id": "dev_safe_dosage",
+        "doc_b_id": "dev_toxic_dosage",
+        "text_a": "Clinical dosage protocol: administer 5mg of active compound per kilogram daily. The treatment demonstrated safety with zero adverse cardiac events.",
+        "text_b": "Clinical dosage protocol: administer 50mg of active compound per kilogram daily. The treatment demonstrated toxicity with severe adverse cardiac events.",
+        "is_true_duplicate": false,
+        "category": "semantic_inversions",
+        "description": "Dosage and toxicity outcome inversion (multi-token divergence)"
+      },
+      {
+        "pair_id": "v3_dev_pair_tech_009",
+        "doc_a_id": "dev_cfg_prod",
+        "doc_b_id": "dev_cfg_dev",
+        "text_a": "Server Configuration: host=10.0.0.1, port=443, ssl_enabled=true, max_connections=10000, auth_required=true, log_level=INFO",
+        "text_b": "Server Configuration: host=127.0.0.1, port=8080, ssl_enabled=false, max_connections=50, auth_required=false, log_level=DEBUG",
+        "is_true_duplicate": false,
+        "category": "technical_overlap",
+        "description": "Shared schema with divergent operational values"
+      },
+      {
+        "pair_id": "v3_dev_pair_dist_010",
+        "doc_a_id": "dev_literature",
+        "doc_b_id": "dev_physics",
+        "text_a": "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, I thought I would sail about a little.",
+        "text_b": "Maxwell's equations demonstrate that oscillating electric and magnetic fields propagate through vacuum at the speed of light.",
+        "is_true_duplicate": false,
+        "category": "distant_negatives",
+        "description": "Completely different topic, genre, and vocabulary"
+      }
+    ]
+  },
+  "held_out_test_split": {
+    "count": 11,
+    "pairs": [
+      {
+        "pair_id": "v3_test_pair_exact_001",
+        "doc_a_id": "test_dickens_orig",
+        "doc_b_id": "test_dickens_dup",
+        "text_a": "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness.",
+        "text_b": "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness.",
+        "is_true_duplicate": true,
+        "category": "exact_duplicates",
+        "description": "Exact byte-for-byte copy of Dickens opening"
+      },
+      {
+        "pair_id": "v3_test_pair_fmt_002",
+        "doc_a_id": "test_lincoln_orig",
+        "doc_b_id": "test_lincoln_fmt",
+        "text_a": "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty.",
+        "text_b": "  FOUR SCORE AND SEVEN YEARS AGO   our fathers brought forth on this continent, \n\na new nation, conceived in Liberty.  ",
+        "is_true_duplicate": true,
+        "category": "formatting_and_whitespace",
+        "description": "Lincoln address with uppercase header and paragraph breaks"
+      },
+      {
+        "pair_id": "v3_test_pair_edit_003",
+        "doc_a_id": "test_douglass_orig",
+        "doc_b_id": "test_douglass_edit",
+        "text_a": "If there is no struggle, there is no progress. Those who profess to favor freedom, and yet deprecate agitation, are men who want crops without plowing.",
+        "text_b": "If there is no struggle, there is no advancement. Those who profess to favor freedom, and yet deprecate agitation, are men who want crops without plowing.",
+        "is_true_duplicate": true,
+        "category": "minor_word_edits",
+        "description": "Single synonym replacement ('progress' -> 'advancement')"
+      },
+      {
+        "pair_id": "v3_test_pair_reord_004",
+        "doc_a_id": "test_russell_reord1",
+        "doc_b_id": "test_russell_reord2",
+        "text_a": "The fundamental cause of the trouble is that the stupid are cocksure. In contrast, the intelligent are always full of doubt.",
+        "text_b": "In contrast, the intelligent are always full of doubt. The fundamental cause of the trouble is that the stupid are cocksure.",
+        "is_true_duplicate": true,
+        "category": "reordered_passages",
+        "description": "Inverted sentence clauses in Bertrand Russell passage"
+      },
+      {
+        "pair_id": "v3_test_pair_short_005",
+        "doc_a_id": "test_short_a",
+        "doc_b_id": "test_short_b",
+        "text_a": "Emergency exit route: proceed down the stairs to the ground assembly area.",
+        "text_b": "Emergency exit route: proceed down the stairs to the ground assembly area.",
+        "is_true_duplicate": true,
+        "category": "short_texts",
+        "description": "Brief safety notice duplicate"
+      },
+      {
+        "pair_id": "v3_test_pair_bp_006",
+        "doc_a_id": "test_bp_smith",
+        "doc_b_id": "test_bp_gibbon",
+        "text_a": "It is not from the benevolence of the butcher or the baker that we expect our dinner. Published by Project Gutenberg. Distributed under the Open License.",
+        "text_b": "The decline of Rome was the natural and inevitable effect of immoderate greatness. Published by Project Gutenberg. Distributed under the Open License.",
+        "is_true_duplicate": false,
+        "category": "shared_boilerplate",
+        "description": "Adam Smith vs Edward Gibbon sharing Gutenberg license boilerplate"
+      },
+      {
+        "pair_id": "v3_test_pair_multi_007",
+        "doc_a_id": "test_en_rel",
+        "doc_b_id": "test_fr_rel",
+        "text_a": "General relativity describes gravity as the curvature of spacetime induced by mass and energy.",
+        "text_b": "La relativité générale décrit la gravité comme la courbure de l'espace-temps induite par la masse et l'énergie.",
+        "is_true_duplicate": false,
+        "category": "multilingual_text",
+        "description": "Relativity concept in English and French"
+      },
+      {
+        "pair_id": "v3_test_pair_inv_008a",
+        "doc_a_id": "test_trial_safe",
+        "doc_b_id": "test_trial_toxic",
+        "text_a": "In this randomized controlled trial evaluating drug efficacy, the active compound was declared completely non-toxic and well-tolerated at 10mg daily.",
+        "text_b": "In this randomized controlled trial evaluating drug efficacy, the active compound was declared severely toxic with fatal complications at 10mg daily.",
+        "is_true_duplicate": false,
+        "category": "semantic_inversions",
+        "description": "Substantial multi-word semantic inversion (non-toxic vs toxic with fatal complications)"
+      },
+      {
+        "pair_id": "v3_test_pair_inv_008b",
+        "doc_a_id": "test_dosage_10mg",
+        "doc_b_id": "test_dosage_100mg",
+        "text_a": "The pediatric patient was administered 10mg of active medication every morning before breakfast.",
+        "text_b": "The pediatric patient was administered 100mg of active medication every morning before breakfast.",
+        "is_true_duplicate": false,
+        "category": "semantic_inversions",
+        "description": "Single-token numerical dosage inversion (10mg vs 100mg)"
+      },
+      {
+        "pair_id": "v3_test_pair_tech_009",
+        "doc_a_id": "test_db_master",
+        "doc_b_id": "test_db_replica",
+        "text_a": "Database Cluster Alpha: role=PRIMARY, read_only=false, sync_replication=true, max_connections=5000, buffer_pool_gb=64",
+        "text_b": "Database Cluster Beta: role=STANDBY, read_only=true, sync_replication=false, max_connections=200, buffer_pool_gb=8",
+        "is_true_duplicate": false,
+        "category": "technical_overlap",
+        "description": "Database topology key overlap with diverging replication roles"
+      },
+      {
+        "pair_id": "v3_test_pair_dist_010",
+        "doc_a_id": "test_dist_hardy",
+        "doc_b_id": "test_dist_crypto",
+        "text_a": "The lane showed all its features without a veil, the white dust upon its hedges, the ruts, the stones, the dry weeds in the ditches.",
+        "text_b": "This module provides cryptographic hashing utilities and signature verification functions for distributed audit ledgers.",
+        "is_true_duplicate": false,
+        "category": "distant_negatives",
+        "description": "Thomas Hardy rural literature vs software cryptographic documentation"
+      }
+    ]
+  },
+  "content_sha256": "d93c74e8a520c862d2f8a2c720c03a06e1373cef9586e7127cfe6a4527eeb613"
+}

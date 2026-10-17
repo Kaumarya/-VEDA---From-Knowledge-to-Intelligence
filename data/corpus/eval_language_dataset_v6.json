@@ -1,0 +1,859 @@
+{
+  "metadata": {
+    "dataset_name": "eval_language_dataset_v6",
+    "version": "6.0",
+    "phase": "4.8",
+    "target": "100% Accuracy Recovery & Final Certification",
+    "annotation_rules": {
+      "ACCEPT": "Fluent, coherent English prose (general or academic), English scientific captions, and English prose quoting foreign phrases.",
+      "QUARANTINE": "Coherent non-prose structured data (SQL, code), imperative safety signage, short fragments (<8 words), and Germanic Latin text.",
+      "REJECT": "Romance Latin prose without English stopwords, non-Latin scripts, and corrupt/malformed alphabetic noise."
+    },
+    "total_dev_samples": 60,
+    "total_test_samples": 60
+  },
+  "development_split": [
+    {
+      "sample_id": "v6_lang_dev_001",
+      "category": "ordinary_english_prose",
+      "text": "The coastal lighthouse was constructed from local granite blocks to withstand severe winter storms.",
+      "expected_outcome": "ACCEPT",
+      "domain": "maritime_history"
+    },
+    {
+      "sample_id": "v6_lang_dev_002",
+      "category": "ordinary_english_prose",
+      "text": "Modern agricultural cooperatives allow smallholder farmers to share harvesting equipment and reduce overhead costs.",
+      "expected_outcome": "ACCEPT",
+      "domain": "economics"
+    },
+    {
+      "sample_id": "v6_lang_dev_003",
+      "category": "ordinary_english_prose",
+      "text": "The public library system expanded its collection of historical manuscripts through generous civic donations.",
+      "expected_outcome": "ACCEPT",
+      "domain": "civic_institutions"
+    },
+    {
+      "sample_id": "v6_lang_dev_004",
+      "category": "ordinary_english_prose",
+      "text": "Deep sea exploration requires specialized submersibles capable of enduring intense hydrostatic pressure.",
+      "expected_outcome": "ACCEPT",
+      "domain": "oceanography"
+    },
+    {
+      "sample_id": "v6_lang_dev_005",
+      "category": "ordinary_english_prose",
+      "text": "Urban planning initiatives in the early twentieth century prioritized public parks and wide pedestrian avenues.",
+      "expected_outcome": "ACCEPT",
+      "domain": "urban_planning"
+    },
+    {
+      "sample_id": "v6_lang_dev_006",
+      "category": "ordinary_english_prose",
+      "text": "The ceramic glaze developed a distinctive crackle pattern after being fired in the traditional wood kiln.",
+      "expected_outcome": "ACCEPT",
+      "domain": "materials_art"
+    },
+    {
+      "sample_id": "v6_lang_dev_007",
+      "category": "ordinary_english_prose",
+      "text": "Migratory songbirds navigate thousands of miles each spring using geomagnetic cues and celestial orientation.",
+      "expected_outcome": "ACCEPT",
+      "domain": "ornithology"
+    },
+    {
+      "sample_id": "v6_lang_dev_008",
+      "category": "ordinary_english_prose",
+      "text": "The regional railway network restored passenger service between the mountain valleys after extensive track repairs.",
+      "expected_outcome": "ACCEPT",
+      "domain": "transportation"
+    },
+    {
+      "sample_id": "v6_lang_dev_009",
+      "category": "ordinary_english_prose",
+      "text": "Early printing presses utilized movable metal alloy type set meticulously by hand inside composing sticks.",
+      "expected_outcome": "ACCEPT",
+      "domain": "printing_history"
+    },
+    {
+      "sample_id": "v6_lang_dev_010",
+      "category": "ordinary_english_prose",
+      "text": "The botanical garden maintains a living seed bank of endangered wetland plant species from across the continent.",
+      "expected_outcome": "ACCEPT",
+      "domain": "botany"
+    },
+    {
+      "sample_id": "v6_lang_dev_011",
+      "category": "expository_academic_prose",
+      "text": "Thermodynamic entropy quantifies the microscopic statistical dispersion of energy states within an isolated physical system.",
+      "expected_outcome": "ACCEPT",
+      "domain": "statistical_mechanics"
+    },
+    {
+      "sample_id": "v6_lang_dev_012",
+      "category": "expository_academic_prose",
+      "text": "Comparative constitutional jurisprudence examines how fundamental rights are adjudicated across common law and civil law regimes.",
+      "expected_outcome": "ACCEPT",
+      "domain": "constitutional_law"
+    },
+    {
+      "sample_id": "v6_lang_dev_013",
+      "category": "expository_academic_prose",
+      "text": "Plate tectonics accounts for orogenic mountain building along convergent lithospheric boundaries through crustal shortening.",
+      "expected_outcome": "ACCEPT",
+      "domain": "geophysics"
+    },
+    {
+      "sample_id": "v6_lang_dev_014",
+      "category": "expository_academic_prose",
+      "text": "Phonological assimilation occurs when an adjacent phoneme adopts phonetic features such as voicing or place of articulation.",
+      "expected_outcome": "ACCEPT",
+      "domain": "linguistics"
+    },
+    {
+      "sample_id": "v6_lang_dev_015",
+      "category": "expository_academic_prose",
+      "text": "Microbial nitrogen fixation by symbiotic diazotrophs converts atmospheric dinitrogen into bioavailable ammonium compounds.",
+      "expected_outcome": "ACCEPT",
+      "domain": "biochemistry"
+    },
+    {
+      "sample_id": "v6_lang_dev_016",
+      "category": "expository_academic_prose",
+      "text": "The photoelectric effect confirmed that electromagnetic radiation delivers energy in discrete quantum packets known as photons.",
+      "expected_outcome": "ACCEPT",
+      "domain": "quantum_physics"
+    },
+    {
+      "sample_id": "v6_lang_dev_017",
+      "category": "expository_academic_prose",
+      "text": "Epistemological foundationalism posits that beliefs are justified by terminating in basic non-inferential perceptual premises.",
+      "expected_outcome": "ACCEPT",
+      "domain": "epistemology"
+    },
+    {
+      "sample_id": "v6_lang_dev_018",
+      "category": "expository_academic_prose",
+      "text": "Dendrochronological calibration provides absolute calendar dates for archaeological timber specimens by matching annular growth rings.",
+      "expected_outcome": "ACCEPT",
+      "domain": "archaeometry"
+    },
+    {
+      "sample_id": "v6_lang_dev_019",
+      "category": "expository_academic_prose",
+      "text": "Stochastic differential equations model financial asset price fluctuations subject to continuous Brownian motion.",
+      "expected_outcome": "ACCEPT",
+      "domain": "applied_mathematics"
+    },
+    {
+      "sample_id": "v6_lang_dev_020",
+      "category": "expository_academic_prose",
+      "text": "Ribosomal protein synthesis translates messenger RNA transcripts into polypeptide chains via complementary transfer RNA anticodons.",
+      "expected_outcome": "ACCEPT",
+      "domain": "molecular_genetics"
+    },
+    {
+      "sample_id": "v6_lang_dev_021",
+      "category": "scientific_figure_captions",
+      "text": "Figure 1: Scanning electron micrograph of titanium alloy microstructure following isothermal forging.",
+      "expected_outcome": "ACCEPT",
+      "domain": "materials_science"
+    },
+    {
+      "sample_id": "v6_lang_dev_022",
+      "category": "scientific_figure_captions",
+      "text": "Figure 2. Measured absorption spectra of chlorophyll extracts suspended in aqueous buffer at room temperature.",
+      "expected_outcome": "ACCEPT",
+      "domain": "spectroscopy"
+    },
+    {
+      "sample_id": "v6_lang_dev_023",
+      "category": "scientific_figure_captions",
+      "text": "Table 1: Physical tensile yield strength and elongation percentages for annealed stainless steel specimens.",
+      "expected_outcome": "ACCEPT",
+      "domain": "metallurgy"
+    },
+    {
+      "sample_id": "v6_lang_dev_024",
+      "category": "scientific_figure_captions",
+      "text": "Chart 4: Temporal distribution of seismic aftershocks recorded by the regional broadband seismograph network.",
+      "expected_outcome": "ACCEPT",
+      "domain": "seismology"
+    },
+    {
+      "sample_id": "v6_lang_dev_025",
+      "category": "scientific_figure_captions",
+      "text": "Diagram 5. Schematic wiring diagram of the dual-channel low-noise instrumentation preamplifier stage.",
+      "expected_outcome": "ACCEPT",
+      "domain": "electrical_engineering"
+    },
+    {
+      "sample_id": "v6_lang_dev_026",
+      "category": "foreign_names_and_quotes",
+      "text": "The diplomatic envoy argued that preserving the status quo was essential for maintaining regional peace and mutual trade.",
+      "expected_outcome": "ACCEPT",
+      "domain": "international_relations"
+    },
+    {
+      "sample_id": "v6_lang_dev_027",
+      "category": "foreign_names_and_quotes",
+      "text": "Philosopher Immanuel Kant examined whether the concept of a priori knowledge could be established through pure reason.",
+      "expected_outcome": "ACCEPT",
+      "domain": "philosophy"
+    },
+    {
+      "sample_id": "v6_lang_dev_028",
+      "category": "foreign_names_and_quotes",
+      "text": "The literary critic noted that the protagonist experienced a profound sense of Weltschmerz throughout the concluding chapters.",
+      "expected_outcome": "ACCEPT",
+      "domain": "literary_criticism"
+    },
+    {
+      "sample_id": "v6_lang_dev_029",
+      "category": "foreign_names_and_quotes",
+      "text": "Legal scholars debate whether the doctrine of caveat emptor applies to online commercial transactions in consumer contracts.",
+      "expected_outcome": "ACCEPT",
+      "domain": "commercial_law"
+    },
+    {
+      "sample_id": "v6_lang_dev_030",
+      "category": "foreign_names_and_quotes",
+      "text": "The historian observed that the prime minister governed per pro tempore until parliamentary elections could be conducted.",
+      "expected_outcome": "ACCEPT",
+      "domain": "political_history"
+    },
+    {
+      "sample_id": "v6_lang_dev_031",
+      "category": "code_sql_structured_data",
+      "text": "SELECT customer_id, order_total, payment_status FROM commercial_invoices WHERE order_total > 500.00 ORDER BY customer_id;",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v6_lang_dev_032",
+      "category": "code_sql_structured_data",
+      "text": "INSERT INTO system_audit_logs (event_id, user_email, ip_address, timestamp_utc) VALUES (1024, 'admin@org.com', '192.168.1.1', NOW());",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v6_lang_dev_033",
+      "category": "code_sql_structured_data",
+      "text": "CREATE TABLE telemetry_readings (sensor_id INTEGER PRIMARY KEY, pressure_bar REAL, temp_celsius REAL);",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v6_lang_dev_034",
+      "category": "code_sql_structured_data",
+      "text": "DELETE FROM temporary_session_tokens WHERE expiration_time < CURRENT_TIMESTAMP AND is_revoked = 1;",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v6_lang_dev_035",
+      "category": "code_sql_structured_data",
+      "text": "ALTER TABLE inventory_warehouse ADD COLUMN rack_location VARCHAR(32) DEFAULT 'SECTION_A';",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_data"
+    },
+    {
+      "sample_id": "v6_lang_dev_036",
+      "category": "imperative_signage_notices",
+      "text": "DANGER: High voltage transmission lines overhead. Do not operate crane within twenty feet.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "industrial_signage"
+    },
+    {
+      "sample_id": "v6_lang_dev_037",
+      "category": "imperative_signage_notices",
+      "text": "CAUTION: Wet and slippery chemical floor surface. Wear approved protective boots at all times.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "safety_notice"
+    },
+    {
+      "sample_id": "v6_lang_dev_038",
+      "category": "imperative_signage_notices",
+      "text": "WARNING: Laser radiation emitted from aperture. Wear protective safety goggles during laser alignment.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "laboratory_safety"
+    },
+    {
+      "sample_id": "v6_lang_dev_039",
+      "category": "imperative_signage_notices",
+      "text": "NOTICE: Emergency fire exit door must remain closed and unblocked during building operating hours.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "building_compliance"
+    },
+    {
+      "sample_id": "v6_lang_dev_040",
+      "category": "imperative_signage_notices",
+      "text": "ALERT: Confined space entry permit required prior to entering subterranean sewage vault.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "workplace_safety"
+    },
+    {
+      "sample_id": "v6_lang_dev_041",
+      "category": "short_headings_and_fragments",
+      "text": "Executive Summary and Project Budget.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "document_heading"
+    },
+    {
+      "sample_id": "v6_lang_dev_042",
+      "category": "short_headings_and_fragments",
+      "text": "Appendix B: Mathematical Formula Derivations.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "appendix_heading"
+    },
+    {
+      "sample_id": "v6_lang_dev_043",
+      "category": "short_headings_and_fragments",
+      "text": "Section 4.2 Quality Assurance Protocols.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "specification_index"
+    },
+    {
+      "sample_id": "v6_lang_dev_044",
+      "category": "short_headings_and_fragments",
+      "text": "Chapter Seven: Concluding Remarks.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "book_heading"
+    },
+    {
+      "sample_id": "v6_lang_dev_045",
+      "category": "short_headings_and_fragments",
+      "text": "Glossary of Specialized Technical Terms.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "reference_heading"
+    },
+    {
+      "sample_id": "v6_lang_dev_046",
+      "category": "germanic_latin_prose",
+      "text": "Die physikalischen Gesetze der Thermodynamik gelten fuer alle thermodynamischen Prozesse in geschlossenen Systemen.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "german_physics"
+    },
+    {
+      "sample_id": "v6_lang_dev_047",
+      "category": "germanic_latin_prose",
+      "text": "Het historisch museum in Amsterdam bewaart een grote collectie schilderijen uit de zeventiende eeuw.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "dutch_history"
+    },
+    {
+      "sample_id": "v6_lang_dev_048",
+      "category": "germanic_latin_prose",
+      "text": "Abbildung 8: Gemessene Frequenzgangkurve des aktiven Tiefpassfilters bei verschiedenen Temperaturen.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "german_engineering"
+    },
+    {
+      "sample_id": "v6_lang_dev_049",
+      "category": "germanic_latin_prose",
+      "text": "De moderne windturbines in de Noordzee leveren duurzame elektrische energie voor miljoenen huishoudens.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "dutch_energy"
+    },
+    {
+      "sample_id": "v6_lang_dev_050",
+      "category": "germanic_latin_prose",
+      "text": "Eine genaue Untersuchung der Bodenproben ergab keine Spuren von schaedlichen chemischen Rueckstaenden.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "german_ecology"
+    },
+    {
+      "sample_id": "v6_lang_dev_051",
+      "category": "romance_latin_prose",
+      "text": "La theorie de la relativite generale decrit la gravitation comme une courbure de lespace-temps.",
+      "expected_outcome": "REJECT",
+      "domain": "french_physics"
+    },
+    {
+      "sample_id": "v6_lang_dev_052",
+      "category": "romance_latin_prose",
+      "text": "El descubrimiento de la estructura molecular del acido desoxirribonucleico revoluciono la biologia moderna.",
+      "expected_outcome": "REJECT",
+      "domain": "spanish_biology"
+    },
+    {
+      "sample_id": "v6_lang_dev_053",
+      "category": "romance_latin_prose",
+      "text": "La divina commedia e considerata uno dei massimi capolavori della letteratura universale di tutti i tempi.",
+      "expected_outcome": "REJECT",
+      "domain": "italian_literature"
+    },
+    {
+      "sample_id": "v6_lang_dev_054",
+      "category": "romance_latin_prose",
+      "text": "Figure 9: Coupe microscopique du tissu vegetal montrant les faisceaux vasculaires et les cellules epidermiques.",
+      "expected_outcome": "REJECT",
+      "domain": "french_botany_caption"
+    },
+    {
+      "sample_id": "v6_lang_dev_055",
+      "category": "romance_latin_prose",
+      "text": "Figura 10: Diagrama de dispersion mostrando la relacion entre la temperatura media y la presion atmosferica.",
+      "expected_outcome": "REJECT",
+      "domain": "spanish_meteorology_caption"
+    },
+    {
+      "sample_id": "v6_lang_dev_056",
+      "category": "malformed_noise",
+      "text": "ajskdlf zxcvbnm qwertyuiop lkjhgfds asdfghjk zxcvbnmasdf qwertyuiopasdf mnbvcxz.",
+      "expected_outcome": "REJECT",
+      "domain": "random_alphabetic_noise"
+    },
+    {
+      "sample_id": "v6_lang_dev_057",
+      "category": "malformed_noise",
+      "text": "&&& *** $$$ ### %%% @@@ !!! +++ === ~~~ ^^^ ||| \\\\\\ /// ::: ;;;",
+      "expected_outcome": "REJECT",
+      "domain": "symbolic_noise"
+    },
+    {
+      "sample_id": "v6_lang_dev_058",
+      "category": "non_latin_script",
+      "text": "Этот абзац текста написан на русском языке с использованием кириллических букв для проверки фильтра скриптов.",
+      "expected_outcome": "REJECT",
+      "domain": "russian_cyrillic"
+    },
+    {
+      "sample_id": "v6_lang_dev_059",
+      "category": "non_latin_script",
+      "text": "Αυτή είναι μια πρόταση γραμμένη στα ελληνικά για να ελέγξετε την απόρριψη μη λατινικών γραφών.",
+      "expected_outcome": "REJECT",
+      "domain": "greek_script"
+    },
+    {
+      "sample_id": "v6_lang_dev_060",
+      "category": "malformed_noise",
+      "text": "0x4A 0x7F 0x90 0x1B 0x88 0x33 0xFF 0x00 0xDE 0xAD 0xBE 0xEF 0xCA 0xFE.",
+      "expected_outcome": "REJECT",
+      "domain": "hex_dump_noise"
+    }
+  ],
+  "test_split": [
+    {
+      "sample_id": "v6_lang_test_001",
+      "category": "ordinary_english_prose",
+      "text": "The medieval stonemasons erected flying buttresses to distribute the outward thrust of the vaulted cathedral ceiling.",
+      "expected_outcome": "ACCEPT",
+      "domain": "architectural_history"
+    },
+    {
+      "sample_id": "v6_lang_test_002",
+      "category": "ordinary_english_prose",
+      "text": "Coral reef ecosystems support immense marine biodiversity while providing natural barrier protection against coastal erosion.",
+      "expected_outcome": "ACCEPT",
+      "domain": "marine_ecology"
+    },
+    {
+      "sample_id": "v6_lang_test_003",
+      "category": "ordinary_english_prose",
+      "text": "The discovery of penicillium mold contamination on bacterial culture plates led to the development of commercial antibiotics.",
+      "expected_outcome": "ACCEPT",
+      "domain": "history_of_medicine"
+    },
+    {
+      "sample_id": "v6_lang_test_004",
+      "category": "ordinary_english_prose",
+      "text": "Volcanic eruptions eject sulfur dioxide aerosols into the stratosphere, reflecting solar radiation and cooling regional climates.",
+      "expected_outcome": "ACCEPT",
+      "domain": "climatology"
+    },
+    {
+      "sample_id": "v6_lang_test_005",
+      "category": "ordinary_english_prose",
+      "text": "Subterranean limestone caves are sculpted over millennia by carbonic acid dissolving calcium carbonate along bedrock fractures.",
+      "expected_outcome": "ACCEPT",
+      "domain": "geology"
+    },
+    {
+      "sample_id": "v6_lang_test_006",
+      "category": "ordinary_english_prose",
+      "text": "The introduction of the compass and portolan navigational charts transformed maritime trade routes across the Mediterranean Sea.",
+      "expected_outcome": "ACCEPT",
+      "domain": "navigational_history"
+    },
+    {
+      "sample_id": "v6_lang_test_007",
+      "category": "ordinary_english_prose",
+      "text": "Honeybees communicate the spatial direction and distance of nectar sources through elaborate waggle dance patterns inside the hive.",
+      "expected_outcome": "ACCEPT",
+      "domain": "entomology"
+    },
+    {
+      "sample_id": "v6_lang_test_008",
+      "category": "ordinary_english_prose",
+      "text": "Traditional papermaking processes extract cellulose fibers from mulberry bark and suspend them in aqueous slurry frames.",
+      "expected_outcome": "ACCEPT",
+      "domain": "craft_technology"
+    },
+    {
+      "sample_id": "v6_lang_test_009",
+      "category": "ordinary_english_prose",
+      "text": "The gravitational interaction between the moon and earth generates rhythmic oceanic tidal cycles twice each solar day.",
+      "expected_outcome": "ACCEPT",
+      "domain": "astronomy"
+    },
+    {
+      "sample_id": "v6_lang_test_010",
+      "category": "ordinary_english_prose",
+      "text": "Archaeologists uncovered bronze age pottery kilns containing vitrified ceramic vessels near the ancient river settlement.",
+      "expected_outcome": "ACCEPT",
+      "domain": "archaeology"
+    },
+    {
+      "sample_id": "v6_lang_test_011",
+      "category": "expository_academic_prose",
+      "text": "The Hamiltonian formalism in classical mechanics expresses the equations of motion in terms of conjugate generalized momenta.",
+      "expected_outcome": "ACCEPT",
+      "domain": "theoretical_mechanics"
+    },
+    {
+      "sample_id": "v6_lang_test_012",
+      "category": "expository_academic_prose",
+      "text": "Endosymbiotic evolutionary theory explains the origin of mitochondria from engulfed aerobic alphaproteobacteria.",
+      "expected_outcome": "ACCEPT",
+      "domain": "evolutionary_biology"
+    },
+    {
+      "sample_id": "v6_lang_test_013",
+      "category": "expository_academic_prose",
+      "text": "Semantic compositionality holds that the semantic meaning of a complex expression is determined by its constituent lexical parts.",
+      "expected_outcome": "ACCEPT",
+      "domain": "formal_semantics"
+    },
+    {
+      "sample_id": "v6_lang_test_014",
+      "category": "expository_academic_prose",
+      "text": "Superconductivity occurs when electron pairs form coherent Cooper pairs below a material-specific critical transition temperature.",
+      "expected_outcome": "ACCEPT",
+      "domain": "condensed_matter_physics"
+    },
+    {
+      "sample_id": "v6_lang_test_015",
+      "category": "expository_academic_prose",
+      "text": "The central limit theorem establishes that the arithmetic mean of independent random variables converges toward a normal distribution.",
+      "expected_outcome": "ACCEPT",
+      "domain": "probability_theory"
+    },
+    {
+      "sample_id": "v6_lang_test_016",
+      "category": "expository_academic_prose",
+      "text": "Enzyme catalytic efficiency is characterized by the Michaelis-Menten constant and the maximum initial reaction velocity.",
+      "expected_outcome": "ACCEPT",
+      "domain": "enzymology"
+    },
+    {
+      "sample_id": "v6_lang_test_017",
+      "category": "expository_academic_prose",
+      "text": "The categorical imperative functions in deontological ethics as an unconditional moral obligation binding upon all rational agents.",
+      "expected_outcome": "ACCEPT",
+      "domain": "moral_philosophy"
+    },
+    {
+      "sample_id": "v6_lang_test_018",
+      "category": "expository_academic_prose",
+      "text": "Crystallographic X-ray diffraction maps the spatial arrangement of atoms within a crystallized macromolecular lattice.",
+      "expected_outcome": "ACCEPT",
+      "domain": "structural_biology"
+    },
+    {
+      "sample_id": "v6_lang_test_019",
+      "category": "expository_academic_prose",
+      "text": "Asymptotic complexity analysis evaluates the algorithmic running time growth rate as the input problem size approaches infinity.",
+      "expected_outcome": "ACCEPT",
+      "domain": "computer_science"
+    },
+    {
+      "sample_id": "v6_lang_test_020",
+      "category": "expository_academic_prose",
+      "text": "The Doppler effect produces a frequency shift in acoustic or electromagnetic waveforms emitted by a moving source relative to an observer.",
+      "expected_outcome": "ACCEPT",
+      "domain": "wave_mechanics"
+    },
+    {
+      "sample_id": "v6_lang_test_021",
+      "category": "scientific_figure_captions",
+      "text": "Figure 3: Transmission electron micrograph showing intracellular lipid droplet accumulation in cultured hepatocytes.",
+      "expected_outcome": "ACCEPT",
+      "domain": "cellular_biology"
+    },
+    {
+      "sample_id": "v6_lang_test_022",
+      "category": "scientific_figure_captions",
+      "text": "Figure 4. Normalized photoluminescence emission spectra of cadmium selenide quantum dots under ultraviolet excitation.",
+      "expected_outcome": "ACCEPT",
+      "domain": "nanotechnology"
+    },
+    {
+      "sample_id": "v6_lang_test_023",
+      "category": "scientific_figure_captions",
+      "text": "Table 2: Chemical thermodynamic combustion enthalpy and specific heat capacities for gaseous hydrocarbon isomers.",
+      "expected_outcome": "ACCEPT",
+      "domain": "chemical_thermodynamics"
+    },
+    {
+      "sample_id": "v6_lang_test_024",
+      "category": "scientific_figure_captions",
+      "text": "Plate 1: Polished geological cross-section revealing rhythmic sedimentation layering in banded iron formations.",
+      "expected_outcome": "ACCEPT",
+      "domain": "sedimentology"
+    },
+    {
+      "sample_id": "v6_lang_test_025",
+      "category": "scientific_figure_captions",
+      "text": "Chart 6. Comparative survival curves for randomized clinical patient cohorts stratified by baseline biomarker levels.",
+      "expected_outcome": "ACCEPT",
+      "domain": "clinical_epidemiology"
+    },
+    {
+      "sample_id": "v6_lang_test_026",
+      "category": "foreign_names_and_quotes",
+      "text": "The constitutional scholar argued that habeas corpus represents a fundamental safeguard against arbitrary executive detention.",
+      "expected_outcome": "ACCEPT",
+      "domain": "constitutional_law"
+    },
+    {
+      "sample_id": "v6_lang_test_027",
+      "category": "foreign_names_and_quotes",
+      "text": "The sociological treatise explored how anomie emerges within industrial societies experiencing rapid technological disruption.",
+      "expected_outcome": "ACCEPT",
+      "domain": "sociology"
+    },
+    {
+      "sample_id": "v6_lang_test_028",
+      "category": "foreign_names_and_quotes",
+      "text": "René Descartes asserted his famous ontological proposition cogito ergo sum as the bedrock of epistemological certainty.",
+      "expected_outcome": "ACCEPT",
+      "domain": "intellectual_history"
+    },
+    {
+      "sample_id": "v6_lang_test_029",
+      "category": "foreign_names_and_quotes",
+      "text": "The diplomat noted that negotiations required a bona fide commitment from both nations to resolve border disputes.",
+      "expected_outcome": "ACCEPT",
+      "domain": "diplomatic_history"
+    },
+    {
+      "sample_id": "v6_lang_test_030",
+      "category": "foreign_names_and_quotes",
+      "text": "Literary theorists describe the dramatic effect of catharsis as a purgation of pity and fear within tragic drama.",
+      "expected_outcome": "ACCEPT",
+      "domain": "literary_theory"
+    },
+    {
+      "sample_id": "v6_lang_test_031",
+      "category": "code_sql_structured_data",
+      "text": "SELECT employee_id, department_name, salary FROM corporate_payroll WHERE salary >= 75000 ORDER BY salary DESC;",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_query"
+    },
+    {
+      "sample_id": "v6_lang_test_032",
+      "category": "code_sql_structured_data",
+      "text": "INSERT INTO transaction_ledger (ledger_id, account_number, amount_usd, transaction_time) VALUES (501, 'ACC-99', 1500.0, NOW());",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_query"
+    },
+    {
+      "sample_id": "v6_lang_test_033",
+      "category": "code_sql_structured_data",
+      "text": "CREATE TABLE security_certificates (cert_id VARCHAR(64) PRIMARY KEY, valid_until TIMESTAMP, is_revoked BOOLEAN);",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_query"
+    },
+    {
+      "sample_id": "v6_lang_test_034",
+      "category": "code_sql_structured_data",
+      "text": "UPDATE inventory_stock SET available_quantity = available_quantity - 10 WHERE product_sku = 'SKU-504';",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_query"
+    },
+    {
+      "sample_id": "v6_lang_test_035",
+      "category": "code_sql_structured_data",
+      "text": "DROP TABLE obsolete_archive_indexes;",
+      "expected_outcome": "QUARANTINE",
+      "domain": "sql_query"
+    },
+    {
+      "sample_id": "v6_lang_test_036",
+      "category": "imperative_signage_notices",
+      "text": "DANGER: Flammable hydrogen gas storage area. No open flames, matches, or smoking permitted.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "safety_signage"
+    },
+    {
+      "sample_id": "v6_lang_test_037",
+      "category": "imperative_signage_notices",
+      "text": "CAUTION: Corrosive acid hazard. Protective rubber gloves and chemical face shields must be worn.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "safety_signage"
+    },
+    {
+      "sample_id": "v6_lang_test_038",
+      "category": "imperative_signage_notices",
+      "text": "WARNING: Moving conveyor machinery starts automatically without audible advance signal.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "safety_signage"
+    },
+    {
+      "sample_id": "v6_lang_test_039",
+      "category": "imperative_signage_notices",
+      "text": "NOTICE: Restricted government laboratory zone. Escorted authorized personnel access only.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "security_signage"
+    },
+    {
+      "sample_id": "v6_lang_test_040",
+      "category": "imperative_signage_notices",
+      "text": "ATTENTION: Biological safety level three containment facility. Decontamination shower required upon exit.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "biosecurity_signage"
+    },
+    {
+      "sample_id": "v6_lang_test_041",
+      "category": "short_headings_and_fragments",
+      "text": "Chapter Four: Experimental Methodology.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "heading_fragment"
+    },
+    {
+      "sample_id": "v6_lang_test_042",
+      "category": "short_headings_and_fragments",
+      "text": "Index of Cited Classical Authors.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "heading_fragment"
+    },
+    {
+      "sample_id": "v6_lang_test_043",
+      "category": "short_headings_and_fragments",
+      "text": "Section 2.1 Hardware Requirements.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "heading_fragment"
+    },
+    {
+      "sample_id": "v6_lang_test_044",
+      "category": "short_headings_and_fragments",
+      "text": "Table of Contents and Acknowledgments.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "heading_fragment"
+    },
+    {
+      "sample_id": "v6_lang_test_045",
+      "category": "short_headings_and_fragments",
+      "text": "Appendix D: Chemical Reagent Specifications.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "heading_fragment"
+    },
+    {
+      "sample_id": "v6_lang_test_046",
+      "category": "germanic_latin_prose",
+      "text": "Die experimentellen Ergebnisse bestaetigen die theoretischen Vorhersagen ueber das Verhalten der Quantenfluessigkeit.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "german_quantum_fluid"
+    },
+    {
+      "sample_id": "v6_lang_test_047",
+      "category": "germanic_latin_prose",
+      "text": "De waterkwaliteit in de Nederlandse rivieren is de afgelopen decennia aanzienlijk verbeterd door strenge milieuregels.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "dutch_water_management"
+    },
+    {
+      "sample_id": "v6_lang_test_048",
+      "category": "germanic_latin_prose",
+      "text": "Abbildung 5: Schematischer Aufbau der Vakuumpumpenanlage zur Erzeugung von extremem Hochvakuum.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "german_vacuum_caption"
+    },
+    {
+      "sample_id": "v6_lang_test_049",
+      "category": "germanic_latin_prose",
+      "text": "Het bestuur van de universiteit besloot een nieuw onderzoeksinstituut voor kunstmatige intelligentie op te richten.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "dutch_university"
+    },
+    {
+      "sample_id": "v6_lang_test_050",
+      "category": "germanic_latin_prose",
+      "text": "Der optische Brechungsindex des Kristalls haengt von der Polarisation und der Wellenlaenge des einfallenden Lichts ab.",
+      "expected_outcome": "QUARANTINE",
+      "domain": "german_optics"
+    },
+    {
+      "sample_id": "v6_lang_test_051",
+      "category": "romance_latin_prose",
+      "text": "Le systeme nerveux central coordonne les activites motrices et sensorielles de lorganisme a travers des influx electriques.",
+      "expected_outcome": "REJECT",
+      "domain": "french_neurobiology"
+    },
+    {
+      "sample_id": "v6_lang_test_052",
+      "category": "romance_latin_prose",
+      "text": "La arquitectura gotica se caracteriza por el empleo sistematico del arco ojival y la boveda de cruceria.",
+      "expected_outcome": "REJECT",
+      "domain": "spanish_architecture"
+    },
+    {
+      "sample_id": "v6_lang_test_053",
+      "category": "romance_latin_prose",
+      "text": "Il rinascimento italiano ha segnato una straordinaria fioritura delle arti figurative e del pensiero umanistico.",
+      "expected_outcome": "REJECT",
+      "domain": "italian_renaissance"
+    },
+    {
+      "sample_id": "v6_lang_test_054",
+      "category": "romance_latin_prose",
+      "text": "Figure 7: Diagramme de diffraction des rayons X montrant la structure cristalline du compose intermetallique.",
+      "expected_outcome": "REJECT",
+      "domain": "french_diffraction_caption"
+    },
+    {
+      "sample_id": "v6_lang_test_055",
+      "category": "romance_latin_prose",
+      "text": "Figura 8: Curva de calibracion del espectrofotometro para la cuantificacion de proteinas solubles en solucion.",
+      "expected_outcome": "REJECT",
+      "domain": "spanish_spectrophotometry"
+    },
+    {
+      "sample_id": "v6_lang_test_056",
+      "category": "malformed_noise",
+      "text": "plmqaz okwsxd ijnefc uhbvgy tgfcde rfvbgt edcxsw qazwsx edcrfv.",
+      "expected_outcome": "REJECT",
+      "domain": "keyboard_mashing"
+    },
+    {
+      "sample_id": "v6_lang_test_057",
+      "category": "malformed_noise",
+      "text": "--- === +++ /// \\\\\\\\\\\\ ~~~ ``` @@@ $$$ %%% ^^^ &&& *** ((( )))",
+      "expected_outcome": "REJECT",
+      "domain": "operator_noise"
+    },
+    {
+      "sample_id": "v6_lang_test_058",
+      "category": "non_latin_script",
+      "text": "Исследования древних рукописей позволяют восстановить исторические события средневековой эпохи.",
+      "expected_outcome": "REJECT",
+      "domain": "russian_manuscripts"
+    },
+    {
+      "sample_id": "v6_lang_test_059",
+      "category": "non_latin_script",
+      "text": "Η γεωμετρία του Ευκλείδη αποτέλεσε τη βάση της μαθηματικής σκέψης για πάνω από δύο χιλιετίες.",
+      "expected_outcome": "REJECT",
+      "domain": "greek_mathematics"
+    },
+    {
+      "sample_id": "v6_lang_test_060",
+      "category": "malformed_noise",
+      "text": "00 1F 3A B2 C4 89 EF 01 22 45 78 9A BC DE F0 11 33 55 77 99.",
+      "expected_outcome": "REJECT",
+      "domain": "binary_hex_pairs"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+[
+  {
+    "document_id": "doc_01_normal_prose",
+    "source_id": "golden_permitted_source",
+    "title": "On Scientific Exploration",
+    "author": "Dr. Eleanor Vance",
+    "raw_text": "The scientific method remains humanity's most dependable instrument for discovering natural laws.\n\nThrough rigorous empirical observation, controlled experimentation, and reproducible analysis, researchers separate persistent truth from temporary illusion. Every generation builds upon earlier discoveries, expanding the frontiers of knowledge."
+  },
+  {
+    "document_id": "doc_02_repeated_ws",
+    "source_id": "golden_permitted_source",
+    "title": "Whitespace Edge Cases",
+    "author": "Anonymous",
+    "raw_text": "This   sentence   contains\tmultiple\trunaway    spaces   and\ttabs.\n\n\n\n\nYet   another\t\tparagraph   with  abnormal   vertical   and   horizontal   padding."
+  },
+  {
+    "document_id": "doc_03_unicode_punct",
+    "source_id": "golden_permitted_source",
+    "title": "Typographical Quotes and Dashes",
+    "author": "Arthur Pendelton",
+    "raw_text": "“Knowledge is not merely information,” the scholar remarked, “it is understanding.”\n\nWe must distinguish between the ordinary—often superficial—facts and deep wisdom… indeed, wisdom’s path requires patience."
+  },
+  {
+    "document_id": "doc_04_numbers_math",
+    "source_id": "golden_permitted_source",
+    "title": "Historical Measurements",
+    "author": "Capt. James Cook",
+    "raw_text": "In 1772, the expedition recorded a temperature of 24° with an error margin of ±2°. Over 365 days, exactly 1,420 nautical miles were surveyed across the southern hemisphere."
+  },
+  {
+    "document_id": "doc_05_urls_markup",
+    "source_id": "golden_permitted_source",
+    "title": "Web Architecture Note",
+    "author": "Web Standards Group",
+    "raw_text": "<p>The <b>World Wide Web</b> operates on standardized protocols such as HTTP &amp; HTTPS.</p>\n\n<div>For full documentation, visit https://example.org/standards?spec=html5 &amp; read the official guide.</div>"
+  },
+  {
+    "document_id": "doc_06_exact_duplicate_of_01",
+    "source_id": "golden_permitted_source",
+    "title": "Duplicate of Scientific Exploration",
+    "author": "Dr. Eleanor Vance",
+    "raw_text": "The scientific method remains humanity's most dependable instrument for discovering natural laws.\n\nThrough rigorous empirical observation, controlled experimentation, and reproducible analysis, researchers separate persistent truth from temporary illusion. Every generation builds upon earlier discoveries, expanding the frontiers of knowledge."
+  },
+  {
+    "document_id": "doc_07_duplicate_para_borrowed",
+    "source_id": "golden_permitted_source",
+    "title": "Composite Essay",
+    "author": "Various",
+    "raw_text": "“Knowledge is not merely information,” the scholar remarked, “it is understanding.”\n\nThis unique second paragraph discusses entirely novel historical concepts regarding ancient Roman architecture."
+  },
+  {
+    "document_id": "doc_08_very_short",
+    "source_id": "golden_permitted_source",
+    "title": "Fragment",
+    "author": "None",
+    "raw_text": "Hi.\n\nNo.\n\nShort."
+  },
+  {
+    "document_id": "doc_09_multilingual_nonlatin",
+    "source_id": "golden_permitted_source",
+    "title": "Foreign Text",
+    "author": "International",
+    "raw_text": "नमस्ते दोस्तों, यह एक हिंदी वाक्य है।\n\nМосква — столица России."
+  },
+  {
+    "document_id": "doc_10_repeated_chars",
+    "source_id": "golden_permitted_source",
+    "title": "Keyboard Mash",
+    "author": "Corrupted",
+    "raw_text": "This is totally corrupted aaaaaaaaaaaaaaaaaa and bbbbbbbbbbb text.\n\n-------------------------------------------------"
+  },
+  {
+    "document_id": "doc_11_repeated_words",
+    "source_id": "golden_permitted_source",
+    "title": "Crawler Loop",
+    "author": "Bot",
+    "raw_text": "the the the the the the the the the the the the the the the the.\n\nword word word word word word word word."
+  },
+  {
+    "document_id": "doc_12_boilerplate",
+    "source_id": "golden_permitted_source",
+    "title": "Legal Notice",
+    "author": "Legal Dept",
+    "raw_text": "All rights reserved. Terms of service apply to all users of this software service.\n\nPlease review our privacy policy before continuing to browse."
+  },
+  {
+    "document_id": "doc_13_governance_excluded",
+    "source_id": "golden_excluded_source",
+    "title": "Proprietary Textbook Chapter",
+    "author": "Commercial Publisher",
+    "raw_text": "This chapter is strictly proprietary and must never be included in any language model training split under current licensing restrictions."
+  },
+  {
+    "document_id": "doc_14_empty_text",
+    "source_id": "golden_permitted_source",
+    "title": "Empty Document",
+    "author": "None",
+    "raw_text": "    \n\n\t\t\n   "
+  }
+]

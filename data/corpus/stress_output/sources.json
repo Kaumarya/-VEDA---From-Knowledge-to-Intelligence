@@ -1,0 +1,30 @@
+[
+  {
+    "source_id": "stress_permitted_src",
+    "name": "VEDA Synthetic Stress Permitted Source",
+    "version": "1.0",
+    "url_or_path": "https://veda.local/stress_permitted.tar.gz",
+    "acquisition_date": "2026-10-02",
+    "source_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "license": "CC0-1.0",
+    "licensing_status": "VERIFIED PERMITTED",
+    "language": "en",
+    "source_type": "book",
+    "attribution": null,
+    "description": null
+  },
+  {
+    "source_id": "stress_excluded_src",
+    "name": "VEDA Synthetic Stress Excluded Source",
+    "version": "1.0",
+    "url_or_path": "https://veda.local/stress_excluded.tar.gz",
+    "acquisition_date": "2026-10-02",
+    "source_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+    "license": "Proprietary",
+    "licensing_status": "EXCLUDED",
+    "language": "en",
+    "source_type": "book",
+    "attribution": null,
+    "description": null
+  }
+]

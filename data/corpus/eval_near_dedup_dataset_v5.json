@@ -1,0 +1,366 @@
+{
+  "metadata": {
+    "benchmark_name": "VEDA_Near_Deduplication_Safety_Benchmark_v5",
+    "benchmark_version": "5.0.0",
+    "phase": "4.7",
+    "description": "Independently constructed, non-templated evaluation benchmark for near-duplicate detection and semantic safety",
+    "governance_rule": "Strict isolation between Development and Held-Out Test splits; zero template loops",
+    "dev_pairs_count": 18,
+    "test_pairs_count": 17,
+    "total_pairs": 35
+  },
+  "development_split": [
+    {
+      "pair_id": "v5_dev_pair_001",
+      "doc_a_id": "d_a_001",
+      "doc_b_id": "d_b_001",
+      "text_a": "The VEDA architecture establishes verifiable provenance standards for from-scratch language models.",
+      "text_b": "The VEDA architecture establishes verifiable provenance standards for from-scratch language models.",
+      "is_true_duplicate": true,
+      "category": "exact_duplicate",
+      "description": "Identical character string"
+    },
+    {
+      "pair_id": "v5_dev_pair_002",
+      "doc_a_id": "d_a_002",
+      "doc_b_id": "d_b_002",
+      "text_a": "Knowledge and human power are synonymous, since the ignorance of the cause frustrates the effect.",
+      "text_b": "Knowledge and human power are synonymous,  since the ignorance of the cause frustrates the effect.",
+      "is_true_duplicate": true,
+      "category": "reformatted_duplicate",
+      "description": "Double space formatting variation"
+    },
+    {
+      "pair_id": "v5_dev_pair_003",
+      "doc_a_id": "d_a_003",
+      "doc_b_id": "d_b_003",
+      "text_a": "The chemical reaction was accelerated by adding five milligrams of platinum catalyst powder to the flask.",
+      "text_b": "The chemical reaction was hastened by adding five milligrams of platinum catalyst powder to the flask.",
+      "is_true_duplicate": true,
+      "category": "paraphrase_duplicate",
+      "description": "Legitimate synonym substitution: accelerated -> hastened"
+    },
+    {
+      "pair_id": "v5_dev_pair_004",
+      "doc_a_id": "d_a_004",
+      "doc_b_id": "d_b_004",
+      "text_a": "Before initiating the laboratory synthesis, the graduate student carefully inspected all glassware for cracks.",
+      "text_b": "The graduate student carefully inspected all glassware for cracks before initiating the laboratory synthesis.",
+      "is_true_duplicate": true,
+      "category": "reordered_duplicate",
+      "description": "Clause transposition with preserved meaning"
+    },
+    {
+      "pair_id": "v5_dev_pair_005",
+      "doc_a_id": "d_a_005",
+      "doc_b_id": "d_b_005",
+      "text_a": "The experimental protocol specified dissolving 1000 mg of sodium chloride in one liter of distilled water.",
+      "text_b": "The experimental protocol specified dissolving 1 g of sodium chloride in one liter of distilled water.",
+      "is_true_duplicate": true,
+      "category": "unit_conversion_duplicate",
+      "description": "Equivalent physical quantity under SI units"
+    },
+    {
+      "pair_id": "v5_dev_pair_006",
+      "doc_a_id": "d_a_006",
+      "doc_b_id": "d_b_006",
+      "text_a": "The centrifuge was operated at maximum speed for exactly 60 seconds to precipitate biological solids.",
+      "text_b": "The centrifuge was operated at maximum speed for exactly 1 minute to precipitate biological solids.",
+      "is_true_duplicate": true,
+      "category": "unit_conversion_duplicate",
+      "description": "Equivalent duration: 60 s vs 1 min"
+    },
+    {
+      "pair_id": "v5_dev_pair_007",
+      "doc_a_id": "d_a_007",
+      "doc_b_id": "d_b_007",
+      "text_a": "The memory controller allocated exactly 1024 bytes of contiguous ring buffer for packet reception.",
+      "text_b": "The memory controller allocated exactly 1 kib of contiguous ring buffer for packet reception.",
+      "is_true_duplicate": true,
+      "category": "unit_conversion_duplicate",
+      "description": "Equivalent binary memory size"
+    },
+    {
+      "pair_id": "v5_dev_pair_008",
+      "doc_a_id": "d_a_008",
+      "doc_b_id": "d_b_008",
+      "text_a": "The research team inspected 10 of the high-precision optical lenses under microscopic illumination.",
+      "text_b": "The research team inspected 10 of the high-precision optical lenses under microscopic illumination.",
+      "is_true_duplicate": true,
+      "category": "exact_duplicate",
+      "description": "Sentence with preposition following number"
+    },
+    {
+      "pair_id": "v5_dev_pair_009",
+      "doc_a_id": "d_a_009",
+      "doc_b_id": "d_b_009",
+      "text_a": "Chlorophyll pigments in plant chloroplasts absorb blue and red light to drive the light reactions of photosynthesis.",
+      "text_b": "The internal combustion engine converts thermodynamic heat energy into mechanical work through cylinder expansion.",
+      "is_true_duplicate": false,
+      "category": "distant_negative",
+      "description": "Distant negative topics"
+    },
+    {
+      "pair_id": "v5_dev_pair_010",
+      "doc_a_id": "d_a_010",
+      "doc_b_id": "d_b_010",
+      "text_a": "The pediatric patient was prescribed 10 mg of active hydrocortisone oral suspension once daily after meals.",
+      "text_b": "The pediatric patient was prescribed 100 mg of active hydrocortisone oral suspension once daily after meals.",
+      "is_true_duplicate": false,
+      "category": "safety_dosage_inversion",
+      "description": "Critical pediatric medication dosage flip"
+    },
+    {
+      "pair_id": "v5_dev_pair_011",
+      "doc_a_id": "d_a_011",
+      "doc_b_id": "d_b_011",
+      "text_a": "The standard laboratory pipe measured 10 meters in total length across the testing bench.",
+      "text_b": "The standard laboratory pipe measured 10 grams in total length across the testing bench.",
+      "is_true_duplicate": false,
+      "category": "safety_unit_mismatch",
+      "description": "Incompatible physical dimensions: length vs mass"
+    },
+    {
+      "pair_id": "v5_dev_pair_012",
+      "doc_a_id": "d_a_012",
+      "doc_b_id": "d_b_012",
+      "text_a": "The primary circuit breaker was calibrated for a maximum operating load of 10 amperes.",
+      "text_b": "The primary circuit breaker was calibrated for a maximum operating load of 10 volts.",
+      "is_true_duplicate": false,
+      "category": "safety_unit_mismatch",
+      "description": "Incompatible physical dimensions: current vs voltage"
+    },
+    {
+      "pair_id": "v5_dev_pair_013",
+      "doc_a_id": "d_a_013",
+      "doc_b_id": "d_b_013",
+      "text_a": "The definitive international treaty was signed in Paris on March 15, 2024 following bilateral talks.",
+      "text_b": "The definitive international treaty was signed in Paris on November 15, 2024 following bilateral talks.",
+      "is_true_duplicate": false,
+      "category": "safety_date_mismatch",
+      "description": "Calendar month conflict: March vs November"
+    },
+    {
+      "pair_id": "v5_dev_pair_014",
+      "doc_a_id": "d_a_014",
+      "doc_b_id": "d_b_014",
+      "text_a": "The diplomatic treaty of alliance was formally ratified by the ambassadors in London in 1824.",
+      "text_b": "The diplomatic treaty of alliance was formally ratified by the ambassadors in London in 1827.",
+      "is_true_duplicate": false,
+      "category": "safety_date_mismatch",
+      "description": "Historical calendar year conflict"
+    },
+    {
+      "pair_id": "v5_dev_pair_015",
+      "doc_a_id": "d_a_015",
+      "doc_b_id": "d_b_015",
+      "text_a": "Preclinical toxicology assays confirmed the synthesized organic compound was safe across human cell lines.",
+      "text_b": "Preclinical toxicology assays confirmed the synthesized organic compound was toxic across human cell lines.",
+      "is_true_duplicate": false,
+      "category": "safety_polarity_inversion",
+      "description": "Polarity antonym inversion: safe vs toxic"
+    },
+    {
+      "pair_id": "v5_dev_pair_016",
+      "doc_a_id": "d_a_016",
+      "doc_b_id": "d_b_016",
+      "text_a": "The patient temperature was recorded as at least 38 C during the acute phase of infection.",
+      "text_b": "The patient temperature was recorded as at most 38 C during the acute phase of infection.",
+      "is_true_duplicate": false,
+      "category": "safety_polarity_inversion",
+      "description": "Comparison direction inversion: at least vs at most"
+    },
+    {
+      "pair_id": "v5_dev_pair_017",
+      "doc_a_id": "d_a_017",
+      "doc_b_id": "d_b_017",
+      "text_a": "The structural integrity of the steel beam was compromised during high temperature stress testing.",
+      "text_b": "The structural integrity of the steel beam was not compromised during high temperature stress testing.",
+      "is_true_duplicate": false,
+      "category": "safety_negation_inversion",
+      "description": "Negation particle insertion: compromised vs not compromised"
+    },
+    {
+      "pair_id": "v5_dev_pair_018",
+      "doc_a_id": "d_a_018",
+      "doc_b_id": "d_b_018",
+      "text_a": "Clinical oncology report: Patient ID-9021 demonstrated complete remission following targeted chemotherapy.",
+      "text_b": "Clinical oncology report: Patient ID-9022 demonstrated complete remission following targeted chemotherapy.",
+      "is_true_duplicate": false,
+      "category": "safety_identifier_conflict",
+      "description": "Medical patient identifier mutation: ID-9021 vs ID-9022"
+    }
+  ],
+  "test_split": [
+    {
+      "pair_id": "v5_test_pair_001",
+      "doc_a_id": "t_a_001",
+      "doc_b_id": "t_b_001",
+      "text_a": "Natural selection operates continuously to preserve beneficial phenotypic variations across biological populations.",
+      "text_b": "Natural selection operates continuously to preserve beneficial phenotypic variations across biological populations.",
+      "is_true_duplicate": true,
+      "category": "exact_duplicate",
+      "description": "Exact bit-for-bit duplicate biological text"
+    },
+    {
+      "pair_id": "v5_test_pair_002",
+      "doc_a_id": "t_a_002",
+      "doc_b_id": "t_b_002",
+      "text_a": "Custom, then, is the great guide of human life! It renders our experience useful to us in all circumstances.",
+      "text_b": "Custom, then, is the great guide of human life.  It renders our experience useful to us in all circumstances.",
+      "is_true_duplicate": true,
+      "category": "reformatted_duplicate",
+      "description": "Punctuation exclamation mark and double space"
+    },
+    {
+      "pair_id": "v5_test_pair_003",
+      "doc_a_id": "t_a_003",
+      "doc_b_id": "t_b_003",
+      "text_a": "The attending physician instructed the nurses that 250 mg of cephalosporin should be administered orally.",
+      "text_b": "Nurses were instructed by the attending physician that 250 mg of cephalosporin should be administered orally.",
+      "is_true_duplicate": true,
+      "category": "paraphrase_duplicate",
+      "description": "Active to passive grammatical voice paraphrase"
+    },
+    {
+      "pair_id": "v5_test_pair_004",
+      "doc_a_id": "t_a_004",
+      "doc_b_id": "t_b_004",
+      "text_a": "The division of labour greatly improves productive powers. Furthermore, specialization reduces transaction overhead.",
+      "text_b": "Specialization reduces transaction overhead. Furthermore, the division of labour greatly improves productive powers.",
+      "is_true_duplicate": true,
+      "category": "reordered_duplicate",
+      "description": "Sentence inversion with identical propositional content"
+    },
+    {
+      "pair_id": "v5_test_pair_005",
+      "doc_a_id": "t_a_005",
+      "doc_b_id": "t_b_005",
+      "text_a": "The high-voltage transmission line stretched over a distance of exactly 1000 meters across the valley.",
+      "text_b": "The high-voltage transmission line stretched over a distance of exactly 1 kilometer across the valley.",
+      "is_true_duplicate": true,
+      "category": "unit_conversion_duplicate",
+      "description": "SI distance unit equivalence: 1000 m vs 1 km"
+    },
+    {
+      "pair_id": "v5_test_pair_006",
+      "doc_a_id": "t_a_006",
+      "doc_b_id": "t_b_006",
+      "text_a": "The kernel ring buffer allocated 1048576 bytes of physical RAM for storing debug trace records.",
+      "text_b": "The kernel ring buffer allocated 1 mib of physical RAM for storing debug trace records.",
+      "is_true_duplicate": true,
+      "category": "unit_conversion_duplicate",
+      "description": "Binary storage unit equivalence: 1048576 bytes vs 1 MiB"
+    },
+    {
+      "pair_id": "v5_test_pair_007",
+      "doc_a_id": "t_a_007",
+      "doc_b_id": "t_b_007",
+      "text_a": "The research protocol required taking 5 capsules with water each morning before physical exertion.",
+      "text_b": "The research protocol required taking 5 capsules with water each morning before physical exertion.",
+      "is_true_duplicate": true,
+      "category": "exact_duplicate",
+      "description": "Exact match with English preposition"
+    },
+    {
+      "pair_id": "v5_test_pair_008",
+      "doc_a_id": "t_a_008",
+      "doc_b_id": "t_b_008",
+      "text_a": "Every individual necessarily endeavours to employ his capital as near home as he can to support domestic industry.",
+      "text_b": "The thermonuclear fusion of hydrogen into helium inside stellar cores generates radiative equilibrium pressure.",
+      "is_true_duplicate": false,
+      "category": "distant_negative",
+      "description": "Distant negative topics"
+    },
+    {
+      "pair_id": "v5_test_pair_009",
+      "doc_a_id": "t_a_009",
+      "doc_b_id": "t_b_009",
+      "text_a": "Clinical dosage protocol: administer 5.0 milligrams of active chemotherapeutic agent per kilogram daily.",
+      "text_b": "Clinical dosage protocol: administer 50.0 milligrams of active chemotherapeutic agent per kilogram daily.",
+      "is_true_duplicate": false,
+      "category": "safety_dosage_inversion",
+      "description": "Critical pediatric 10x dosage inversion: 5.0 mg vs 50.0 mg"
+    },
+    {
+      "pair_id": "v5_test_pair_010",
+      "doc_a_id": "t_a_010",
+      "doc_b_id": "t_b_010",
+      "text_a": "The pressurized autoclave reactor vessel was filled with 10 liters of liquid benzene at room temperature.",
+      "text_b": "The pressurized autoclave reactor vessel was filled with 10 kg of liquid benzene at room temperature.",
+      "is_true_duplicate": false,
+      "category": "safety_unit_mismatch",
+      "description": "Incompatible physical dimensions: volume (liters) vs mass (kg)"
+    },
+    {
+      "pair_id": "v5_test_pair_011",
+      "doc_a_id": "t_a_011",
+      "doc_b_id": "t_b_011",
+      "text_a": "The projectile flight duration was precisely recorded as 10 seconds by the automated laser gate.",
+      "text_b": "The projectile flight duration was precisely recorded as 10 meters by the automated laser gate.",
+      "is_true_duplicate": false,
+      "category": "safety_unit_mismatch",
+      "description": "Incompatible physical dimensions: time (seconds) vs distance (meters)"
+    },
+    {
+      "pair_id": "v5_test_pair_012",
+      "doc_a_id": "t_a_012",
+      "doc_b_id": "t_b_012",
+      "text_a": "The constitutional convention convened in the assembly hall on May 10, 2024 to debate federal legislation.",
+      "text_b": "The constitutional convention convened in the assembly hall on October 10, 2024 to debate federal legislation.",
+      "is_true_duplicate": false,
+      "category": "safety_date_mismatch",
+      "description": "Calendar month conflict: May vs October"
+    },
+    {
+      "pair_id": "v5_test_pair_013",
+      "doc_a_id": "t_a_013",
+      "doc_b_id": "t_b_013",
+      "text_a": "The historic armistice agreement was signed in the forest of Compiègne in 1914 by military delegates.",
+      "text_b": "The historic armistice agreement was signed in the forest of Compiègne in 1918 by military delegates.",
+      "is_true_duplicate": false,
+      "category": "safety_date_mismatch",
+      "description": "Historical calendar year discrepancy: 1914 vs 1918"
+    },
+    {
+      "pair_id": "v5_test_pair_014",
+      "doc_a_id": "t_a_014",
+      "doc_b_id": "t_b_014",
+      "text_a": "Operation of heavy industrial machinery inside Zone B is permitted during overnight shifts.",
+      "text_b": "Operation of heavy industrial machinery inside Zone B is prohibited during overnight shifts.",
+      "is_true_duplicate": false,
+      "category": "safety_polarity_inversion",
+      "description": "Polarity antonym inversion: permitted vs prohibited"
+    },
+    {
+      "pair_id": "v5_test_pair_015",
+      "doc_a_id": "t_a_015",
+      "doc_b_id": "t_b_015",
+      "text_a": "The catalytic synthesis yield was recorded as greater than 80% under standardized operating parameters.",
+      "text_b": "The catalytic synthesis yield was recorded as less than 80% under standardized operating parameters.",
+      "is_true_duplicate": false,
+      "category": "safety_polarity_inversion",
+      "description": "Comparison direction inversion: greater than vs less than"
+    },
+    {
+      "pair_id": "v5_test_pair_016",
+      "doc_a_id": "t_a_016",
+      "doc_b_id": "t_b_016",
+      "text_a": "Engineers confirmed that the primary cooling circuit operated within safe thermal thresholds during the surge.",
+      "text_b": "Engineers confirmed that the primary cooling circuit never operated within safe thermal thresholds during the surge.",
+      "is_true_duplicate": false,
+      "category": "safety_negation_inversion",
+      "description": "Negation particle insertion: operated vs never operated"
+    },
+    {
+      "pair_id": "v5_test_pair_017",
+      "doc_a_id": "t_a_017",
+      "doc_b_id": "t_b_017",
+      "text_a": "Inspection of critical structural component Beam-104 revealed zero micro-fractures under acoustic testing.",
+      "text_b": "Inspection of critical structural component Beam-105 revealed zero micro-fractures under acoustic testing.",
+      "is_true_duplicate": false,
+      "category": "safety_identifier_conflict",
+      "description": "Engineering structural ID mutation: Beam-104 vs Beam-105"
+    }
+  ]
+}

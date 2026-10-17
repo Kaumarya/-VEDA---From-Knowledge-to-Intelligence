@@ -1,0 +1,14 @@
+COMMON CRAWL UNFILTERED — EXCLUSION & FORENSIC RIGHTS MEMORANDUM
+Document ID: VEDA-EVIDENCE-COMMONCRAWL-EXCLUSION-v0.1
+Date: 2026-10-15
+
+1. Provenance:
+Common Crawl provides petabyte-scale uncurated web dumps (WARC/WET files) gathered by automated web spiders crawling the public Internet.
+
+2. Legal & Risk Obstacles:
+(a) Copyright Status: Unfiltered web crawls consist overwhelmingly of All-Rights-Reserved copyrighted material, syndicated news, proprietary paywalled articles, personal blogs, and commercial literary prose.
+(b) Fair Use Uncertainty: While intermediate crawling for search indexation is protected under Kelly v. Arriba Soft, mass commercial pretraining on scraped copyrighted text without express authorization is currently subject to unresolved class-action litigation (e.g. Authors Guild v. OpenAI, NYT v. Microsoft/OpenAI).
+(c) Toxic / PII Content: Raw web crawls contain toxic content, CSAM risk, hate speech, scraped passwords, and massive non-consensual PII.
+(d) VEDA First-Principles Policy: VEDA strictly rejects uncurated web scraping in favor of verified provenance, public domain, and explicitly permissive open-access materials.
+
+3. Final Governance State: EXCLUDED (Permanently barred from VEDA training corpus).

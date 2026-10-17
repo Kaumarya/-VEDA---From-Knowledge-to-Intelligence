@@ -1,0 +1,14 @@
+{
+  "foundation/corpus/language_audit.py": "6926c6bb18a343e3f7b93dee16434466a7aa4740953e4c7b3bf00702f7512524",
+  "foundation/corpus/filtering.py": "a84d68b299cd793aef577a52de63230ff807fd909f25cca3b64b9327a6991aec",
+  "foundation/corpus/near_deduplication.py": "9fffa9183d8f80f14ff338aa807dc7bf10288a829df0d5f1b0346e005a4db0b5",
+  "tests/test_language_filter_hardening.py": "2e8cadb2139a9ffdca97fb9dbe1e322ac60ca317ed772054d677b42a71397bae",
+  "tests/test_near_deduplication_safety.py": "53917fcd6121955ca1150513f18b9b0f73394ca623c011b7778a0f9dcfd58a70",
+  "tests/test_corpus_production_gate_fail_closed.py": "3db43c71a425db0746f45739b80b8f0dbed7e5f9905fc583887ea7c17b43056f",
+  "data/corpus/eval_language_dataset_v8.json": "020c81dc26ce49fde0f29c873e74cc5fe6f12a7dfcce34908341084e4b3108e8",
+  "data/corpus/eval_near_dedup_dataset_v8.json": "96fee87e5c4a2890bfab20398da96a8f7d2f63d0cedc707e6efe5521d323a467",
+  "data/corpus/phase4.12_eval_results.json": "9e56fbac3f97ee3d97ae55e9fe191d124437462e236bf42a1ea6ef7f53a1ac28",
+  "data/corpus/phase4.12_leakage_audit.json": "72f41d5fd7573298890acc2cdbfd05b5c92e872aad280dd0c11e18fa223e329f",
+  "scripts/evaluate_phase412_certification.py": "ad8c30c59c3b221eab7c948afaeca6e755ce4bd7ff2e340f60497b85e9579930",
+  "docs/veda_phase4.12_verification_report.md": "88a4bf87532932aefc13a933130ce060897c79b4dc62adc84c4e3990e185c6c1"
+}

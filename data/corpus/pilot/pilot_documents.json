@@ -1,0 +1,65 @@
+[
+  {
+    "document_id": "se_doc_001",
+    "source_id": "standard_ebooks_pilot",
+    "title": "Frankenstein; or, The Modern Prometheus (Excerpt)",
+    "author": "Mary Wollstonecraft Shelley",
+    "raw_text": "I am by birth a Genevese, and my family is one of the most distinguished of that republic. My ancestors had been for many years counsellors and syndics, and my father had filled several public situations with honour and reputation. He was respected by all who knew him for his integrity and indefatigable attention to public business.\n\nHe passed his younger days perpetually occupied by the affairs of his country; nor until the decline of life did he think of marrying, and bestowing on the state sons who might carry his virtues and his name down to posterity. As the circumstances of his marriage illustrate his character, I cannot refrain from relating them.\n\nOne of his most intimate friends was a merchant who, from a flourishing state, fell, through numerous mischances, into poverty. This man, whose name was Beaufort, was of a proud and unbending disposition and could not bear to live in poverty and oblivion in the same country where he had once been distinguished for his rank and magnificence."
+  },
+  {
+    "document_id": "se_doc_002",
+    "source_id": "standard_ebooks_pilot",
+    "title": "On Literary Style and Typography",
+    "author": "Standard Ebooks Editorial",
+    "raw_text": "Careful literary typography requires authentic punctuation—not typewriter approximations. We preserve the em-dash without surrounding spaces, distinct smart quotes for dialogue, and proper accents on naturalized loanwords such as café, résumé, and façade.\n\nThe English language has borrowed words from many tongues over centuries of cultural contact. These words enrich the lexicon and belong authentically in pretraining discourse when used in grammatical English prose."
+  },
+  {
+    "document_id": "py_doc_001",
+    "source_id": "python_docs_pilot",
+    "title": "Data Structures: List Techniques",
+    "author": "Python Software Foundation",
+    "raw_text": "Lists are versatile compound data types in the Python language. The list data type has some more methods that allow developers to use lists as stacks or queues efficiently in memory.\n\nTo add an item to the end of the list, use the append method. It is equivalent to a slice assignment that extends the container. Methods like pop remove and return the last item from the list, making it straightforward to implement last-in, first-out retrieval without external dependencies."
+  },
+  {
+    "document_id": "py_doc_002",
+    "source_id": "python_docs_pilot",
+    "title": "Algorithmic Efficiency and Dictionaries",
+    "author": "Python Software Foundation",
+    "raw_text": "Dictionaries are indexed by keys, which can be any immutable type; strings and numbers can always be keys. Tuples can be used as keys if they contain only strings, numbers, or tuples; if a tuple contains any mutable object either directly or indirectly, it cannot be used as a key.\n\nIt is best to think of a dictionary as an unordered set of key-value pairs, with the requirement that the keys are unique. A pair of braces creates an empty dictionary: placing a comma-separated list of key-value pairs within the braces adds initial key-value pairs to the dictionary."
+  },
+  {
+    "document_id": "se_doc_001_exact_dup",
+    "source_id": "standard_ebooks_pilot",
+    "title": "Frankenstein Exact Duplicate Document",
+    "author": "Mary Wollstonecraft Shelley",
+    "raw_text": "I am by birth a Genevese, and my family is one of the most distinguished of that republic. My ancestors had been for many years counsellors and syndics, and my father had filled several public situations with honour and reputation. He was respected by all who knew him for his integrity and indefatigable attention to public business.\n\nHe passed his younger days perpetually occupied by the affairs of his country; nor until the decline of life did he think of marrying, and bestowing on the state sons who might carry his virtues and his name down to posterity. As the circumstances of his marriage illustrate his character, I cannot refrain from relating them.\n\nOne of his most intimate friends was a merchant who, from a flourishing state, fell, through numerous mischances, into poverty. This man, whose name was Beaufort, was of a proud and unbending disposition and could not bear to live in poverty and oblivion in the same country where he had once been distinguished for his rank and magnificence."
+  },
+  {
+    "document_id": "gated_doc_001",
+    "source_id": "unapproved_gated_source",
+    "title": "Unapproved Document from Gated Source",
+    "author": "Unknown Blogger",
+    "raw_text": "This document comes from an unapproved source with status REQUIRES REVIEW. It must be immediately blocked at the governance gate and written to rejections.jsonl under GOVERNANCE_BLOCKED."
+  },
+  {
+    "document_id": "short_doc_001",
+    "source_id": "standard_ebooks_pilot",
+    "title": "Short Snippet",
+    "author": "Anonymous",
+    "raw_text": "Too short snippet."
+  },
+  {
+    "document_id": "foreign_latin_doc_001",
+    "source_id": "standard_ebooks_pilot",
+    "title": "Pure French Document",
+    "author": "French Author",
+    "raw_text": "Ceci est un paragraphe entièrement en français. Il utilise l'alphabet latin mais ne contient aucun mot fonctionnel anglais. Le filtre de qualité doit le rejeter sous NO_ENGLISH_STOPWORDS."
+  },
+  {
+    "document_id": "py_doc_003_norm_dup",
+    "source_id": "python_docs_pilot",
+    "title": "Document with Normalized Duplicate Paragraph",
+    "author": "Python Software Foundation",
+    "raw_text": "Lists  are   versatile   compound data types in the Python language. The list data type has some more methods that allow developers to use lists as stacks or queues efficiently in memory.\n\nHere is a genuinely unique second paragraph discussing queue implementations using collections deque, which provides efficient appends and pops from both ends with guaranteed O(1) performance."
+  }
+]
