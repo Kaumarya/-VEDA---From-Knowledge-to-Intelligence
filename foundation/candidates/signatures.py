@@ -4,26 +4,116 @@ Phase 4.14.2
 """
 
 import json
+import math
 import hashlib
-from typing import Dict, Any, Tuple
+from typing import Dict, Any, Tuple, Optional
 from cryptography.hazmat.primitives.asymmetric import ed25519
 from cryptography.hazmat.primitives import serialization
 from foundation.candidates.exceptions import CryptographicError, InvalidSignatureError
 
 
-def canonicalize_json(payload: Dict[str, Any]) -> bytes:
+def rfc8785_serialize_string(s: str) -> bytes:
+    chunks = ['"']
+    for c in s:
+        code = ord(c)
+        if c == '"':
+            chunks.append('\\"')
+        elif c == '\\':
+            chunks.append('\\\\')
+        elif c == '\b':
+            chunks.append('\\b')
+        elif c == '\f':
+            chunks.append('\\f')
+        elif c == '\n':
+            chunks.append('\\n')
+        elif c == '\r':
+            chunks.append('\\r')
+        elif c == '\t':
+            chunks.append('\\t')
+        elif code < 0x20:
+            chunks.append(f"\\u{code:04x}")
+        else:
+            chunks.append(c)
+    chunks.append('"')
+    return "".join(chunks).encode("utf-8")
+
+
+def rfc8785_format_number(v: float) -> str:
+    if math.isnan(v) or math.isinf(v):
+        raise ValueError("NaN and Infinity are not valid in RFC 8785 JSON")
+    if v == 0.0:
+        return "0"
+
+    s = repr(v)
+    if "e" in s or "E" in s:
+        parts = s.lower().split("e")
+        mantissa = parts[0]
+        exp = parts[1]
+        sign = exp[0]
+        if sign == "+":
+            exp_val = exp[1:].lstrip("0") or "0"
+            return f"{mantissa}e{exp_val}"
+        elif sign == "-":
+            exp_val = exp[1:].lstrip("0") or "0"
+            return f"{mantissa}e-{exp_val}"
+        else:
+            exp_val = exp.lstrip("0") or "0"
+            return f"{mantissa}e{exp_val}"
+    else:
+        if v.is_integer() and abs(v) < 1e21:
+            return str(int(v))
+        return s
+
+
+def canonicalize_rfc8785(obj: Any) -> bytes:
     """
-    Serializes a dictionary into deterministic canonical JSON adhering to RFC 8785 (JCS).
-    Lexicographical key sorting, no whitespace outside strings, UTF-8 encoding.
+    Serializes an object into deterministic canonical JSON adhering strictly to RFC 8785 (JCS).
+    Lexicographical key sorting by UTF-16 code units, no whitespace outside strings, UTF-8 encoding.
+    """
+    if obj is None:
+        return b"null"
+    elif isinstance(obj, bool):
+        return b"true" if obj else b"false"
+    elif isinstance(obj, int):
+        return str(obj).encode("utf-8")
+    elif isinstance(obj, float):
+        return rfc8785_format_number(obj).encode("utf-8")
+    elif isinstance(obj, str):
+        return rfc8785_serialize_string(obj)
+    elif isinstance(obj, (list, tuple)):
+        return b"[" + b",".join(canonicalize_rfc8785(x) for x in obj) + b"]"
+    elif isinstance(obj, dict):
+        sorted_keys = sorted(obj.keys(), key=lambda k: k.encode("utf-16-be"))
+        parts = []
+        for k in sorted_keys:
+            if not isinstance(k, str):
+                raise TypeError(f"Dictionary keys must be strings, got {type(k)}")
+            parts.append(rfc8785_serialize_string(k) + b":" + canonicalize_rfc8785(obj[k]))
+        return b"{" + b",".join(parts) + b"}"
+    else:
+        raise TypeError(f"Type {type(obj)} is not JSON serializable under RFC 8785")
+
+
+def canonicalize_json(payload: Dict[str, Any], version: str = "RFC8785_V2") -> bytes:
+    """
+    Serializes a dictionary into deterministic canonical JSON.
+    Supports RFC8785_V2 (strict RFC 8785) and LEGACY_V1 (historical signatures).
     """
     try:
-        return json.dumps(
-            payload,
-            sort_keys=True,
-            ensure_ascii=False,
-            separators=(",", ":"),
-        ).encode("utf-8")
+        if version == "RFC8785_V2":
+            return canonicalize_rfc8785(payload)
+        elif version == "LEGACY_V1":
+            return json.dumps(
+                payload,
+                sort_keys=True,
+                ensure_ascii=False,
+                separators=(",", ":"),
+            ).encode("utf-8")
+        else:
+            raise CryptographicError(f"Unsupported canonicalization version: '{version}'. Must be RFC8785_V2 or LEGACY_V1.")
     except Exception as e:
+        if isinstance(e, CryptographicError):
+            raise
         raise CryptographicError(f"Failed to canonicalize JSON payload: {e}") from e
 
 
@@ -111,11 +201,13 @@ class Ed25519SignatureService:
         pipeline_version: str = "v0.4.14",
         payload_schema_version: str = "1.0",
         quarantine_case_id: str = "",
+        canonicalization_version: str = "RFC8785_V2",
     ) -> Dict[str, Any]:
         """
-        Constructs the authoritative 12-field dictionary for canonical serialization.
+        Constructs the authoritative dictionary for canonical serialization.
         """
         payload: Dict[str, Any] = {
+            "canonicalization_version": canonicalization_version,
             "candidate_id": candidate_id,
             "decision": decision,
             "decision_id": decision_id,
