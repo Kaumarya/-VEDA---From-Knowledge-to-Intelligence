@@ -109,6 +109,18 @@ class ReviewerPublicKeyRecord:
     created_at: Optional[str] = None
 
 
+@dataclass
+class RegistrationChallengeRecord:
+    challenge_id: str
+    reviewer_id: str
+    proposed_public_key_hex: str
+    nonce: str
+    purpose: str
+    created_at: str
+    expires_at: str
+    consumed_at: Optional[str] = None
+
+
 @dataclass(frozen=True)
 class AuthenticationEventRecord:
     auth_event_id: str

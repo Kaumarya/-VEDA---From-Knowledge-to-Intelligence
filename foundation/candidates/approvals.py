@@ -26,6 +26,8 @@ from foundation.candidates.exceptions import (
     KeyExpiredError,
     InvalidSignatureError,
     ValidationError,
+    NonProductionProviderError,
+    AuthenticationError,
 )
 from foundation.candidates.key_custody import ReviewerKeyProvider
 
@@ -37,10 +39,17 @@ class ApprovalService:
     Ed25519 signature verification, and atomic commit to approval_history.
     """
 
-    def __init__(self, connection: CandidateDatabaseConnection, repository: CandidateRepository, reviewer_service: ReviewerService):
+    def __init__(
+        self,
+        connection: CandidateDatabaseConnection,
+        repository: CandidateRepository,
+        reviewer_service: ReviewerService,
+        enforce_production_provider: bool = False,
+    ):
         self.conn = connection
         self.repo = repository
         self.reviewers = reviewer_service
+        self.enforce_production_provider = enforce_production_provider
 
     def approve_candidate(
         self,
@@ -56,6 +65,7 @@ class ApprovalService:
         pipeline_version: str = "v0.4.14",
         policy_schema_version: str = "1.0",
         allow_quarantine_dual_approval: bool = False,
+        require_production_provider: Optional[bool] = None,
     ) -> ApprovalHistoryRecord:
         """
         Executes explicit, authenticated human approval with Ed25519 signature.
@@ -72,12 +82,15 @@ class ApprovalService:
                     f"Candidate is in status '{cand.processing_status}'; must be 'APPROVAL_PENDING' for human approval."
                 )
 
-        # 2. Reviewer Identity Preconditions
+        # 2. Reviewer Identity and Session Preconditions
         reviewer = self.reviewers.get_reviewer(reviewer_id)
         if not reviewer:
             raise ReviewerNotFoundError(f"Reviewer '{reviewer_id}' not found.")
         if reviewer.account_status != "ACTIVE":
             raise ReviewerInactiveError(f"Reviewer '{reviewer_id}' account is {reviewer.account_status}; cannot approve.")
+
+        # Central session validation
+        self.reviewers.validate_session(auth_event_id, reviewer_id, "APPROVE_CANDIDATE")
 
         # 3. Role Authorization and Granular Permissions
         if not self.reviewers.has_role(reviewer_id, reviewer_role):
@@ -94,6 +107,24 @@ class ApprovalService:
             raise KeyNotFoundError(f"Public key '{public_key_id}' belongs to a different reviewer.")
         if key.key_status not in ("ACTIVE", "ROTATED_RETIRED"):
             raise KeyRevokedError(f"Public key '{public_key_id}' is {key.key_status}; cannot be used for approval.")
+
+        # Production Provider Enforcement
+        should_enforce_prod = self.enforce_production_provider if require_production_provider is None else require_production_provider
+        if should_enforce_prod:
+            if not key_provider:
+                raise NonProductionProviderError("Production approval requires an approved ReviewerKeyProvider.")
+            if not key_provider.is_production:
+                raise NonProductionProviderError(
+                    f"Key provider '{type(key_provider).__name__}' is non-production (is_production=False); cannot approve production candidate."
+                )
+            if key.is_test_key:
+                raise NonProductionProviderError(
+                    f"Public key '{public_key_id}' is flagged as a test key (is_test_key=True); cannot approve in production."
+                )
+            if not key_provider.has_private_key(reviewer_id, public_key_id):
+                raise KeyNotFoundError(
+                    f"Key provider does not possess private key for reviewer '{reviewer_id}' and key '{public_key_id}'."
+                )
 
         now_utc = datetime.now(timezone.utc)
         now_iso = now_utc.isoformat()
@@ -134,7 +165,7 @@ class ApprovalService:
             if q_case:
                 raise ValidationError(f"Candidate '{candidate_id}' has an unresolved quarantine case ({q_case['case_id']}).")
 
-        # 8. Build Canonical Approval Payload
+        # 8. Build Canonical Approval Payload (RFC 8785)
         decision_id = f"urn:uuid:{uuid.uuid4()}"
         payload_dict = Ed25519SignatureService.build_canonical_approval_payload(
             candidate_id=candidate_id,
@@ -149,8 +180,9 @@ class ApprovalService:
             reviewer_role=reviewer_role,
             pipeline_version=pipeline_version,
             payload_schema_version=policy_schema_version,
+            canonicalization_version="RFC8785_V2",
         )
-        canonical_bytes = canonicalize_json(payload_dict)
+        canonical_bytes = canonicalize_json(payload_dict, version="RFC8785_V2")
         payload_hash = compute_payload_hash(canonical_bytes)
         canonical_json_str = canonical_bytes.decode("utf-8")
 
@@ -232,6 +264,7 @@ class ApprovalService:
         key_provider: Optional[ReviewerKeyProvider] = None,
         pipeline_version: str = "v0.4.14",
         policy_schema_version: str = "1.0",
+        require_production_provider: Optional[bool] = None,
     ) -> ApprovalHistoryRecord:
         """
         Executes explicit human rejection of a candidate with signed audit record.
@@ -244,6 +277,9 @@ class ApprovalService:
         if not reviewer or reviewer.account_status != "ACTIVE":
             raise ReviewerInactiveError("Reviewer not active.")
 
+        # Central session validation
+        self.reviewers.validate_session(auth_event_id, reviewer_id, "REJECT_CANDIDATE")
+
         if not self.reviewers.has_role(reviewer_id, reviewer_role):
             raise ReviewerUnauthorizedError("Reviewer lacks role.")
         self.reviewers.assert_permission(reviewer_id, "can_reject_candidates")
@@ -251,6 +287,23 @@ class ApprovalService:
         key = self.reviewers.get_public_key(public_key_id)
         if not key or key.key_status not in ("ACTIVE", "ROTATED_RETIRED"):
             raise KeyRevokedError("Public key not active.")
+
+        should_enforce_prod = self.enforce_production_provider if require_production_provider is None else require_production_provider
+        if should_enforce_prod:
+            if not key_provider:
+                raise NonProductionProviderError("Production rejection requires an approved ReviewerKeyProvider.")
+            if not key_provider.is_production:
+                raise NonProductionProviderError(
+                    f"Key provider '{type(key_provider).__name__}' is non-production (is_production=False); cannot sign rejection."
+                )
+            if key.is_test_key:
+                raise NonProductionProviderError(
+                    f"Public key '{public_key_id}' is flagged as a test key (is_test_key=True); cannot reject in production."
+                )
+            if not key_provider.has_private_key(reviewer_id, public_key_id):
+                raise KeyNotFoundError(
+                    f"Key provider does not possess private key for reviewer '{reviewer_id}' and key '{public_key_id}'."
+                )
 
         src = self.repo.get_source(cand.source_id)
         artifact_hash = src.artifact_sha256 if src else "0" * 64
@@ -271,8 +324,9 @@ class ApprovalService:
             reviewer_role=reviewer_role,
             pipeline_version=pipeline_version,
             payload_schema_version=policy_schema_version,
+            canonicalization_version="RFC8785_V2",
         )
-        canonical_bytes = canonicalize_json(payload_dict)
+        canonical_bytes = canonicalize_json(payload_dict, version="RFC8785_V2")
         payload_hash = compute_payload_hash(canonical_bytes)
         canonical_json_str = canonical_bytes.decode("utf-8")
 

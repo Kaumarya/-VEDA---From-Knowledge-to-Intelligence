@@ -90,8 +90,18 @@ class RolePermissionError(ReviewerUnauthorizedError):
     pass
 
 
+class ProofOfPossessionError(ReviewerError):
+    """Raised when a public-key registration challenge or Proof-of-Possession fails."""
+    pass
+
+
 class AuthenticationError(CandidateDatabaseError):
     """Raised when reviewer authentication fails."""
+    pass
+
+
+class SessionExpiredError(AuthenticationError):
+    """Raised when an authentication event or reviewer session has expired."""
     pass
 
 
@@ -138,6 +148,11 @@ class KeyDecryptionError(KeyCustodyError):
 
 class KeyProviderUnavailableError(KeyCustodyError):
     """Raised when an operation requires a secure key provider that is missing or disabled."""
+    pass
+
+
+class NonProductionProviderError(KeyCustodyError):
+    """Raised when an operation requires an approved production key provider."""
     pass
 
 

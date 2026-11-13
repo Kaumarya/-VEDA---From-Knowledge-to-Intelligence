@@ -43,10 +43,17 @@ class QuarantineManager:
     and cryptographically verified human resolutions.
     """
 
-    def __init__(self, connection: CandidateDatabaseConnection, repository: CandidateRepository, reviewer_service: ReviewerService):
+    def __init__(
+        self,
+        connection: CandidateDatabaseConnection,
+        repository: CandidateRepository,
+        reviewer_service: ReviewerService,
+        enforce_identity_assurance: bool = False,
+    ):
         self.conn = connection
         self.repo = repository
         self.reviewers = reviewer_service
+        self.enforce_identity_assurance = enforce_identity_assurance
 
     def get_case(self, case_id: str) -> Optional[QuarantineCaseRecord]:
         """Retrieves a quarantine case by case_id."""
@@ -182,6 +189,7 @@ class QuarantineManager:
         provided_signature_hex: Optional[str] = None,
         key_provider: Optional[ReviewerKeyProvider] = None,
         pipeline_version: str = "v0.4.14",
+        enforce_identity_assurance: Optional[bool] = None,
     ) -> QuarantineDualApprovalRecord:
         """
         Initiates the first leg of the Two-Person Dual Approval Protocol for a quarantined candidate.
@@ -207,6 +215,9 @@ class QuarantineManager:
             raise ReviewerUnauthorizedError(f"Reviewer '{reviewer_id}' lacks role '{reviewer_role}'.")
 
         self.reviewers.assert_permission(reviewer_id, "can_participate_dual_appr")
+
+        # Session validation for Leg 1
+        self.reviewers.validate_session(auth_event_id, reviewer_id, "INITIATE_QUARANTINE_DUAL_APPROVAL")
 
         # Key checks
         key = self.reviewers.get_public_key(public_key_id)
@@ -249,8 +260,9 @@ class QuarantineManager:
             reviewer_role=reviewer_role,
             pipeline_version=pipeline_version,
             quarantine_case_id=case_id,
+            canonicalization_version="RFC8785_V2",
         )
-        canonical_bytes = canonicalize_json(payload_dict)
+        canonical_bytes = canonicalize_json(payload_dict, version="RFC8785_V2")
 
         if key_provider:
             signature_hex = key_provider.sign_payload(reviewer_id, public_key_id, canonical_bytes)
@@ -304,6 +316,7 @@ class QuarantineManager:
         provided_signature_hex: Optional[str] = None,
         key_provider: Optional[ReviewerKeyProvider] = None,
         pipeline_version: str = "v0.4.14",
+        enforce_identity_assurance: Optional[bool] = None,
     ) -> QuarantineDualApprovalRecord:
         """
         Completes the second leg of the Two-Person Dual Approval Protocol for a quarantined candidate.
@@ -341,10 +354,28 @@ class QuarantineManager:
                 "Two-person rule violation: Second reviewer must have an independent authentication event."
             )
 
+        # Human Identity Assurance (Part 11)
+        should_enforce_id = self.enforce_identity_assurance if enforce_identity_assurance is None else enforce_identity_assurance
+        if first_rev and second_rev:
+            if first_rev.idp_subject_id and second_rev.idp_subject_id:
+                if first_rev.idp_subject_id == second_rev.idp_subject_id:
+                    raise InvalidDualApprovalError(
+                        f"Two-person human identity violation: Both reviewer accounts map to the same "
+                        f"organizational IdP subject identifier '{first_rev.idp_subject_id}'."
+                    )
+            elif should_enforce_id:
+                raise InvalidDualApprovalError(
+                    "Production dual approval blocked: Organizational identity provider assurance is "
+                    "NOT IMPLEMENTED or reviewers lack verified idp_subject_id."
+                )
+
         if not self.reviewers.has_role(reviewer_id, reviewer_role):
             raise ReviewerUnauthorizedError(f"Second reviewer '{reviewer_id}' lacks role '{reviewer_role}'.")
 
         self.reviewers.assert_permission(reviewer_id, "can_participate_dual_appr")
+
+        # Session validation for Leg 2
+        self.reviewers.validate_session(auth_event_id, reviewer_id, "COMPLETE_QUARANTINE_DUAL_APPROVAL")
 
         # Key checks
         key = self.reviewers.get_public_key(public_key_id)
@@ -368,6 +399,13 @@ class QuarantineManager:
             raise ValidationError(f"Candidate '{case.candidate_id}' is not in QUARANTINED status.")
 
         src = self.repo.get_source(cand.source_id)
+        if not src:
+            raise InvalidDualApprovalError(f"Source '{cand.source_id}' not found in candidate source cache.")
+        if src.licensing_status != "VERIFIED PERMITTED" or src.training_permitted_status != "EXPLICITLY_PERMITTED":
+            raise InvalidDualApprovalError(
+                f"Source '{cand.source_id}' licensing or training permission was revoked between approval legs "
+                f"(licensing: {src.licensing_status}, training: {src.training_permitted_status}). Candidate remains QUARANTINED."
+            )
         artifact_hash = src.artifact_sha256 if src else "0" * 64
 
         # Hash integrity checks against first leg bindings
@@ -395,8 +433,9 @@ class QuarantineManager:
             reviewer_role=reviewer_role,
             pipeline_version=pipeline_version,
             quarantine_case_id=case_id,
+            canonicalization_version="RFC8785_V2",
         )
-        canonical_bytes = canonicalize_json(payload_dict)
+        canonical_bytes = canonicalize_json(payload_dict, version="RFC8785_V2")
         payload_hash = compute_payload_hash(canonical_bytes)
         canonical_json_str = canonical_bytes.decode("utf-8")
 
@@ -567,8 +606,9 @@ class QuarantineManager:
             reviewer_role=reviewer_role,
             pipeline_version=pipeline_version,
             quarantine_case_id=case_id,
+            canonicalization_version="RFC8785_V2",
         )
-        canonical_bytes = canonicalize_json(payload_dict)
+        canonical_bytes = canonicalize_json(payload_dict, version="RFC8785_V2")
         payload_hash = compute_payload_hash(canonical_bytes)
         canonical_json_str = canonical_bytes.decode("utf-8")
 
