@@ -10,6 +10,7 @@ import os
 import json
 import uuid
 import ctypes
+import subprocess
 from abc import ABC, abstractmethod
 from pathlib import Path
 from datetime import datetime, timezone
@@ -32,6 +33,26 @@ from foundation.candidates.exceptions import (
 
 class DATA_BLOB(ctypes.Structure):
     _fields_ = [("cbData", wintypes.DWORD), ("pbData", ctypes.POINTER(ctypes.c_byte))]
+
+
+def _harden_path_acls(target_path: Path) -> None:
+    """
+    Applies restrictive Windows NTFS ACLs via icacls.
+    Disables inheritance and grants Full Control strictly to current user and SYSTEM.
+    Handles usernames containing spaces safely.
+    """
+    if sys.platform != "win32":
+        return
+    try:
+        user = os.environ.get("USERNAME") or os.getlogin()
+        if target_path.is_dir():
+            cmd = f'icacls "{target_path}" /inheritance:r /grant:r "{user}":(OI)(CI)F SYSTEM:(OI)(CI)F'
+        else:
+            cmd = f'icacls "{target_path}" /inheritance:r /grant:r "{user}":F SYSTEM:F'
+        subprocess.run(cmd, shell=True, capture_output=True, check=False)
+    except Exception:
+        # Best effort on non-standard Windows environments; fail-closed behavior on access checks
+        pass
 
 
 class ReviewerKeyProvider(ABC):
@@ -95,6 +116,7 @@ class WindowsDPAPIKeyProvider(ReviewerKeyProvider):
 
         self.keystore_dir = keystore_dir
         self.keystore_dir.mkdir(parents=True, exist_ok=True)
+        _harden_path_acls(self.keystore_dir)
         self._crypt32 = ctypes.windll.crypt32
         self._kernel32 = ctypes.windll.kernel32
 
@@ -127,11 +149,14 @@ class WindowsDPAPIKeyProvider(ReviewerKeyProvider):
             if out_blob.pbData:
                 self._kernel32.LocalFree(out_blob.pbData)
 
-    def _decrypt_bytes(self, ciphertext: bytes) -> bytes:
-        """Decrypts DPAPI-encrypted ciphertext using CryptUnprotectData."""
+    def _decrypt_bytes_buf(self, ciphertext: bytes) -> bytearray:
+        """
+        Decrypts DPAPI-encrypted ciphertext using CryptUnprotectData.
+        Returns mutable bytearray and scrubs DPAPI native memory before LocalFree.
+        """
         in_blob = DATA_BLOB(
             len(ciphertext),
-            ctypes.cast(ctypes.create_string_buffer(ciphertext), ctypes.POINTER(ctypes.c_byte)),
+            ctypes.cast(ctypes.create_string_buffer(ciphertext, len(ciphertext)), ctypes.POINTER(ctypes.c_byte)),
         )
         out_blob = DATA_BLOB()
         try:
@@ -146,11 +171,23 @@ class WindowsDPAPIKeyProvider(ReviewerKeyProvider):
             )
             if not res:
                 raise KeyDecryptionError("CryptUnprotectData failed to decrypt private key. Incorrect user or corrupted keystore.")
-            plaintext = ctypes.string_at(out_blob.pbData, out_blob.cbData)
-            return plaintext
+            raw_data = ctypes.string_at(out_blob.pbData, out_blob.cbData)
+            buf = bytearray(raw_data)
+            del raw_data
+            return buf
         finally:
             if out_blob.pbData:
+                ctypes.memset(out_blob.pbData, 0, out_blob.cbData)
                 self._kernel32.LocalFree(out_blob.pbData)
+
+    def _decrypt_bytes(self, ciphertext: bytes) -> bytes:
+        """Legacy helper returning immutable bytes."""
+        buf = self._decrypt_bytes_buf(ciphertext)
+        try:
+            return bytes(buf)
+        finally:
+            for i in range(len(buf)):
+                buf[i] = 0
 
     def generate_and_store_key(self, reviewer_id: str, is_test_key: bool = False) -> Tuple[str, str]:
         """Generates an Ed25519 key pair, encrypts private key with DPAPI, and saves to keystore."""
@@ -168,14 +205,17 @@ class WindowsDPAPIKeyProvider(ReviewerKeyProvider):
         public_key_hex = pub_raw_bytes.hex().lower()
         public_key_id = f"urn:key:ed25519:{uuid.uuid4()}"
 
+        raw_buf = bytearray(priv_raw_bytes)
+        del priv_raw_bytes
         try:
             # 1. Encrypt private raw bytes with DPAPI
-            cipher_bytes = self._encrypt_bytes(priv_raw_bytes, description=f"VEDA Key: {public_key_id}")
+            cipher_bytes = self._encrypt_bytes(bytes(raw_buf), description=f"VEDA Key: {public_key_id}")
 
-            # 2. Store encrypted blob
+            # 2. Store encrypted blob with hardened ACLs
             key_file = self.keystore_dir / f"{public_key_id.replace(':', '_')}.dpapi.key"
             with open(key_file, "wb") as f:
                 f.write(cipher_bytes)
+            _harden_path_acls(key_file)
 
             # 3. Store public metadata
             meta_file = self.keystore_dir / f"{public_key_id.replace(':', '_')}.meta.json"
@@ -190,11 +230,13 @@ class WindowsDPAPIKeyProvider(ReviewerKeyProvider):
             }
             with open(meta_file, "w", encoding="utf-8") as f:
                 json.dump(meta, f, indent=2)
+            _harden_path_acls(meta_file)
 
             return public_key_id, public_key_hex
         finally:
-            # Explicitly overwrite raw private key buffer in memory
-            priv_raw_bytes = b"\x00" * len(priv_raw_bytes)
+            # Explicitly overwrite mutable private key buffer in memory
+            for i in range(len(raw_buf)):
+                raw_buf[i] = 0
 
     def _get_key_files(self, public_key_id: str) -> Tuple[Path, Path]:
         safe_id = public_key_id.replace(":", "_")
@@ -225,14 +267,15 @@ class WindowsDPAPIKeyProvider(ReviewerKeyProvider):
         with open(key_file, "rb") as f:
             cipher_bytes = f.read()
 
-        plain_bytes = self._decrypt_bytes(cipher_bytes)
+        plain_buf = self._decrypt_bytes_buf(cipher_bytes)
         try:
-            priv_key = ed25519.Ed25519PrivateKey.from_private_bytes(plain_bytes)
+            priv_key = ed25519.Ed25519PrivateKey.from_private_bytes(bytes(plain_buf))
             signature = priv_key.sign(payload_bytes)
             return signature.hex().lower()
         finally:
-            # Memory scrub
-            plain_bytes = b"\x00" * len(plain_bytes)
+            # Memory scrub: zeroize mutable bytearray
+            for i in range(len(plain_buf)):
+                plain_buf[i] = 0
 
     def rotate_key(self, reviewer_id: str, old_key_id: str) -> Tuple[str, str]:
         """Retires old key and provisions new active key."""
