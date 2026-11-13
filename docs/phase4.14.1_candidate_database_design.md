@@ -2470,3 +2470,406 @@ All implementation belongs exclusively to designated future engineering phases (
 | **Test Key Isolation** | Development/test keys strictly blocked from production corpus export. | Table `reviewer_public_keys.is_test_key` flag enforced by view `v_export_eligible_candidates`. |
 | **Security Verification** | 16 comprehensive security tests specified for future phases. | Section E8 defines `SEC-01` through `SEC-16`. |
 | **System Invariants** | Zero code, database, or test modification in current phase. | Pure documentation revision appended to `docs/phase4.14.1_candidate_database_design.md`. Baseline 300 tests verified. |
+
+
+---
+
+# OWNER DECISION — QUARANTINE TIMEOUT POLICY — REVISION 4
+
+## F1. Authoritative Project-Owner Decision & Historical Clarification
+
+### F1.1 Formal Resolution of Quarantine SLA Decision
+In Revision 2 (Section D8, Item 2), the candidate database architecture recorded an open engineering recommendation:
+*Whether uninspected candidates in `QUARANTINED` status should be automatically expired and archived to `REJECTED` after a 30-day review SLA.*
+
+The project owner has issued the authoritative, binding governance decision:
+**A quarantine timeout must NEVER automatically change a candidate's decision or lifecycle status.**
+
+The previous engineering recommendation suggesting automated rejection after 30 days (`REJECTED`, reason `QUARANTINE_REVIEW_TIMEOUT`) is **explicitly overruled and permanently prohibited**.
+
+### F1.2 Core Invariants of the Quarantine Governance Policy
+A 30-day SLA period may be utilized **strictly for reminders, monitoring, metrics, and escalation**. It must **never** automatically:
+1. **Reject a candidate:** No candidate may be marked `REJECTED` by a cron job, timer, background daemon, or timeout predicate.
+2. **Approve a candidate:** No candidate may be marked `APPROVED` through default inaction or queue expiration.
+3. **Release a candidate from quarantine:** No candidate may transition from `QUARANTINED` to `APPROVAL_PENDING` or `PROCESSING_PASSED` simply because time elapsed.
+4. **Revoke a candidate:** Revocation is a distinct legal/governance action requiring human cause and cryptographic evidence.
+5. **Delete candidate content:** Candidate text, normalized representations, and diagnostic records must remain preserved under the legal retention policy.
+6. **Make a candidate export-eligible:** A candidate in `QUARANTINED` status is mathematically and relationally barred from entering any training corpus export.
+
+**Fundamental Governance Principle:**
+An unresolved candidate must remain in `QUARANTINED` status indefinitely until an authorized human reviewer inspects the evidence and makes an explicit, documented, and cryptographically signed decision.
+
+---
+
+## F2. Required 10-Step Quarantine Workflow
+
+The candidate database architecture enforces a strict, deterministic 10-step lifecycle for all quarantined material:
+
+```
++-----------------------------------------------------------------------------------+
+|                        MANDATORY 10-STEP QUARANTINE WORKFLOW                      |
++----+----------------------------------+-------------------------------------------+
+| 1  | Pipeline Quarantine Ingestion    | Automated filter, safety guard, or near-  |
+|    |                                  | dedup engine detects boundary conflict.   |
++----+----------------------------------+-------------------------------------------+
+| 2  | Diagnostic Record Registration   | System records candidate ID, quarantine   |
+|    |                                  | reason, diagnostic evidence, timestamp,   |
+|    |                                  | pipeline version, and review category.    |
++----+----------------------------------+-------------------------------------------+
+| 3  | Instant Export Quarantine        | Candidate processing_status = 'QUARANTINED'|
+|    |                                  | Immediately excluded from export views.   |
++----+----------------------------------+-------------------------------------------+
+| 4  | Review Queue Enqueue             | Dedicated quarantine_cases record created |
+|    |                                  | with assigned review group or auditor.    |
++----+----------------------------------+-------------------------------------------+
+| 5  | Periodic Monitoring Reminders    | Automated notifications generated at 7,   |
+|    |                                  | 14, and 21 days (Status remains intact).  |
++----+----------------------------------+-------------------------------------------+
+| 6  | 30-Day Threshold Escalation      | Case flagged as escalated_at = NOW();     |
+|    |                                  | alerts sent to Lead Curator / Compliance. |
++----+----------------------------------+-------------------------------------------+
+| 7  | Post-Escalation State Invariant  | Candidate REMAINS 'QUARANTINED'. Zero     |
+|    |                                  | automated status mutation occurs.        |
++----+----------------------------------+-------------------------------------------+
+| 8  | Interactive Human Evidence Audit | Authorized human auditor opens case in    |
+|    |                                  | review dashboard; examines full context.  |
++----+----------------------------------+-------------------------------------------+
+| 9  | Explicit Human Determination     | Auditor chooses permitted resolution:     |
+|    |                                  | (a) Release to Pending, (b) Reject,       |
+|    |                                  | (c) Approve with Dual Role, or (d) Dispute|
++----+----------------------------------+-------------------------------------------+
+| 10 | Cryptographic Audit Commit       | Append-only approval_history commit with  |
+|    |                                  | reviewer Ed25519 signature + payload hash.|
++----+----------------------------------+-------------------------------------------+
+```
+
+---
+
+## F3. Reminder and Escalation Architecture (Non-Mutating)
+
+### F3.1 Strict Separation of Monitoring and State Mutation
+Automated daemons and background monitoring workers may collect metrics, calculate aging in days, and generate notification alerts. However, they are strictly prohibited from possessing database permissions or SQL code paths that modify `candidate_submissions.processing_status`.
+
+```sql
+-- Architectural Constraint: Monitoring updates metadata ONLY.
+-- Permitted:
+UPDATE quarantine_cases 
+SET last_reminder_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now') 
+WHERE case_id = ?;
+
+UPDATE quarantine_cases 
+SET escalated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now'),
+    escalation_level = 'ESCALATED_30_DAYS'
+WHERE case_id = ? AND escalated_at IS NULL;
+
+-- STRICTLY FORBIDDEN by schema and application logic:
+-- UPDATE candidate_submissions SET processing_status = 'REJECTED' WHERE ...
+```
+
+### F3.2 Escalation Hierarchy
+- **Day 0–7 (Standard Review):** Candidate placed in domain queue based on quarantine reason (`LANGUAGE`, `SAFETY`, `LEGAL`, `NEAR_DEDUP`).
+- **Day 7, 14, 21 (Reminders):** Automated notifications to assigned curators. `last_reminder_at` timestamp updated.
+- **Day 30 (Primary Escalation):** Unresolved case elevated to `ESCALATED_30_DAYS`. Alert broadcast to `SAFETY_COMPLIANCE_OFFICER` and `CHIEF_DATA_OFFICER`. Status remains `QUARANTINED`.
+- **Day 60+ (Critical Backlog Escalation):** Case tagged `CRITICAL_60_DAYS`. Included in monthly governance risk reports. Status remains `QUARANTINED`.
+
+---
+
+## F4. Human Decision Requirements & Cryptographic Binding
+
+### F4.1 Reviewer Authority and Required Roles
+Quarantine resolution cannot be performed by general annotators or automated services. Resolution requires an authenticated reviewer possessing specific governance authority:
+
+| Quarantine Origin / Category | Minimum Required Reviewer Role | Governance Justification |
+| :--- | :--- | :--- |
+| `SEMANTIC_SAFETY_CONFLICT` | `SAFETY_COMPLIANCE_OFFICER` | Safety filter boundary decisions require formal safety officer sign-off. |
+| `LANGUAGE_FILTER_AMBIGUOUS` | `DOMAIN_CURATOR` | Linguistic register and dialect disambiguation requires domain curation authority. |
+| `SOURCE_LICENSING_UNCERTAINTY` | `LEGAL_COMPLIANCE_AUDITOR` | Copyright, provenance, and license clearance requires legal auditor authority. |
+| `NEAR_DEDUP_INVERSION` | `DOMAIN_CURATOR` | Semantic inversion vs. valid paraphrase distinction requires curation expertise. |
+| Escalated Cases (> 30 Days) | Role above + `CHIEF_DATA_OFFICER` notification | Escalated backlog items require senior oversight. |
+
+### F4.2 Mandatory Cryptographic Resolution Payload
+Every quarantine resolution decision must construct a canonical approval payload under the Revision 3 Ed25519 specification (RFC 8785 JCS, UTF-8 encoded). The payload explicitly binds the quarantine resolution context:
+
+```json
+{
+  "candidate_id": "urn:uuid:a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
+  "decision": "RELEASED_TO_PENDING",
+  "decision_id": "urn:uuid:8f7e6d5c-4b3a-2109-8765-4e3d2c1b0a9f",
+  "decision_reason": "Audited technical terminology low-stopword sentence; confirmed valid expository English; safety conflict resolved as false positive.",
+  "decision_timestamp": "2026-11-13T12:30:00.000000Z",
+  "normalized_content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "payload_schema_version": "1.0",
+  "pipeline_version": "v0.4.14",
+  "quarantine_case_id": "urn:uuid:3c2b1a0f-9e8d-7c6b-5a49-3e2d1c0b9a8f",
+  "reviewer_id": "urn:uuid:7c9e6679-7425-40de-944b-e07fc1f90ae7",
+  "reviewer_role": "SAFETY_COMPLIANCE_OFFICER",
+  "source_artifact_sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+  "source_id": "SRC-GUTENBERG-001"
+}
+```
+
+---
+
+## F5. State Machine Invariants: Valid & Prohibited Transitions
+
+### F5.1 12-State Lifecycle Quarantine Transition Matrix
+The 12-state candidate lifecycle (`SUBMITTED`, `VALIDATED`, `PROCESSING_PASSED`, `PROCESSING_FAILED`, `APPROVAL_PENDING`, `APPROVED`, `REJECTED`, `QUARANTINED`, `EXPORTED`, `REVOKED`, `RESTRICTED_DISPUTED`, `ARCHIVED`) enforces strict entry and exit invariants around `QUARANTINED`:
+
+```
+                           +----------------------+
+                           |     SUBMITTED        |
+                           +----------+-----------+
+                                      |
+                                      v
+                           +----------------------+
+                           |     VALIDATED        |
+                           +----------+-----------+
+                                      |
+             +------------------------+------------------------+
+             |                                                 |
+             v                                                 v
++--------------------------+                      +--------------------------+
+|    PROCESSING_PASSED     |                      |       QUARANTINED        |<---+
++------------+-------------+                      +-------------+------------+    |
+             |                                                  |                 | Reprocessing
+             |                                                  |                 | (Unresolved)
+             v                                                  |                 |
++--------------------------+                                    |                 |
+|     APPROVAL_PENDING     |<--- (1. RELEASED_TO_PENDING) ------+                 |
++------------+-------------+                                    |                 |
+             |                                                  |                 |
+             +------------------+                               |                 |
+             |                  |                               |                 |
+             v                  v                               v                 |
+      +--------------+   +--------------+               +----------------+        |
+      |   APPROVED   |   |   REJECTED   |<-- (2. REJECT)| REPROCESSING   +--------+
+      +------+-------+   +--------------+               | (Maintains Q)  |
+             |                                          +----------------+
+             v                                                  |
+      +--------------+                                          v
+      |   EXPORTED   |                            +----------------------------+
+      +--------------+                            |    RESTRICTED_DISPUTED     |
+                                                  | (3. Legal / Dispute Hold)  |
+                                                  +----------------------------+
+```
+
+### F5.2 Permitted Exits from `QUARANTINED` (Strictly Human Action)
+1. **`QUARANTINED` $\rightarrow$ `APPROVAL_PENDING` (`RELEASED_TO_PENDING`):**
+   - *Condition:* Authorized human auditor determines candidate was falsely flagged. Auditor signs resolution payload clearing quarantine. Candidate moves to `APPROVAL_PENDING` for standard curriculum review.
+2. **`QUARANTINED` $\rightarrow$ `REJECTED`:**
+   - *Condition:* Authorized human auditor confirms linguistic defect, unresolvable safety violation, or licensing invalidity. Auditor explicitly signs rejection payload with documented rationale.
+3. **`QUARANTINED` $\rightarrow$ `APPROVED` (`SPECIAL_DUAL_APPROVAL`):**
+   - *Condition:* High-authority dual-role reviewer (or joint sign-off) resolves quarantine and simultaneously certifies curriculum fitness in a single high-assurance cryptographic event.
+4. **`QUARANTINED` $\rightarrow$ `RESTRICTED_DISPUTED`:**
+   - *Condition:* Legal counsel or compliance officer places candidate under legal dispute hold pending copyright or regulatory inquiry.
+
+### F5.3 Strictly Prohibited Transitions (System Violation)
+| Prohibited State Transition | Trigger Mechanism | Violation Type | Architectural Enforcement |
+| :--- | :--- | :--- | :--- |
+| `QUARANTINED` $\rightarrow$ `REJECTED` | 30-Day Timeout / Expiration | Automated Rejection Violation | Aborted by trigger `trig_abort_unauthorized_quarantine_exit`. |
+| `QUARANTINED` $\rightarrow$ `APPROVED` | Cron Daemon / Inaction | Automated Approval Violation | Aborted by trigger `trig_enforce_signed_approval_mutation`. |
+| `QUARANTINED` $\rightarrow$ `APPROVAL_PENDING` | Automated Reprocessing Job | Silent Clearance Violation | Reprocessing without human resolution leaves status as `QUARANTINED`. |
+| `QUARANTINED` $\rightarrow$ `ARCHIVED` | Storage Cleanup Script | Premature Deletion Violation | Aborted by foreign key and retention integrity constraints. |
+| `QUARANTINED` $\rightarrow$ `EXPORTED` | Export Batch Compiler | Export Quarantine Breach | Blocked by SQL view predicate `processing_status != 'QUARANTINED'`. |
+
+---
+
+## F6. Database Schema Additions & Structural DDL
+
+### F6.1 New Dedicated Entity: `quarantine_cases`
+Revision 4 introduces a dedicated relational entity to manage the lifecycle, monitoring, escalation, and resolution of quarantined candidates without overloading `candidate_submissions`:
+
+```sql
+-- ============================================================================
+-- 7. QUARANTINE CASES
+-- Authoritative tracking of quarantined candidates, monitoring SLAs, 
+-- non-mutating escalations, and cryptographically signed human resolutions.
+-- ============================================================================
+CREATE TABLE quarantine_cases (
+    case_id                         TEXT PRIMARY KEY,              -- UUIDv4 format
+    candidate_id                    TEXT NOT NULL,                 -- FK to candidate_submissions
+    quarantine_reason               TEXT NOT NULL,                 -- Reason code
+    quarantine_category             TEXT NOT NULL,                 -- SAFETY, LANGUAGE, LEGAL, QUALITY
+    diagnostic_evidence_json        TEXT NOT NULL,                 -- Diagnostic payload, tokens, scores
+    pipeline_version                TEXT NOT NULL,                 -- Version that flagged candidate
+    quarantined_at                  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+    review_due_at                   TEXT NOT NULL,                 -- SLA monitoring target (quarantined_at + 30 days)
+    last_reminder_at                TEXT,                          -- Timestamp of last reminder sent
+    escalated_at                    TEXT,                          -- Timestamp of 30-day escalation
+    escalation_level                TEXT NOT NULL DEFAULT 'STANDARD', -- STANDARD, ESCALATED_30_DAYS, CRITICAL_60_DAYS
+    assigned_reviewer_id            TEXT,                          -- Reviewer assigned to inspect case
+    assigned_role                   TEXT NOT NULL,                 -- Required reviewer role to resolve
+    resolution_decision_id          TEXT,                          -- FK to approval_history (NULL while unresolved)
+    resolution_evidence_reference   TEXT,                          -- External evidence or notes reference
+    resolved_at                     TEXT,                          -- Timestamp of explicit human resolution
+
+    FOREIGN KEY (candidate_id) REFERENCES candidate_submissions (candidate_id) ON DELETE RESTRICT,
+    FOREIGN KEY (assigned_reviewer_id) REFERENCES reviewer_accounts (reviewer_id) ON DELETE RESTRICT,
+    FOREIGN KEY (assigned_role) REFERENCES reviewer_roles (role_id) ON DELETE RESTRICT,
+    FOREIGN KEY (resolution_decision_id) REFERENCES approval_history (decision_id) ON DELETE RESTRICT,
+
+    CONSTRAINT chk_quarantine_reason CHECK (
+        quarantine_reason IN (
+            'LANGUAGE_FILTER_AMBIGUOUS',
+            'SEMANTIC_SAFETY_CONFLICT',
+            'NEAR_DEDUP_INVERSION',
+            'SOURCE_LICENSING_UNCERTAINTY',
+            'MALFORMED_STRUCTURE',
+            'MANUAL_HUMAN_QUARANTINE'
+        )
+    ),
+    CONSTRAINT chk_quarantine_category CHECK (
+        quarantine_category IN ('SAFETY', 'LANGUAGE', 'LEGAL', 'QUALITY')
+    ),
+    CONSTRAINT chk_escalation_level CHECK (
+        escalation_level IN ('STANDARD', 'ESCALATED_30_DAYS', 'CRITICAL_60_DAYS')
+    ),
+    CONSTRAINT chk_resolution_consistency CHECK (
+        (resolution_decision_id IS NULL AND resolved_at IS NULL) OR
+        (resolution_decision_id IS NOT NULL AND resolved_at IS NOT NULL)
+    )
+);
+
+CREATE INDEX idx_quarantine_candidate ON quarantine_cases (candidate_id);
+CREATE INDEX idx_quarantine_open_cases ON quarantine_cases (quarantine_category, escalation_level)
+WHERE resolution_decision_id IS NULL;
+CREATE INDEX idx_quarantine_sla_monitoring ON quarantine_cases (review_due_at)
+WHERE resolution_decision_id IS NULL;
+```
+
+### F6.2 Database Triggers Enforcing Non-Mutating Escalation
+Triggers guarantee that reminder and escalation updates cannot mutate candidate status, and that non-human actors cannot resolve quarantine cases:
+
+```sql
+-- Trigger 1: Abort any attempt to resolve quarantine without a human cryptographic approval record
+CREATE TRIGGER trig_abort_unauthorized_quarantine_exit
+BEFORE UPDATE OF processing_status ON candidate_submissions
+WHEN OLD.processing_status = 'QUARANTINED' AND NEW.processing_status != 'QUARANTINED'
+BEGIN
+    SELECT CASE
+        -- Must have a matching resolved quarantine case referencing approval_history
+        WHEN NOT EXISTS (
+            SELECT 1 FROM quarantine_cases qc
+            JOIN approval_history ah ON qc.resolution_decision_id = ah.decision_id
+            JOIN reviewer_accounts ra ON ah.reviewer_id = ra.reviewer_id
+            WHERE qc.candidate_id = NEW.candidate_id
+              AND qc.resolution_decision_id IS NOT NULL
+              AND ra.account_status = 'ACTIVE'
+              AND ah.verification_status = 'VERIFIED_VALID'
+        )
+        THEN RAISE(ABORT, 'SECURITY VIOLATION: Candidate cannot exit QUARANTINED without an authenticated human cryptographic resolution record.')
+    END;
+END;
+
+-- Trigger 2: Prevent timeout or escalation updates from altering candidate processing status
+CREATE TRIGGER trig_prevent_escalation_status_tampering
+BEFORE UPDATE OF escalation_level, escalated_at, last_reminder_at ON quarantine_cases
+BEGIN
+    SELECT CASE
+        WHEN EXISTS (
+            SELECT 1 FROM candidate_submissions cs
+            WHERE cs.candidate_id = NEW.candidate_id
+              AND cs.processing_status != 'QUARANTINED'
+        )
+        THEN RAISE(ABORT, 'INTEGRITY VIOLATION: Escalation or reminder updates cannot be applied to non-quarantined candidates.')
+    END;
+END;
+```
+
+---
+
+## F7. Export Safety Gate & View Integration
+
+### F7.1 Strict Fail-Closed Export View Definition
+The production export eligibility view `v_export_eligible_candidates` is updated to incorporate an explicit, fail-closed check against active or unresolved quarantine cases:
+
+```sql
+-- Enhanced 17-Point Production Export Eligibility View (Revision 4)
+CREATE VIEW v_export_eligible_candidates AS
+SELECT
+    c.candidate_id,
+    c.source_id,
+    c.source_document_id,
+    c.original_text,
+    c.normalized_text,
+    c.raw_content_hash,
+    c.normalized_content_hash,
+    c.raw_char_count,
+    c.normalized_char_count,
+    c.approx_word_count,
+    s.name AS source_name,
+    s.attribution AS source_attribution,
+    ah.decision_id AS approval_decision_id,
+    ah.reviewer_id AS approved_by_reviewer_id,
+    ra.full_name AS reviewer_full_name,
+    ah.signature_ed25519 AS approval_signature,
+    ah.canonical_payload_sha256 AS payload_hash
+FROM candidate_submissions c
+JOIN candidate_sources s ON c.source_id = s.source_id
+JOIN approval_history ah ON c.candidate_id = ah.candidate_id
+JOIN reviewer_accounts ra ON ah.reviewer_id = ra.reviewer_id
+JOIN reviewer_public_keys k ON ah.public_key_id = k.public_key_id
+WHERE c.processing_status = 'APPROVED'                           -- 1. Status is APPROVED
+  AND c.processing_status != 'QUARANTINED'                       -- 2. Explicitly NOT QUARANTINED
+  AND c.is_canonical = 1                                         -- 3. Master deduplicated candidate
+  AND s.licensing_status = 'VERIFIED PERMITTED'                  -- 4. Source licensing verified
+  AND s.training_permitted_status = 'EXPLICITLY_PERMITTED'       -- 5. Training explicitly permitted
+  AND s.artifact_sha256 != 'NOT_VERIFIED'                        -- 6. Physical source hash verified
+  AND (s.approval_expiration_date IS NULL                        -- 7. Source approval non-expired
+       OR s.approval_expiration_date >= strftime('%Y-%m-%d', 'now'))
+  AND ah.new_status = 'APPROVED'                                 -- 8. Audit entry approves candidate
+  AND ah.verification_status = 'VERIFIED_VALID'                  -- 9. Signature verification succeeded
+  AND ra.account_status = 'ACTIVE'                               -- 10. Reviewer account is active
+  AND k.is_test_key = 0                                          -- 11. NOT signed with test key
+  AND k.key_status IN ('ACTIVE', 'ROTATED_RETIRED')              -- 12. Key active or legitimately rotated
+  AND ah.created_at >= k.activated_at                            -- 13. Signed after key activation
+  AND (k.valid_until IS NULL OR ah.created_at <= k.valid_until)   -- 14. Signed before key retirement
+  AND (k.revoked_at IS NULL OR ah.created_at < k.revoked_at)     -- 15. Signed before any emergency revocation
+  AND NOT EXISTS (                                               -- 16. ZERO UNRESOLVED QUARANTINE CASES
+      SELECT 1 FROM quarantine_cases qc
+      WHERE qc.candidate_id = c.candidate_id
+        AND qc.resolution_decision_id IS NULL
+  )
+  AND NOT EXISTS (                                               -- 17. Zero safety-merge conflicts
+      SELECT 1 FROM duplicate_relationships d
+      WHERE (d.candidate_id = c.candidate_id OR d.related_candidate_id = c.candidate_id)
+        AND d.is_safe_to_merge = 0
+  )
+  AND NOT EXISTS (                                               -- 18. Zero active legal redaction/expungement
+      SELECT 1 FROM retention_decisions rd
+      WHERE rd.candidate_id = c.candidate_id
+        AND rd.decision_type IN ('RESTRICT_ACCESS_DISPUTE', 'REDACT_RAW_TEXT_MANDATE', 'EXPUNGE_LEGAL_ORDER')
+  );
+```
+
+### F7.2 Application-Level Export Quarantine Gate
+At the Python application layer (to be implemented in Phase 4.14.3+), the `CorpusExporter` enforces a secondary defense-in-depth gate:
+1. Queries the database using the strict `v_export_eligible_candidates` view.
+2. Performs an in-memory cross-check verifying that `candidate_id` is absent from all active `quarantine_cases` records.
+3. If an anomaly, unverified resolution, or null signature is encountered, the export pipeline **immediately halts and fails closed**.
+
+---
+
+## F8. Design Consistency & Architectural Alignment Matrix
+
+| Architectural Dimension | Specification Invariant | Alignment Proof in Revision 4 |
+| :--- | :--- | :--- |
+| **Quarantine Timeout Invariant** | Timeouts NEVER change candidate status or auto-reject. | Section F1 establishes absolute ban on automated rejection; 30-day period restricted strictly to reminders and escalation. |
+| **State Machine Governance** | All exits from `QUARANTINED` require authenticated human action. | Section F5 transition matrix permits only human exits; trigger `trig_abort_unauthorized_quarantine_exit` aborts automated transitions. |
+| **Cryptographic Accountability** | Quarantine resolution requires Ed25519 signature + canonical payload. | Section F4 specifies resolution payload schema; references `approval_history` and `reviewer_accounts`. |
+| **Relational Integrity** | `quarantine_cases` tracks SLAs, reminders, and escalations non-mutatingly. | Section F6 DDL provides dedicated table with FK constraints to candidate, reviewer, and approval records. |
+| **Fail-Closed Export Gate** | Zero quarantined or unresolved candidates can enter training corpus. | Section F7 view predicate 16 (`NOT EXISTS unresolved quarantine`) and application-level gate block export. |
+| **Preservation of History** | All prior decisions in Revisions 1, 2, and 3 preserved intact. | Explicit section addition without modifying previous revision text; Section D8 recommendation explicitly resolved. |
+
+---
+
+## F9. Scope Boundaries & Implementation Quarantine
+
+This Revision 4 update is **strictly an architectural design and specification task**.
+
+**Absolute Implementation Boundaries:**
+- **NO Database Initialization:** Table `quarantine_cases` is NOT created in SQLite during this phase.
+- **NO Code Implementation:** No background reminder daemons, escalation workers, or quarantine resolution endpoints are written in this phase.
+- **NO Data Modification:** Lexicon, corpus manifests, split definitions, and baseline test suites remain completely untouched.
+
+All physical database implementation is quarantined to authorized future phases (Phase 4.14.2 for core table creation, Phase 4.14.5 for reviewer approval and quarantine dashboard implementation).
