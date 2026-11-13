@@ -20,12 +20,14 @@ from foundation.candidates.exceptions import (
     ReviewerNotFoundError,
     ReviewerInactiveError,
     ReviewerUnauthorizedError,
+    RolePermissionError,
     KeyNotFoundError,
     KeyRevokedError,
     KeyExpiredError,
     InvalidSignatureError,
     ValidationError,
 )
+from foundation.candidates.key_custody import ReviewerKeyProvider
 
 
 class ApprovalService:
@@ -50,6 +52,7 @@ class ApprovalService:
         decision_reason: str,
         private_key_pem: Optional[bytes] = None,
         provided_signature_hex: Optional[str] = None,
+        key_provider: Optional[ReviewerKeyProvider] = None,
         pipeline_version: str = "v0.4.14",
         policy_schema_version: str = "1.0",
         allow_quarantine_dual_approval: bool = False,
@@ -76,16 +79,12 @@ class ApprovalService:
         if reviewer.account_status != "ACTIVE":
             raise ReviewerInactiveError(f"Reviewer '{reviewer_id}' account is {reviewer.account_status}; cannot approve.")
 
-        # 3. Role Authorization
+        # 3. Role Authorization and Granular Permissions
         if not self.reviewers.has_role(reviewer_id, reviewer_role):
             raise ReviewerUnauthorizedError(
                 f"Reviewer '{reviewer_id}' is not assigned the required role '{reviewer_role}'."
             )
-
-        # Check role permission in DB
-        role_row = self.conn.fetchone("SELECT can_approve_corpus FROM reviewer_roles WHERE role_name = ?;", (reviewer_role,))
-        if not role_row or role_row["can_approve_corpus"] != 1:
-            raise ReviewerUnauthorizedError(f"Role '{reviewer_role}' has no authority to grant corpus approval.")
+        self.reviewers.assert_permission(reviewer_id, "can_approve_candidates")
 
         # 4. Public Key Validity Preconditions
         key = self.reviewers.get_public_key(public_key_id)
@@ -156,12 +155,14 @@ class ApprovalService:
         canonical_json_str = canonical_bytes.decode("utf-8")
 
         # 9. Sign or Verify Signature
-        if private_key_pem:
+        if key_provider:
+            signature_hex = key_provider.sign_payload(reviewer_id, public_key_id, canonical_bytes)
+        elif private_key_pem:
             signature_hex = Ed25519SignatureService.sign(private_key_pem, canonical_bytes)
         elif provided_signature_hex:
             signature_hex = provided_signature_hex.lower()
         else:
-            raise ValidationError("Either private_key_pem or provided_signature_hex must be supplied.")
+            raise ValidationError("Either key_provider, private_key_pem, or provided_signature_hex must be supplied.")
 
         # Mathematical Ed25519 verification against registered public key
         Ed25519SignatureService.verify(key.public_key_hex, canonical_bytes, signature_hex)
@@ -228,6 +229,7 @@ class ApprovalService:
         decision_reason: str,
         private_key_pem: Optional[bytes] = None,
         provided_signature_hex: Optional[str] = None,
+        key_provider: Optional[ReviewerKeyProvider] = None,
         pipeline_version: str = "v0.4.14",
         policy_schema_version: str = "1.0",
     ) -> ApprovalHistoryRecord:
@@ -244,6 +246,7 @@ class ApprovalService:
 
         if not self.reviewers.has_role(reviewer_id, reviewer_role):
             raise ReviewerUnauthorizedError("Reviewer lacks role.")
+        self.reviewers.assert_permission(reviewer_id, "can_reject_candidates")
 
         key = self.reviewers.get_public_key(public_key_id)
         if not key or key.key_status not in ("ACTIVE", "ROTATED_RETIRED"):
@@ -273,12 +276,14 @@ class ApprovalService:
         payload_hash = compute_payload_hash(canonical_bytes)
         canonical_json_str = canonical_bytes.decode("utf-8")
 
-        if private_key_pem:
+        if key_provider:
+            signature_hex = key_provider.sign_payload(reviewer_id, public_key_id, canonical_bytes)
+        elif private_key_pem:
             signature_hex = Ed25519SignatureService.sign(private_key_pem, canonical_bytes)
         elif provided_signature_hex:
             signature_hex = provided_signature_hex.lower()
         else:
-            raise ValidationError("Either private_key_pem or provided_signature_hex must be supplied.")
+            raise ValidationError("Either key_provider, private_key_pem, or provided_signature_hex must be supplied.")
 
         Ed25519SignatureService.verify(key.public_key_hex, canonical_bytes, signature_hex)
 

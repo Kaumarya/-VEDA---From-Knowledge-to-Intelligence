@@ -176,7 +176,7 @@ def cmd_verify() -> int:
             return 1
         print("  Foreign Key Constraints: OK (0 violations)")
 
-        # 3. Verify all 16 tables
+        # 3. Verify all 18 tables
         tables = [
             "candidate_sources",
             "candidate_submissions",
@@ -185,11 +185,13 @@ def cmd_verify() -> int:
             "reviewer_accounts",
             "reviewer_roles",
             "reviewer_account_roles",
+            "reviewer_role_permissions",
             "reviewer_public_keys",
             "authentication_events",
             "key_lifecycle_events",
             "approval_history",
             "quarantine_cases",
+            "quarantine_dual_approvals",
             "retention_decisions",
             "export_batches",
             "export_batch_items",
@@ -212,6 +214,7 @@ def cmd_verify() -> int:
             "trig_enforce_signed_approval_mutation",
             "trig_abort_unauthorized_quarantine_exit",
             "trig_prevent_escalation_status_tampering",
+            "trig_abort_dual_approval_delete",
         ]
         missing_trig = [t for t in expected_triggers if t not in triggers]
         if missing_trig:
@@ -282,6 +285,49 @@ def cmd_benchmark() -> int:
     return 0
 
 
+def cmd_backup(target_path_str: Optional[str] = None) -> int:
+    """Creates a consistent atomic online backup of the candidate database."""
+    config = CandidateDatabaseConfig.default_production()
+    db_path = config.db_path
+    if not db_path.exists():
+        print(f"Error: Candidate database not found at {db_path}", file=sys.stderr)
+        return 1
+
+    if target_path_str:
+        backup_path = Path(target_path_str)
+    else:
+        now_str = time.strftime("%Y%m%d_%H%M%S")
+        backup_path = Path(f"data/candidates/backups/veda_candidates_backup_{now_str}.sqlite")
+
+    print(f"Creating consistent online backup of candidate database...")
+    print(f"  Source: {db_path}")
+    print(f"  Destination: {backup_path}")
+
+    with CandidateDatabaseConnection(config) as db:
+        t0 = time.perf_counter()
+        db.backup(backup_path)
+        dur = time.perf_counter() - t0
+
+    size_kb = backup_path.stat().st_size / 1024
+    print(f"Backup created in {dur:.3f}s ({size_kb:.1f} KB).")
+
+    # Verify backup integrity
+    import sqlite3
+    conn = sqlite3.connect(str(backup_path))
+    try:
+        cur = conn.cursor()
+        chk = cur.execute("PRAGMA quick_check;").fetchone()[0]
+        fk_chk = cur.execute("PRAGMA foreign_key_check;").fetchall()
+        if chk == "ok" and len(fk_chk) == 0:
+            print("Backup Verification: PASSED (PRAGMA quick_check = ok, 0 foreign key violations).")
+            return 0
+        else:
+            print(f"Backup Verification: FAILED (quick_check: {chk}, FK violations: {len(fk_chk)})", file=sys.stderr)
+            return 1
+    finally:
+        conn.close()
+
+
 def main() -> None:
     if len(sys.argv) < 2 or sys.argv[1] in ("--help", "-h", "help"):
         print("VEDA Candidate Database CLI")
@@ -292,6 +338,7 @@ def main() -> None:
         print("    python veda.py candidate version")
         print("    python veda.py candidate verify")
         print("    python veda.py candidate benchmark")
+        print("    python veda.py candidate backup [optional_path]")
         sys.exit(0)
 
     sub = sys.argv[1]
@@ -307,6 +354,9 @@ def main() -> None:
         sys.exit(cmd_verify())
     elif sub == "benchmark":
         sys.exit(cmd_benchmark())
+    elif sub == "backup":
+        target = sys.argv[2] if len(sys.argv) > 2 else None
+        sys.exit(cmd_backup(target))
     else:
         print(f"Unknown candidate command: '{sub}'. Run 'python veda.py candidate --help'", file=sys.stderr)
         sys.exit(1)

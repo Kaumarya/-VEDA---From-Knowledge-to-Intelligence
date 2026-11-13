@@ -5,7 +5,8 @@ Phase 4.14.2
 
 import sqlite3
 from contextlib import contextmanager
-from typing import Generator, Optional, Any, List, Tuple
+from typing import Generator, Optional, Any, List, Tuple, Union
+from pathlib import Path
 from foundation.candidates.config import CandidateDatabaseConfig
 from foundation.candidates.exceptions import DatabaseConnectionError
 
@@ -106,6 +107,29 @@ class CandidateDatabaseConnection:
         """Fetches all rows from a parameterized query."""
         cur = self.execute(sql, params)
         return cur.fetchall()
+
+    def backup(self, target_path: Union[str, Path]) -> None:
+        """
+        Creates a consistent online backup using SQLite's backup API.
+        Flushes active WAL changes and copies all pages cleanly to target_path.
+        """
+        dest_p = Path(target_path)
+        dest_p.parent.mkdir(parents=True, exist_ok=True)
+        if self._raw_conn is None:
+            self.connect()
+        assert self._raw_conn is not None
+
+        # Checkpoint WAL first to flush committed transactions
+        try:
+            self._raw_conn.execute("PRAGMA wal_checkpoint(TRUNCATE);")
+        except Exception:
+            pass
+
+        dest_conn = sqlite3.connect(str(dest_p))
+        try:
+            self._raw_conn.backup(dest_conn)
+        finally:
+            dest_conn.close()
 
     def __enter__(self) -> "CandidateDatabaseConnection":
         self.connect()

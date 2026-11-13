@@ -56,16 +56,16 @@ def test_migration_framework_apply_all(tmp_path: Path):
         assert manager.get_current_version() == 0
 
         applied_count = manager.apply_all()
-        assert applied_count == 3
-        assert manager.get_current_version() == 3
+        assert applied_count == 4
+        assert manager.get_current_version() == 4
 
         # Applying again is idempotent and applies 0 migrations
         assert manager.apply_all() == 0
 
         # Verify applied records
         applied = manager.get_applied_migrations()
-        assert len(applied) == 3
-        assert [r["version"] for r in applied] == [1, 2, 3]
+        assert len(applied) == 4
+        assert [r["version"] for r in applied] == [1, 2, 3, 4]
         for r in applied:
             assert len(r["checksum"]) == 64
             assert r["applied_at"] is not None

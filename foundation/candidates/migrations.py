@@ -17,6 +17,7 @@ from foundation.candidates.schema import (
     MIGRATION_001_CORE,
     MIGRATION_002_REVIEWER_SECURITY,
     MIGRATION_003_APPROVALS_QUARANTINE_EXPORT,
+    MIGRATION_004_GOVERNANCE_REMEDIATION,
 )
 
 
@@ -52,6 +53,12 @@ ALL_MIGRATIONS: List[Migration] = [
         name="003_approvals_quarantine_export",
         description="Governance: approval history, quarantine cases, retention decisions, export batches, triggers and views",
         sql=MIGRATION_003_APPROVALS_QUARANTINE_EXPORT,
+    ),
+    Migration(
+        version=4,
+        name="004_governance_remediation",
+        description="Remediation: role permissions matrix, quarantine dual approvals, raw byte retention, and refined view",
+        sql=MIGRATION_004_GOVERNANCE_REMEDIATION,
     ),
 ]
 

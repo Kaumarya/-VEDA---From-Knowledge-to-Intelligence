@@ -18,6 +18,7 @@ from foundation.candidates.exceptions import (
     ReviewerNotFoundError,
     ReviewerInactiveError,
     ReviewerUnauthorizedError,
+    RolePermissionError,
     KeyNotFoundError,
     KeyRevokedError,
     KeyExpiredError,
@@ -92,8 +93,27 @@ class ReviewerService:
                 (status, now_iso, reviewer_id),
             )
 
-    def assign_role(self, reviewer_id: str, role_id: str, assigned_by: str) -> str:
+    def assign_role(self, reviewer_id: str, role_identifier: str, assigned_by: str) -> str:
         """Assigns an active governance role to a reviewer."""
+        rev = self.get_reviewer(reviewer_id)
+        if not rev:
+            raise ReviewerNotFoundError(f"Reviewer '{reviewer_id}' not found.")
+
+        row = self.conn.fetchone(
+            "SELECT role_id FROM reviewer_roles WHERE role_id = ? OR role_name = ?;",
+            (role_identifier, role_identifier),
+        )
+        if not row:
+            raise ReviewerUnauthorizedError(f"Role '{role_identifier}' not found in canonical role taxonomy.")
+        role_id = row["role_id"]
+
+        existing = self.conn.fetchone(
+            "SELECT assignment_id FROM reviewer_account_roles WHERE reviewer_id = ? AND role_id = ? AND revoked_at IS NULL;",
+            (reviewer_id, role_id),
+        )
+        if existing:
+            return existing["assignment_id"]
+
         assignment_id = f"urn:uuid:{uuid.uuid4()}"
         now_iso = datetime.now(timezone.utc).isoformat()
         with self.conn.transaction() as c:
@@ -105,6 +125,26 @@ class ReviewerService:
                 (assignment_id, reviewer_id, role_id, assigned_by, now_iso),
             )
         return assignment_id
+
+    def revoke_role(self, reviewer_id: str, role_identifier: str) -> None:
+        """Revokes an assigned role from a reviewer."""
+        row = self.conn.fetchone(
+            "SELECT role_id FROM reviewer_roles WHERE role_id = ? OR role_name = ?;",
+            (role_identifier, role_identifier),
+        )
+        if not row:
+            raise ReviewerUnauthorizedError(f"Role '{role_identifier}' not found in canonical role taxonomy.")
+        role_id = row["role_id"]
+        now_iso = datetime.now(timezone.utc).isoformat()
+        with self.conn.transaction() as c:
+            c.execute(
+                """
+                UPDATE reviewer_account_roles
+                SET revoked_at = ?
+                WHERE reviewer_id = ? AND role_id = ? AND revoked_at IS NULL;
+                """,
+                (now_iso, reviewer_id, role_id),
+            )
 
     def get_active_roles(self, reviewer_id: str) -> List[str]:
         """Returns list of active role_names currently assigned to reviewer."""
@@ -118,10 +158,64 @@ class ReviewerService:
         )
         return [r["role_name"] for r in rows]
 
-    def has_role(self, reviewer_id: str, role_name: str) -> bool:
+    def has_role(self, reviewer_id: str, role_identifier: str) -> bool:
         """Checks if reviewer has a specific active role."""
-        roles = self.get_active_roles(reviewer_id)
-        return role_name in roles
+        rev = self.get_reviewer(reviewer_id)
+        if not rev or rev.account_status != "ACTIVE":
+            return False
+        row = self.conn.fetchone(
+            """
+            SELECT 1 FROM reviewer_roles r
+            JOIN reviewer_account_roles ar ON r.role_id = ar.role_id
+            WHERE ar.reviewer_id = ? AND ar.revoked_at IS NULL
+              AND (r.role_id = ? OR r.role_name = ?);
+            """,
+            (reviewer_id, role_identifier, role_identifier),
+        )
+        return bool(row)
+
+    def check_permission(self, reviewer_id: str, permission_name: str) -> bool:
+        """Checks if active reviewer has a specific granular permission."""
+        rev = self.get_reviewer(reviewer_id)
+        if not rev or rev.account_status != "ACTIVE":
+            return False
+
+        valid_perms = {
+            "can_review_candidates",
+            "can_approve_candidates",
+            "can_reject_candidates",
+            "can_resolve_quarantine",
+            "can_participate_dual_appr",
+            "can_revoke_candidates",
+            "can_issue_retention",
+            "can_manage_keys",
+            "can_inspect_audit",
+            "can_administer_accounts",
+        }
+        if permission_name not in valid_perms:
+            return False
+
+        row = self.conn.fetchone(
+            f"""
+            SELECT 1 FROM reviewer_account_roles ar
+            JOIN reviewer_roles rr ON ar.role_id = rr.role_id
+            JOIN reviewer_role_permissions rp ON rr.role_name = rp.role_name
+            WHERE ar.reviewer_id = ? AND ar.revoked_at IS NULL AND rp.{permission_name} = 1
+            LIMIT 1;
+            """,
+            (reviewer_id,),
+        )
+        return bool(row)
+
+    def assert_permission(self, reviewer_id: str, permission_name: str) -> None:
+        """Asserts that active reviewer has a specific granular permission, raising appropriate exception."""
+        rev = self.get_reviewer(reviewer_id)
+        if not rev:
+            raise ReviewerNotFoundError(f"Reviewer '{reviewer_id}' not found.")
+        if rev.account_status != "ACTIVE":
+            raise ReviewerInactiveError(f"Reviewer '{reviewer_id}' is not active (status: {rev.account_status}).")
+        if not self.check_permission(reviewer_id, permission_name):
+            raise RolePermissionError(f"Reviewer '{reviewer_id}' lacks required permission '{permission_name}'.")
 
     def register_public_key(
         self,

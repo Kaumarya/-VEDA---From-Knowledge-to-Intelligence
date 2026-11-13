@@ -85,6 +85,11 @@ class ReviewerUnauthorizedError(ReviewerError):
     pass
 
 
+class RolePermissionError(ReviewerUnauthorizedError):
+    """Raised when an assigned role lacks granular authority for an attempted action."""
+    pass
+
+
 class AuthenticationError(CandidateDatabaseError):
     """Raised when reviewer authentication fails."""
     pass
@@ -116,6 +121,26 @@ class KeyExpiredError(CryptographicError):
     pass
 
 
+class KeyCustodyError(CryptographicError):
+    """Base exception for secure key custody errors."""
+    pass
+
+
+class KeyStorageError(KeyCustodyError):
+    """Raised when storing or writing an encrypted key blob fails."""
+    pass
+
+
+class KeyDecryptionError(KeyCustodyError):
+    """Raised when decrypting a stored private key fails."""
+    pass
+
+
+class KeyProviderUnavailableError(KeyCustodyError):
+    """Raised when an operation requires a secure key provider that is missing or disabled."""
+    pass
+
+
 # Quarantine Exceptions
 class QuarantineError(CandidateDatabaseError):
     """Base exception for quarantine management errors."""
@@ -129,6 +154,16 @@ class QuarantineTimeoutMutationError(QuarantineError):
 
 class UnauthorizedQuarantineResolutionError(QuarantineError):
     """Raised when quarantine resolution lacks required human authorization or signature."""
+    pass
+
+
+class DualApprovalRequiredError(QuarantineError):
+    """Raised when a single reviewer attempts to resolve a quarantine case to APPROVED."""
+    pass
+
+
+class InvalidDualApprovalError(QuarantineError):
+    """Raised when dual-approval preconditions (e.g. distinct identities, hash integrity) fail."""
     pass
 
 

@@ -535,3 +535,140 @@ WHERE c.processing_status = 'APPROVED'                           -- 1. Status is
   );
 """
 
+# Migration 004: Role Permissions, Quarantine Dual-Approval State Machine & Byte Contracts
+MIGRATION_004_GOVERNANCE_REMEDIATION = """
+-- 17. REVIEWER ROLE PERMISSIONS (CANONICAL GRANULAR PERMISSION MATRIX)
+CREATE TABLE IF NOT EXISTS reviewer_role_permissions (
+    role_name                   TEXT PRIMARY KEY,
+    can_review_candidates       INTEGER NOT NULL DEFAULT 0,
+    can_approve_candidates      INTEGER NOT NULL DEFAULT 0,
+    can_reject_candidates       INTEGER NOT NULL DEFAULT 0,
+    can_resolve_quarantine      INTEGER NOT NULL DEFAULT 0,
+    can_participate_dual_appr   INTEGER NOT NULL DEFAULT 0,
+    can_revoke_candidates       INTEGER NOT NULL DEFAULT 0,
+    can_issue_retention         INTEGER NOT NULL DEFAULT 0,
+    can_manage_keys             INTEGER NOT NULL DEFAULT 0,
+    can_inspect_audit           INTEGER NOT NULL DEFAULT 1,
+    can_administer_accounts     INTEGER NOT NULL DEFAULT 0
+);
+
+INSERT OR IGNORE INTO reviewer_role_permissions (
+    role_name, can_review_candidates, can_approve_candidates, can_reject_candidates,
+    can_resolve_quarantine, can_participate_dual_appr, can_revoke_candidates,
+    can_issue_retention, can_manage_keys, can_inspect_audit, can_administer_accounts
+) VALUES
+('LEGAL_COMPLIANCE_AUDITOR', 1, 0, 1, 1, 1, 1, 1, 0, 1, 0),
+('DOMAIN_CURATOR',           1, 1, 1, 1, 1, 1, 0, 0, 1, 0),
+('SAFETY_COMPLIANCE_OFFICER',1, 0, 1, 1, 1, 1, 0, 0, 1, 0),
+('CHIEF_DATA_OFFICER',       1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+('AUDIT_OBSERVER',           0, 0, 0, 0, 0, 0, 0, 0, 1, 0);
+
+-- 18. QUARANTINE DUAL APPROVAL AUDIT LEDGER (TWO-PERSON RULE ENFORCEMENT)
+CREATE TABLE IF NOT EXISTS quarantine_dual_approvals (
+    case_id                     TEXT PRIMARY KEY,
+    candidate_id                TEXT NOT NULL,
+    first_decision_id           TEXT NOT NULL,
+    first_reviewer_id           TEXT NOT NULL,
+    first_reviewer_role         TEXT NOT NULL,
+    first_auth_event_id         TEXT NOT NULL,
+    first_public_key_id         TEXT NOT NULL,
+    first_signature             TEXT NOT NULL,
+    first_approved_at           TEXT NOT NULL,
+    second_decision_id          TEXT,
+    second_reviewer_id          TEXT,
+    second_reviewer_role        TEXT,
+    second_auth_event_id        TEXT,
+    second_public_key_id        TEXT,
+    second_signature            TEXT,
+    second_approved_at          TEXT,
+    dual_status                 TEXT NOT NULL DEFAULT 'FIRST_LEG_APPROVED', -- FIRST_LEG_APPROVED, COMPLETED, ABORTED
+    bound_candidate_hash        TEXT NOT NULL,
+    bound_artifact_hash         TEXT NOT NULL,
+    policy_version              TEXT NOT NULL,
+    created_at                  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+    completed_at                TEXT,
+
+    FOREIGN KEY (case_id) REFERENCES quarantine_cases (case_id) ON DELETE RESTRICT,
+    FOREIGN KEY (candidate_id) REFERENCES candidate_submissions (candidate_id) ON DELETE RESTRICT,
+    FOREIGN KEY (first_reviewer_id) REFERENCES reviewer_accounts (reviewer_id) ON DELETE RESTRICT,
+    FOREIGN KEY (second_reviewer_id) REFERENCES reviewer_accounts (reviewer_id) ON DELETE RESTRICT,
+    CONSTRAINT chk_dual_status CHECK (dual_status IN ('FIRST_LEG_APPROVED', 'COMPLETED', 'ABORTED'))
+);
+
+CREATE TRIGGER IF NOT EXISTS trig_abort_dual_approval_delete
+BEFORE DELETE ON quarantine_dual_approvals
+BEGIN
+    SELECT RAISE(ABORT, 'SECURITY VIOLATION: quarantine_dual_approvals audit records cannot be deleted.');
+END;
+
+-- 19. SUBMISSION RAW BYTE RETENTION COLUMNS
+ALTER TABLE candidate_submissions ADD COLUMN raw_bytes BLOB;
+ALTER TABLE candidate_submissions ADD COLUMN raw_byte_sha256 TEXT;
+
+-- 20. REFINED PRODUCTION EXPORT ELIGIBILITY VIEW
+DROP VIEW IF EXISTS v_export_eligible_candidates;
+CREATE VIEW v_export_eligible_candidates AS
+SELECT
+    c.candidate_id,
+    c.source_id,
+    c.source_document_id,
+    c.original_text,
+    c.normalized_text,
+    c.raw_content_hash,
+    c.normalized_content_hash,
+    c.raw_char_count,
+    c.normalized_char_count,
+    c.approx_word_count,
+    s.name AS source_name,
+    s.attribution AS source_attribution,
+    ah.decision_id AS approval_decision_id,
+    ah.reviewer_id AS approved_by_reviewer_id,
+    ra.full_name AS reviewer_full_name,
+    ah.signature_ed25519 AS approval_signature,
+    ah.canonical_payload_sha256 AS payload_hash
+FROM candidate_submissions c
+JOIN candidate_sources s ON c.source_id = s.source_id
+JOIN approval_history ah ON c.candidate_id = ah.candidate_id
+JOIN reviewer_accounts ra ON ah.reviewer_id = ra.reviewer_id
+JOIN reviewer_public_keys k ON ah.public_key_id = k.public_key_id
+WHERE c.processing_status = 'APPROVED'
+  AND c.processing_status != 'QUARANTINED'
+  AND c.is_canonical = 1
+  AND s.licensing_status = 'VERIFIED PERMITTED'
+  AND s.training_permitted_status = 'EXPLICITLY_PERMITTED'
+  AND s.artifact_sha256 != 'NOT_VERIFIED'
+  AND (s.approval_expiration_date IS NULL
+       OR s.approval_expiration_date >= strftime('%Y-%m-%d', 'now'))
+  AND ah.new_status = 'APPROVED'
+  AND ah.verification_status = 'VERIFIED_VALID'
+  AND ra.account_status = 'ACTIVE'
+  AND k.is_test_key = 0
+  AND k.key_status IN ('ACTIVE', 'ROTATED_RETIRED')
+  AND ah.created_at >= k.activated_at
+  AND (k.valid_until IS NULL OR ah.created_at <= k.valid_until)
+  AND (k.revoked_at IS NULL OR ah.created_at < k.revoked_at)
+  AND NOT EXISTS (
+      SELECT 1 FROM quarantine_cases qc
+      WHERE qc.candidate_id = c.candidate_id
+        AND qc.resolution_decision_id IS NULL
+  )
+  AND NOT EXISTS (
+      SELECT 1 FROM duplicate_relationships d
+      WHERE (d.candidate_id = c.candidate_id OR d.related_candidate_id = c.candidate_id)
+        AND d.is_safe_to_merge = 0
+  )
+  AND NOT EXISTS (
+      SELECT 1 FROM retention_decisions rd
+      WHERE rd.candidate_id = c.candidate_id
+        AND rd.decision_type IN ('RESTRICT_ACCESS_DISPUTE', 'REDACT_RAW_TEXT_MANDATE', 'EXPUNGE_LEGAL_ORDER')
+  )
+  AND NOT EXISTS (
+      SELECT 1 FROM quarantine_cases qc
+      LEFT JOIN quarantine_dual_approvals qda ON qc.case_id = qda.case_id
+      WHERE qc.candidate_id = c.candidate_id
+        AND qc.quarantine_category IN ('SAFETY', 'LEGAL')
+        AND (qda.dual_status IS NULL OR qda.dual_status != 'COMPLETED')
+  );
+"""
+
+

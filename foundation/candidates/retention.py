@@ -95,6 +95,36 @@ class RetentionManager:
                 UPDATE candidate_submissions 
                 SET original_text = '[REDACTED UNDER LEGAL ORDER]',
                     normalized_text = '[REDACTED UNDER LEGAL ORDER]',
+                    raw_bytes = NULL,
+                    updated_at = ?
+                WHERE candidate_id = ?;
+                """,
+                (now_iso, candidate_id),
+            )
+
+    def expunge_under_legal_order(self, candidate_id: str, authorized_by: str, legal_basis: str) -> None:
+        """
+        Expunges raw text and raw bytes under court order or statutory mandate.
+        Masks verbatim text and nulls raw_bytes, while preserving cryptographic
+        content hashes and provenance for permanent audit non-repudiation.
+        """
+        now_iso = datetime.now(timezone.utc).isoformat()
+        with self.conn.transaction() as c:
+            # 1. Record the retention decision
+            c.execute(
+                """
+                INSERT INTO retention_decisions (candidate_id, decision_type, legal_basis, governance_notes, authorized_by, enacted_at)
+                VALUES (?, 'EXPUNGE_LEGAL_ORDER', ?, 'Verbatim text expunged under court/statutory compliance order', ?, ?);
+                """,
+                (candidate_id, legal_basis, authorized_by, now_iso),
+            )
+            # 2. Mask verbatim text in candidate_submissions while preserving hashes
+            c.execute(
+                """
+                UPDATE candidate_submissions 
+                SET original_text = '[EXPUNGED UNDER COURT ORDER]',
+                    normalized_text = '[EXPUNGED UNDER COURT ORDER]',
+                    raw_bytes = NULL,
                     updated_at = ?
                 WHERE candidate_id = ?;
                 """,

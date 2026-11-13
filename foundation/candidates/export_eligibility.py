@@ -17,6 +17,7 @@ from foundation.candidates.exceptions import (
     DuplicateExportError,
     ValidationError,
 )
+from foundation.candidates.signatures import Ed25519SignatureService, compute_payload_hash
 from foundation.corpus.sources import SourceRegistry, LicensingStatus
 
 
@@ -38,21 +39,24 @@ class ExportEligibilityService:
         self.repo = repository
         self.source_registry_path = source_registry_path
         self._cached_registry: Optional[SourceRegistry] = None
+        self._registry_mtime: Optional[float] = None
 
     def _get_authoritative_registry(self) -> SourceRegistry:
-        """Loads and caches the authoritative SourceRegistry from JSON."""
-        if self._cached_registry is None:
-            if not self.source_registry_path.exists():
-                raise GovernancePreflightError(
-                    f"CRITICAL: Authoritative source registry not found at {self.source_registry_path}."
-                )
+        """Loads and caches the authoritative SourceRegistry from JSON with staleness detection."""
+        if not self.source_registry_path.exists():
+            raise GovernancePreflightError(
+                f"CRITICAL: Authoritative source registry not found at {self.source_registry_path}."
+            )
+        current_mtime = self.source_registry_path.stat().st_mtime
+        if self._cached_registry is None or self._registry_mtime != current_mtime:
             self._cached_registry = SourceRegistry.load_from_json(self.source_registry_path)
+            self._registry_mtime = current_mtime
         return self._cached_registry
 
     def verify_source_governance_preflight(self, source_id: str) -> None:
         """
         Validates source permissions against the authoritative SourceRegistry.
-        Detects cache staleness, missing sources, or revoked licensing.
+        Detects cache staleness, missing sources, expired approvals, or revoked licensing.
         """
         registry = self._get_authoritative_registry()
         # SourceRegistry.sources is a list of CorpusSource
@@ -68,6 +72,13 @@ class ExportEligibilityService:
                 f"Source '{source_id}' licensing is '{auth_source.licensing_status}'; must be VERIFIED PERMITTED."
             )
 
+        if auth_source.approval_expiration_date:
+            now_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+            if auth_source.approval_expiration_date < now_date:
+                raise GovernancePreflightError(
+                    f"Source '{source_id}' approval expired on {auth_source.approval_expiration_date}."
+                )
+
         # Check DB cache consistency
         db_src = self.repo.get_source(source_id)
         if not db_src:
@@ -78,9 +89,20 @@ class ExportEligibilityService:
                 f"Source '{source_id}' artifact SHA-256 mismatch between DB cache and authoritative registry."
             )
 
+        if db_src.licensing_status != "VERIFIED PERMITTED":
+            raise GovernancePreflightError(
+                f"Source '{source_id}' DB licensing status is '{db_src.licensing_status}'; must be VERIFIED PERMITTED."
+            )
+
+        if db_src.training_permitted_status != "EXPLICITLY_PERMITTED":
+            raise GovernancePreflightError(
+                f"Source '{source_id}' DB training status is '{db_src.training_permitted_status}'; must be EXPLICITLY_PERMITTED."
+            )
+
     def check_candidate_eligibility(self, candidate_id: str, verify_source: bool = True) -> bool:
         """
         Evaluates the comprehensive 18-point fail-closed export eligibility predicate.
+        Cryptographically re-verifies digital signatures at SQLite trust boundaries.
         Returns True if eligible; raises ExportEligibilityError with exact cause if ineligible.
         """
         row = self.conn.fetchone(
@@ -92,12 +114,12 @@ class ExportEligibilityService:
             cand = self.repo.get_candidate(candidate_id)
             if not cand:
                 raise ExportEligibilityError(f"Candidate '{candidate_id}' does not exist.")
+            if not cand.is_canonical:
+                raise ExportEligibilityError(f"Candidate '{candidate_id}' is a non-canonical duplicate.")
             if cand.processing_status != "APPROVED":
                 raise ExportEligibilityError(
                     f"Candidate '{candidate_id}' status is '{cand.processing_status}'; must be 'APPROVED'."
                 )
-            if not cand.is_canonical:
-                raise ExportEligibilityError(f"Candidate '{candidate_id}' is a non-canonical duplicate.")
 
             # Check if signed with test key
             test_key_row = self.conn.fetchone(
@@ -123,6 +145,37 @@ class ExportEligibilityService:
             raise ExportEligibilityError(
                 f"Candidate '{candidate_id}' failed export eligibility predicate (check approval signature, source licensing, or legal retention)."
             )
+
+        # Application-level cryptographic re-verification at SQLite trust boundary
+        ah_row = self.conn.fetchone(
+            """
+            SELECT ah.canonical_payload_json, ah.signature_ed25519, ah.canonical_payload_sha256,
+                   k.public_key_hex, k.key_status, k.is_test_key
+            FROM approval_history ah
+            JOIN reviewer_public_keys k ON ah.public_key_id = k.public_key_id
+            WHERE ah.candidate_id = ? AND ah.new_status = 'APPROVED'
+            ORDER BY ah.created_at DESC
+            LIMIT 1;
+            """,
+            (candidate_id,),
+        )
+        if not ah_row:
+            raise ExportEligibilityError(f"Candidate '{candidate_id}' lacks approved history record.")
+        if ah_row["is_test_key"] == 1:
+            raise ExportEligibilityError(f"Candidate '{candidate_id}' was approved with a test key.")
+
+        try:
+            canonical_bytes = ah_row["canonical_payload_json"].encode("utf-8")
+            calc_hash = compute_payload_hash(canonical_bytes)
+            if calc_hash != ah_row["canonical_payload_sha256"]:
+                raise ExportEligibilityError(f"Canonical payload SHA-256 mismatch for candidate '{candidate_id}'.")
+            Ed25519SignatureService.verify(
+                ah_row["public_key_hex"],
+                canonical_bytes,
+                ah_row["signature_ed25519"],
+            )
+        except Exception as e:
+            raise ExportEligibilityError(f"Cryptographic signature re-verification failed at export trust boundary: {e}")
 
         if verify_source:
             self.verify_source_governance_preflight(row["source_id"])

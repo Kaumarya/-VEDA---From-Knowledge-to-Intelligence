@@ -24,6 +24,8 @@ class CandidateSubmission:
     is_canonical: bool = True
     canonical_candidate_id: Optional[str] = None
     pipeline_version: str = "v0.4.14"
+    raw_bytes: Optional[bytes] = None
+    raw_byte_sha256: Optional[str] = None
     created_at: Optional[str] = None
     updated_at: Optional[str] = None
 
@@ -156,6 +158,47 @@ class QuarantineCaseRecord:
     resolution_decision_id: Optional[str] = None
     resolution_evidence_reference: Optional[str] = None
     resolved_at: Optional[str] = None
+
+
+@dataclass(frozen=True)
+class ReviewerRolePermissionRecord:
+    role_name: str
+    can_review_candidates: bool = False
+    can_approve_candidates: bool = False
+    can_reject_candidates: bool = False
+    can_resolve_quarantine: bool = False
+    can_participate_dual_appr: bool = False
+    can_revoke_candidates: bool = False
+    can_issue_retention: bool = False
+    can_manage_keys: bool = False
+    can_inspect_audit: bool = True
+    can_administer_accounts: bool = False
+
+
+@dataclass(frozen=True)
+class QuarantineDualApprovalRecord:
+    case_id: str
+    candidate_id: str
+    first_decision_id: str
+    first_reviewer_id: str
+    first_reviewer_role: str
+    first_auth_event_id: str
+    first_public_key_id: str
+    first_signature: str
+    first_approved_at: str
+    bound_candidate_hash: str
+    bound_artifact_hash: str
+    policy_version: str
+    second_decision_id: Optional[str] = None
+    second_reviewer_id: Optional[str] = None
+    second_reviewer_role: Optional[str] = None
+    second_auth_event_id: Optional[str] = None
+    second_public_key_id: Optional[str] = None
+    second_signature: Optional[str] = None
+    second_approved_at: Optional[str] = None
+    dual_status: str = "FIRST_LEG_APPROVED"
+    created_at: Optional[str] = None
+    completed_at: Optional[str] = None
 
 
 @dataclass(frozen=True)

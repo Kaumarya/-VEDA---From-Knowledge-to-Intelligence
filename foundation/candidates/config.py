@@ -46,6 +46,11 @@ class CandidateDatabaseConfig:
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
 
     @classmethod
+    def default_production(cls) -> "CandidateDatabaseConfig":
+        """Factory for the default production candidate database configuration."""
+        return cls()
+
+    @classmethod
     def for_testing(cls, test_dir: Path, db_name: str = "test_candidates.sqlite") -> "CandidateDatabaseConfig":
         """Factory for an isolated, safe test database in a temporary directory."""
         test_path = test_dir / db_name

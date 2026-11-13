@@ -43,7 +43,7 @@ def main() -> None:
         print("    candidate <command>    Interact with the candidate database subsystem")
         print("\nLexicon subcommands: build-sample, build, lookup, stats, verify, benchmark")
         print("Corpus subcommands: sources, pilot, build-golden, inspect-manifest, verify")
-        print("Candidate subcommands: status, init, migrate, version, verify, benchmark")
+        print("Candidate subcommands: status, init, migrate, version, verify, benchmark, backup")
         sys.exit(0)
 
     subcommand = sys.argv[1]
