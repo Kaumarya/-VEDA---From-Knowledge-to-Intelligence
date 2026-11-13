@@ -33,7 +33,7 @@ if sys.version_info < (3, 14):
 
 
 def main() -> None:
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 2 or sys.argv[1] in ("--help", "-h", "help"):
         print("VEDA — From Knowledge to Intelligence")
         print("\nUsage:")
         print("    python veda.py lexicon <command> [options]")

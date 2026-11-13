@@ -100,7 +100,7 @@ Milestones achieved:
 Execute the full unit and regression test suite using the standardized Python 3.14 virtual environment:
 
 ```bash
-.\.venv\Scripts\python.exe -m pytest
+.\.venv\Scripts\python.exe -m pytest tests -v
 ```
 
 Execute the Phase 4.6 Standardization & Accuracy Maximization Evaluator:
@@ -241,7 +241,7 @@ You can test custom inputs interactively or directly via the command line:
 veda/
 │
 ├── README.md                              # Project mission, principles, and overview
-├── requirements.txt                      # Dependencies (Python 3.9+ standard library for Phase 1)
+├── requirements.txt                      # Dependencies (Standardized on Python 3.14.8)
 ├── .gitignore                            # Large data & environment safety rules
 │
 ├── data/
