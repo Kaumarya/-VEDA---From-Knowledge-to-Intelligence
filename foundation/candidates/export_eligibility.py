@@ -4,7 +4,9 @@ Phase 4.14.2
 Enforces 18-point fail-closed predicate, SourceRegistry validation, and release-scoped idempotency.
 """
 
+import json
 import uuid
+import hashlib
 from datetime import datetime, timezone
 from typing import Optional, List, Dict, Any, Tuple
 from pathlib import Path
@@ -17,7 +19,11 @@ from foundation.candidates.exceptions import (
     DuplicateExportError,
     ValidationError,
 )
-from foundation.candidates.signatures import Ed25519SignatureService, compute_payload_hash
+from foundation.candidates.signatures import (
+    Ed25519SignatureService,
+    compute_payload_hash,
+    canonicalize_json,
+)
 from foundation.corpus.sources import SourceRegistry, LicensingStatus
 
 
@@ -39,19 +45,39 @@ class ExportEligibilityService:
         self.repo = repository
         self.source_registry_path = source_registry_path
         self._cached_registry: Optional[SourceRegistry] = None
+        self._registry_hash: Optional[str] = None
         self._registry_mtime: Optional[float] = None
 
     def _get_authoritative_registry(self) -> SourceRegistry:
-        """Loads and caches the authoritative SourceRegistry from JSON with staleness detection."""
+        """
+        Loads and caches the authoritative SourceRegistry using cryptographic SHA-256
+        content-hash validation. Treats mtime as optional metadata only.
+        """
         if not self.source_registry_path.exists():
             raise GovernancePreflightError(
                 f"CRITICAL: Authoritative source registry not found at {self.source_registry_path}."
             )
-        current_mtime = self.source_registry_path.stat().st_mtime
-        if self._cached_registry is None or self._registry_mtime != current_mtime:
-            self._cached_registry = SourceRegistry.load_from_json(self.source_registry_path)
-            self._registry_mtime = current_mtime
-        return self._cached_registry
+        try:
+            raw_bytes = self.source_registry_path.read_bytes()
+        except OSError as e:
+            raise GovernancePreflightError(
+                f"Failed to read source registry at {self.source_registry_path}: {e}"
+            ) from e
+
+        content_hash = hashlib.sha256(raw_bytes).hexdigest()
+        if self._cached_registry is not None and self._registry_hash == content_hash:
+            return self._cached_registry
+
+        try:
+            registry = SourceRegistry.load_from_json(self.source_registry_path)
+            self._cached_registry = registry
+            self._registry_hash = content_hash
+            self._registry_mtime = self.source_registry_path.stat().st_mtime
+            return self._cached_registry
+        except Exception as e:
+            raise GovernancePreflightError(
+                f"Failed to parse source registry at {self.source_registry_path}: {e}"
+            ) from e
 
     def verify_source_governance_preflight(self, source_id: str) -> None:
         """
@@ -150,6 +176,7 @@ class ExportEligibilityService:
         ah_row = self.conn.fetchone(
             """
             SELECT ah.canonical_payload_json, ah.signature_ed25519, ah.canonical_payload_sha256,
+                   ah.reviewer_id, ah.public_key_id,
                    k.public_key_hex, k.key_status, k.is_test_key
             FROM approval_history ah
             JOIN reviewer_public_keys k ON ah.public_key_id = k.public_key_id
@@ -164,8 +191,19 @@ class ExportEligibilityService:
         if ah_row["is_test_key"] == 1:
             raise ExportEligibilityError(f"Candidate '{candidate_id}' was approved with a test key.")
 
+        # Parse canonical approval payload
         try:
-            canonical_bytes = ah_row["canonical_payload_json"].encode("utf-8")
+            payload = json.loads(ah_row["canonical_payload_json"])
+        except Exception as e:
+            raise ExportEligibilityError(f"Corrupted canonical approval payload JSON for candidate '{candidate_id}': {e}") from e
+
+        # 1. Canonicalization Version Handling & Payload Integrity
+        canon_version = payload.get("canonicalization_version", "LEGACY_V1")
+        if canon_version not in ("LEGACY_V1", "RFC8785_V2"):
+            raise ExportEligibilityError(f"Unsupported canonicalization version '{canon_version}' in approval payload.")
+
+        try:
+            canonical_bytes = canonicalize_json(payload, version=canon_version)
             calc_hash = compute_payload_hash(canonical_bytes)
             if calc_hash != ah_row["canonical_payload_sha256"]:
                 raise ExportEligibilityError(f"Canonical payload SHA-256 mismatch for candidate '{candidate_id}'.")
@@ -175,10 +213,70 @@ class ExportEligibilityService:
                 ah_row["signature_ed25519"],
             )
         except Exception as e:
-            raise ExportEligibilityError(f"Cryptographic signature re-verification failed at export trust boundary: {e}")
+            if isinstance(e, ExportEligibilityError):
+                raise
+            raise ExportEligibilityError(f"Cryptographic signature re-verification failed at export trust boundary: {e}") from e
 
+        # 2. Strict Content-Hash Binding (Part 3)
+        cand = self.repo.get_candidate(candidate_id)
+        if not cand:
+            raise ExportEligibilityError(f"Candidate '{candidate_id}' missing in repository during export validation.")
+
+        # Independently recompute normalized text SHA-256
+        recomputed_norm_hash = hashlib.sha256(cand.normalized_text.encode("utf-8")).hexdigest()
+
+        # Compare recomputed hash against candidate_submissions table hash
+        if recomputed_norm_hash != cand.normalized_content_hash:
+            raise ExportEligibilityError(
+                f"Candidate content tampering detected: recomputed normalized text hash ({recomputed_norm_hash}) "
+                f"does not match candidate table normalized_content_hash ({cand.normalized_content_hash})."
+            )
+
+        # Compare recomputed hash against signed approval payload hash
+        payload_norm_hash = payload.get("normalized_content_hash")
+        if recomputed_norm_hash != payload_norm_hash:
+            raise ExportEligibilityError(
+                f"Candidate content decoupling detected: recomputed normalized text hash ({recomputed_norm_hash}) "
+                f"does not match signed approval payload hash ({payload_norm_hash})."
+            )
+
+        # Verify raw content hash if original text is present and unredacted
+        if cand.original_text and cand.raw_content_hash and not cand.original_text.startswith("["):
+            recomputed_raw_hash = hashlib.sha256(cand.original_text.encode("utf-8")).hexdigest()
+            if recomputed_raw_hash != cand.raw_content_hash:
+                raise ExportEligibilityError(
+                    f"Candidate raw content tampering detected: recomputed original text hash ({recomputed_raw_hash}) "
+                    f"does not match candidate raw_content_hash ({cand.raw_content_hash})."
+                )
+
+        # 3. Payload Metadata Binding Checks
+        if payload.get("candidate_id") != candidate_id:
+            raise ExportEligibilityError(
+                f"Candidate ID decoupling: payload candidate_id '{payload.get('candidate_id')}' != '{candidate_id}'."
+            )
+        if payload.get("source_id") != cand.source_id:
+            raise ExportEligibilityError(
+                f"Source ID decoupling: payload source_id '{payload.get('source_id')}' != candidate source_id '{cand.source_id}'."
+            )
+        if payload.get("decision") != "APPROVED":
+            raise ExportEligibilityError(
+                f"Invalid approval decision in payload: expected 'APPROVED', found '{payload.get('decision')}'."
+            )
+        if payload.get("reviewer_id") != ah_row["reviewer_id"]:
+            raise ExportEligibilityError("Reviewer identity in signed payload does not match approval record.")
+
+        # 4. Source Governance & Artifact Binding Preflight
         if verify_source:
-            self.verify_source_governance_preflight(row["source_id"])
+            self.verify_source_governance_preflight(cand.source_id)
+            reg = self._get_authoritative_registry()
+            matching = [s for s in reg.sources if s.source_id == cand.source_id]
+            if matching:
+                auth_src = matching[0]
+                if payload.get("source_artifact_sha256") != auth_src.artifact_sha256:
+                    raise ExportEligibilityError(
+                        f"Source artifact hash mismatch: payload bound to {payload.get('source_artifact_sha256')}, "
+                        f"authoritative source registry is {auth_src.artifact_sha256}."
+                    )
 
         return True
 
