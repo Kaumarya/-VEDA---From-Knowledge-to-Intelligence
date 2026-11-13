@@ -13,3 +13,8 @@ psutil>=7.0.0
 # Testing & verification framework
 pytest>=9.0.0
 
+# Cryptography, Ed25519 signatures & reviewer authentication (Phase 4.14+)
+cryptography>=50.0.0
+argon2-cffi>=25.0.0
+
+

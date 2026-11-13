@@ -66,4 +66,9 @@ scratch/
 *.key
 *.pem
 *.cert
+*.priv
+*id_ed25519*
+keystore/
+data/candidates/
+
 

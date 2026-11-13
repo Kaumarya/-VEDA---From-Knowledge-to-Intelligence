@@ -36,12 +36,14 @@ def main() -> None:
     if len(sys.argv) < 2 or sys.argv[1] in ("--help", "-h", "help"):
         print("VEDA — From Knowledge to Intelligence")
         print("\nUsage:")
-        print("    python veda.py lexicon <command> [options]")
+        print("    python veda.py <subsystem> <command> [options]")
         print("\nCommands:")
         print("    lexicon <command>      Interact with the SQLite production lexicon")
         print("    corpus <command>       Interact with the training corpus pipeline")
+        print("    candidate <command>    Interact with the candidate database subsystem")
         print("\nLexicon subcommands: build-sample, build, lookup, stats, verify, benchmark")
         print("Corpus subcommands: sources, pilot, build-golden, inspect-manifest, verify")
+        print("Candidate subcommands: status, init, migrate, version, verify, benchmark")
         sys.exit(0)
 
     subcommand = sys.argv[1]
@@ -56,6 +58,11 @@ def main() -> None:
         from scripts.corpus_cli import main as corpus_main
         sys.argv = [sys.argv[0]] + sys.argv[2:]
         corpus_main()
+    elif subcommand == "candidate":
+        # Forward arguments to candidates_cli.py
+        from scripts.candidates_cli import main as candidate_main
+        sys.argv = [sys.argv[0]] + sys.argv[2:]
+        candidate_main()
     else:
         print(f"Unknown command: {subcommand}. Try: 'python veda.py --help'", file=sys.stderr)
         sys.exit(1)
